@@ -1,0 +1,679 @@
+[
+  {
+    "id": "wonder",
+    "name": "青緑不可思議",
+    "author": "サンプル作者 01",
+    "colors": [
+      "U",
+      "G"
+    ],
+    "archetype": "アグロ",
+    "note": "墓地の不可思議を活かし、クリーチャーで攻める。",
+    "hero": "232284f7-c623-4895-9ab9-8b1a39926830",
+    "main": [
+      {
+        "id": "86187aed-77ce-4b2d-aab0-0a8f807a9451",
+        "qty": 4
+      },
+      {
+        "id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+        "qty": 4
+      },
+      {
+        "id": "67362406-b1ca-49e2-800d-9050bfe8742a",
+        "qty": 4
+      },
+      {
+        "id": "232284f7-c623-4895-9ab9-8b1a39926830",
+        "qty": 3
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "05a039ad-1689-4d13-b393-6c1219583b5d",
+        "qty": 4
+      },
+      {
+        "id": "713332c1-5bd8-400f-bfff-c1ca0697a043",
+        "qty": 4
+      },
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 4
+      },
+      {
+        "id": "579cbd92-797f-4cdf-91ed-fca7a523eae5",
+        "qty": 2
+      },
+      {
+        "id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+        "qty": 4
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 12
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 11
+      }
+    ],
+    "side": [
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 4
+      },
+      {
+        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
+        "qty": 4
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 3
+      }
+    ],
+    "updated": "2026-10-18T00:00:00+09:00",
+    "order": 0,
+    "sample": true,
+    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
+    "englishText": "4 River Boa\n4 Llanowar Elves\n4 Merfolk Looter\n3 Wonder\n4 Call of the Herd\n4 Sleight of Hand\n4 Opt\n4 Counterspell\n2 Deep Analysis\n4 Yavimaya Coast\n12 Island\n11 Forest\n\nSideboard\n4 Naturalize\n4 Tormod's Crypt\n4 Hibernation\n3 Mana Leak\n"
+  },
+  {
+    "id": "angels",
+    "name": "トリコエンジェル",
+    "author": "サンプル作者 02",
+    "colors": [
+      "W",
+      "U",
+      "R"
+    ],
+    "archetype": "ミッドレンジ",
+    "note": "天使を主役に、打ち消しと火力で支える。",
+    "hero": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
+    "main": [
+      {
+        "id": "8c31fec9-e4b3-4761-990e-7be38eb05604",
+        "qty": 4
+      },
+      {
+        "id": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
+        "qty": 4
+      },
+      {
+        "id": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
+        "qty": 4
+      },
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 4
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "132ca99a-a3c7-4ed6-b4d0-0edcd7140ca2",
+        "qty": 4
+      },
+      {
+        "id": "9a40614b-50a3-422c-849e-53c8b7d3d204",
+        "qty": 2
+      },
+      {
+        "id": "e3886fe8-9b76-4613-8891-4ec74657c087",
+        "qty": 4
+      },
+      {
+        "id": "84528204-faf2-45cb-bce0-365b8adf5339",
+        "qty": 2
+      },
+      {
+        "id": "d5ad26cc-2bdb-46b7-b8bf-dd099d5fa09b",
+        "qty": 4
+      },
+      {
+        "id": "f25351e3-539b-4bbc-b92d-6480acf4d722",
+        "qty": 2
+      },
+      {
+        "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+        "qty": 4
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 4
+      },
+      {
+        "id": "0fe16212-66c3-4e45-a641-7391e9b2e304",
+        "qty": 4
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 1
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 2
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "300cba5a-adbb-4852-be06-ac00d9d6fd37",
+        "qty": 4
+      },
+      {
+        "id": "fdd94383-b573-439a-8e1c-925af887c5a6",
+        "qty": 2
+      },
+      {
+        "id": "edad60c6-80de-4033-af1b-a703ac332983",
+        "qty": 3
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 3
+      },
+      {
+        "id": "cd30a128-4b23-476e-8066-2272fdc395d9",
+        "qty": 3
+      }
+    ],
+    "updated": "2026-10-17T00:00:00+09:00",
+    "order": 1,
+    "sample": true,
+    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
+    "englishText": "4 Karmic Guide\n4 Serra Angel\n4 Lightning Angel\n4 Counterspell\n4 Fact or Fiction\n4 Lightning Bolt\n4 Absorb\n2 Earthquake\n4 Glorious Anthem\n2 Noble Purpose\n4 Adarkar Wastes\n2 City of Brass\n4 Coastal Tower\n4 Reflecting Pool\n4 Shivan Reef\n1 Island\n2 Mountain\n3 Plains\n\nSideboard\n4 Dismantling Blow\n2 Evacuation\n3 Goblin Bombardment\n3 Tormod's Crypt\n3 Disrupting Scepter\n"
+  },
+  {
+    "id": "elves",
+    "name": "緑単エルフ",
+    "author": "サンプル作者 03",
+    "colors": [
+      "G"
+    ],
+    "archetype": "アグロ",
+    "note": "エルフを並べ、マナとクリーチャーを増やす。",
+    "hero": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+    "main": [
+      {
+        "id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+        "qty": 4
+      },
+      {
+        "id": "7e40f37c-9a0c-40e0-b195-7ea94b12f798",
+        "qty": 4
+      },
+      {
+        "id": "e0de1c9b-f71f-4498-a968-d3c635cb4c5c",
+        "qty": 4
+      },
+      {
+        "id": "5f4138e9-5471-467f-a15e-89e9e7929f0c",
+        "qty": 4
+      },
+      {
+        "id": "272ab5d5-7edb-4457-8a09-cabe2325c881",
+        "qty": 4
+      },
+      {
+        "id": "ba310102-8272-4d64-a00b-9e7346cb5f46",
+        "qty": 4
+      },
+      {
+        "id": "5748ebf1-24e3-499d-ab7c-c2cebd462a24",
+        "qty": 4
+      },
+      {
+        "id": "204f9afe-c20b-4933-b5cd-aa572784762a",
+        "qty": 4
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 24
+      }
+    ],
+    "side": [
+      {
+        "id": "81b2242b-40c9-475a-a198-28dd348235ec",
+        "qty": 4
+      },
+      {
+        "id": "59180e94-ccdf-4d9f-9a4a-fe55497d0d63",
+        "qty": 4
+      },
+      {
+        "id": "9c021685-4017-49c7-9f58-2ae0243361a0",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 3
+      }
+    ],
+    "updated": "2026-10-16T00:00:00+09:00",
+    "order": 2,
+    "sample": true,
+    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
+    "englishText": "4 Llanowar Elves\n4 Elvish Champion\n4 Elvish Lyrist\n4 Elvish Pioneer\n4 Llanowar Sentinel\n4 Sylvan Messenger\n4 Giant Growth\n4 Overrun\n4 Naturalize\n24 Forest\n\nSideboard\n4 Elvish Scrapper\n4 Creeping Mold\n4 Hurricane\n3 Tormod's Crypt\n"
+  },
+  {
+    "id": "goblins",
+    "name": "赤単ゴブリン",
+    "author": "サンプル作者 04",
+    "colors": [
+      "R"
+    ],
+    "archetype": "アグロ",
+    "note": "ゴブリンを展開し、火力で最後の一押し。",
+    "hero": "d236b3fc-0d3f-4d99-875d-e32a33fe5767",
+    "main": [
+      {
+        "id": "d236b3fc-0d3f-4d99-875d-e32a33fe5767",
+        "qty": 4
+      },
+      {
+        "id": "39882df0-c20f-469d-94ba-1617224e71a1",
+        "qty": 4
+      },
+      {
+        "id": "4d74d12b-1ffb-482f-8bac-635a8d4d32e9",
+        "qty": 4
+      },
+      {
+        "id": "145737a7-c597-4dec-b752-207c2d0501e3",
+        "qty": 4
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 4
+      },
+      {
+        "id": "7efd5d62-6da2-428a-98e3-5b842f668656",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "a9d288b8-cdc1-4e55-a0c9-d6edfc95e65d",
+        "qty": 4
+      },
+      {
+        "id": "edad60c6-80de-4033-af1b-a703ac332983",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 24
+      }
+    ],
+    "side": [
+      {
+        "id": "84d32e68-72b9-432d-a023-7bc6a26b8ad0",
+        "qty": 4
+      },
+      {
+        "id": "0b137853-7cb9-424b-8285-12938991eafb",
+        "qty": 4
+      },
+      {
+        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 3
+      }
+    ],
+    "updated": "2026-10-15T00:00:00+09:00",
+    "order": 3,
+    "sample": true,
+    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
+    "englishText": "4 Goblin King\n4 Goblin Warchief\n4 Goblin Piledriver\n4 Goblin Matron\n4 Siege-Gang Commander\n4 Mogg Fanatic\n4 Lightning Bolt\n4 Shock\n4 Goblin Bombardment\n24 Mountain\n\nSideboard\n4 Shatter\n4 Pillage\n4 Pyroclasm\n3 Tormod's Crypt\n"
+  },
+  {
+    "id": "uw",
+    "name": "青白コントロール",
+    "author": "サンプル作者 05",
+    "colors": [
+      "W",
+      "U"
+    ],
+    "archetype": "コントロール",
+    "note": "打ち消しと全体除去を使い、長いゲームへ。",
+    "hero": "34515b16-c9a4-4f98-8c77-416a7a523407",
+    "main": [
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 4
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 4
+      },
+      {
+        "id": "132ca99a-a3c7-4ed6-b4d0-0edcd7140ca2",
+        "qty": 4
+      },
+      {
+        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+        "qty": 4
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "f6bd2902-7f8b-419e-bbc7-bcab0c1b7e01",
+        "qty": 4
+      },
+      {
+        "id": "5f5e0b10-c8cf-450c-bfd3-bcb0528ec330",
+        "qty": 4
+      },
+      {
+        "id": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
+        "qty": 4
+      },
+      {
+        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "qty": 4
+      },
+      {
+        "id": "d5ad26cc-2bdb-46b7-b8bf-dd099d5fa09b",
+        "qty": 4
+      },
+      {
+        "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+        "qty": 4
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 10
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 6
+      }
+    ],
+    "side": [
+      {
+        "id": "df2738fe-9cd1-4347-8808-105fcfde1190",
+        "qty": 4
+      },
+      {
+        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
+        "qty": 4
+      },
+      {
+        "id": "300cba5a-adbb-4852-be06-ac00d9d6fd37",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 3
+      }
+    ],
+    "updated": "2026-10-14T00:00:00+09:00",
+    "order": 4,
+    "sample": true,
+    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
+    "englishText": "4 Counterspell\n4 Mana Leak\n4 Absorb\n4 Wrath of God\n4 Fact or Fiction\n4 Impulse\n4 Pacifism\n4 Serra Angel\n4 Disenchant\n4 Adarkar Wastes\n4 Coastal Tower\n10 Island\n6 Plains\n\nSideboard\n4 Circle of Protection: Red\n4 Hibernation\n4 Dismantling Blow\n3 Tormod's Crypt\n"
+  },
+  {
+    "id": "black",
+    "name": "黒単コントロール",
+    "author": "サンプル作者 06",
+    "colors": [
+      "B"
+    ],
+    "archetype": "コントロール",
+    "note": "手札破壊と除去で、盤面をじっくり整える。",
+    "hero": "759af941-f6a3-4726-91f2-9b1e4e55ea71",
+    "main": [
+      {
+        "id": "759af941-f6a3-4726-91f2-9b1e4e55ea71",
+        "qty": 4
+      },
+      {
+        "id": "ee579a32-a048-4335-b966-231ba731cdea",
+        "qty": 4
+      },
+      {
+        "id": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
+        "qty": 4
+      },
+      {
+        "id": "c19e3560-d304-4d91-aa2a-463d7dbb35bb",
+        "qty": 4
+      },
+      {
+        "id": "0df450be-9bd2-45be-ae59-fa8d19f6a391",
+        "qty": 4
+      },
+      {
+        "id": "a88a1c53-7de3-423a-a95a-24ed5666ab96",
+        "qty": 4
+      },
+      {
+        "id": "5de0769e-5141-42d5-aaa6-549cfc154de8",
+        "qty": 4
+      },
+      {
+        "id": "10c585c4-bf5b-4d8f-94a9-e9a5036a688f",
+        "qty": 4
+      },
+      {
+        "id": "14589b6b-1814-46f9-a364-83cc15dacac2",
+        "qty": 4
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 24
+      }
+    ],
+    "side": [
+      {
+        "id": "b81f041d-98db-4408-9472-c483e4a502bc",
+        "qty": 4
+      },
+      {
+        "id": "676c4cfa-f929-43aa-95cc-df81a596c2a2",
+        "qty": 4
+      },
+      {
+        "id": "2b8abae2-dd15-41ee-81ae-6a463723b43e",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 3
+      }
+    ],
+    "updated": "2026-10-13T00:00:00+09:00",
+    "order": 5,
+    "sample": true,
+    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
+    "englishText": "4 Hypnotic Specter\n4 Phyrexian Arena\n4 Duress\n4 Stupor\n4 Dark Banishing\n4 Corrupt\n4 Highway Robber\n4 Cruel Edict\n4 Diabolic Tutor\n24 Swamp\n\nSideboard\n4 Terror\n4 Persecute\n4 Nausea\n3 Tormod's Crypt\n"
+  },
+  {
+    "id": "ramp",
+    "name": "緑系ランプ",
+    "author": "サンプル作者 07",
+    "colors": [
+      "G"
+    ],
+    "archetype": "ランプ",
+    "note": "マナを伸ばし、大きなクリーチャーへつなぐ。",
+    "hero": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+    "main": [
+      {
+        "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+        "qty": 4
+      },
+      {
+        "id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+        "qty": 4
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 4
+      },
+      {
+        "id": "8539f295-5d58-4436-a73a-b9277c4c7795",
+        "qty": 4
+      },
+      {
+        "id": "38abf769-e4ef-4b47-9c79-c8cda0b90f6c",
+        "qty": 4
+      },
+      {
+        "id": "59180e94-ccdf-4d9f-9a4a-fe55497d0d63",
+        "qty": 4
+      },
+      {
+        "id": "9cdf840d-314e-46ef-9c04-74f145d9e65b",
+        "qty": 4
+      },
+      {
+        "id": "7a21ea22-3cd7-4c11-8895-5943c0d93a0d",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 24
+      }
+    ],
+    "side": [
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 4
+      },
+      {
+        "id": "81b2242b-40c9-475a-a198-28dd348235ec",
+        "qty": 4
+      },
+      {
+        "id": "9c021685-4017-49c7-9f58-2ae0243361a0",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 3
+      }
+    ],
+    "updated": "2026-10-12T00:00:00+09:00",
+    "order": 6,
+    "sample": true,
+    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
+    "englishText": "4 Birds of Paradise\n4 Llanowar Elves\n4 Wall of Roots\n4 Yavimaya Elder\n4 Rampant Growth\n4 Collective Unconscious\n4 Creeping Mold\n4 Thorn Elemental\n4 Verdant Force\n24 Forest\n\nSideboard\n4 Naturalize\n4 Elvish Scrapper\n4 Hurricane\n3 Tormod's Crypt\n"
+  },
+  {
+    "id": "ur",
+    "name": "青赤カウンターバーン",
+    "author": "サンプル作者 08",
+    "colors": [
+      "U",
+      "R"
+    ],
+    "archetype": "テンポ",
+    "note": "打ち消しと火力を組み合わせる構成例。",
+    "hero": "4457ed35-7c10-48c8-9776-456485fdf070",
+    "main": [
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 4
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "a9d288b8-cdc1-4e55-a0c9-d6edfc95e65d",
+        "qty": 4
+      },
+      {
+        "id": "ae92942b-919c-4ea9-b693-85fcef765d5a",
+        "qty": 4
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "f6bd2902-7f8b-419e-bbc7-bcab0c1b7e01",
+        "qty": 4
+      },
+      {
+        "id": "d137586f-83b0-40af-8100-443460b07ac0",
+        "qty": 4
+      },
+      {
+        "id": "c39ea5f9-6ec0-4697-897b-779e326754a7",
+        "qty": 4
+      },
+      {
+        "id": "0fe16212-66c3-4e45-a641-7391e9b2e304",
+        "qty": 4
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 10
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 10
+      }
+    ],
+    "side": [
+      {
+        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
+        "qty": 4
+      },
+      {
+        "id": "84d32e68-72b9-432d-a023-7bc6a26b8ad0",
+        "qty": 4
+      },
+      {
+        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 3
+      }
+    ],
+    "updated": "2026-10-11T00:00:00+09:00",
+    "order": 7,
+    "sample": true,
+    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
+    "englishText": "4 Counterspell\n4 Mana Leak\n4 Lightning Bolt\n4 Shock\n4 Fire // Ice\n4 Fact or Fiction\n4 Impulse\n4 Archivist\n4 Mahamoti Djinn\n4 Shivan Reef\n10 Island\n10 Mountain\n\nSideboard\n4 Pyroclasm\n4 Shatter\n4 Hibernation\n3 Tormod's Crypt\n"
+  }
+]
