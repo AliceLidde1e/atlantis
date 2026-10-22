@@ -20,3 +20,22 @@ button.primary{background:#917338;border-color:#e1be77;color:#fff}
 .footer{font-size:13px}
 @media(max-width:639px){header{position:static}header>div{width:100%}header>div button{flex:1 1 auto;font-size:12px;padding:7px 5px}header>div label{display:none}header>div select{max-width:100%;flex:1 1 140px}header>div #saveStatus{width:100%;order:9}main{padding:20px 13px}main>.controls{display:grid;grid-template-columns:1fr 1fr}main>.controls input{grid-column:1/-1;min-width:0;width:100%}main>.controls select{width:100%;min-width:0}main>.controls button{width:100%}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:7px}.art{height:150px}.modal{max-height:96vh}.pool-row{grid-template-columns:minmax(35px,1fr) 38px 64px 64px 32px}}
 @media(prefers-reduced-motion:reduce){.card{transition:none}}
+
+/* Museum design shared with the main portal. */
+:root{--bg:#091e22;--panel:#102a2c;--gold:#c49b5d;--text:#e9e4cb;color-scheme:dark}
+body{background-color:#061519;background-image:repeating-linear-gradient(45deg,transparent 0 3px,#6b8e820a 3px 4px),radial-gradient(ellipse at 50% 0,#22433d,transparent 80%);font-family:'MS PGothic','Yu Gothic','Noto Sans JP',sans-serif}
+header{position:relative;max-width:1140px;margin:24px auto 0;background:linear-gradient(#183531,#0c2225);border:4px ridge #718779;border-bottom:3px double var(--gold);box-shadow:0 12px 60px #0008;padding:14px 20px}
+header h1{font-family:'Courier New',monospace;color:#efd5a0;letter-spacing:.08em}
+header h1 img{display:block;width:215px;max-width:100%;height:auto;image-rendering:pixelated}
+main{max-width:1140px;margin:0 auto 24px;padding:24px 22px 36px;border:4px ridge #718779;border-top:0;background:var(--bg);box-shadow:0 12px 60px #0008}
+h2{font-family:'Yu Mincho','Hiragino Mincho ProN','Noto Serif CJK JP',serif;color:#efd5a0}
+.muted,.footer{color:#b8c5b6}
+button,.site-back{background:#1f3934;color:var(--text);border:2px outset #819181;border-radius:0;box-shadow:1px 1px 0 #0008;min-height:44px}
+button:hover,.site-back:hover{background:#2e4941}button:active{border-style:inset;box-shadow:none}button.primary{background:#b69a63;border:2px outset #decb94;color:#101f20}
+input,select{background:#07191e;border:2px inset #6b8073;border-radius:0;min-height:44px;color:var(--text)}
+button:focus-visible,input:focus-visible,select:focus-visible,.site-back:focus-visible{outline:2px solid #efd5a0;outline-offset:4px}
+.card{border:3px ridge #718271;border-radius:0;background:#132d2d;box-shadow:2px 2px 0 #0006}.card:hover{box-shadow:3px 3px 0 #0008}.art{background:linear-gradient(135deg,#476558,#0b2528 65%,#9d7e48)}
+.modal{background:var(--panel);border:4px ridge #87957d;border-radius:0;box-shadow:8px 8px 0 #0008}
+.thumb{border:1px solid var(--gold)}.pool-row{border-color:#4e635a}.pool-name{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.footer{border-top:4px double #8b8a65}
+@media(max-width:1150px){header{margin:12px 12px 0}main{margin:0 12px 12px}}
+@media(max-width:639px){header{margin:6px 6px 0;padding:10px}header h1 img{width:184px}main{margin:0 6px 84px;padding:14px 12px}.modal{padding:14px 8px}.pool-row{grid-template-columns:minmax(0,1fr) 36px 44px 44px 44px;gap:4px;min-height:48px}.thumb{width:36px;height:36px}.pool-row button{min-height:44px;font-size:10px;padding:0 1px}.pool-row button span{font-size:9px}.quantity .minus{display:none}.pool-row>button:last-child{font-size:17px}.card{border-radius:0}}

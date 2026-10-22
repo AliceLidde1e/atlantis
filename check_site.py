@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
 EXPECTED = {
-    ".nojekyll", "index.html", "mo-storage.html", "style.css", "theme.css",
+    ".nojekyll", "index.html", "mo-storage.html", "style.css", "museum.css", "atlantis-logo.svg",
     "mo-theme.css", "favicon.svg", "app.mjs", "core.mjs",
     "site-bridge.mjs", "site-bridge-ui.mjs", "data/cards.json",
     "data/printings.json", "data/decks.json", "data/events.json",
@@ -18,9 +18,11 @@ def main():
     assert not any(p.is_symlink() for p in SITE.rglob("*"))
     home = (SITE / "index.html").read_text(encoding="utf-8")
     mo = (SITE / "mo-storage.html").read_text(encoding="utf-8")
-    for name in ("theme.css", "favicon.svg", "mo-storage.html"):
+    for name in ("museum.css", "atlantis-logo.svg", "favicon.svg", "mo-storage.html"):
         assert name in home
-    for name in ("mo-theme.css", "favicon.svg", "index.html#cards"):
+    for label in ("Featured Decks", "Information", "Getting Started", "My Storage", "Decks", "Cards", "Events", "My Decks"):
+        assert label in home
+    for name in ("mo-theme.css", "favicon.svg", "index.html#pool"):
         assert name in mo
     assert home.count('name="robots" content="noindex,nofollow"') == 1
     assert mo.count('name="robots" content="noindex,nofollow"') == 1
