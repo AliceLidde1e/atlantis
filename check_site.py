@@ -27,6 +27,7 @@ def main():
     assert home.count('name="robots" content="noindex,nofollow"') == 1
     assert mo.count('name="robots" content="noindex,nofollow"') == 1
     assert "掲載デッキはサンプルです。大会の正式案内は未掲載です。" in home
+    assert "local('CgWoodBlock')" in (SITE / "museum.css").read_text(encoding="utf-8")
     cards = json.loads((SITE / "data/cards.json").read_text(encoding="utf-8"))
     printings = json.loads((SITE / "data/printings.json").read_text(encoding="utf-8"))
     decks = json.loads((SITE / "data/decks.json").read_text(encoding="utf-8"))
