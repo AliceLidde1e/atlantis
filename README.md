@@ -4,7 +4,7 @@
 
 外観と画面導線は「ATLANTIS デザイン仕様書 v1.4」に合わせています。ホームには Navigation、Featured Decks、Information を配置し、主要メニューは Decks、Cards、Events、My Decks です。Cards の検索結果から画像を選ぶと詳細が開き、そこで My Storage の Main / Sideboard へ追加できます。幅639px以下の My Storage はカード名、画像、Main +、Side +、削除を一行に表示します。
 
-英字には端末にインストールされた CgWoodBlock を優先します。Web配信用ファイルは同梱していないため、未インストールの端末では代替書体を表示します。
+英字にはオープンライセンスの Rye を使用します。フォントは `site/fonts/rye/` に同梱しているため、端末へのインストールは不要です。日本語は端末の日本語フォントで表示します。
 
 ## テスト版の範囲
 

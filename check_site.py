@@ -9,6 +9,7 @@ EXPECTED = {
     "mo-theme.css", "favicon.svg", "app.mjs", "core.mjs",
     "site-bridge.mjs", "site-bridge-ui.mjs", "data/cards.json",
     "data/printings.json", "data/decks.json", "data/events.json",
+    "fonts/rye/Rye-Regular.ttf", "fonts/rye/OFL.txt",
 }
 
 
@@ -27,7 +28,10 @@ def main():
     assert home.count('name="robots" content="noindex,nofollow"') == 1
     assert mo.count('name="robots" content="noindex,nofollow"') == 1
     assert "掲載デッキはサンプルです。大会の正式案内は未掲載です。" in home
-    assert "local('CgWoodBlock')" in (SITE / "museum.css").read_text(encoding="utf-8")
+    font_ref = "fonts/rye/Rye-Regular.ttf"
+    assert all(font_ref in (SITE / css).read_text(encoding="utf-8") for css in ("museum.css", "mo-theme.css"))
+    assert (SITE / font_ref).read_bytes()[:4] == b"\x00\x01\x00\x00"
+    assert "SIL OPEN FONT LICENSE" in (SITE / "fonts/rye/OFL.txt").read_text(encoding="utf-8")
     cards = json.loads((SITE / "data/cards.json").read_text(encoding="utf-8"))
     printings = json.loads((SITE / "data/printings.json").read_text(encoding="utf-8"))
     decks = json.loads((SITE / "data/decks.json").read_text(encoding="utf-8"))
