@@ -26,7 +26,7 @@ def main():
         assert name in mo
     assert home.count('name="robots" content="noindex,nofollow"') == 1
     assert mo.count('name="robots" content="noindex,nofollow"') == 1
-    assert "掲載デッキと大会案内はサンプル" in home
+    assert "掲載デッキはサンプルです。大会の正式案内は未掲載です。" in home
     cards = json.loads((SITE / "data/cards.json").read_text(encoding="utf-8"))
     printings = json.loads((SITE / "data/printings.json").read_text(encoding="utf-8"))
     decks = json.loads((SITE / "data/decks.json").read_text(encoding="utf-8"))
