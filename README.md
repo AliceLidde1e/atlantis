@@ -1,5 +1,7 @@
 # ATLANTIS クローズドテスト版
 
+現行の要件・実装状況・引継ぎは [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md) を参照してください。
+
 旧枠モダンのカード検索、掲載デッキ検索、大会案内、ブラウザ内のマイデッキ、MOテキスト取込・書出しを備えた静的Webアプリです。`site/` がGitHub Pagesへそのまま配信されます。サーバー、利用者アカウント、書込APIはありません。
 
 外観と画面導線は「ATLANTIS デザイン仕様書 v1.4」に合わせています。ホームには Navigation、Featured Decks、Information を配置し、主要メニューは Decks、Cards、Events、My Decks です。Cards の検索結果から画像を選ぶと詳細が開き、そこで My Storage の Main / Sideboard へ追加できます。幅639px以下の My Storage はカード名、画像、Main +、Side +、削除を一行に表示します。
