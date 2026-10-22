@@ -24,12 +24,13 @@ node --check site/site-bridge-ui.mjs
 
 ## GitHub Pagesへの配信
 
-1. このフォルダの内容で新しいGitHubリポジトリを作成し、`main` にpushします。公開リポジトリが最も単純です。リポジトリ名は任意です。全リンクは相対パスなので、`https://OWNER.github.io/REPO/` 形式で動きます。
-2. GitHubの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** にします。
-3. **Actions → Deploy ATLANTIS closed test → Run workflow** を実行します。自動配信はしません。検査が通った実行だけがPagesへ配信されます。
-4. Actionsの`deploy`結果に表示されるURLで、トップ・カード検索・MO画面・再読込後の保存件数を確認します。
+- リポジトリ：<https://github.com/AliceLidde1e/atlantis>
+- テスト用Webアプリ：<https://alicelidde1e.github.io/atlantis/>
+- **Settings → Pages → Build and deployment → Source** は **GitHub Actions** に設定済みです。
 
-新しいリポジトリとPagesのURLが決まったら、テスターにはそのURLを共有します。URLを知る人以外を技術的に遮断する構成ではありません。アクセス制限が必要になった場合は認証付きの配信先へ移します。
+今後、`main` に修正を反映すると **Check ATLANTIS site** が自動で検査します。検査結果が成功したら、GitHubの **Actions → Deploy ATLANTIS closed test → Run workflow** を選びます。配信は手動なので、修正を反映しただけでは公開ページは更新されません。配信完了後、Actionsの`deploy`結果に表示されるURLでトップ・カード検索・MO画面を確認してください。
+
+テスターにはWebアプリのURLを共有します。URLを知る人以外を技術的に遮断する構成ではありません。アクセス制限が必要になった場合は認証付きの配信先へ移します。
 
 ## 元サイトからの保存データ
 
