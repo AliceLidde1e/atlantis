@@ -31,8 +31,8 @@ function imageMarkup(c,art=false){
 }
 document.addEventListener('error',e=>{if(e.target.tagName!=='IMG')return;const img=e.target,c=cardMap.get(img.dataset.imageCard),selection=printingOptions(printings?.cards[c?.id],printingMode),i=Number(img.dataset.imageIndex||0)+1,next=selection.choices[i];if(next){img.dataset.imageIndex=i;img.src=img.dataset.imageArt==='1'?(next.art||next.image):next.image;img.alt=cardName(c)+' — '+next.lang.toUpperCase()+' '+next.set+' #'+next.number;img.parentElement.querySelector('figcaption').textContent=`画像取得失敗・代替 ${next.lang.toUpperCase()} ${next.set} #${next.number}`;return;}const box=document.createElement('div');box.className=(img.className||'')+' image-failed';box.textContent=cardName(c)+' — 画像を取得できません';img.replaceWith(box);},true);
 function colorControls(prefix){const labels={W:'White',U:'Blue',B:'Black',R:'Red',G:'Green',C:'Colorless'};$('#'+prefix+'-colors').innerHTML=`<fieldset><legend>Colors</legend><div class="color-buttons">${Object.entries(colorNames).map(([c,name])=>`<label><input type="checkbox" value="${c}" aria-label="${labels[c]||name}">${labels[c]||name}</label>`).join('')}</div></fieldset>`;}
-function saveSearch(){try{const values={};$$('input[id],select[id]').filter(x=>!x.id.startsWith('edit-')&&!x.id.startsWith('pool-')&&!x.id.startsWith('builder-')&&!['printing-mode','restore-file','hide-images','deck-card','my-query','my-sort','builder-target','builder-qty','builder-new-name-input'].includes(x.id)&&x.type!=='file'&&x.type!=='hidden').forEach(x=>values[x.id]=x.type==='checkbox'?x.checked:x.value);sessionStorage.setItem(SESSION,JSON.stringify({values,selectedCards,cardPage,currentView,colors:{card:selectedColors('card'),deck:selectedColors('deck')},display:$('input[name=display]:checked').value}));}catch{}}
-function restoreSearch(){try{const saved=JSON.parse(sessionStorage.getItem(SESSION)||'null');if(!saved)return;for(const[id,value]of Object.entries(saved.values||{})){const input=$('#'+id);if(input&&id!=='printing-mode'){if(input.type==='checkbox')input.checked=!!value;else input.value=String(value);}}for(const prefix of ['card','deck'])$$(`#${prefix}-colors input`).forEach(x=>x.checked=(saved.colors?.[prefix]||[]).includes(x.value));selectedCards=(saved.selectedCards||[]).filter(id=>cardMap.has(id));cardPage=Math.max(1,Number(saved.cardPage)||1);currentView=['home','decks','cards','events','my','guide','about'].includes(saved.currentView)?saved.currentView:'home';const display=$(`input[name=display][value="${saved.display==='list'?'list':'grid'}"]`);if(display)display.checked=true;}catch{}}
+function saveSearch(){try{const values={};$$('input[id],select[id]').filter(x=>!x.id.startsWith('edit-')&&!x.id.startsWith('pool-')&&!x.id.startsWith('builder-')&&!['printing-mode','restore-file','hide-images','deck-card','my-query','my-sort','builder-target','builder-qty','builder-new-name-input'].includes(x.id)&&x.type!=='file'&&x.type!=='hidden').forEach(x=>values[x.id]=x.type==='checkbox'?x.checked:x.value);sessionStorage.setItem(SESSION,JSON.stringify({sortDefaultsVersion:2,values,selectedCards,cardPage,currentView,colors:{card:selectedColors('card'),deck:selectedColors('deck')},display:$('input[name=display]:checked').value}));}catch{}}
+function restoreSearch(){try{const saved=JSON.parse(sessionStorage.getItem(SESSION)||'null');if(!saved)return;for(const[id,value]of Object.entries(saved.values||{})){const input=$('#'+id);if(input&&id!=='printing-mode'&&(!['deck-sort','card-sort'].includes(id)||saved.sortDefaultsVersion===2)){if(input.type==='checkbox')input.checked=!!value;else input.value=String(value);}}for(const prefix of ['card','deck'])$$(`#${prefix}-colors input`).forEach(x=>x.checked=(saved.colors?.[prefix]||[]).includes(x.value));selectedCards=(saved.selectedCards||[]).filter(id=>cardMap.has(id));cardPage=Math.max(1,Number(saved.cardPage)||1);currentView=['home','decks','cards','events','my','guide','about'].includes(saved.currentView)?saved.currentView:'home';const display=$(`input[name=display][value="${saved.display==='list'?'list':'grid'}"]`);if(display)display.checked=true;}catch{}}
 function navigate(view){
  const route={pool:'cards',mydecks:'my',cards:'cards',my:'my'};
  const next=route[view]||view;
@@ -165,6 +165,24 @@ for(const aside of $$('.filters')){const prefix=aside.querySelector('#card-color
 for(const prefix of ['card','deck'])$$(`#${prefix}-colors input`).forEach(input=>input.addEventListener('change',()=>{if(input.checked)$$(`#${prefix}-colors input`).forEach(other=>{if(other!==input&&(input.value==='C'||other.value==='C'))other.checked=false;});}));
 document.addEventListener('compositionstart',()=>composing=true);document.addEventListener('compositionend',()=>composing=false);
 $('#deck-form').onsubmit=e=>{e.preventDefault();searchFor('decks');};$('#card-form').onsubmit=e=>{e.preventDefault();searchFor('cards');};$('#add-card').onclick=addDeckCard;$('#deck-card').onkeydown=e=>{if(e.key==='Enter'&&!e.isComposing&&!composing){e.preventDefault();addDeckCard();}};
+// Keep search controls available while the result list scrolls beneath them.
+for(const kind of ['decks','cards']){
+ const view=$('#view-'+kind), prefix=kind==='decks'?'deck':'card';
+ const controls=document.createElement('div');controls.className='search-controls';
+ const form=$('#'+prefix+'-form'), filters=view.querySelector('.filters'), toolbar=view.querySelector('.toolbar');
+ form.before(controls);controls.append(form,filters,toolbar);
+ if(kind==='cards'){
+  const help=document.createElement('details');help.className='search-help';
+  const summary=document.createElement('summary');summary.textContent='検索方法';help.append(summary,form.querySelector('.hint'));
+  filters.querySelector('.filter-body').append(help,view.querySelector('.language-help'));
+ }
+ filters.querySelector('.filter-toggle').setAttribute('aria-controls',prefix+'-filter-body');
+ filters.querySelector('.filter-body').id=prefix+'-filter-body';
+ const narrow=matchMedia('(max-width:639px)'),basic=filters.querySelector('.basic-filters'),body=filters.querySelector('.filter-body'),toggle=filters.querySelector('.filter-toggle');
+ const placeBasic=()=>{if(narrow.matches)body.prepend(basic);else filters.insertBefore(basic,toggle);};
+ narrow.addEventListener('change',placeBasic);placeBasic();
+ toggle.addEventListener('click',()=>{if(filters.classList.contains('open'))controls.scrollIntoView({block:'start'});});
+}
 for(const sel of ['#deck-colors input','#deck-color-mode','#deck-archetype','#deck-side','#deck-sort'])$$(sel).forEach(x=>x.addEventListener('change',()=>searchFor('decks')));
 for(const sel of ['#card-colors input','#card-color-mode','#card-type','#card-min','#card-max','#card-sort','input[name=display]'])$$(sel).forEach(x=>x.addEventListener('change',()=>searchFor('cards')));
 $('#my-query').oninput=()=>{if(!composing)renderMy();};$('#my-query').addEventListener('compositionend',renderMy);$('#my-sort').onchange=renderMy;
@@ -241,7 +259,7 @@ loadPrintings();
 
 function renderFeatured(){
  const names={wonder:'UG WONDERS',angels:'JESKAI ANGELS',elves:'MONO GREEN ELVES'};
- $('#featured-decks').innerHTML=['wonder','angels','elves'].map(id=>decks.find(d=>d.id===id)).filter(Boolean).map(d=>{const hero=cardMap.get(d.hero);return `<article class="deck-card featured-card"><button type="button" class="featured-open" data-deck="${d.id}" aria-label="${esc(d.name)} details">${imageMarkup(hero,true)}<div class="content"><span class="eyebrow">${names[d.id]}</span><h3>${esc(d.name)}</h3><p>${esc(d.note)}</p><div class="deck-card-meta"><span>${esc(d.archetype)} · SAMPLE</span><span>${d.colors.map(x=>colorNames[x]).join(' / ')}</span></div></div></button></article>`;}).join('');
+ $('#featured-decks').innerHTML=['wonder','angels','elves'].map(id=>decks.find(d=>d.id===id)).filter(Boolean).map(d=>{const hero=cardMap.get(d.hero);return `<article class="deck-card featured-card"><button type="button" class="featured-open" data-deck="${d.id}" aria-label="${esc(d.name)} details">${imageMarkup(hero,true)}<div class="content"><span class="eyebrow">${names[d.id]}</span><h3>${esc(d.name)}</h3><div class="deck-card-meta"><span>${esc(d.archetype)} · SAMPLE</span><span>${d.colors.map(x=>colorNames[x]).join(' / ')}</span></div></div></button></article>`;}).join('');
 }
 $('#settings-open').onclick=()=>{$('#settings-dialog').showModal();$(`input[name="printing-choice"][value="${printingMode}"]`).checked=true;};
 $('#card-printing-open').onclick=$('#settings-open').onclick;
