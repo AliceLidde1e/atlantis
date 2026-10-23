@@ -8,4 +8,8 @@ ATLANTISは非公式のファンサイトです。ウィザーズ・オブ・ザ
 
 参照：[Wizards of the Coast Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy)、[Scryfall API guidance](https://scryfall.com/docs/faqs/i-m-having-trouble-accessing-the-scryfall-api-or-i-m-blocked-17)。
 
-英字フォント Rye は Copyright (c) 2011 Sorkin Type Co、SIL Open Font License 1.1 のもとで配布されています。ライセンス全文は [site/fonts/rye/OFL.txt](site/fonts/rye/OFL.txt) を参照してください。
+同梱フォントはGoogle Fontsの公式配布データをWOFF2に変換したものです。いずれもSIL Open Font License 1.1のもとで配布します。各許諾文に著作権表示を含みます。
+
+- Iceberg：[許諾文](site/fonts/iceberg/OFL.txt)
+- Shippori Mincho：[許諾文](site/fonts/shipporimincho/OFL.txt)
+- Zen Kaku Gothic New：[許諾文](site/fonts/zenkakugothicnew/OFL.txt)

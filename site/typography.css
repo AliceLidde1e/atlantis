@@ -1,0 +1,45 @@
+/* Shared typography. Fonts are served with the app; no third-party font requests. */
+@font-face{font-family:Iceberg;src:url('fonts/iceberg/iceberg-400.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Shippori Mincho';src:url('fonts/shipporimincho/shipporimincho-400.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Shippori Mincho';src:url('fonts/shipporimincho/shipporimincho-600.woff2') format('woff2');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:'Zen Kaku Gothic New';src:url('fonts/zenkakugothicnew/zenkakugothicnew-400.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Zen Kaku Gothic New';src:url('fonts/zenkakugothicnew/zenkakugothicnew-700.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
+
+:root{
+  --font-display:Iceberg,'Zen Kaku Gothic New','Yu Gothic',sans-serif;
+  --font-heading:Iceberg,'Shippori Mincho','Yu Mincho','Hiragino Mincho ProN',serif;
+  --font-reading:'Shippori Mincho','Yu Mincho','Hiragino Mincho ProN',serif;
+  --font-ui:'Zen Kaku Gothic New','Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif;
+  --font-data:'Courier New',var(--font-ui);
+}
+body{font-family:var(--font-ui)}
+/* Display face for English headings; Japanese glyphs use the Mincho face. */
+h1,h2,h3,.museum-frame h1,.museum-frame h2,.museum-frame h3,
+.museum-frame .section-head h1,.museum-frame .deck-card h2 button,
+.museum-frame .deck-card h3,header h1,.guide-steps article h3{
+  font-family:var(--font-heading);
+}
+button,a,.file-button,.museum-frame button,.museum-frame a,
+.museum-frame .eyebrow,.eyebrow,.directory-title>span,.archive-stamp b,
+.guide-art,.exhibition-label,.bulletin-heading h2,.museum-bulletin dt{
+  font-family:var(--font-display);
+}
+/* Inputs and card/deck names stay easy to scan, including mixed JP/EN text. */
+input,select,textarea,label,legend,.museum-frame input,.museum-frame select,
+.museum-frame textarea,.museum-frame label,.museum-frame legend,
+.museum-frame .card h3,.museum-frame .card h3 button,.card h3,.pool-name,
+.museum-frame .pool-mobile-name,.pool-card-name,.deck-entry,.deck-tile{
+  font-family:var(--font-ui);
+}
+.hero-copy p,.directory-note p:not(.eyebrow),.directory-foot,
+.museum-directory li small,.museum-bulletin dd,.guide-intro p,
+.guide-steps p,.about-panel p,.event-rules,.deck-card p,
+.site-footer p,.museum-frame .site-footer p{
+  font-family:var(--font-reading);
+}
+.museum-topline,.status-strip,.catalog-number,.deck-card-meta,
+.printing-image figcaption,.exhibition-foot,.counts,.pool-summary strong,
+#my-count,#builder-count,#card-result-count,#deck-result-count{
+  font-family:var(--font-data);
+  font-variant-numeric:tabular-nums;
+}

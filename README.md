@@ -6,7 +6,7 @@
 
 外観と画面導線は「ATLANTIS デザイン仕様書 v1.4」に合わせています。ホームには Navigation、Featured Decks、Information を配置し、主要メニューは Decks、Cards、Events、My Decks です。Cards の検索結果から画像を選ぶと詳細が開き、そこで My Storage の Main / Sideboard へ追加できます。幅639px以下の My Storage はカード名、画像、Main +、Side +、削除を一行に表示します。
 
-英字にはオープンライセンスの Rye を使用します。フォントは `site/fonts/rye/` に同梱しているため、端末へのインストールは不要です。日本語は端末の日本語フォントで表示します。
+フォントは共通の `site/typography.css` で管理します。英語見出し・ボタン・タブは **Iceberg**、日本語見出し・解説・記事本文は **Shippori Mincho（しっぽり明朝）**、検索・デッキエディタ等の実用UIは **Zen Kaku Gothic New** です。数値・補助データは必要に応じて等幅書体を使用します。3書体はSIL Open Font License 1.1のもと、WOFF2と許諾文を `site/fonts/` に同梱し、外部フォントサービスへの通信なしで表示します。
 
 ## テスト版の範囲
 
