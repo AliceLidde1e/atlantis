@@ -1,3 +1,4 @@
+import {applyJapaneseNameCorrection} from './japanese-names.mjs';
 export const normalize = value => String(value ?? '').normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim();
 export function externalEntryUrl(value){if(!value)return null;try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password?url.href:null;}catch{return null;}}
 export const colorNames = {W:'白',U:'青',B:'黒',R:'赤',G:'緑',C:'無色',A:'Artifacts'};
@@ -5,7 +6,7 @@ export const types = {Creature:'クリーチャー',Instant:'インスタント'
 export const subtypeNames = {Angel:'天使',Human:'人間',Wizard:'ウィザード',Goblin:'ゴブリン',Elf:'エルフ',Bird:'鳥',Dog:'犬',Hound:'猟犬',Wurm:'ワーム',Beast:'ビースト',Spirit:'スピリット',Zombie:'ゾンビ',Skeleton:'スケルトン',Vampire:'吸血鬼',Dragon:'ドラゴン',Elemental:'エレメンタル',Soldier:'兵士',Knight:'騎士',Cleric:'クレリック',Shaman:'シャーマン',Druid:'ドルイド',Merfolk:'マーフォーク',Faerie:'フェアリー',Illusion:'イリュージョン',Incarnation:'インカーネーション',Cat:'猫',Wall:'壁',Giant:'巨人',Demon:'デーモン',Rat:'ネズミ',Spider:'蜘蛛',Insect:'昆虫',Snake:'蛇',Bear:'熊',Ogre:'オーガ',Warrior:'戦士',Scout:'スカウト',Rogue:'ならず者',Assassin:'暗殺者',Nightmare:'ナイトメア',Avatar:'アバター',Island:'島',Forest:'森',Plains:'平地',Mountain:'山',Swamp:'沼',Aura:'オーラ'};
 export const oracleWords = {'飛行':'flying','速攻':'haste','トランプル':'trample','先制攻撃':'first strike','警戒':'vigilance','到達':'reach','防衛':'defender','再生':'regenerate','プロテクション':'protection','サイクリング':'cycling','フラッシュバック':'flashback','マッドネス':'madness','変異':'morph','打ち消す':'counter target','打ち消し':'counter target','カードを引く':'draw','ドロー':'draw','破壊':'destroy','生け贄':'sacrifice','墓地':'graveyard','追放':'exile'};
 export function subtypes(card){return String(card.type).split(' // ').flatMap(face => (face.split(' — ')[1] || '').split(/\s+/).filter(Boolean));}
-export function prepare(card){return {...card, nameIndex:normalize(card.name+' '+card.ja), oracleIndex:normalize(card.oracle), subtypeIndex:normalize(subtypes(card).flatMap(s=>[s,subtypeNames[s]||'']).join(' '))};}
+export function prepare(card){card=applyJapaneseNameCorrection(card);return {...card, nameIndex:normalize(card.name+' '+card.ja), oracleIndex:normalize(card.oracle), subtypeIndex:normalize(subtypes(card).flatMap(s=>[s,subtypeNames[s]||'']).join(' '))};}
 export function oracleMatch(card,query){const q=normalize(query);if(!q)return true;const translated=oracleWords[q];return card.oracleIndex.includes(q)||(translated ? card.oracleIndex.includes(translated) : false);}
 export function colorsMatch(actual=[],selected=[],mode='includes'){
   if(!selected.length)return true;
