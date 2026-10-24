@@ -1,1 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#102f3c"/><path d="M10 45 26 13h12l16 32H42l-3-7H25l-3 7Zm19-17h6l-3-8Z" fill="#e1be77"/><path d="M10 51h44" stroke="#e1be77" stroke-width="3" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">ATLANTIS A</title>
+<desc id="desc">The A from the ATLANTIS brass ambigram on the website deep-green background.</desc>
+<rect width="256" height="256" fill="#091e22" /><defs>
+  <g id="letter-silhouette" transform="translate(3 4)">
+    <path id="glyph-part-0" d="M 104 40 L 56 152 L 141 163 C 155.66665 185.66664 158.66666 202.00001 150 212 C 142.66667 220.66666 127.66664 218.99999 105 207 L 65 187 C 58.33334 184.33334 53.999998 186.33334 52 193 L 40 240 L 47 240 C 56.333324 215.33336 69.000016 206.66667 85 214 L 172 240 L 184 234 L 159 148 L 125 148 C 91.6667 146 75 136.66665 75 120 C 75.666666 109.33334 82.000012 100.33333 94 93 C 102.66666 87.666672 111.66668 88.33334 121 95 L 142 119 L 149 117 L 110 40 L 104 40 z" transform="translate(4 0)" />
+    </g>
+  <clipPath id="inside-letters"><use xlink:href="#letter-silhouette" /></clipPath>
+  <linearGradient id="brass-face" x1="0" y1="44" x2="0" y2="244" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#a58b39" /><stop offset=".12" stop-color="#e1c871" />
+    <stop offset=".29" stop-color="#b49843" /><stop offset=".43" stop-color="#8a712d" />
+    <stop offset=".5" stop-color="#d5bb62" /><stop offset=".57" stop-color="#8a712d" />
+    <stop offset=".71" stop-color="#b49843" /><stop offset=".88" stop-color="#e1c871" />
+    <stop offset="1" stop-color="#a58b39" />
+  </linearGradient>
+  <linearGradient id="brass-edge" x1="0" y1="44" x2="0" y2="244" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#fff1b5" /><stop offset=".2" stop-color="#b79a45" />
+    <stop offset=".38" stop-color="#e8d18a" /><stop offset=".5" stop-color="#8c7230" />
+    <stop offset=".62" stop-color="#e8d18a" /><stop offset=".8" stop-color="#b79a45" />
+    <stop offset="1" stop-color="#fff1b5" />
+  </linearGradient>
+  <pattern id="brushed-lines" width="8" height="2" patternUnits="userSpaceOnUse">
+    <path d="M0 1H8" stroke="#fff5c9" stroke-width=".18" opacity=".2" />
+  </pattern>
+</defs>
+<g id="brass-letter-faces" transform="translate(9 -16)">
+  <use xlink:href="#letter-silhouette" fill="url(#brass-face)" />
+  <use xlink:href="#letter-silhouette" fill="url(#brushed-lines)" />
+</g>
+<g id="inset-structural-edges" clip-path="url(#inside-letters)" fill="none" stroke-linejoin="round" transform="translate(9 -16)">
+  <use xlink:href="#letter-silhouette" stroke="#625020" stroke-width="7" />
+  <use xlink:href="#letter-silhouette" stroke="url(#brass-edge)" stroke-width="4.8" />
+  <use xlink:href="#letter-silhouette" stroke="#705a25" stroke-width="1" />
+</g>
+</svg>
