@@ -1,6 +1,6 @@
 export const normalize = value => String(value ?? '').normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim();
 export function externalEntryUrl(value){if(!value)return null;try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password?url.href:null;}catch{return null;}}
-export const colorNames = {W:'白',U:'青',B:'黒',R:'赤',G:'緑',C:'無色'};
+export const colorNames = {W:'白',U:'青',B:'黒',R:'赤',G:'緑',C:'無色',A:'Artifacts'};
 export const types = {Creature:'クリーチャー',Instant:'インスタント',Sorcery:'ソーサリー',Enchantment:'エンチャント',Artifact:'アーティファクト',Land:'土地',Planeswalker:'プレインズウォーカー'};
 export const subtypeNames = {Angel:'天使',Human:'人間',Wizard:'ウィザード',Goblin:'ゴブリン',Elf:'エルフ',Bird:'鳥',Dog:'犬',Hound:'猟犬',Wurm:'ワーム',Beast:'ビースト',Spirit:'スピリット',Zombie:'ゾンビ',Skeleton:'スケルトン',Vampire:'吸血鬼',Dragon:'ドラゴン',Elemental:'エレメンタル',Soldier:'兵士',Knight:'騎士',Cleric:'クレリック',Shaman:'シャーマン',Druid:'ドルイド',Merfolk:'マーフォーク',Faerie:'フェアリー',Illusion:'イリュージョン',Incarnation:'インカーネーション',Cat:'猫',Wall:'壁',Giant:'巨人',Demon:'デーモン',Rat:'ネズミ',Spider:'蜘蛛',Insect:'昆虫',Snake:'蛇',Bear:'熊',Ogre:'オーガ',Warrior:'戦士',Scout:'スカウト',Rogue:'ならず者',Assassin:'暗殺者',Nightmare:'ナイトメア',Avatar:'アバター',Island:'島',Forest:'森',Plains:'平地',Mountain:'山',Swamp:'沼',Aura:'オーラ'};
 export const oracleWords = {'飛行':'flying','速攻':'haste','トランプル':'trample','先制攻撃':'first strike','警戒':'vigilance','到達':'reach','防衛':'defender','再生':'regenerate','プロテクション':'protection','サイクリング':'cycling','フラッシュバック':'flashback','マッドネス':'madness','変異':'morph','打ち消す':'counter target','打ち消し':'counter target','カードを引く':'draw','ドロー':'draw','破壊':'destroy','生け贄':'sacrifice','墓地':'graveyard','追放':'exile'};
@@ -10,9 +10,14 @@ export function oracleMatch(card,query){const q=normalize(query);if(!q)return tr
 export function colorsMatch(actual=[],selected=[],mode='includes'){
   if(!selected.length)return true;
   const colors=actual.length ? actual : ['C'];
-  return selected.every(c=>colors.includes(c))&&(mode!=='exact'||colors.length===selected.length);
+  return mode==='exact'?selected.every(c=>colors.includes(c))&&colors.length===selected.length:selected.some(c=>colors.includes(c));
 }
-export function cardMatches(c,f){return (!normalize(f.name)||c.nameIndex.includes(normalize(f.name)))&&oracleMatch(c,f.oracle)&&(!normalize(f.keyword)||c.nameIndex.includes(normalize(f.keyword))||c.subtypeIndex.includes(normalize(f.keyword))||oracleMatch(c,f.keyword))&&colorsMatch(c.colors,f.colors,f.colorMode)&&(!f.type||c.type.split(' // ').some(v=>(v.split(' — ')[0]||'').split(' ').includes(f.type)))&&(f.min===''||c.mv>=Number(f.min))&&(f.max===''||c.mv<=Number(f.max));}
+export function cardColorsMatch(card,selected=[],mode='includes'){
+ const colors=selected.filter(c=>c!=='A'),artifact=card.type.split(' // ').some(face=>(face.split(' — ')[0]||'').split(' ').includes('Artifact'));
+ if(mode==='exact')return (!selected.includes('A')||artifact)&&colorsMatch(card.colors,colors,mode);
+ return !selected.length||(colors.length>0&&colorsMatch(card.colors,colors,mode))||(selected.includes('A')&&artifact);
+}
+export function cardMatches(c,f){return (!normalize(f.name)||c.nameIndex.includes(normalize(f.name)))&&oracleMatch(c,f.oracle)&&(!normalize(f.keyword)||c.nameIndex.includes(normalize(f.keyword))||c.subtypeIndex.includes(normalize(f.keyword))||oracleMatch(c,f.keyword))&&cardColorsMatch(c,f.colors,f.colorMode)&&(!f.type||c.type.split(' // ').some(v=>(v.split(' — ')[0]||'').split(' ').includes(f.type)))&&(f.min===''||c.mv>=Number(f.min))&&(f.max===''||c.mv<=Number(f.max));}
 export function deckMatches(d,f,cards){
   if(normalize(f.query)&&!normalize(d.name+' '+d.author).includes(normalize(f.query)))return false;
   if(!colorsMatch(d.colors,f.colors,f.colorMode)||f.archetype&&d.archetype!==f.archetype)return false;

@@ -122,3 +122,64 @@ a{color:var(--link)}a:focus-visible,button:focus-visible,input:focus-visible,sel
 .search-controls .basic-filters input[type=checkbox]{margin:0}
 /* Keep hidden file inputs from widening the mobile page. */
 .museum-frame input.sr-only{width:1px;height:1px;min-height:0;padding:0;border:0;margin:-1px}
+
+/* October UI revision: aligned search rows and one deck tile style. */
+.museum-directory li a{font-size:calc(20px - 2pt);line-height:1.3;padding-block:10px}
+.museum-directory li:last-child{border-top:1px solid var(--line)}
+.museum-frame .search-controls{display:flex;flex-direction:column;gap:12px;position:sticky;top:0}
+.museum-frame .search-controls form{width:100%}
+.museum-frame .search-controls .card-search{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto}
+.museum-frame .search-controls .search-color-row{display:flex;gap:16px;align-items:end;flex-wrap:wrap}
+.museum-frame .search-controls .basic-filters{display:flex;gap:16px;align-items:end;margin:0;flex-wrap:wrap}
+.museum-frame .search-controls .search-color-row>label{margin:0}
+.museum-frame .search-controls .toolbar{display:flex;justify-content:flex-start;align-items:center;gap:12px;flex-wrap:wrap}
+.museum-frame .search-controls .toolbar>strong{margin-right:auto}
+.museum-frame .search-controls .filters{display:contents}
+.museum-frame .search-controls .filter-toggle{width:auto;min-width:86px}
+.museum-frame .search-controls .filters .filter-body{top:100%;max-height:min(50dvh,480px)}
+.museum-frame .search-controls .display{display:flex;align-items:center;gap:10px;border:0;padding:0;min-height:44px}
+.museum-frame .search-controls .display label{display:flex;align-items:center;gap:4px}
+.museum-frame .color-buttons label.color-W{color:#fff6d4}
+.museum-frame .color-buttons label.color-U{color:#72b9ff}
+.museum-frame .color-buttons label.color-B{color:#080808;background:#a8aaa1}
+.museum-frame .color-buttons label.color-R{color:#ff8a80}
+.museum-frame .color-buttons label.color-G{color:#88d99b}
+.museum-frame .color-buttons label.color-C,.museum-frame .color-buttons label.color-A{color:#d2a77d}
+.museum-frame .color-buttons label.color-B:has(input:checked){background:#c2b68b}
+.museum-frame #featured-decks,.museum-frame #deck-results,.museum-frame #my-results{grid-template-columns:repeat(auto-fill,minmax(0,250px));gap:12px;align-items:start}
+.museum-frame .featured-card .featured-open{height:auto;min-height:0}
+.museum-frame .featured-card .printing-image,.museum-frame .featured-card>.featured-open>.image-failed{height:132px;margin:0;padding:6px;background:#061c20}
+.museum-frame .featured-card .printing-image img{height:100%;width:100%;object-fit:cover}
+.museum-frame .featured-card .content{padding:12px;min-height:116px}
+.museum-frame .featured-card h3{font-size:17px;margin:4px 0 10px;line-height:1.5}
+.museum-frame .featured-card figcaption{display:none}
+.museum-frame .featured-card .deck-card-meta{flex-wrap:wrap}
+.museum-frame .featured-card .small-actions{padding:0 12px 12px;display:flex;gap:6px;flex-wrap:wrap}
+.collection-section .deck-card:last-child{grid-column:auto}
+.museum-frame .card-list .card{position:relative;grid-template-columns:80px minmax(0,1fr);gap:14px}
+.museum-frame .card-list .card>div{min-width:0}
+.museum-frame .card-list .card h3{padding-right:150px}
+.museum-frame .card-list figcaption{display:none}
+.list-printing-meta{position:absolute;right:10px;top:8px;margin:0;font-family:var(--font-data);font-size:11px;color:var(--muted)}
+.museum-frame dialog .dialog-toolbar,.small-dialog .dialog-toolbar{justify-content:flex-end;gap:16px;z-index:5}
+dialog .dialog-toolbar h2{margin-right:auto}
+.museum-frame .pool-modal-head{align-items:start}
+.pool-modal-head #pool-close{margin-left:auto;flex-shrink:0}
+#builder .printing-image figcaption{display:none}
+.museum-frame .pool-zone{display:flex;align-items:center;justify-content:center}
+@media(max-width:639px){
+ .museum-directory li a{font-size:calc(20px - 2pt);min-height:52px}
+ .museum-directory li:last-child{grid-column:1/-1;border:0}
+ .museum-frame .search-controls .card-search{grid-template-columns:1fr}
+ .museum-frame .search-controls .search-color-row,.museum-frame .search-controls .basic-filters{gap:8px}
+ .museum-frame .search-controls .toolbar{gap:8px}
+ .museum-frame .search-controls .toolbar>strong{flex-basis:100%;margin:0}
+ .museum-frame #featured-decks,.museum-frame #deck-results,.museum-frame #my-results{grid-template-columns:minmax(0,1fr)}
+ .museum-frame .featured-card .featured-open{display:grid;grid-template-columns:34% minmax(0,1fr)}
+ .museum-frame .featured-card .printing-image{height:100%;min-height:132px}
+ .museum-frame .featured-card .content{min-height:132px;padding:10px}
+ .museum-frame .featured-card .small-actions{padding:10px}
+ .museum-frame .card-list .card h3{padding-right:0;margin-top:28px}
+ .museum-frame .card-list .card{gap:8px}
+ .museum-frame .search-controls{position:relative}
+}

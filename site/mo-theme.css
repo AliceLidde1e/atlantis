@@ -39,3 +39,5 @@ button:focus-visible,input:focus-visible,select:focus-visible,.site-back:focus-v
 .thumb{border:1px solid var(--gold)}.pool-row{border-color:#4e635a}.pool-name{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.footer{border-top:4px double #8b8a65}
 @media(max-width:1150px){header{margin:12px 12px 0}main{margin:0 12px 12px}}
 @media(max-width:639px){header{margin:6px 6px 0;padding:10px}header h1 img{width:184px}main{margin:0 6px 84px;padding:14px 12px}.modal{padding:14px 8px}.pool-row{grid-template-columns:minmax(0,1fr) 36px 44px 44px 44px;gap:4px;min-height:48px}.thumb{width:36px;height:36px}.pool-row button{min-height:44px;font-size:10px;padding:0 1px}.pool-row button span{font-size:9px}.quantity .minus{display:none}.pool-row>button:last-child{font-size:17px}.card{border-radius:0}}
+/* Shared modal dismissal label. */
+.modal .close{position:absolute;right:12px;top:12px;width:auto;min-width:84px;font-size:14px;padding:8px}
