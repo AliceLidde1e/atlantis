@@ -128,11 +128,21 @@ export function parseDeck(text,cards){
  if(!id){unknown.push({line:i+1,text:raw});return;}const row=rows.find(x=>x.id===id&&x.zone===zone);if(row)row.qty+=qty;else rows.push({id,zone,qty});});
  return {rows,unknown,sideHeadings};
 }
+export function printingCaption(print){return print?`${print.lang.toUpperCase()} ${print.set.toUpperCase()} #${print.number}`:'';}
+export function printingFallbackReason(record,mode,chosen,{imageFailed=false}={}){
+ if(!chosen)return '画像を取得できません';
+ const lang=mode==='ja'?'ja':'en',target=record?.[lang]?.target,labels=[];
+ if(chosen.lang!==lang)labels.push(chosen.lang==='ja'?'日本語版':'英語版');
+ if(chosen.regular===false)labels.push(chosen.promo?'プロモ版':'特殊仕様版');
+ if(Array.isArray(chosen.finishes)&&!chosen.finishes.includes('nonfoil'))labels.push(chosen.finishes.includes('foil')?'FOIL版':'特殊加工版');
+ const why=imageFailed?'画像取得失敗':!target?(lang==='ja'?'日本語版なし':'英語版なし'):chosen.id!==target.id?'指定版の画像なし':labels.length?'通常・非FOIL版なし':'';
+ return why?`代替表示：${labels.join('／')||'別の印刷版'}（${why}）`:'';
+}
 export function printingOptions(record,mode){
  const lang=mode==='ja'?'ja':'en',other=lang==='ja'?'en':'ja';if(!record)return {target:null,choices:[],reason:'表示版データを確認できません'};
  const target=record[lang]?.target||null,choices=[];const seen=new Set();
  for(const key of [lang,other])for(const p of [record[key]?.target,...(record[key]?.candidates||[])])if(p?.image&&!seen.has(p.id)){choices.push(p);seen.add(p.id);}
- const first=choices[0];const reason=!target?(lang==='ja'?'日本語版なし・英語で代替':'英語版なし・日本語で代替'):!first?'画像なし・テキスト表示':first.id!==target.id?'対象版の画像なし・代替版を表示':'';
+ const first=choices[0],reason=printingFallbackReason(record,mode,first);
  return {target,choices,reason};
 }
 export function validateDraftRecovery(value){

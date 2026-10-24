@@ -27,7 +27,19 @@ async function initialize(){try{
 function persist(){if(!db||importBusy)return;const snapshot=structuredClone(pool),id=++revision;status('保存中…');writeQueue=writeQueue.then(()=>dbPut(STORE,'pool',snapshot)).then(()=>{if(id===revision)status('IndexedDB 保存済み')}).catch(e=>{status('保存失敗');console.error(e)});refreshButton()}
 function count(id,part){return pool[id]?.[part]||0}
 function refreshButton(){let m=0,s=0;Object.values(pool).forEach(v=>{m+=v.main||0;s+=v.side||0});$('#storageButton').textContent=`My Storage (${m+s})`;$('#storageButton').title=`Main ${m} / Sideboard ${s}`}
-function art(c,cls='art'){const print=printingCache.get(c.id)?.[printingMode];if(print)c={...c,image:print.image||c.image,art:print.art||c.art};return `<div class="${cls}">${c.image?`<img src="${escapeHtml(c.image)}" alt="${escapeHtml(c.en)}" loading="lazy">`:escapeHtml(c.en)}</div>`}
+function moImage(c,print){return c.image?`<img src="${escapeHtml(c.image)}" alt="${escapeHtml(c.en)}" loading="lazy" data-mo-card="${escapeHtml(c.id)}" data-mo-mode="${printingMode}" data-mo-index="${print?.index||0}">`:escapeHtml(c.en)}
+function art(c,cls='art'){const print=printingCache.get(c.id)?.[printingMode];if(print)c={...c,image:print.image||c.image,art:print.art||c.art};return `<div class="${cls}">${moImage(c,print)}</div>`}
+document.addEventListener('error',e=>{
+ const img=e.target;if(img.tagName!=='IMG'||!img.dataset.moCard)return;
+ const print=printingCache.get(img.dataset.moCard)?.[img.dataset.moMode],index=Number(img.dataset.moIndex||0)+1,next=print?.choices?.[index];
+ if(!print)return;
+ if(!next){const text=document.createElement('span');text.textContent='全候補の画像を取得できません';img.replaceWith(text);return;}
+ print.index=index;print.image=next.image;print.art=next.art;print.note=next.failureNote;
+ img.dataset.moIndex=index;img.alt=next.failureNote;
+ const card=img.closest('.card');if(card?.querySelector('p'))card.querySelector('p').textContent=next.failureNote;
+ if(current==='detail'&&detailId===img.dataset.moCard&&$('#printingStatus'))$('#printingStatus').textContent=next.failureNote;
+ img.src=next.image;
+},true);
 function renderCards(cards){visibleCards=cards;$('#cards').innerHTML=cards.map(c=>`<article class="card" data-id="${escapeHtml(c.id)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(c.en)} details">${art(c)}<h3>${escapeHtml(c.ja)} / ${escapeHtml(c.en)}</h3><p>${escapeHtml(printingCache.get(c.id)?.[printingMode]?.note||c.set||'Scryfall')}</p></article>`).join('')||'<p>該当するカードがありません。</p>';$('#cards').querySelectorAll('.card').forEach(el=>{el.onclick=()=>openDetail(el.dataset.id);el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDetail(el.dataset.id)}}})}
 async function runSearch(){if(importBusy)return;const q=$('#search').value.trim(),mode=$('#mode').value,seq=++searchSeq;if(searchAbort)searchAbort.abort();if(!q){renderCards([]);searchStatus('カード名などを入力してください。');return}if(q.length<2){renderCards([]);searchStatus('2文字以上入力してください。');return}searchAbort=new AbortController();searchStatus('Scryfall 検索中…');const safe=q.replace(/[\\"()]/g,' ').trim();const term=mode==='name'?`name:"${safe}"`:mode==='oracle'?`oracle:"${safe}"`:`type:"${safe}"`;const validatedQuery=`(${POOL_QUERY}) (${term})`;
 try{const url='https://api.scryfall.com/cards/search?'+new URLSearchParams({q:validatedQuery,unique:'cards',order:'name'});const response=await fetch(url,{signal:searchAbort.signal,headers:{Accept:'application/json'}});const data=await response.json();if(seq!==searchSeq)return;if(!response.ok){if(response.status===404){renderCards([]);searchStatus('該当カードはありません。');return}throw Error(data.details||`HTTP ${response.status}`)}const cards=(data.data||[]).slice(0,50).map(normalizeCard);if(db){await Promise.all(cards.map(c=>dbPut(CARD_STORE,c.id,c)));}if(seq!==searchSeq)return;
@@ -36,15 +48,10 @@ function show(title,body){$('#modalTitle').textContent=title;$('#modalBody').inn
 function close(){ $('#overlay').classList.add('hidden');current=null;detailId=null }
 function add(id,part){if(!db||importBusy)return;if(!eligibleIds.has(id)){searchStatus('カード検索結果から選択してください。');return;}const partCount=count(id,part),total=Object.values(pool).reduce((n,v)=>n+(v.main||0)+(v.side||0),0);if(partCount>=250||total>=1000){let warning=$('#quantityError');if(!warning){warning=document.createElement('p');warning.id='quantityError';warning.setAttribute('role','alert');warning.className='muted';$('#modalBody').prepend(warning)}warning.textContent=partCount>=250?'同じカードはMain／Sideそれぞれ250枚までです。':'My Storageは合計1000枚までです。';return;}pool[id]??={main:0,side:0};pool[id][part]++;persist();if(current==='detail')openDetail(id);else if(current==='storage')openStorage()}
 function decrease(id,part){if(importBusy||!db||!pool[id]||!pool[id][part])return;pool[id][part]--;if(!pool[id].main&&!pool[id].side)delete pool[id];persist();if(current==='storage')openStorage();else if(current==='detail')openDetail(id)}
-function openDetail(id){const c=cardMap.get(id);if(!c)return;current='detail';detailId=id;show(c.en,`${art(c,'art detail-art')}<p>${escapeHtml(c.ja)} / ${escapeHtml(c.type)}</p><p>${escapeHtml(c.oracle)}</p><p class="muted" id="printingStatus">表示版を確認中…</p><h3>Add to My Storage</h3>${eligibleIds.has(id)?'':'<p class="muted">検索結果からカードを選択してください。</p>'}<div class="controls"><button id="addMain">Add to Main (${count(id,'main')})</button><button id="addSide">Add to Sideboard (${count(id,'side')})</button><button id="openPool">My Storage</button></div>`);$('#addMain').disabled=!eligibleIds.has(id);$('#addSide').disabled=!eligibleIds.has(id);$('#addMain').onclick=()=>add(id,'main');$('#addSide').onclick=()=>add(id,'side');$('#openPool').onclick=openStorage;resolvePrinting(c).then(()=>{if(current==='detail'&&detailId===id){const p=printingCache.get(id)?.[printingMode];const slot=$('#modalBody .detail-art');if(slot&&p){slot.innerHTML=p.image?`<img src="${escapeHtml(p.image)}" alt="${escapeHtml(c.en)}">`:escapeHtml(c.en)}const s=$('#printingStatus');if(s)s.textContent=p?.note||'表示版を取得できませんでした。検索結果の画像を表示しています。'}})}
+function openDetail(id){const c=cardMap.get(id);if(!c)return;current='detail';detailId=id;show(c.en,`${art(c,'art detail-art')}<p>${escapeHtml(c.ja)} / ${escapeHtml(c.type)}</p><p>${escapeHtml(c.oracle)}</p><p class="muted" id="printingStatus">表示版を確認中…</p><h3>Add to My Storage</h3>${eligibleIds.has(id)?'':'<p class="muted">検索結果からカードを選択してください。</p>'}<div class="controls"><button id="addMain">Add to Main (${count(id,'main')})</button><button id="addSide">Add to Sideboard (${count(id,'side')})</button><button id="openPool">My Storage</button></div>`);$('#addMain').disabled=!eligibleIds.has(id);$('#addSide').disabled=!eligibleIds.has(id);$('#addMain').onclick=()=>add(id,'main');$('#addSide').onclick=()=>add(id,'side');$('#openPool').onclick=openStorage;resolvePrinting(c).then(()=>{if(current==='detail'&&detailId===id){const p=printingCache.get(id)?.[printingMode];const slot=$('#modalBody .detail-art');if(slot&&p){slot.innerHTML=moImage({...c,image:p.image},p)}const s=$('#printingStatus');if(s)s.textContent=p?.note||'表示版を取得できませんでした。検索結果の画像を表示しています。'}})}
 function openStorage(){if(!db)return;current='storage';const entries=Object.entries(pool).filter(([id,v])=>v.main||v.side);show('My Storage',`<p class="muted">Main／Sideの＋／−で枚数を調整できます。</p><div id="poolRows">${entries.map(([id,v])=>{const base=cardMap.get(id)||{id,en:id,ja:id,image:''};const pr=printingCache.get(id)?.[printingMode];const c=pr?{...base,image:pr.image||base.image,art:pr.art||base.art}:base;return `<div class="pool-row"><span class="pool-name" data-detail="${escapeHtml(id)}" title="${escapeHtml(c.ja)}">${escapeHtml(c.ja)}</span><div class="thumb" data-detail="${escapeHtml(id)}" role="button" tabindex="0">${c.art||c.image?`<img src="${escapeHtml(c.art||c.image)}" alt="">`:''}</div><div class="quantity"><button data-add="${escapeHtml(id)}" data-part="main">Main +<span>${v.main}</span></button><button class="minus" data-minus="${escapeHtml(id)}" data-part="main" ${v.main===0?'disabled':''}>Main −</button></div><div class="quantity"><button data-add="${escapeHtml(id)}" data-part="side">Side +<span>${v.side}</span></button><button class="minus" data-minus="${escapeHtml(id)}" data-part="side" ${v.side===0?'disabled':''}>Side −</button></div><button data-remove="${escapeHtml(id)}" aria-label="Remove ${escapeHtml(c.en)}">🗑</button></div>`}).join('')||'<p>My Storageは空です。</p>'}</div><p class="counts">Main ${entries.reduce((n,[,v])=>n+v.main,0)} / Sideboard ${entries.reduce((n,[,v])=>n+v.side,0)}</p><div class="controls"><button id="saveDeck">Save to My Decks</button></div><p class="hint muted">IndexedDBへ自動保存します。</p>`);Promise.all(entries.filter(([id])=>cardMap.has(id)&&!printingCache.has(id)).map(([id])=>resolvePrinting(cardMap.get(id)))).then(()=>{if(current==='storage'&&entries.some(([id])=>printingCache.has(id))) {const thumbs=$('#poolRows');if(thumbs)entries.forEach(([id])=>{const p=printingCache.get(id)?.[printingMode];const el=[...thumbs.querySelectorAll('[data-detail]')].find(e=>e.dataset.detail===id&&e.classList.contains('thumb'));if(p?.art&&el)el.innerHTML=`<img src="${escapeHtml(p.art)}" alt="">`})}});$('#saveDeck').onclick=saveDeckPrompt;$('#modalBody').querySelectorAll('[data-add]').forEach(e=>{e.disabled=!eligibleIds.has(e.dataset.add);e.onclick=()=>add(e.dataset.add,e.dataset.part)});$('#modalBody').querySelectorAll('[data-minus]').forEach(e=>e.onclick=()=>decrease(e.dataset.minus,e.dataset.part));$('#modalBody').querySelectorAll('[data-remove]').forEach(e=>e.onclick=()=>{if(importBusy)return;delete pool[e.dataset.remove];persist();openStorage()});$('#modalBody').querySelectorAll('[data-detail]').forEach(e=>{e.onclick=()=>openDetail(e.dataset.detail);e.onkeydown=x=>{if(x.key==='Enter')openDetail(e.dataset.detail)}})}
  
 // First English: earliest ordinary English paper printing, excluding promos and special variants.
-function isNormalEnglishPrinting(x){
- return x.lang==='en'&&Boolean(x.released_at)&&Array.isArray(x.games)&&x.games.includes('paper')
-  &&x.digital!==true&&x.promo!==true&&!['promo','memorabilia','token','minigame'].includes(x.set_type)
-  &&x.variation!==true&&x.oversized!==true&&x.textless!==true;
-}
 function printImage(c){const f=c.card_faces?.[0];return {image:c.image_uris?.normal||f?.image_uris?.normal||'',art:c.image_uris?.art_crop||f?.image_uris?.art_crop||''}}
 function delay(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
 function schedulePrintings(cards,seq){
@@ -62,41 +69,29 @@ function schedulePrintings(cards,seq){
   });
  }
 }
-async function firstPrinting(query,dir,accept){
- let next='https://api.scryfall.com/cards/search?'+new URLSearchParams({q:query,unique:'prints',order:'released',dir,include_multilingual:'true'});
- for(let page=0;next;page++){
-  if(page>=8)throw Error('印刷版の取得上限を超えました');
-  if(page)await delay(180);
-  const res=await fetch(next,{headers:{Accept:'application/json'}});
-  if(res.status===404)return null;
-  if(!res.ok)throw Error('HTTP '+res.status);
-  const data=await res.json();
-  const found=(data.data||[]).filter(accept).sort((a,b)=>dir==='asc'?a.released_at.localeCompare(b.released_at)||a.id.localeCompare(b.id):b.released_at.localeCompare(a.released_at)||a.id.localeCompare(b.id))[0];
-  if(found)return found;
-  next=data.has_more?data.next_page:null;
- }
- return null;
+let printingResourcesTask=null;
+function printingResources(){
+ if(!printingResourcesTask)printingResourcesTask=Promise.all([
+  fetch('data/printings.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Printing data HTTP '+r.status);return r.json();}),import('./core.mjs')
+ ]).catch(error=>{printingResourcesTask=null;throw error;});
+ return printingResourcesTask;
 }
 function resolvePrinting(c){
  if(!c.oracleId)return Promise.resolve();
  if(printingCache.has(c.id))return Promise.resolve();
  if(printingPending.has(c.id))return printingPending.get(c.id);
  const task=(async()=>{
-  const stored=db?await dbGet(CARD_STORE,'print:v20:'+c.id):null;
-  if(stored){printingCache.set(c.id,stored);return}
   try{
-   const en=await firstPrinting(`oracleid:${c.oracleId} lang:en game:paper -is:promo`,'asc',isNormalEnglishPrinting);
-   await delay(180);
-   const ja=await firstPrinting(`oracleid:${c.oracleId} lang:ja`,'desc',x=>x.lang==='ja'&&Boolean(x.released_at));
-   const fallback={...printImage(c),note:'対象となる通常版が見つからないため検索結果の画像を表示'};
-   const obj={
-    'first-en':en?{...printImage(en),note:`First English (Normal) · ${en.set_name} (${en.released_at})`}:fallback,
-    'latest-ja':ja?{...printImage(ja),note:`Latest Japanese · ${ja.set_name} (${ja.released_at})`}:fallback
-   };
-   printingCache.set(c.id,obj);if(db)await dbPut(CARD_STORE,'print:v20:'+c.id,obj);
-  }catch(e){
-   console.warn('Printing lookup failed',e);
-  }
+   const [snapshot,core]=await printingResources(),record=snapshot.cards[c.oracleId];
+   const obj={};
+   for(const [mode,lang] of [['first-en','en'],['latest-ja','ja']]){
+    const selection=core.printingOptions(record,lang),chosen=selection.choices[0];
+    if(chosen)obj[mode]={...chosen,index:0,note:core.printingCaption(chosen)+(selection.reason?' · '+selection.reason:''),choices:selection.choices.map(p=>({...p,failureNote:core.printingCaption(p)+' · '+core.printingFallbackReason(record,lang,p,{imageFailed:true})}))};
+    else obj[mode]={...printImage(c),note:'表示版データに画像がないため検索結果の画像で代替',choices:[]};
+   }
+   // Old v20 database printing caches are intentionally not reused; saved decks stay intact.
+   printingCache.set(c.id,obj);
+  }catch(e){console.warn('Printing lookup failed',e);}
  })().finally(()=>printingPending.delete(c.id));
  printingPending.set(c.id,task);return task;
 }

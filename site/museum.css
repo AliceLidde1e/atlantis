@@ -205,6 +205,13 @@ dialog .dialog-toolbar button:focus-visible,#pool-close:focus-visible{outline:2p
 #detail-body .detail-top>div{min-width:0}
 .small-dialog .dialog-toolbar{position:static;margin:0 0 16px;align-items:center}
 .hero-copy>p>span{display:block}
+.printing-fallback{display:block;margin-top:4px;color:var(--light);font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+.card-fallback{display:none}
+.museum-frame .card-list .card-fallback:not([hidden]){display:block;color:var(--light);font-size:11px}
+.museum-frame .featured-card .printing-image:has(.printing-fallback:not([hidden])){height:auto}
+.museum-frame .featured-card .printing-image:has(.printing-fallback:not([hidden])) img{height:120px}
+.museum-frame .featured-card .printing-image:has(.printing-fallback:not([hidden])) figcaption,#builder .printing-image:has(.printing-fallback:not([hidden])) figcaption{display:block}
+.featured-card .printing-caption,#builder .printing-caption{display:none}
 
 /* Only the label text receives the white outline. */
 .museum-frame .color-buttons label.color-B{color:#080808;background:transparent}

@@ -23,3 +23,5 @@ jobs:
       - run: node --check site/core.mjs
       - run: node --check site/site-bridge.mjs
       - run: node --check site/site-bridge-ui.mjs
+      - run: node printing.test.mjs
+      - run: python scripts/test-printings.py

@@ -46,6 +46,15 @@ def main():
     ids = {c["id"] for c in cards["cards"]}
     assert len(ids) == len(cards["cards"]) == 1015
     assert ids == set(printings["cards"])
+    assert printings["meta"]["ruleVersion"] == 2
+    for record in printings["cards"].values():
+        assert record["en"]["candidates"] or record["ja"]["candidates"]
+        for lang in ("en", "ja"):
+            for printing in [record[lang]["target"], *record[lang]["candidates"]]:
+                if printing:
+                    assert isinstance(printing["regular"], bool)
+                    assert isinstance(printing["promo"], bool)
+                    assert isinstance(printing["finishes"], list)
     assert all(x.get("sample") is True for x in events)
     card_map = {c["id"]: c for c in cards["cards"]}
     assert len({d["id"] for d in decks}) == len(decks)
