@@ -1,102 +1,21 @@
 [
   {
-    "id": "wonder",
-    "name": "青緑不可思議",
-    "author": "サンプル作者 01",
-    "colors": [
-      "U",
-      "G"
-    ],
-    "archetype": "アグロ",
-    "note": "墓地の不可思議を活かし、クリーチャーで攻める。",
-    "hero": "232284f7-c623-4895-9ab9-8b1a39926830",
-    "main": [
-      {
-        "id": "86187aed-77ce-4b2d-aab0-0a8f807a9451",
-        "qty": 4
-      },
-      {
-        "id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
-        "qty": 4
-      },
-      {
-        "id": "67362406-b1ca-49e2-800d-9050bfe8742a",
-        "qty": 4
-      },
-      {
-        "id": "232284f7-c623-4895-9ab9-8b1a39926830",
-        "qty": 3
-      },
-      {
-        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
-        "qty": 4
-      },
-      {
-        "id": "05a039ad-1689-4d13-b393-6c1219583b5d",
-        "qty": 4
-      },
-      {
-        "id": "713332c1-5bd8-400f-bfff-c1ca0697a043",
-        "qty": 4
-      },
-      {
-        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
-        "qty": 4
-      },
-      {
-        "id": "579cbd92-797f-4cdf-91ed-fca7a523eae5",
-        "qty": 2
-      },
-      {
-        "id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
-        "qty": 4
-      },
-      {
-        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
-        "qty": 12
-      },
-      {
-        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
-        "qty": 11
-      }
-    ],
-    "side": [
-      {
-        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
-        "qty": 4
-      },
-      {
-        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
-        "qty": 4
-      },
-      {
-        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
-        "qty": 4
-      },
-      {
-        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
-        "qty": 3
-      }
-    ],
-    "updated": "2026-10-18T00:00:00+09:00",
-    "order": 0,
-    "sample": true,
-    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
-    "englishText": "4 River Boa\n4 Llanowar Elves\n4 Merfolk Looter\n3 Wonder\n4 Call of the Herd\n4 Sleight of Hand\n4 Opt\n4 Counterspell\n2 Deep Analysis\n4 Yavimaya Coast\n12 Island\n11 Forest\n\nSideboard\n4 Naturalize\n4 Tormod's Crypt\n4 Hibernation\n3 Mana Leak\n"
-  },
-  {
-    "id": "angels",
-    "name": "トリコエンジェル",
-    "author": "サンプル作者 02",
+    "id": "note-01",
+    "name": "トリコ・エンジェル",
+    "author": "Takeuchi",
     "colors": [
       "W",
       "U",
       "R"
     ],
-    "archetype": "ミッドレンジ",
-    "note": "天使を主役に、打ち消しと火力で支える。",
+    "archetype": "トリコ・エンジェル",
+    "note": "第三回 旧枠モダンGP群馬（2026-09-22記事） · 優勝 · 群馬（記事記載）",
     "hero": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
     "main": [
+      {
+        "id": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
+        "qty": 4
+      },
       {
         "id": "8c31fec9-e4b3-4761-990e-7be38eb05604",
         "qty": 4
@@ -106,23 +25,7 @@
         "qty": 4
       },
       {
-        "id": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
-        "qty": 4
-      },
-      {
-        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
-        "qty": 4
-      },
-      {
-        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
-        "qty": 4
-      },
-      {
         "id": "4457ed35-7c10-48c8-9776-456485fdf070",
-        "qty": 4
-      },
-      {
-        "id": "132ca99a-a3c7-4ed6-b4d0-0edcd7140ca2",
         "qty": 4
       },
       {
@@ -130,7 +33,19 @@
         "qty": 2
       },
       {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 4
+      },
+      {
         "id": "e3886fe8-9b76-4613-8891-4ec74657c087",
+        "qty": 4
+      },
+      {
+        "id": "132ca99a-a3c7-4ed6-b4d0-0edcd7140ca2",
+        "qty": 4
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
         "qty": 4
       },
       {
@@ -142,8 +57,8 @@
         "qty": 4
       },
       {
-        "id": "f25351e3-539b-4bbc-b92d-6480acf4d722",
-        "qty": 2
+        "id": "0fe16212-66c3-4e45-a641-7391e9b2e304",
+        "qty": 4
       },
       {
         "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
@@ -154,23 +69,35 @@
         "qty": 4
       },
       {
-        "id": "0fe16212-66c3-4e45-a641-7391e9b2e304",
-        "qty": 4
-      },
-      {
-        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
-        "qty": 1
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 3
       },
       {
         "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
         "qty": 2
       },
       {
-        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
-        "qty": 3
+        "id": "f25351e3-539b-4bbc-b92d-6480acf4d722",
+        "qty": 2
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 1
       }
     ],
     "side": [
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 3
+      },
+      {
+        "id": "edad60c6-80de-4033-af1b-a703ac332983",
+        "qty": 3
+      },
+      {
+        "id": "6225a704-430a-4f56-ad87-0e8d87f285f5",
+        "qty": 3
+      },
       {
         "id": "300cba5a-adbb-4852-be06-ac00d9d6fd37",
         "qty": 4
@@ -178,361 +105,38 @@
       {
         "id": "fdd94383-b573-439a-8e1c-925af887c5a6",
         "qty": 2
-      },
-      {
-        "id": "edad60c6-80de-4033-af1b-a703ac332983",
-        "qty": 3
-      },
-      {
-        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
-        "qty": 3
-      },
-      {
-        "id": "cd30a128-4b23-476e-8066-2272fdc395d9",
-        "qty": 3
       }
     ],
-    "updated": "2026-10-17T00:00:00+09:00",
-    "order": 1,
-    "sample": true,
-    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
-    "englishText": "4 Karmic Guide\n4 Serra Angel\n4 Lightning Angel\n4 Counterspell\n4 Fact or Fiction\n4 Lightning Bolt\n4 Absorb\n2 Earthquake\n4 Glorious Anthem\n2 Noble Purpose\n4 Adarkar Wastes\n2 City of Brass\n4 Coastal Tower\n4 Reflecting Pool\n4 Shivan Reef\n1 Island\n2 Mountain\n3 Plains\n\nSideboard\n4 Dismantling Blow\n2 Evacuation\n3 Goblin Bombardment\n3 Tormod's Crypt\n3 Disrupting Scepter\n"
+    "updated": "2026-09-19T00:00:00",
+    "recordedAt": "2026-09-19T00:00:00",
+    "sample": false,
+    "event": "第三回 旧枠モダンGP群馬（2026-09-22記事）",
+    "venue": "群馬（記事記載）",
+    "result": "優勝",
+    "source": "提供された大会デッキリスト",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 101,
+    "sourceDeckId": "NOTE-01",
+    "englishText": "4 Lightning Angel\n4 Karmic Guide\n4 Serra Angel\n4 Lightning Bolt\n2 Earthquake\n4 Counterspell\n4 Glorious Anthem\n4 Absorb\n4 Fact or Fiction\n2 Noble Purpose\n4 Adarkar Wastes\n4 Shivan Reef\n4 Coastal Tower\n4 Reflecting Pool\n3 Plains\n2 Mountain\n2 City of Brass\n1 Island\n\nSideboard\n3 Tormod's Crypt\n3 Goblin Bombardment\n3 Cursed Totem\n4 Dismantling Blow\n2 Evacuation\n",
+    "order": 0
   },
   {
-    "id": "elves",
-    "name": "緑単エルフ",
-    "author": "サンプル作者 03",
+    "id": "note-02",
+    "name": "青赤緑アサルト",
+    "author": "Mizuki",
     "colors": [
+      "U",
+      "R",
       "G"
     ],
-    "archetype": "アグロ",
-    "note": "エルフを並べ、マナとクリーチャーを増やす。",
-    "hero": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+    "archetype": "青赤緑アサルト",
+    "note": "第三回 旧枠モダンGP群馬（2026-09-22記事） · 準優勝 · 群馬（記事記載）",
+    "hero": "8ad4f2fe-6d98-4279-a331-3817d40ae46d",
     "main": [
       {
-        "id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
-        "qty": 4
-      },
-      {
-        "id": "7e40f37c-9a0c-40e0-b195-7ea94b12f798",
-        "qty": 4
-      },
-      {
-        "id": "e0de1c9b-f71f-4498-a968-d3c635cb4c5c",
-        "qty": 4
-      },
-      {
-        "id": "5f4138e9-5471-467f-a15e-89e9e7929f0c",
-        "qty": 4
-      },
-      {
-        "id": "272ab5d5-7edb-4457-8a09-cabe2325c881",
-        "qty": 4
-      },
-      {
-        "id": "ba310102-8272-4d64-a00b-9e7346cb5f46",
-        "qty": 4
-      },
-      {
-        "id": "5748ebf1-24e3-499d-ab7c-c2cebd462a24",
-        "qty": 4
-      },
-      {
-        "id": "204f9afe-c20b-4933-b5cd-aa572784762a",
-        "qty": 4
-      },
-      {
-        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
-        "qty": 4
-      },
-      {
-        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
-        "qty": 24
-      }
-    ],
-    "side": [
-      {
-        "id": "81b2242b-40c9-475a-a198-28dd348235ec",
-        "qty": 4
-      },
-      {
-        "id": "59180e94-ccdf-4d9f-9a4a-fe55497d0d63",
-        "qty": 4
-      },
-      {
-        "id": "9c021685-4017-49c7-9f58-2ae0243361a0",
-        "qty": 4
-      },
-      {
-        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
-        "qty": 3
-      }
-    ],
-    "updated": "2026-10-16T00:00:00+09:00",
-    "order": 2,
-    "sample": true,
-    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
-    "englishText": "4 Llanowar Elves\n4 Elvish Champion\n4 Elvish Lyrist\n4 Elvish Pioneer\n4 Llanowar Sentinel\n4 Sylvan Messenger\n4 Giant Growth\n4 Overrun\n4 Naturalize\n24 Forest\n\nSideboard\n4 Elvish Scrapper\n4 Creeping Mold\n4 Hurricane\n3 Tormod's Crypt\n"
-  },
-  {
-    "id": "goblins",
-    "name": "赤単ゴブリン",
-    "author": "サンプル作者 04",
-    "colors": [
-      "R"
-    ],
-    "archetype": "アグロ",
-    "note": "ゴブリンを展開し、火力で最後の一押し。",
-    "hero": "d236b3fc-0d3f-4d99-875d-e32a33fe5767",
-    "main": [
-      {
-        "id": "d236b3fc-0d3f-4d99-875d-e32a33fe5767",
-        "qty": 4
-      },
-      {
-        "id": "39882df0-c20f-469d-94ba-1617224e71a1",
-        "qty": 4
-      },
-      {
-        "id": "4d74d12b-1ffb-482f-8bac-635a8d4d32e9",
-        "qty": 4
-      },
-      {
-        "id": "145737a7-c597-4dec-b752-207c2d0501e3",
-        "qty": 4
-      },
-      {
-        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
-        "qty": 4
-      },
-      {
-        "id": "7efd5d62-6da2-428a-98e3-5b842f668656",
-        "qty": 4
-      },
-      {
-        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
-        "qty": 4
-      },
-      {
-        "id": "a9d288b8-cdc1-4e55-a0c9-d6edfc95e65d",
-        "qty": 4
-      },
-      {
-        "id": "edad60c6-80de-4033-af1b-a703ac332983",
-        "qty": 4
-      },
-      {
-        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
-        "qty": 24
-      }
-    ],
-    "side": [
-      {
-        "id": "84d32e68-72b9-432d-a023-7bc6a26b8ad0",
-        "qty": 4
-      },
-      {
-        "id": "0b137853-7cb9-424b-8285-12938991eafb",
-        "qty": 4
-      },
-      {
-        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
-        "qty": 4
-      },
-      {
-        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
-        "qty": 3
-      }
-    ],
-    "updated": "2026-10-15T00:00:00+09:00",
-    "order": 3,
-    "sample": true,
-    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
-    "englishText": "4 Goblin King\n4 Goblin Warchief\n4 Goblin Piledriver\n4 Goblin Matron\n4 Siege-Gang Commander\n4 Mogg Fanatic\n4 Lightning Bolt\n4 Shock\n4 Goblin Bombardment\n24 Mountain\n\nSideboard\n4 Shatter\n4 Pillage\n4 Pyroclasm\n3 Tormod's Crypt\n"
-  },
-  {
-    "id": "uw",
-    "name": "青白コントロール",
-    "author": "サンプル作者 05",
-    "colors": [
-      "W",
-      "U"
-    ],
-    "archetype": "コントロール",
-    "note": "打ち消しと全体除去を使い、長いゲームへ。",
-    "hero": "34515b16-c9a4-4f98-8c77-416a7a523407",
-    "main": [
-      {
-        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
-        "qty": 4
-      },
-      {
-        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
-        "qty": 4
-      },
-      {
-        "id": "132ca99a-a3c7-4ed6-b4d0-0edcd7140ca2",
-        "qty": 4
-      },
-      {
-        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
-        "qty": 4
-      },
-      {
-        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
-        "qty": 4
-      },
-      {
-        "id": "f6bd2902-7f8b-419e-bbc7-bcab0c1b7e01",
-        "qty": 4
-      },
-      {
-        "id": "5f5e0b10-c8cf-450c-bfd3-bcb0528ec330",
-        "qty": 4
-      },
-      {
-        "id": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
-        "qty": 4
-      },
-      {
-        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
-        "qty": 4
-      },
-      {
-        "id": "d5ad26cc-2bdb-46b7-b8bf-dd099d5fa09b",
-        "qty": 4
-      },
-      {
-        "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
-        "qty": 4
-      },
-      {
-        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
-        "qty": 10
-      },
-      {
-        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
-        "qty": 6
-      }
-    ],
-    "side": [
-      {
-        "id": "df2738fe-9cd1-4347-8808-105fcfde1190",
-        "qty": 4
-      },
-      {
-        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
-        "qty": 4
-      },
-      {
-        "id": "300cba5a-adbb-4852-be06-ac00d9d6fd37",
-        "qty": 4
-      },
-      {
-        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
-        "qty": 3
-      }
-    ],
-    "updated": "2026-10-14T00:00:00+09:00",
-    "order": 4,
-    "sample": true,
-    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
-    "englishText": "4 Counterspell\n4 Mana Leak\n4 Absorb\n4 Wrath of God\n4 Fact or Fiction\n4 Impulse\n4 Pacifism\n4 Serra Angel\n4 Disenchant\n4 Adarkar Wastes\n4 Coastal Tower\n10 Island\n6 Plains\n\nSideboard\n4 Circle of Protection: Red\n4 Hibernation\n4 Dismantling Blow\n3 Tormod's Crypt\n"
-  },
-  {
-    "id": "black",
-    "name": "黒単コントロール",
-    "author": "サンプル作者 06",
-    "colors": [
-      "B"
-    ],
-    "archetype": "コントロール",
-    "note": "手札破壊と除去で、盤面をじっくり整える。",
-    "hero": "759af941-f6a3-4726-91f2-9b1e4e55ea71",
-    "main": [
-      {
-        "id": "759af941-f6a3-4726-91f2-9b1e4e55ea71",
-        "qty": 4
-      },
-      {
-        "id": "ee579a32-a048-4335-b966-231ba731cdea",
-        "qty": 4
-      },
-      {
-        "id": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
-        "qty": 4
-      },
-      {
-        "id": "c19e3560-d304-4d91-aa2a-463d7dbb35bb",
-        "qty": 4
-      },
-      {
-        "id": "0df450be-9bd2-45be-ae59-fa8d19f6a391",
-        "qty": 4
-      },
-      {
-        "id": "a88a1c53-7de3-423a-a95a-24ed5666ab96",
-        "qty": 4
-      },
-      {
-        "id": "5de0769e-5141-42d5-aaa6-549cfc154de8",
-        "qty": 4
-      },
-      {
-        "id": "10c585c4-bf5b-4d8f-94a9-e9a5036a688f",
-        "qty": 4
-      },
-      {
-        "id": "14589b6b-1814-46f9-a364-83cc15dacac2",
-        "qty": 4
-      },
-      {
-        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
-        "qty": 24
-      }
-    ],
-    "side": [
-      {
-        "id": "b81f041d-98db-4408-9472-c483e4a502bc",
-        "qty": 4
-      },
-      {
-        "id": "676c4cfa-f929-43aa-95cc-df81a596c2a2",
-        "qty": 4
-      },
-      {
-        "id": "2b8abae2-dd15-41ee-81ae-6a463723b43e",
-        "qty": 4
-      },
-      {
-        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
-        "qty": 3
-      }
-    ],
-    "updated": "2026-10-13T00:00:00+09:00",
-    "order": 5,
-    "sample": true,
-    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
-    "englishText": "4 Hypnotic Specter\n4 Phyrexian Arena\n4 Duress\n4 Stupor\n4 Dark Banishing\n4 Corrupt\n4 Highway Robber\n4 Cruel Edict\n4 Diabolic Tutor\n24 Swamp\n\nSideboard\n4 Terror\n4 Persecute\n4 Nausea\n3 Tormod's Crypt\n"
-  },
-  {
-    "id": "ramp",
-    "name": "緑系ランプ",
-    "author": "サンプル作者 07",
-    "colors": [
-      "G"
-    ],
-    "archetype": "ランプ",
-    "note": "マナを伸ばし、大きなクリーチャーへつなぐ。",
-    "hero": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
-    "main": [
-      {
-        "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
-        "qty": 4
-      },
-      {
-        "id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
-        "qty": 4
+        "id": "97db6c39-e690-49b6-93a6-e51b8dfad10b",
+        "qty": 1
       },
       {
         "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
@@ -543,84 +147,1045 @@
         "qty": 4
       },
       {
-        "id": "8539f295-5d58-4436-a73a-b9277c4c7795",
-        "qty": 4
-      },
-      {
-        "id": "38abf769-e4ef-4b47-9c79-c8cda0b90f6c",
-        "qty": 4
-      },
-      {
-        "id": "59180e94-ccdf-4d9f-9a4a-fe55497d0d63",
-        "qty": 4
-      },
-      {
-        "id": "9cdf840d-314e-46ef-9c04-74f145d9e65b",
-        "qty": 4
-      },
-      {
-        "id": "7a21ea22-3cd7-4c11-8895-5943c0d93a0d",
-        "qty": 4
-      },
-      {
-        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
-        "qty": 24
-      }
-    ],
-    "side": [
-      {
-        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
-        "qty": 4
-      },
-      {
-        "id": "81b2242b-40c9-475a-a198-28dd348235ec",
-        "qty": 4
-      },
-      {
-        "id": "9c021685-4017-49c7-9f58-2ae0243361a0",
-        "qty": 4
-      },
-      {
-        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "id": "4d6a1391-817a-4ddc-840d-886b138eeb3f",
         "qty": 3
-      }
-    ],
-    "updated": "2026-10-12T00:00:00+09:00",
-    "order": 6,
-    "sample": true,
-    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
-    "englishText": "4 Birds of Paradise\n4 Llanowar Elves\n4 Wall of Roots\n4 Yavimaya Elder\n4 Rampant Growth\n4 Collective Unconscious\n4 Creeping Mold\n4 Thorn Elemental\n4 Verdant Force\n24 Forest\n\nSideboard\n4 Naturalize\n4 Elvish Scrapper\n4 Hurricane\n3 Tormod's Crypt\n"
-  },
-  {
-    "id": "ur",
-    "name": "青赤カウンターバーン",
-    "author": "サンプル作者 08",
-    "colors": [
-      "U",
-      "R"
-    ],
-    "archetype": "テンポ",
-    "note": "打ち消しと火力を組み合わせる構成例。",
-    "hero": "4457ed35-7c10-48c8-9776-456485fdf070",
-    "main": [
-      {
-        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
-        "qty": 4
       },
       {
-        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
-        "qty": 4
+        "id": "8d4d6806-cb01-49e3-91cc-fb0e7f7a8684",
+        "qty": 1
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 3
+      },
+      {
+        "id": "15afdd88-05fc-4335-8a55-c6ee702f3bef",
+        "qty": 1
+      },
+      {
+        "id": "3b629793-0efb-4d60-9d82-38b7b400abfd",
+        "qty": 1
+      },
+      {
+        "id": "82406175-63b3-4972-be8b-db0e70c908cb",
+        "qty": 2
       },
       {
         "id": "4457ed35-7c10-48c8-9776-456485fdf070",
         "qty": 4
       },
       {
-        "id": "a9d288b8-cdc1-4e55-a0c9-d6edfc95e65d",
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 2
+      },
+      {
+        "id": "8ad4f2fe-6d98-4279-a331-3817d40ae46d",
+        "qty": 3
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
         "qty": 4
       },
       {
-        "id": "ae92942b-919c-4ea9-b693-85fcef765d5a",
+        "id": "7cafc972-a6f5-4cac-a3d3-8a3ae36ffb1e",
+        "qty": 2
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 5
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 4
+      },
+      {
+        "id": "9b64c0f4-b917-4a0d-b033-30ab71aab807",
+        "qty": 4
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 3
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 3
+      },
+      {
+        "id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+        "qty": 2
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 2
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "f2c19fba-9b06-461f-bb5e-e827ba41204d",
+        "qty": 1
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 1
+      },
+      {
+        "id": "be007706-3da7-4dd3-84db-dbb5d8831bba",
+        "qty": 1
+      },
+      {
+        "id": "15afdd88-05fc-4335-8a55-c6ee702f3bef",
+        "qty": 1
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "4620bfa8-7198-44ae-a162-51a19ca0f555",
+        "qty": 2
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 1
+      },
+      {
+        "id": "5268518e-7631-4149-8eea-c2475b9b14df",
+        "qty": 1
+      },
+      {
+        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
+        "qty": 1
+      },
+      {
+        "id": "255131a2-616c-4c8d-a36a-14e5b5ab345e",
+        "qty": 2
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 2
+      }
+    ],
+    "updated": "2026-09-19T00:00:00",
+    "recordedAt": "2026-09-19T00:00:00",
+    "sample": false,
+    "event": "第三回 旧枠モダンGP群馬（2026-09-22記事）",
+    "venue": "群馬（記事記載）",
+    "result": "準優勝",
+    "source": "提供された大会デッキリスト",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 102,
+    "sourceDeckId": "NOTE-02",
+    "englishText": "1 Spore Frog\n4 Wall of Roots\n4 Yavimaya Elder\n3 Imperial Recruiter\n1 Thornscape Battlemage\n3 Siege-Gang Commander\n1 Genesis\n1 Shard Phoenix\n2 Krosan Tusker\n4 Lightning Bolt\n2 Mana Leak\n3 Seismic Assault\n4 Fact or Fiction\n2 Upheaval\n5 Mountain\n4 Forest\n4 Shivan Oasis\n3 Island\n3 Treetop Village\n2 Yavimaya Coast\n2 Karplusan Forest\n2 Reflecting Pool\n1 Plains\n\nSideboard\n1 Groundskeeper\n1 Spike Feeder\n1 Fledgling Dragon\n1 Genesis\n2 Tormod's Crypt\n2 Ray of Revelation\n1 Naturalize\n1 Savage Twister\n1 Hibernation\n2 Quash\n2 Hunting Pack\n",
+    "order": 1
+  },
+  {
+    "id": "note-03",
+    "name": "緑白アグロ",
+    "author": "Maro",
+    "colors": [
+      "W",
+      "G"
+    ],
+    "archetype": "緑白アグロ",
+    "note": "第三回 旧枠モダンGP群馬（2026-09-22記事） · TOP4 · 群馬（記事記載）",
+    "hero": "f8c9cb9f-3a37-4004-9cde-f51ca5579e1a",
+    "main": [
+      {
+        "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+        "qty": 4
+      },
+      {
+        "id": "1093fdb6-bd4f-46a8-92e3-5aa46b52bb4f",
+        "qty": 2
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "f8c9cb9f-3a37-4004-9cde-f51ca5579e1a",
+        "qty": 4
+      },
+      {
+        "id": "102d73bc-94ed-4a57-9872-6f7b9bf282f9",
+        "qty": 2
+      },
+      {
+        "id": "8d4d6806-cb01-49e3-91cc-fb0e7f7a8684",
+        "qty": 1
+      },
+      {
+        "id": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+        "qty": 1
+      },
+      {
+        "id": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
+        "qty": 4
+      },
+      {
+        "id": "9d2d6479-531c-4ce1-b52b-00e36fa63b64",
+        "qty": 4
+      },
+      {
+        "id": "5748ebf1-24e3-499d-ab7c-c2cebd462a24",
+        "qty": 3
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "2c5c8250-1860-42a1-a335-071f54830d37",
+        "qty": 1
+      },
+      {
+        "id": "8331f281-819b-4a0b-bad7-bd86dbedb877",
+        "qty": 4
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "29737a60-3ebd-40d9-b935-c4f54b90d45d",
+        "qty": 4
+      },
+      {
+        "id": "5eb8b497-ec9a-4a89-ad29-1ec3ca82da7c",
+        "qty": 4
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 3
+      },
+      {
+        "id": "cade8b94-2998-4d23-87bb-9fbdddd19dea",
+        "qty": 2
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 2
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 1
+      },
+      {
+        "id": "f25351e3-539b-4bbc-b92d-6480acf4d722",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "8d4d6806-cb01-49e3-91cc-fb0e7f7a8684",
+        "qty": 1
+      },
+      {
+        "id": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+        "qty": 1
+      },
+      {
+        "id": "cf3b79cc-ce97-48e9-a578-625e323d1b62",
+        "qty": 2
+      },
+      {
+        "id": "48bda7dd-d023-41e8-8c28-e0cfda0d07ca",
+        "qty": 1
+      },
+      {
+        "id": "15afdd88-05fc-4335-8a55-c6ee702f3bef",
+        "qty": 2
+      },
+      {
+        "id": "ec8bf245-4b2c-432b-9b2a-8d7b9224258c",
+        "qty": 1
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 1
+      },
+      {
+        "id": "22ba474e-f6e6-450d-a4cf-0739f0b51079",
+        "qty": 4
+      },
+      {
+        "id": "4620bfa8-7198-44ae-a162-51a19ca0f555",
+        "qty": 1
+      },
+      {
+        "id": "2c5c8250-1860-42a1-a335-071f54830d37",
+        "qty": 1
+      }
+    ],
+    "updated": "2026-09-19T00:00:00",
+    "recordedAt": "2026-09-19T00:00:00",
+    "sample": false,
+    "event": "第三回 旧枠モダンGP群馬（2026-09-22記事）",
+    "venue": "群馬（記事記載）",
+    "result": "TOP4",
+    "source": "提供された大会デッキリスト",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 103,
+    "sourceDeckId": "NOTE-03",
+    "englishText": "4 Birds of Paradise\n2 Weathered Wayfarer\n4 Wall of Roots\n4 Soltari Priest\n2 Hunting Moa\n1 Thornscape Battlemage\n1 Paladin en-Vec\n4 Serra Angel\n4 Rancor\n3 Giant Growth\n4 Call of the Herd\n1 Pariah\n4 Might of Oaks\n4 Treetop Village\n4 Windswept Heath\n4 Brushland\n3 Plains\n2 Elfhame Palace\n2 Reflecting Pool\n2 Mishra's Factory\n1 Forest\n1 City of Brass\n\nSideboard\n1 Thornscape Battlemage\n1 Paladin en-Vec\n2 Mystic Enforcer\n1 Aven Cloudchaser\n2 Genesis\n1 Staunch Defenders\n1 Tormod's Crypt\n4 Defense Grid\n1 Ray of Revelation\n1 Pariah\n",
+    "order": 2
+  },
+  {
+    "id": "note-04",
+    "name": "赤緑ラヴァストーム",
+    "author": "JIP-JAP",
+    "colors": [
+      "R",
+      "G"
+    ],
+    "archetype": "赤緑ラヴァストーム",
+    "note": "第三回 旧枠モダンGP群馬（2026-09-22記事） · TOP4 · 群馬（記事記載）",
+    "hero": "e48891e3-30a2-4fc8-a858-cec33c6e4ab5",
+    "main": [
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 4
+      },
+      {
+        "id": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+        "qty": 4
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 3
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "e48891e3-30a2-4fc8-a858-cec33c6e4ab5",
+        "qty": 3
+      },
+      {
+        "id": "92d6af2f-728e-4e41-87cb-5c90878a2f2f",
+        "qty": 2
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 3
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 5
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 4
+      },
+      {
+        "id": "9b64c0f4-b917-4a0d-b033-30ab71aab807",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 3
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 3
+      },
+      {
+        "id": "3b629793-0efb-4d60-9d82-38b7b400abfd",
+        "qty": 2
+      },
+      {
+        "id": "74f67dcf-5afb-45aa-8d4b-3cdb23f6f2a1",
+        "qty": 1
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 1
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 3
+      },
+      {
+        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
+        "qty": 2
+      },
+      {
+        "id": "5fa4607a-6731-4599-80f3-19d6097b4b28",
+        "qty": 1
+      },
+      {
+        "id": "cee8ec5f-e36d-4bca-9b19-cb33113835b1",
+        "qty": 2
+      }
+    ],
+    "updated": "2026-09-19T00:00:00",
+    "recordedAt": "2026-09-19T00:00:00",
+    "sample": false,
+    "event": "第三回 旧枠モダンGP群馬（2026-09-22記事）",
+    "venue": "群馬（記事記載）",
+    "result": "TOP4",
+    "source": "提供された大会デッキリスト",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 104,
+    "sourceDeckId": "NOTE-04",
+    "englishText": "4 Wall of Roots\n4 Yavimaya Elder\n4 Avalanche Riders\n3 Siege-Gang Commander\n4 Lightning Bolt\n3 Lava Dart\n2 Disintegrate\n4 Call of the Herd\n4 Nevinyrral's Disk\n3 Hunting Pack\n5 Mountain\n4 Treetop Village\n4 Karplusan Forest\n4 Shivan Oasis\n4 Mishra's Factory\n3 Forest\n1 Pendelhaven\n\nSideboard\n3 Spike Feeder\n2 Shard Phoenix\n1 Triskelion\n1 Tormod's Crypt\n3 Naturalize\n2 Pyroclasm\n1 Serrated Arrows\n2 Flame Wave\n",
+    "order": 3
+  },
+  {
+    "id": "note-05",
+    "name": "緑白ミラーリウェイク",
+    "author": "Onsoku",
+    "colors": [
+      "W",
+      "G"
+    ],
+    "archetype": "緑白ミラーリウェイク",
+    "note": "第三回 旧枠モダンGP群馬（2026-09-22記事） · TOP8 · 群馬（記事記載）",
+    "hero": "852657c0-18a4-4b28-b9ae-7728acdb5044",
+    "main": [
+      {
+        "id": "ef4d5fb3-70a3-433d-a9d3-18b2beb8d79f",
+        "qty": 4
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 2
+      },
+      {
+        "id": "8d4d6806-cb01-49e3-91cc-fb0e7f7a8684",
+        "qty": 1
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 1
+      },
+      {
+        "id": "74f67dcf-5afb-45aa-8d4b-3cdb23f6f2a1",
+        "qty": 1
+      },
+      {
+        "id": "107f204c-9fd3-490d-8887-be63d14fc6a4",
+        "qty": 1
+      },
+      {
+        "id": "4acb6612-54e8-428d-acb6-c7259a5ad6a8",
+        "qty": 3
+      },
+      {
+        "id": "b302bce5-d7ad-46d8-9dbf-8159e8709b4f",
+        "qty": 1
+      },
+      {
+        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+        "qty": 4
+      },
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 4
+      },
+      {
+        "id": "b7553f3f-5de1-409c-a184-e12e40f017ab",
+        "qty": 2
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 2
+      },
+      {
+        "id": "852657c0-18a4-4b28-b9ae-7728acdb5044",
+        "qty": 4
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 2
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 4
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "5eb8b497-ec9a-4a89-ad29-1ec3ca82da7c",
+        "qty": 4
+      },
+      {
+        "id": "29737a60-3ebd-40d9-b935-c4f54b90d45d",
+        "qty": 3
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 3
+      },
+      {
+        "id": "cade8b94-2998-4d23-87bb-9fbdddd19dea",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 1
+      },
+      {
+        "id": "15afdd88-05fc-4335-8a55-c6ee702f3bef",
+        "qty": 1
+      },
+      {
+        "id": "cb479ce1-59e8-4531-9a21-f7c97d334817",
+        "qty": 1
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 3
+      },
+      {
+        "id": "7a5a8414-4da4-4dd0-93ae-210d50f4d6f6",
+        "qty": 2
+      },
+      {
+        "id": "e6fb4f0d-ce49-4913-a2ef-88365e4916cf",
+        "qty": 2
+      },
+      {
+        "id": "4620bfa8-7198-44ae-a162-51a19ca0f555",
+        "qty": 2
+      },
+      {
+        "id": "a75dbe70-7e3e-446f-9a76-9fbb414f2e7c",
+        "qty": 1
+      },
+      {
+        "id": "99f9a4c8-b59f-4a41-8577-6c1e4684b240",
+        "qty": 2
+      }
+    ],
+    "updated": "2026-09-19T00:00:00",
+    "recordedAt": "2026-09-19T00:00:00",
+    "sample": false,
+    "event": "第三回 旧枠モダンGP群馬（2026-09-22記事）",
+    "venue": "群馬（記事記載）",
+    "result": "TOP8",
+    "source": "提供された大会デッキリスト",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 105,
+    "sourceDeckId": "NOTE-05",
+    "englishText": "4 Wall of Blossoms\n4 Wall of Roots\n2 Yavimaya Elder\n1 Thornscape Battlemage\n1 Spike Feeder\n1 Triskelion\n1 Akroma, Angel of Wrath\n3 Eladamri's Call\n1 Wing Shards\n4 Wrath of God\n4 Decree of Justice\n2 Chastise\n2 Nevinyrral's Disk\n4 Mirari's Wake\n2 Hunting Pack\n4 Plains\n4 Forest\n4 Treetop Village\n4 Brushland\n3 Windswept Heath\n3 Mishra's Factory\n2 Elfhame Palace\n\nSideboard\n1 Spike Feeder\n1 Genesis\n1 Blinding Angel\n3 Tormod's Crypt\n2 Circle of Protection: Black\n2 Last Breath\n2 Ray of Revelation\n1 Seal of Cleansing\n2 Worship\n",
+    "order": 4
+  },
+  {
+    "id": "note-06",
+    "name": "青単",
+    "author": "Ibutsu-kun",
+    "colors": [
+      "U"
+    ],
+    "archetype": "青単",
+    "note": "第三回 旧枠モダンGP群馬（2026-09-22記事） · TOP8 · 群馬（記事記載）",
+    "hero": "09de1136-8a8f-4539-92a2-611dcdd0790b",
+    "main": [
+      {
+        "id": "09de1136-8a8f-4539-92a2-611dcdd0790b",
+        "qty": 2
+      },
+      {
+        "id": "f0801029-bcf7-4bdb-84bf-e88dcaa9dc03",
+        "qty": 3
+      },
+      {
+        "id": "318f7f70-e374-40ef-8afb-3389c10461d8",
+        "qty": 3
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 1
+      },
+      {
+        "id": "f6bd2902-7f8b-419e-bbc7-bcab0c1b7e01",
+        "qty": 4
+      },
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 4
+      },
+      {
+        "id": "86cebe2a-95e7-4f22-99cc-e805aeaf347e",
+        "qty": 2
+      },
+      {
+        "id": "120fa67e-e5e0-4c23-9a78-d6171d357aee",
+        "qty": 1
+      },
+      {
+        "id": "dc4a4996-108a-4aac-850f-2d9f76403446",
+        "qty": 1
+      },
+      {
+        "id": "4b2e9aa9-6f91-41de-84b6-e9a89be06a53",
+        "qty": 3
+      },
+      {
+        "id": "a8c9f91a-b1e7-451d-b6db-ae865e2b853c",
+        "qty": 2
+      },
+      {
+        "id": "7f221ad6-7ec4-483d-a6b5-1456c95c1cad",
+        "qty": 1
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 3
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 3
+      },
+      {
+        "id": "ba4f9450-d468-4686-9f48-00fa08c6ac52",
+        "qty": 2
+      },
+      {
+        "id": "fdd94383-b573-439a-8e1c-925af887c5a6",
+        "qty": 1
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 10
+      },
+      {
+        "id": "0c25f6b1-8fb3-4406-9605-0282d2dbbcec",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "765863c8-1be0-4bb1-9e9c-db7701cffde3",
+        "qty": 3
+      },
+      {
+        "id": "c733873e-77db-471f-8061-139db24f7e7c",
+        "qty": 2
+      },
+      {
+        "id": "ef2bb4fa-f292-4d19-aaa4-cfbe445caf45",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "54b5e429-7a44-480d-bea4-4f8eeb7449b5",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "d08e9784-75f7-4164-ac48-d06160f8c56b",
+        "qty": 2
+      },
+      {
+        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
+        "qty": 3
+      },
+      {
+        "id": "5fa4607a-6731-4599-80f3-19d6097b4b28",
+        "qty": 3
+      },
+      {
+        "id": "255131a2-616c-4c8d-a36a-14e5b5ab345e",
+        "qty": 2
+      },
+      {
+        "id": "fdd94383-b573-439a-8e1c-925af887c5a6",
+        "qty": 1
+      }
+    ],
+    "updated": "2026-09-19T00:00:00",
+    "recordedAt": "2026-09-19T00:00:00",
+    "sample": false,
+    "event": "第三回 旧枠モダンGP群馬（2026-09-22記事）",
+    "venue": "群馬（記事記載）",
+    "result": "TOP8",
+    "source": "提供された大会デッキリスト",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 106,
+    "sourceDeckId": "NOTE-06",
+    "englishText": "2 Ghost Ship\n3 Seal of Removal\n3 Syncopate\n1 Unsummon\n4 Impulse\n4 Counterspell\n2 Merchant Scroll\n1 Trade Routes\n1 Boomerang\n3 Dissipate\n2 Exclude\n1 Psionic Blast\n3 Fact or Fiction\n3 Nevinyrral's Disk\n2 Plagiarize\n1 Evacuation\n10 Island\n4 Faerie Conclave\n4 Mishra's Factory\n3 Lonely Sandbar\n2 Cephalid Coliseum\n1 Quicksand\n\nSideboard\n2 Bottle Gnomes\n2 Tormod's Crypt\n2 Annul\n3 Hibernation\n3 Serrated Arrows\n2 Quash\n1 Evacuation\n",
+    "order": 5
+  },
+  {
+    "id": "note-07",
+    "name": "白赤緑カーミック",
+    "author": "Sakurai",
+    "colors": [
+      "W",
+      "R",
+      "G"
+    ],
+    "archetype": "白赤緑カーミック",
+    "note": "第三回 旧枠モダンGP群馬（2026-09-22記事） · TOP8 · 群馬（記事記載）",
+    "hero": "8c31fec9-e4b3-4761-990e-7be38eb05604",
+    "main": [
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "4d6a1391-817a-4ddc-840d-886b138eeb3f",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 2
+      },
+      {
+        "id": "8d4d6806-cb01-49e3-91cc-fb0e7f7a8684",
+        "qty": 1
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 1
+      },
+      {
+        "id": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+        "qty": 4
+      },
+      {
+        "id": "8c31fec9-e4b3-4761-990e-7be38eb05604",
+        "qty": 3
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 2
+      },
+      {
+        "id": "3b629793-0efb-4d60-9d82-38b7b400abfd",
+        "qty": 1
+      },
+      {
+        "id": "74f67dcf-5afb-45aa-8d4b-3cdb23f6f2a1",
+        "qty": 1
+      },
+      {
+        "id": "82406175-63b3-4972-be8b-db0e70c908cb",
+        "qty": 1
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "92d6af2f-728e-4e41-87cb-5c90878a2f2f",
+        "qty": 2
+      },
+      {
+        "id": "edad60c6-80de-4033-af1b-a703ac332983",
+        "qty": 4
+      },
+      {
+        "id": "4acb6612-54e8-428d-acb6-c7259a5ad6a8",
+        "qty": 2
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "6b75b94e-83b7-457e-ac41-7ca90b5a59aa",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 3
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 3
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 2
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 2
+      },
+      {
+        "id": "5eb8b497-ec9a-4a89-ad29-1ec3ca82da7c",
+        "qty": 2
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 2
+      },
+      {
+        "id": "cade8b94-2998-4d23-87bb-9fbdddd19dea",
+        "qty": 2
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+        "qty": 2
+      },
+      {
+        "id": "8d4d6806-cb01-49e3-91cc-fb0e7f7a8684",
+        "qty": 1
+      },
+      {
+        "id": "48bda7dd-d023-41e8-8c28-e0cfda0d07ca",
+        "qty": 1
+      },
+      {
+        "id": "2d0c73da-ed8c-44fc-abd9-7c344b1f890d",
+        "qty": 2
+      },
+      {
+        "id": "3b629793-0efb-4d60-9d82-38b7b400abfd",
+        "qty": 1
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 1
+      },
+      {
+        "id": "4620bfa8-7198-44ae-a162-51a19ca0f555",
+        "qty": 1
+      },
+      {
+        "id": "99f9a4c8-b59f-4a41-8577-6c1e4684b240",
+        "qty": 2
+      },
+      {
+        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+        "qty": 2
+      }
+    ],
+    "updated": "2026-09-19T00:00:00",
+    "recordedAt": "2026-09-19T00:00:00",
+    "sample": false,
+    "event": "第三回 旧枠モダンGP群馬（2026-09-22記事）",
+    "venue": "群馬（記事記載）",
+    "result": "TOP8",
+    "source": "提供された大会デッキリスト",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 107,
+    "sourceDeckId": "NOTE-07",
+    "englishText": "4 Wall of Roots\n4 Imperial Recruiter\n2 Yavimaya Elder\n1 Thornscape Battlemage\n1 Spike Feeder\n4 Avalanche Riders\n3 Karmic Guide\n2 Siege-Gang Commander\n1 Shard Phoenix\n1 Triskelion\n1 Krosan Tusker\n4 Lightning Bolt\n2 Disintegrate\n4 Goblin Bombardment\n2 Eladamri's Call\n4 Treetop Village\n4 Battlefield Forge\n3 Mountain\n3 Reflecting Pool\n2 Plains\n2 Forest\n2 Brushland\n2 Karplusan Forest\n2 Elfhame Palace\n1 Pendelhaven\n\nSideboard\n2 Paladin en-Vec\n1 Thornscape Battlemage\n1 Aven Cloudchaser\n2 Silklash Spider\n1 Shard Phoenix\n2 Tormod's Crypt\n1 Naturalize\n1 Ray of Revelation\n2 Worship\n2 Wrath of God\n",
+    "order": 6
+  },
+  {
+    "id": "note-08",
+    "name": "黒単コントロール",
+    "author": "Mauler",
+    "colors": [
+      "B"
+    ],
+    "archetype": "黒単コントロール",
+    "note": "第三回 旧枠モダンGP群馬（2026-09-22記事） · TOP8 · 群馬（記事記載）",
+    "hero": "c1d0537b-954f-4d3b-b9fe-1dd7ffaa1197",
+    "main": [
+      {
+        "id": "c1d0537b-954f-4d3b-b9fe-1dd7ffaa1197",
+        "qty": 4
+      },
+      {
+        "id": "104095ed-55e3-408e-bf70-4fe06bb16d2f",
+        "qty": 3
+      },
+      {
+        "id": "54b5e429-7a44-480d-bea4-4f8eeb7449b5",
+        "qty": 3
+      },
+      {
+        "id": "69aa1ac7-17da-4fc9-a3dc-df8a52841f4a",
+        "qty": 2
+      },
+      {
+        "id": "08c595da-9305-42a9-b72f-5ccc546edc01",
+        "qty": 1
+      },
+      {
+        "id": "08cb8a30-9cb4-4517-bee5-8848aa60d1a2",
+        "qty": 2
+      },
+      {
+        "id": "4e0b647a-6e1a-421b-bca9-8d5e346bda80",
+        "qty": 4
+      },
+      {
+        "id": "c97361b5-af16-4a7b-af85-a429dbaf4ad2",
+        "qty": 4
+      },
+      {
+        "id": "b81f041d-98db-4408-9472-c483e4a502bc",
+        "qty": 2
+      },
+      {
+        "id": "dade5835-ccaf-45e3-b9a3-46017e0384b3",
+        "qty": 4
+      },
+      {
+        "id": "14589b6b-1814-46f9-a364-83cc15dacac2",
+        "qty": 3
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 2
+      },
+      {
+        "id": "6b8183bb-20c4-4d45-b944-508a6a874bb3",
+        "qty": 2
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 22
+      },
+      {
+        "id": "7358e164-5704-4e78-9b21-6a9bf2a968ce",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "759af941-f6a3-4726-91f2-9b1e4e55ea71",
+        "qty": 4
+      },
+      {
+        "id": "08c595da-9305-42a9-b72f-5ccc546edc01",
+        "qty": 1
+      },
+      {
+        "id": "2dc6da5d-c4d1-4f2c-8f46-11a935bc0044",
+        "qty": 4
+      },
+      {
+        "id": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
+        "qty": 2
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 1
+      },
+      {
+        "id": "3abd345a-69a5-486e-ada9-dd1ca0decc28",
+        "qty": 3
+      }
+    ],
+    "updated": "2026-09-19T00:00:00",
+    "recordedAt": "2026-09-19T00:00:00",
+    "sample": false,
+    "event": "第三回 旧枠モダンGP群馬（2026-09-22記事）",
+    "venue": "群馬（記事記載）",
+    "result": "TOP8",
+    "source": "提供された大会デッキリスト",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 108,
+    "sourceDeckId": "NOTE-08",
+    "englishText": "4 Dauthi Slayer\n3 Crypt Rats\n3 Bottle Gnomes\n2 Bone Shredder\n1 Junk Diver\n2 Zuran Orb\n4 Unearth\n4 Mind Stone\n2 Terror\n4 Ensnaring Bridge\n3 Diabolic Tutor\n2 Nevinyrral's Disk\n2 Citanul Flute\n22 Swamp\n2 Cabal Coffers\n\nSideboard\n4 Hypnotic Specter\n1 Junk Diver\n4 Blackmail\n2 Duress\n1 Nevinyrral's Disk\n3 Haunting Echoes\n",
+    "order": 7
+  },
+  {
+    "id": "pb-188",
+    "name": "青白コントロール",
+    "author": "JIP-JAP",
+    "colors": [
+      "W",
+      "U"
+    ],
+    "archetype": "青白コントロール",
+    "note": "GP群馬 · 優勝 · コミかる高崎店",
+    "hero": "cb479ce1-59e8-4531-9a21-f7c97d334817",
+    "main": [
+      {
+        "id": "d5ad26cc-2bdb-46b7-b8bf-dd099d5fa09b",
+        "qty": 4
+      },
+      {
+        "id": "cb479ce1-59e8-4531-9a21-f7c97d334817",
+        "qty": 4
+      },
+      {
+        "id": "dc4a4996-108a-4aac-850f-2d9f76403446",
+        "qty": 2
+      },
+      {
+        "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+        "qty": 4
+      },
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 3
+      },
+      {
+        "id": "195107ad-879d-4b02-a44a-a3ba70fedf88",
         "qty": 4
       },
       {
@@ -628,52 +1193,5189 @@
         "qty": 4
       },
       {
-        "id": "f6bd2902-7f8b-419e-bbc7-bcab0c1b7e01",
+        "id": "0c25f6b1-8fb3-4406-9605-0282d2dbbcec",
         "qty": 4
       },
       {
-        "id": "d137586f-83b0-40af-8100-443460b07ac0",
+        "id": "f3c7af78-a77d-4134-82a2-a5ce84285a84",
+        "qty": 2
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 2
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 3
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
         "qty": 4
       },
       {
-        "id": "c39ea5f9-6ec0-4697-897b-779e326754a7",
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 4
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "f0801029-bcf7-4bdb-84bf-e88dcaa9dc03",
+        "qty": 3
+      },
+      {
+        "id": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
+        "qty": 4
+      },
+      {
+        "id": "7071aee8-b5ca-4be5-9ba0-2df7e3af303b",
+        "qty": 1
+      },
+      {
+        "id": "1374ac18-01bd-452f-af72-a5f96285ed69",
+        "qty": 2
+      },
+      {
+        "id": "a4a8af4e-8686-45ba-94fd-ccf6cc8adaae",
+        "qty": 2
+      },
+      {
+        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "6225a704-430a-4f56-ad87-0e8d87f285f5",
+        "qty": 3
+      },
+      {
+        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "qty": 2
+      },
+      {
+        "id": "e6fb4f0d-ce49-4913-a2ef-88365e4916cf",
+        "qty": 3
+      },
+      {
+        "id": "7071aee8-b5ca-4be5-9ba0-2df7e3af303b",
+        "qty": 1
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 2
+      },
+      {
+        "id": "1374ac18-01bd-452f-af72-a5f96285ed69",
+        "qty": 2
+      }
+    ],
+    "updated": "2026-04-14T12:59:42",
+    "recordedAt": "2026-04-14T12:59:42",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 91,
+    "sourceDeckId": "PB-188",
+    "englishText": "4 Adarkar Wastes\n4 Blinding Angel\n2 Boomerang\n4 Coastal Tower\n3 Counterspell\n4 Desert\n4 Fact or Fiction\n4 Faerie Conclave\n2 Flooded Strand\n2 Island\n3 Mana Leak\n4 Nevinyrral's Disk\n4 Plains\n2 Reflecting Pool\n3 Seal of Removal\n4 Serra Angel\n1 Story Circle\n2 Wall of Essence\n2 Whispers of the Muse\n2 Wrath of God\n\nSideboard\n3 Cursed Totem\n2 Disenchant\n3 Last Breath\n1 Story Circle\n2 Tormod's Crypt\n2 Unsummon\n2 Wall of Essence\n",
+    "order": 8
+  },
+  {
+    "id": "pb-187",
+    "name": "青緑不可思議",
+    "author": "JIP-JAP",
+    "colors": [
+      "U",
+      "G"
+    ],
+    "archetype": "青緑不可思議",
+    "note": "GP群馬 · 優勝 · コミかる高崎店",
+    "hero": "67362406-b1ca-49e2-800d-9050bfe8742a",
+    "main": [
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 3
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 3
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 6
+      },
+      {
+        "id": "cedc52eb-66a6-4b43-87f1-9bb9f4d4871e",
+        "qty": 2
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 4
+      },
+      {
+        "id": "67362406-b1ca-49e2-800d-9050bfe8742a",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "f0801029-bcf7-4bdb-84bf-e88dcaa9dc03",
+        "qty": 3
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "232284f7-c623-4895-9ab9-8b1a39926830",
+        "qty": 3
+      },
+      {
+        "id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "bb27bfdf-fe8d-45bd-ad62-8118dce06eda",
+        "qty": 2
+      },
+      {
+        "id": "5fa4607a-6731-4599-80f3-19d6097b4b28",
+        "qty": 2
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "ef4d5fb3-70a3-433d-a9d3-18b2beb8d79f",
+        "qty": 3
+      }
+    ],
+    "updated": "2026-04-14T12:58:10",
+    "recordedAt": "2026-04-14T12:58:10",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 90,
+    "sourceDeckId": "PB-187",
+    "englishText": "4 Call of the Herd\n4 Fact or Fiction\n3 Forest\n3 Hunting Pack\n6 Island\n2 Lay of the Land\n4 Mana Leak\n4 Merfolk Looter\n4 Mishra's Factory\n4 Nevinyrral's Disk\n1 Pendelhaven\n3 Seal of Removal\n4 Treetop Village\n4 Wall of Roots\n3 Wonder\n4 Yavimaya Coast\n3 Yavimaya Elder\n\nSideboard\n2 Naturalize\n2 Rewind\n2 Serrated Arrows\n4 Spike Feeder\n2 Tormod's Crypt\n3 Wall of Blossoms\n",
+    "order": 9
+  },
+  {
+    "id": "pb-181",
+    "name": "トリコ・エンジェル",
+    "author": "タケウチ",
+    "colors": [
+      "W",
+      "U",
+      "R"
+    ],
+    "archetype": "トリコ・エンジェル",
+    "note": "GP群馬 · 優勝 · コミかる高崎店",
+    "hero": "107f204c-9fd3-490d-8887-be63d14fc6a4",
+    "main": [
+      {
+        "id": "d5ad26cc-2bdb-46b7-b8bf-dd099d5fa09b",
+        "qty": 4
+      },
+      {
+        "id": "107f204c-9fd3-490d-8887-be63d14fc6a4",
+        "qty": 1
+      },
+      {
+        "id": "cb479ce1-59e8-4531-9a21-f7c97d334817",
+        "qty": 4
+      },
+      {
+        "id": "f25351e3-539b-4bbc-b92d-6480acf4d722",
+        "qty": 3
+      },
+      {
+        "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+        "qty": 4
+      },
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 4
+      },
+      {
+        "id": "9a40614b-50a3-422c-849e-53c8b7d3d204",
+        "qty": 2
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "ae92942b-919c-4ea9-b693-85fcef765d5a",
+        "qty": 4
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 1
+      },
+      {
+        "id": "8c31fec9-e4b3-4761-990e-7be38eb05604",
+        "qty": 3
+      },
+      {
+        "id": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 2
+      },
+      {
+        "id": "84528204-faf2-45cb-bce0-365b8adf5339",
+        "qty": 2
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 2
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 4
+      },
+      {
+        "id": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
         "qty": 4
       },
       {
         "id": "0fe16212-66c3-4e45-a641-7391e9b2e304",
         "qty": 4
-      },
-      {
-        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
-        "qty": 10
-      },
-      {
-        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
-        "qty": 10
       }
     ],
     "side": [
       {
-        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
+        "id": "6225a704-430a-4f56-ad87-0e8d87f285f5",
+        "qty": 2
+      },
+      {
+        "id": "22ba474e-f6e6-450d-a4cf-0739f0b51079",
+        "qty": 3
+      },
+      {
+        "id": "300cba5a-adbb-4852-be06-ac00d9d6fd37",
         "qty": 4
       },
       {
-        "id": "84d32e68-72b9-432d-a023-7bc6a26b8ad0",
-        "qty": 4
-      },
-      {
-        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
-        "qty": 4
+        "id": "26d3a818-7faf-443a-a6bd-9773edaedf17",
+        "qty": 3
       },
       {
         "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
         "qty": 3
       }
     ],
-    "updated": "2026-10-11T00:00:00+09:00",
-    "order": 7,
-    "sample": true,
-    "sidePlan": "サイドプランの文章表示を確認するためのサンプルです。対戦相手に応じた入れ替えは未検証です。",
-    "englishText": "4 Counterspell\n4 Mana Leak\n4 Lightning Bolt\n4 Shock\n4 Fire // Ice\n4 Fact or Fiction\n4 Impulse\n4 Archivist\n4 Mahamoti Djinn\n4 Shivan Reef\n10 Island\n10 Mountain\n\nSideboard\n4 Pyroclasm\n4 Shatter\n4 Hibernation\n3 Tormod's Crypt\n"
+    "updated": "2026-02-09T03:40:20",
+    "recordedAt": "2026-02-09T03:40:20",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 87,
+    "sourceDeckId": "PB-181",
+    "englishText": "4 Adarkar Wastes\n1 Akroma, Angel of Wrath\n4 Blinding Angel\n3 City of Brass\n4 Coastal Tower\n4 Counterspell\n2 Earthquake\n4 Fact or Fiction\n4 Fire // Ice\n1 Island\n3 Karmic Guide\n4 Lightning Angel\n4 Lightning Bolt\n2 Mountain\n2 Noble Purpose\n2 Plains\n4 Reflecting Pool\n4 Serra Angel\n4 Shivan Reef\n\nSideboard\n2 Cursed Totem\n3 Defense Grid\n4 Dismantling Blow\n3 Orim's Chant\n3 Tormod's Crypt\n",
+    "order": 10
+  },
+  {
+    "id": "pb-174",
+    "name": "白青緑コントロール",
+    "author": "水城",
+    "colors": [
+      "W",
+      "U",
+      "G"
+    ],
+    "archetype": "白青緑コントロール",
+    "note": "GP群馬 · 優勝 · コミかる高崎店",
+    "hero": "fc2ccab7-cab1-4463-b73d-898070136d74",
+    "main": [
+      {
+        "id": "d5ad26cc-2bdb-46b7-b8bf-dd099d5fa09b",
+        "qty": 2
+      },
+      {
+        "id": "fc2ccab7-cab1-4463-b73d-898070136d74",
+        "qty": 1
+      },
+      {
+        "id": "48bda7dd-d023-41e8-8c28-e0cfda0d07ca",
+        "qty": 1
+      },
+      {
+        "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+        "qty": 4
+      },
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 4
+      },
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 2
+      },
+      {
+        "id": "195107ad-879d-4b02-a44a-a3ba70fedf88",
+        "qty": 1
+      },
+      {
+        "id": "4acb6612-54e8-428d-acb6-c7259a5ad6a8",
+        "qty": 2
+      },
+      {
+        "id": "cade8b94-2998-4d23-87bb-9fbdddd19dea",
+        "qty": 4
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 2
+      },
+      {
+        "id": "15afdd88-05fc-4335-8a55-c6ee702f3bef",
+        "qty": 2
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 2
+      },
+      {
+        "id": "82406175-63b3-4972-be8b-db0e70c908cb",
+        "qty": 2
+      },
+      {
+        "id": "161b6d06-e6a7-488e-9f9c-d266c1402a3a",
+        "qty": 1
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 2
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 3
+      },
+      {
+        "id": "7071aee8-b5ca-4be5-9ba0-2df7e3af303b",
+        "qty": 2
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 3
+      },
+      {
+        "id": "74f67dcf-5afb-45aa-8d4b-3cdb23f6f2a1",
+        "qty": 2
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 2
+      },
+      {
+        "id": "ef4d5fb3-70a3-433d-a9d3-18b2beb8d79f",
+        "qty": 4
+      },
+      {
+        "id": "b302bce5-d7ad-46d8-9dbf-8159e8709b4f",
+        "qty": 3
+      },
+      {
+        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+        "qty": 3
+      },
+      {
+        "id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "107f204c-9fd3-490d-8887-be63d14fc6a4",
+        "qty": 2
+      },
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 1
+      },
+      {
+        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "qty": 1
+      },
+      {
+        "id": "300cba5a-adbb-4852-be06-ac00d9d6fd37",
+        "qty": 1
+      },
+      {
+        "id": "4b2e9aa9-6f91-41de-84b6-e9a89be06a53",
+        "qty": 2
+      },
+      {
+        "id": "a8c9f91a-b1e7-451d-b6db-ae865e2b853c",
+        "qty": 1
+      },
+      {
+        "id": "4620bfa8-7198-44ae-a162-51a19ca0f555",
+        "qty": 1
+      },
+      {
+        "id": "ec8bf245-4b2c-432b-9b2a-8d7b9224258c",
+        "qty": 3
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+        "qty": 1
+      }
+    ],
+    "updated": "2026-01-26T22:59:45",
+    "recordedAt": "2026-01-26T22:59:45",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 82,
+    "sourceDeckId": "PB-174",
+    "englishText": "2 Adarkar Wastes\n1 Ancestor's Chosen\n1 Aven Cloudchaser\n4 Coastal Tower\n4 Counterspell\n2 Decree of Justice\n1 Desert\n2 Eladamri's Call\n4 Elfhame Palace\n4 Fact or Fiction\n2 Forest\n2 Genesis\n2 Island\n2 Krosan Tusker\n1 Mystic Snake\n2 Plains\n3 Reflecting Pool\n2 Story Circle\n3 Treetop Village\n2 Triskelion\n2 Unsummon\n4 Wall of Blossoms\n3 Wing Shards\n3 Wrath of God\n2 Yavimaya Coast\n\nSideboard\n2 Akroma, Angel of Wrath\n1 Decree of Justice\n1 Disenchant\n1 Dismantling Blow\n2 Dissipate\n1 Exclude\n1 Ray of Revelation\n3 Staunch Defenders\n2 Tormod's Crypt\n1 Wrath of God\n",
+    "order": 11
+  },
+  {
+    "id": "pb-176",
+    "name": "黒単コントロール",
+    "author": "ナビゲ",
+    "colors": [
+      "B"
+    ],
+    "archetype": "黒単コントロール",
+    "note": "GP群馬 · TOP4 · コミかる高崎店",
+    "hero": "54b5e429-7a44-480d-bea4-4f8eeb7449b5",
+    "main": [
+      {
+        "id": "54b5e429-7a44-480d-bea4-4f8eeb7449b5",
+        "qty": 4
+      },
+      {
+        "id": "7358e164-5704-4e78-9b21-6a9bf2a968ce",
+        "qty": 2
+      },
+      {
+        "id": "a88a1c53-7de3-423a-a95a-24ed5666ab96",
+        "qty": 4
+      },
+      {
+        "id": "104095ed-55e3-408e-bf70-4fe06bb16d2f",
+        "qty": 4
+      },
+      {
+        "id": "932708ae-9d5c-4561-aa8b-0d2222d37fdc",
+        "qty": 2
+      },
+      {
+        "id": "c1d0537b-954f-4d3b-b9fe-1dd7ffaa1197",
+        "qty": 4
+      },
+      {
+        "id": "14589b6b-1814-46f9-a364-83cc15dacac2",
+        "qty": 3
+      },
+      {
+        "id": "dade5835-ccaf-45e3-b9a3-46017e0384b3",
+        "qty": 1
+      },
+      {
+        "id": "1ff62220-be95-4901-b8d8-812b9a1a1b0a",
+        "qty": 1
+      },
+      {
+        "id": "86e64a29-6ed1-451b-a114-f74341322eeb",
+        "qty": 1
+      },
+      {
+        "id": "698e79ec-c2bc-4973-a095-f3c57b50e39c",
+        "qty": 3
+      },
+      {
+        "id": "ee579a32-a048-4335-b966-231ba731cdea",
+        "qty": 3
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 24
+      },
+      {
+        "id": "4e0b647a-6e1a-421b-bca9-8d5e346bda80",
+        "qty": 3
+      },
+      {
+        "id": "08cb8a30-9cb4-4517-bee5-8848aa60d1a2",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "e32c0de7-132d-4a39-85fb-da0ed1132878",
+        "qty": 1
+      },
+      {
+        "id": "dade5835-ccaf-45e3-b9a3-46017e0384b3",
+        "qty": 1
+      },
+      {
+        "id": "3abd345a-69a5-486e-ada9-dd1ca0decc28",
+        "qty": 1
+      },
+      {
+        "id": "759af941-f6a3-4726-91f2-9b1e4e55ea71",
+        "qty": 3
+      },
+      {
+        "id": "86e64a29-6ed1-451b-a114-f74341322eeb",
+        "qty": 1
+      },
+      {
+        "id": "698e79ec-c2bc-4973-a095-f3c57b50e39c",
+        "qty": 1
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 3
+      },
+      {
+        "id": "676c4cfa-f929-43aa-95cc-df81a596c2a2",
+        "qty": 1
+      },
+      {
+        "id": "ead5a2bf-f48a-43a2-89bb-df3cc587c843",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 1
+      }
+    ],
+    "updated": "2026-01-26T22:59:43",
+    "recordedAt": "2026-01-26T22:59:43",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "TOP4",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 84,
+    "sourceDeckId": "PB-176",
+    "englishText": "4 Bottle Gnomes\n2 Cabal Coffers\n4 Corrupt\n4 Crypt Rats\n2 Darkness\n4 Dauthi Slayer\n3 Diabolic Tutor\n1 Ensnaring Bridge\n1 Greed\n1 Mind Sludge\n3 Mutilate\n3 Phyrexian Arena\n24 Swamp\n3 Unearth\n1 Zuran Orb\n\nSideboard\n1 Ascendant Evincar\n1 Ensnaring Bridge\n1 Haunting Echoes\n3 Hypnotic Specter\n1 Mind Sludge\n1 Mutilate\n3 Nevinyrral's Disk\n1 Persecute\n2 Thrull Surgeon\n1 Tormod's Crypt\n",
+    "order": 12
+  },
+  {
+    "id": "pb-175",
+    "name": "白緑ミラーリ・ウェイク",
+    "author": "MUR",
+    "colors": [
+      "W",
+      "G"
+    ],
+    "archetype": "白緑ミラーリ・ウェイク",
+    "note": "GP群馬 · 準優勝 · コミかる高崎店",
+    "hero": "107f204c-9fd3-490d-8887-be63d14fc6a4",
+    "main": [
+      {
+        "id": "107f204c-9fd3-490d-8887-be63d14fc6a4",
+        "qty": 1
+      },
+      {
+        "id": "48bda7dd-d023-41e8-8c28-e0cfda0d07ca",
+        "qty": 1
+      },
+      {
+        "id": "5eb8b497-ec9a-4a89-ad29-1ec3ca82da7c",
+        "qty": 4
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 4
+      },
+      {
+        "id": "4acb6612-54e8-428d-acb6-c7259a5ad6a8",
+        "qty": 3
+      },
+      {
+        "id": "cade8b94-2998-4d23-87bb-9fbdddd19dea",
+        "qty": 4
+      },
+      {
+        "id": "705509e9-a034-4a5a-9c65-66f58748b8a2",
+        "qty": 3
+      },
+      {
+        "id": "852657c0-18a4-4b28-b9ae-7728acdb5044",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 1
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "2d0c73da-ed8c-44fc-abd9-7c344b1f890d",
+        "qty": 1
+      },
+      {
+        "id": "5f0d3be8-e63e-4ade-ae58-6b0c14f2ce6d",
+        "qty": 3
+      },
+      {
+        "id": "ac8cc74d-e43b-4118-bba0-dfa8b9c04d45",
+        "qty": 3
+      },
+      {
+        "id": "4d27a90b-dae4-48a0-9eb2-e199ff548867",
+        "qty": 2
+      },
+      {
+        "id": "ec8bf245-4b2c-432b-9b2a-8d7b9224258c",
+        "qty": 1
+      },
+      {
+        "id": "8d4d6806-cb01-49e3-91cc-fb0e7f7a8684",
+        "qty": 3
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "8222321f-b74d-4f74-9ee7-79455433345a",
+        "qty": 1
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "153bb46f-ee8a-4da3-aab4-ae884f6ff403",
+        "qty": 1
+      },
+      {
+        "id": "23b36aef-961f-4a78-9652-8594ad73102e",
+        "qty": 4
+      },
+      {
+        "id": "4620bfa8-7198-44ae-a162-51a19ca0f555",
+        "qty": 3
+      },
+      {
+        "id": "2d0c73da-ed8c-44fc-abd9-7c344b1f890d",
+        "qty": 1
+      },
+      {
+        "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+        "qty": 3
+      },
+      {
+        "id": "ec8bf245-4b2c-432b-9b2a-8d7b9224258c",
+        "qty": 1
+      },
+      {
+        "id": "b302bce5-d7ad-46d8-9dbf-8159e8709b4f",
+        "qty": 2
+      }
+    ],
+    "updated": "2026-01-26T22:59:40",
+    "recordedAt": "2026-01-26T22:59:40",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "準優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 83,
+    "sourceDeckId": "PB-175",
+    "englishText": "1 Akroma, Angel of Wrath\n1 Aven Cloudchaser\n4 Brushland\n4 Call of the Herd\n4 Decree of Justice\n3 Eladamri's Call\n4 Elfhame Palace\n3 Harrow\n4 Mirari's Wake\n4 Mishra's Factory\n1 Mountain\n2 Reflecting Pool\n1 Silklash Spider\n3 Snow-Covered Forest\n3 Snow-Covered Plains\n2 Starlight Invoker\n1 Staunch Defenders\n3 Thornscape Battlemage\n4 Treetop Village\n1 Verdeloth the Ancient\n4 Wall of Roots\n3 Yavimaya Elder\n\nSideboard\n1 Kamahl, Pit Fighter\n4 Plow Under\n3 Ray of Revelation\n1 Silklash Spider\n3 Soul Warden\n1 Staunch Defenders\n2 Wing Shards\n",
+    "order": 13
+  },
+  {
+    "id": "pb-177",
+    "name": "白単アグロ",
+    "author": "モガチ",
+    "colors": [
+      "W"
+    ],
+    "archetype": "白単アグロ",
+    "note": "GP群馬 · TOP4 · コミかる高崎店",
+    "hero": "f7f76abc-8656-4e97-9b7f-7f89ca3e6d93",
+    "main": [
+      {
+        "id": "f7f76abc-8656-4e97-9b7f-7f89ca3e6d93",
+        "qty": 4
+      },
+      {
+        "id": "e73131cd-b454-405b-9539-9d777e232b9e",
+        "qty": 4
+      },
+      {
+        "id": "cabf7953-0fac-4dbb-b3ae-05e85e02b3fc",
+        "qty": 2
+      },
+      {
+        "id": "e3886fe8-9b76-4613-8891-4ec74657c087",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+        "qty": 4
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 15
+      },
+      {
+        "id": "32599d7c-243b-447b-9d5d-e8e29830ac61",
+        "qty": 4
+      },
+      {
+        "id": "8776d14f-a5a2-4ef3-98d0-e1148e579e4d",
+        "qty": 2
+      },
+      {
+        "id": "8dec6fcf-1254-4b1b-ba23-7a3e492a7241",
+        "qty": 2
+      },
+      {
+        "id": "f8c9cb9f-3a37-4004-9cde-f51ca5579e1a",
+        "qty": 4
+      },
+      {
+        "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+        "qty": 4
+      },
+      {
+        "id": "1093fdb6-bd4f-46a8-92e3-5aa46b52bb4f",
+        "qty": 4
+      },
+      {
+        "id": "99f9a4c8-b59f-4a41-8577-6c1e4684b240",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "6225a704-430a-4f56-ad87-0e8d87f285f5",
+        "qty": 3
+      },
+      {
+        "id": "26d3a818-7faf-443a-a6bd-9773edaedf17",
+        "qty": 2
+      },
+      {
+        "id": "a75dbe70-7e3e-446f-9a76-9fbb414f2e7c",
+        "qty": 4
+      },
+      {
+        "id": "a07483b4-c04f-42a4-b979-8b77c11fa8f5",
+        "qty": 2
+      },
+      {
+        "id": "75e09ac6-d789-4c4d-9aca-845d68f3899f",
+        "qty": 4
+      }
+    ],
+    "updated": "2026-01-26T22:59:37",
+    "recordedAt": "2026-01-26T22:59:37",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "TOP4",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 85,
+    "sourceDeckId": "PB-177",
+    "englishText": "4 Angelic Page\n4 Battle Screech\n2 Forbidding Watchtower\n4 Glorious Anthem\n4 Mishra's Factory\n4 Paladin en-Vec\n1 Pendelhaven\n15 Plains\n4 Reconnaissance\n2 Sacred Mesa\n2 Secluded Steppe\n4 Soltari Priest\n4 Soul Warden\n4 Weathered Wayfarer\n2 Worship\n\nSideboard\n3 Cursed Totem\n2 Orim's Chant\n4 Seal of Cleansing\n2 Slate of Ancestry\n4 Windborn Muse\n",
+    "order": 14
+  },
+  {
+    "id": "pb-171",
+    "name": "黒単コントロール",
+    "author": "MUR",
+    "colors": [
+      "B"
+    ],
+    "archetype": "黒単コントロール",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "54b5e429-7a44-480d-bea4-4f8eeb7449b5",
+    "main": [
+      {
+        "id": "54b5e429-7a44-480d-bea4-4f8eeb7449b5",
+        "qty": 4
+      },
+      {
+        "id": "7358e164-5704-4e78-9b21-6a9bf2a968ce",
+        "qty": 2
+      },
+      {
+        "id": "a88a1c53-7de3-423a-a95a-24ed5666ab96",
+        "qty": 4
+      },
+      {
+        "id": "104095ed-55e3-408e-bf70-4fe06bb16d2f",
+        "qty": 4
+      },
+      {
+        "id": "932708ae-9d5c-4561-aa8b-0d2222d37fdc",
+        "qty": 4
+      },
+      {
+        "id": "c1d0537b-954f-4d3b-b9fe-1dd7ffaa1197",
+        "qty": 4
+      },
+      {
+        "id": "14589b6b-1814-46f9-a364-83cc15dacac2",
+        "qty": 3
+      },
+      {
+        "id": "dade5835-ccaf-45e3-b9a3-46017e0384b3",
+        "qty": 1
+      },
+      {
+        "id": "86e64a29-6ed1-451b-a114-f74341322eeb",
+        "qty": 1
+      },
+      {
+        "id": "698e79ec-c2bc-4973-a095-f3c57b50e39c",
+        "qty": 3
+      },
+      {
+        "id": "ee579a32-a048-4335-b966-231ba731cdea",
+        "qty": 3
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 24
+      },
+      {
+        "id": "4e0b647a-6e1a-421b-bca9-8d5e346bda80",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "c6a2e410-b182-48d1-aeb2-bc8de27e9cd2",
+        "qty": 2
+      },
+      {
+        "id": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
+        "qty": 1
+      },
+      {
+        "id": "dade5835-ccaf-45e3-b9a3-46017e0384b3",
+        "qty": 1
+      },
+      {
+        "id": "759af941-f6a3-4726-91f2-9b1e4e55ea71",
+        "qty": 2
+      },
+      {
+        "id": "d6850616-7db5-4141-9ab0-ae8d1f08114f",
+        "qty": 1
+      },
+      {
+        "id": "86e64a29-6ed1-451b-a114-f74341322eeb",
+        "qty": 1
+      },
+      {
+        "id": "698e79ec-c2bc-4973-a095-f3c57b50e39c",
+        "qty": 1
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 2
+      },
+      {
+        "id": "72cecab3-519e-4a23-9623-b423a5c5a251",
+        "qty": 2
+      },
+      {
+        "id": "b81f041d-98db-4408-9472-c483e4a502bc",
+        "qty": 1
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 1
+      }
+    ],
+    "updated": "2026-01-04T09:45:53",
+    "recordedAt": "2026-01-04T09:45:53",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 80,
+    "sourceDeckId": "PB-171",
+    "englishText": "4 Bottle Gnomes\n2 Cabal Coffers\n4 Corrupt\n4 Crypt Rats\n4 Darkness\n4 Dauthi Slayer\n3 Diabolic Tutor\n1 Ensnaring Bridge\n1 Mind Sludge\n3 Mutilate\n3 Phyrexian Arena\n24 Swamp\n3 Unearth\n\nSideboard\n2 Cremate\n1 Duress\n1 Ensnaring Bridge\n2 Hypnotic Specter\n1 Infest\n1 Mind Sludge\n1 Mutilate\n2 Nevinyrral's Disk\n2 Rain of Tears\n1 Terror\n1 Tormod's Crypt\n",
+    "order": 15
+  },
+  {
+    "id": "pb-169",
+    "name": "白単アグロ",
+    "author": "モガチ",
+    "colors": [
+      "W"
+    ],
+    "archetype": "白単アグロ",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+    "main": [
+      {
+        "id": "e73131cd-b454-405b-9539-9d777e232b9e",
+        "qty": 4
+      },
+      {
+        "id": "e3886fe8-9b76-4613-8891-4ec74657c087",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+        "qty": 4
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 16
+      },
+      {
+        "id": "32599d7c-243b-447b-9d5d-e8e29830ac61",
+        "qty": 4
+      },
+      {
+        "id": "8776d14f-a5a2-4ef3-98d0-e1148e579e4d",
+        "qty": 2
+      },
+      {
+        "id": "8dec6fcf-1254-4b1b-ba23-7a3e492a7241",
+        "qty": 2
+      },
+      {
+        "id": "f8c9cb9f-3a37-4004-9cde-f51ca5579e1a",
+        "qty": 4
+      },
+      {
+        "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+        "qty": 4
+      },
+      {
+        "id": "f3658894-3d3d-4cd4-b0ac-c53e1d08747c",
+        "qty": 2
+      },
+      {
+        "id": "4d27a90b-dae4-48a0-9eb2-e199ff548867",
+        "qty": 4
+      },
+      {
+        "id": "1093fdb6-bd4f-46a8-92e3-5aa46b52bb4f",
+        "qty": 4
+      },
+      {
+        "id": "99f9a4c8-b59f-4a41-8577-6c1e4684b240",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 3
+      },
+      {
+        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "qty": 4
+      },
+      {
+        "id": "71da5acb-78bc-453a-ae28-d22faa5a4e43",
+        "qty": 3
+      },
+      {
+        "id": "b18e773c-611b-4c18-8b2d-8d3a7e5ddc93",
+        "qty": 2
+      },
+      {
+        "id": "1374ac18-01bd-452f-af72-a5f96285ed69",
+        "qty": 3
+      }
+    ],
+    "updated": "2025-12-07T09:20:41",
+    "recordedAt": "2025-12-07T09:20:41",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 79,
+    "sourceDeckId": "PB-169",
+    "englishText": "4 Battle Screech\n4 Glorious Anthem\n4 Mishra's Factory\n4 Paladin en-Vec\n16 Plains\n4 Reconnaissance\n2 Sacred Mesa\n2 Secluded Steppe\n4 Soltari Priest\n4 Soul Warden\n2 Stalking Stones\n4 Starlight Invoker\n4 Weathered Wayfarer\n2 Worship\n\nSideboard\n3 Decree of Justice\n4 Disenchant\n3 Pay No Heed\n2 Sacred Ground\n3 Wall of Essence\n",
+    "order": 16
+  },
+  {
+    "id": "pb-167",
+    "name": "ゴブリン",
+    "author": "MUR",
+    "colors": [
+      "B",
+      "R"
+    ],
+    "archetype": "ゴブリン",
+    "note": "チーム旧枠モダン · 優勝 · アメニティドリーム新宿店",
+    "hero": "d236b3fc-0d3f-4d99-875d-e32a33fe5767",
+    "main": [
+      {
+        "id": "94fac5fe-97d5-4c12-a80c-8efff9d853ae",
+        "qty": 2
+      },
+      {
+        "id": "fc0707c7-d504-4ccf-a0d2-3eb6e26e7a57",
+        "qty": 4
+      },
+      {
+        "id": "20aecb7b-7e37-4efe-ac27-f9f9042203f4",
+        "qty": 2
+      },
+      {
+        "id": "d236b3fc-0d3f-4d99-875d-e32a33fe5767",
+        "qty": 4
+      },
+      {
+        "id": "145737a7-c597-4dec-b752-207c2d0501e3",
+        "qty": 4
+      },
+      {
+        "id": "4d74d12b-1ffb-482f-8bac-635a8d4d32e9",
+        "qty": 4
+      },
+      {
+        "id": "4100e486-0d27-436c-8429-76bc2c1a26ab",
+        "qty": 4
+      },
+      {
+        "id": "39882df0-c20f-469d-94ba-1617224e71a1",
+        "qty": 4
+      },
+      {
+        "id": "7efd5d62-6da2-428a-98e3-5b842f668656",
+        "qty": 4
+      },
+      {
+        "id": "ac6f490b-6cf7-4afc-910e-4c8b51fcb2de",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 11
+      },
+      {
+        "id": "1861e642-21d5-4232-89f3-b5557f2946c1",
+        "qty": 1
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 1
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 2
+      },
+      {
+        "id": "f5c38c01-4a40-469f-91a0-7479daf4e8e7",
+        "qty": 4
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 1
+      },
+      {
+        "id": "4e0b647a-6e1a-421b-bca9-8d5e346bda80",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "d78654fc-7d90-40ce-9c36-a211424d1a88",
+        "qty": 2
+      },
+      {
+        "id": "c6a2e410-b182-48d1-aeb2-bc8de27e9cd2",
+        "qty": 4
+      },
+      {
+        "id": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
+        "qty": 3
+      },
+      {
+        "id": "5fa4607a-6731-4599-80f3-19d6097b4b28",
+        "qty": 2
+      },
+      {
+        "id": "6257c2fd-005f-41e3-8a72-af76df1eb134",
+        "qty": 2
+      },
+      {
+        "id": "50a16634-ebf7-477f-ad6f-23332599f838",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-12-02T03:44:24",
+    "recordedAt": "2025-12-02T03:44:24",
+    "sample": false,
+    "event": "チーム旧枠モダン",
+    "venue": "アメニティドリーム新宿店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 77,
+    "sourceDeckId": "PB-167",
+    "englishText": "2 Blood Moon\n4 Bloodstained Mire\n2 Goblin Grenade\n4 Goblin King\n4 Goblin Matron\n4 Goblin Piledriver\n4 Goblin Ringleader\n4 Goblin Warchief\n4 Mogg Fanatic\n4 Mogg Sentry\n11 Mountain\n1 Phyrexian Tower\n1 Reflecting Pool\n2 Siege-Gang Commander\n4 Sulfurous Springs\n1 Swamp\n4 Unearth\n\nSideboard\n2 Cover of Darkness\n4 Cremate\n3 Duress\n2 Serrated Arrows\n2 Terminate\n2 Vendetta\n",
+    "order": 17
+  },
+  {
+    "id": "pb-165",
+    "name": "赤緑ステロイド",
+    "author": "なおき",
+    "colors": [
+      "R",
+      "G"
+    ],
+    "archetype": "赤緑ステロイド",
+    "note": "チーム旧枠モダン · 優勝 · アメニティドリーム新宿店",
+    "hero": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+    "main": [
+      {
+        "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+        "qty": 4
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 7
+      },
+      {
+        "id": "5748ebf1-24e3-499d-ab7c-c2cebd462a24",
+        "qty": 4
+      },
+      {
+        "id": "102d73bc-94ed-4a57-9872-6f7b9bf282f9",
+        "qty": 2
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 4
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 4
+      },
+      {
+        "id": "fbbc3acb-c917-44ff-ac6f-9dd6ebe3f4ad",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 3
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "9d2d6479-531c-4ce1-b52b-00e36fa63b64",
+        "qty": 4
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 2
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 3
+      },
+      {
+        "id": "6587a463-a108-4854-b6d1-944e89b8c8a4",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "92d6af2f-728e-4e41-87cb-5c90878a2f2f",
+        "qty": 1
+      },
+      {
+        "id": "9a40614b-50a3-422c-849e-53c8b7d3d204",
+        "qty": 2
+      },
+      {
+        "id": "0f1afedd-c60f-454f-b84a-c8117aec0128",
+        "qty": 3
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 2
+      },
+      {
+        "id": "a08189f2-1643-496a-8a91-74864528b4db",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 1
+      }
+    ],
+    "updated": "2025-12-02T03:44:22",
+    "recordedAt": "2025-12-02T03:44:22",
+    "sample": false,
+    "event": "チーム旧枠モダン",
+    "venue": "アメニティドリーム新宿店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 76,
+    "sourceDeckId": "PB-165",
+    "englishText": "4 Birds of Paradise\n4 Call of the Herd\n7 Forest\n4 Giant Growth\n2 Hunting Moa\n4 Incinerate\n4 Karplusan Forest\n4 Kird Ape\n4 Lightning Bolt\n4 Llanowar Elves\n3 Mountain\n1 Pendelhaven\n4 Rancor\n2 Siege-Gang Commander\n3 Treetop Village\n4 Wooded Foothills\n2 Yavimaya Elder\n\nSideboard\n1 Disintegrate\n2 Earthquake\n3 Manabarbs\n2 Naturalize\n2 Spike Feeder\n2 Spreading Algae\n2 Tormod's Crypt\n1 Treetop Village\n",
+    "order": 18
+  },
+  {
+    "id": "pb-164",
+    "name": "白単アグロ",
+    "author": "モガチ",
+    "colors": [
+      "W"
+    ],
+    "archetype": "白単アグロ",
+    "note": "チーム旧枠モダン · 優勝 · アメニティドリーム新宿店",
+    "hero": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+    "main": [
+      {
+        "id": "e73131cd-b454-405b-9539-9d777e232b9e",
+        "qty": 4
+      },
+      {
+        "id": "cabf7953-0fac-4dbb-b3ae-05e85e02b3fc",
+        "qty": 2
+      },
+      {
+        "id": "e3886fe8-9b76-4613-8891-4ec74657c087",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+        "qty": 4
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 16
+      },
+      {
+        "id": "32599d7c-243b-447b-9d5d-e8e29830ac61",
+        "qty": 4
+      },
+      {
+        "id": "8dec6fcf-1254-4b1b-ba23-7a3e492a7241",
+        "qty": 2
+      },
+      {
+        "id": "f8c9cb9f-3a37-4004-9cde-f51ca5579e1a",
+        "qty": 4
+      },
+      {
+        "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+        "qty": 4
+      },
+      {
+        "id": "c77ff526-c0a8-45c7-9730-2e306a0d01b8",
+        "qty": 4
+      },
+      {
+        "id": "1093fdb6-bd4f-46a8-92e3-5aa46b52bb4f",
+        "qty": 4
+      },
+      {
+        "id": "ddb021df-ae4a-4ac1-8353-d0b375761714",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "qty": 4
+      },
+      {
+        "id": "fac4da47-f0b2-4b57-9703-e0ed100d3499",
+        "qty": 4
+      },
+      {
+        "id": "71da5acb-78bc-453a-ae28-d22faa5a4e43",
+        "qty": 4
+      },
+      {
+        "id": "7071aee8-b5ca-4be5-9ba0-2df7e3af303b",
+        "qty": 3
+      }
+    ],
+    "updated": "2025-12-02T03:44:20",
+    "recordedAt": "2025-12-02T03:44:20",
+    "sample": false,
+    "event": "チーム旧枠モダン",
+    "venue": "アメニティドリーム新宿店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 75,
+    "sourceDeckId": "PB-164",
+    "englishText": "4 Battle Screech\n2 Forbidding Watchtower\n4 Glorious Anthem\n4 Mishra's Factory\n4 Paladin en-Vec\n16 Plains\n4 Reconnaissance\n2 Secluded Steppe\n4 Soltari Priest\n4 Soul Warden\n4 Spirit Link\n4 Weathered Wayfarer\n4 White Knight\n\nSideboard\n4 Disenchant\n4 Karma\n4 Pay No Heed\n3 Story Circle\n",
+    "order": 19
+  },
+  {
+    "id": "pb-156",
+    "name": "ゴブリン",
+    "author": "ルル",
+    "colors": [
+      "R"
+    ],
+    "archetype": "ゴブリン",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "d236b3fc-0d3f-4d99-875d-e32a33fe5767",
+    "main": [
+      {
+        "id": "20aecb7b-7e37-4efe-ac27-f9f9042203f4",
+        "qty": 2
+      },
+      {
+        "id": "d236b3fc-0d3f-4d99-875d-e32a33fe5767",
+        "qty": 4
+      },
+      {
+        "id": "145737a7-c597-4dec-b752-207c2d0501e3",
+        "qty": 4
+      },
+      {
+        "id": "4d74d12b-1ffb-482f-8bac-635a8d4d32e9",
+        "qty": 4
+      },
+      {
+        "id": "4100e486-0d27-436c-8429-76bc2c1a26ab",
+        "qty": 4
+      },
+      {
+        "id": "39882df0-c20f-469d-94ba-1617224e71a1",
+        "qty": 4
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 3
+      },
+      {
+        "id": "7efd5d62-6da2-428a-98e3-5b842f668656",
+        "qty": 4
+      },
+      {
+        "id": "b92fc9c1-7264-4894-90b8-a193039489c5",
+        "qty": 2
+      },
+      {
+        "id": "ac6f490b-6cf7-4afc-910e-4c8b51fcb2de",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 12
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 1
+      },
+      {
+        "id": "6587a463-a108-4854-b6d1-944e89b8c8a4",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "94fac5fe-97d5-4c12-a80c-8efff9d853ae",
+        "qty": 3
+      },
+      {
+        "id": "ffa64ac6-fe55-48b8-b015-849982cd7ad8",
+        "qty": 3
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 1
+      },
+      {
+        "id": "13f6f960-ef79-4f2c-8874-90fe9e77099e",
+        "qty": 3
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 1
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-10-05T10:14:34",
+    "recordedAt": "2025-10-05T10:14:34",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 72,
+    "sourceDeckId": "PB-156",
+    "englishText": "2 Goblin Grenade\n4 Goblin King\n4 Goblin Matron\n4 Goblin Piledriver\n4 Goblin Ringleader\n4 Goblin Warchief\n4 Karplusan Forest\n4 Lightning Bolt\n3 Mishra's Factory\n4 Mogg Fanatic\n2 Mogg Flunkies\n4 Mogg Sentry\n12 Mountain\n1 Siege-Gang Commander\n4 Wooded Foothills\n\nSideboard\n3 Blood Moon\n3 Fecundity\n1 Forest\n3 Ground Seal\n2 Naturalize\n1 Siege-Gang Commander\n2 Tormod's Crypt\n",
+    "order": 20
+  },
+  {
+    "id": "pb-146",
+    "name": "赤緑ステロイド",
+    "author": "灰原じょにー",
+    "colors": [
+      "R",
+      "G"
+    ],
+    "archetype": "赤緑ステロイド",
+    "note": "GP群馬 · TOP8 · コミかる高崎店",
+    "hero": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+    "main": [
+      {
+        "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+        "qty": 4
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 3
+      },
+      {
+        "id": "5748ebf1-24e3-499d-ab7c-c2cebd462a24",
+        "qty": 4
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 4
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 4
+      },
+      {
+        "id": "fbbc3acb-c917-44ff-ac6f-9dd6ebe3f4ad",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 4
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "9d2d6479-531c-4ce1-b52b-00e36fa63b64",
+        "qty": 4
+      },
+      {
+        "id": "86187aed-77ce-4b2d-aab0-0a8f807a9451",
+        "qty": 4
+      },
+      {
+        "id": "0c77d37e-791c-415e-b369-55e93147ec34",
+        "qty": 4
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "6587a463-a108-4854-b6d1-944e89b8c8a4",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "94fac5fe-97d5-4c12-a80c-8efff9d853ae",
+        "qty": 3
+      },
+      {
+        "id": "0f1afedd-c60f-454f-b84a-c8117aec0128",
+        "qty": 4
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 4
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-09-15T12:04:18",
+    "recordedAt": "2025-09-15T12:04:18",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "TOP8",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 64,
+    "sourceDeckId": "PB-146",
+    "englishText": "4 Birds of Paradise\n4 Call of the Herd\n3 Forest\n4 Giant Growth\n4 Incinerate\n4 Karplusan Forest\n4 Kird Ape\n4 Lightning Bolt\n4 Llanowar Elves\n4 Mountain\n1 Pendelhaven\n4 Rancor\n4 River Boa\n4 Skizzik\n4 Treetop Village\n4 Wooded Foothills\n\nSideboard\n3 Blood Moon\n4 Manabarbs\n4 Naturalize\n2 Spike Feeder\n2 Tormod's Crypt\n",
+    "order": 21
+  },
+  {
+    "id": "pb-147",
+    "name": "赤黒サクリファイス",
+    "author": "幽体オオヤマネコ",
+    "colors": [
+      "B",
+      "R"
+    ],
+    "archetype": "赤黒サクリファイス",
+    "note": "GP群馬 · TOP4 · コミかる高崎店",
+    "hero": "69aa1ac7-17da-4fc9-a3dc-df8a52841f4a",
+    "main": [
+      {
+        "id": "69aa1ac7-17da-4fc9-a3dc-df8a52841f4a",
+        "qty": 1
+      },
+      {
+        "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+        "qty": 1
+      },
+      {
+        "id": "c1d0537b-954f-4d3b-b9fe-1dd7ffaa1197",
+        "qty": 4
+      },
+      {
+        "id": "9cc02c16-8cf9-4ac7-9475-231c27121968",
+        "qty": 4
+      },
+      {
+        "id": "edad60c6-80de-4033-af1b-a703ac332983",
+        "qty": 1
+      },
+      {
+        "id": "4d6a1391-817a-4ddc-840d-886b138eeb3f",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "1861e642-21d5-4232-89f3-b5557f2946c1",
+        "qty": 2
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "98116aec-2ab1-4bee-b727-9feff6274825",
+        "qty": 4
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 3
+      },
+      {
+        "id": "f5c38c01-4a40-469f-91a0-7479daf4e8e7",
+        "qty": 4
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 4
+      },
+      {
+        "id": "6257c2fd-005f-41e3-8a72-af76df1eb134",
+        "qty": 2
+      },
+      {
+        "id": "139af10d-a3e5-4ade-b876-87324e6c8017",
+        "qty": 4
+      },
+      {
+        "id": "018129dd-f578-4fc9-b6f8-b13ed0c75a8d",
+        "qty": 4
+      },
+      {
+        "id": "240e85d3-e495-4877-8609-4b4056c402f7",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+        "qty": 2
+      },
+      {
+        "id": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
+        "qty": 4
+      },
+      {
+        "id": "6f4ac4a4-53ec-4bc9-8f5c-d4b801d867b2",
+        "qty": 2
+      },
+      {
+        "id": "d2a65ff4-ab82-42f7-9d90-feb29132121e",
+        "qty": 2
+      },
+      {
+        "id": "3abd345a-69a5-486e-ada9-dd1ca0decc28",
+        "qty": 1
+      },
+      {
+        "id": "6257c2fd-005f-41e3-8a72-af76df1eb134",
+        "qty": 1
+      },
+      {
+        "id": "29e13ec1-a239-4217-a2bd-24ff90745ec0",
+        "qty": 3
+      }
+    ],
+    "updated": "2025-09-15T12:04:15",
+    "recordedAt": "2025-09-15T12:04:15",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "TOP4",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 65,
+    "sourceDeckId": "PB-147",
+    "englishText": "1 Bone Shredder\n1 Carrion Feeder\n4 Dauthi Slayer\n4 Ghitu Encampment\n1 Goblin Bombardment\n4 Imperial Recruiter\n4 Lightning Bolt\n4 Mishra's Factory\n4 Nevinyrral's Disk\n2 Phyrexian Tower\n2 Reflecting Pool\n4 Rukh Egg\n3 Siege-Gang Commander\n4 Sulfurous Springs\n4 Swamp\n2 Terminate\n4 Twisted Abomination\n4 Urborg Volcano\n4 Victimize\n\nSideboard\n2 Avalanche Riders\n4 Duress\n2 Grave Pact\n2 Graveborn Muse\n1 Haunting Echoes\n1 Terminate\n3 Withered Wretch\n",
+    "order": 22
+  },
+  {
+    "id": "pb-149",
+    "name": "青赤緑アサルト",
+    "author": "水城",
+    "colors": [
+      "U",
+      "R",
+      "G"
+    ],
+    "archetype": "青赤緑アサルト",
+    "note": "GP群馬 · 優勝 · コミかる高崎店",
+    "hero": "be007706-3da7-4dd3-84db-dbb5d8831bba",
+    "main": [
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 3
+      },
+      {
+        "id": "be007706-3da7-4dd3-84db-dbb5d8831bba",
+        "qty": 1
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 3
+      },
+      {
+        "id": "15afdd88-05fc-4335-8a55-c6ee702f3bef",
+        "qty": 1
+      },
+      {
+        "id": "4d6a1391-817a-4ddc-840d-886b138eeb3f",
+        "qty": 3
+      },
+      {
+        "id": "f6bd2902-7f8b-419e-bbc7-bcab0c1b7e01",
+        "qty": 3
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 4
+      },
+      {
+        "id": "82406175-63b3-4972-be8b-db0e70c908cb",
+        "qty": 1
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 3
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 3
+      },
+      {
+        "id": "8ad4f2fe-6d98-4279-a331-3817d40ae46d",
+        "qty": 2
+      },
+      {
+        "id": "3b629793-0efb-4d60-9d82-38b7b400abfd",
+        "qty": 1
+      },
+      {
+        "id": "9b64c0f4-b917-4a0d-b033-30ab71aab807",
+        "qty": 4
+      },
+      {
+        "id": "0fe16212-66c3-4e45-a641-7391e9b2e304",
+        "qty": 3
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 1
+      },
+      {
+        "id": "2d0c73da-ed8c-44fc-abd9-7c344b1f890d",
+        "qty": 1
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 3
+      },
+      {
+        "id": "74f67dcf-5afb-45aa-8d4b-3cdb23f6f2a1",
+        "qty": 1
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 2
+      },
+      {
+        "id": "7cafc972-a6f5-4cac-a3d3-8a3ae36ffb1e",
+        "qty": 2
+      },
+      {
+        "id": "ef4d5fb3-70a3-433d-a9d3-18b2beb8d79f",
+        "qty": 4
+      },
+      {
+        "id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+        "qty": 2
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
+        "qty": 2
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 2
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "1059f089-2693-4c89-92c5-39fe49beebb3",
+        "qty": 2
+      },
+      {
+        "id": "5fa4607a-6731-4599-80f3-19d6097b4b28",
+        "qty": 2
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 1
+      }
+    ],
+    "updated": "2025-09-15T12:04:13",
+    "recordedAt": "2025-09-15T12:04:13",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 66,
+    "sourceDeckId": "PB-149",
+    "englishText": "3 Fact or Fiction\n1 Fledgling Dragon\n3 Forest\n1 Genesis\n3 Imperial Recruiter\n3 Impulse\n4 Island\n1 Krosan Tusker\n4 Lightning Bolt\n4 Mana Leak\n3 Mountain\n3 Reflecting Pool\n2 Seismic Assault\n1 Shard Phoenix\n4 Shivan Oasis\n3 Shivan Reef\n1 Siege-Gang Commander\n1 Silklash Spider\n3 Treetop Village\n1 Triskelion\n2 Unsummon\n2 Upheaval\n4 Wall of Blossoms\n2 Yavimaya Coast\n2 Yavimaya Elder\n\nSideboard\n2 Hibernation\n2 Hunting Pack\n2 Naturalize\n2 Nimble Mongoose\n2 Serrated Arrows\n4 Spike Feeder\n1 Tormod's Crypt\n",
+    "order": 23
+  },
+  {
+    "id": "pb-150",
+    "name": "赤緑ラヴァ・ストーム",
+    "author": "JIP-JAP",
+    "colors": [
+      "R",
+      "G"
+    ],
+    "archetype": "赤緑ラヴァ・ストーム",
+    "note": "GP群馬 · TOP4 · コミかる高崎店",
+    "hero": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+    "main": [
+      {
+        "id": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+        "qty": 4
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "92d6af2f-728e-4e41-87cb-5c90878a2f2f",
+        "qty": 2
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 4
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 3
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 4
+      },
+      {
+        "id": "e48891e3-30a2-4fc8-a858-cec33c6e4ab5",
+        "qty": 3
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 5
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 1
+      },
+      {
+        "id": "9b64c0f4-b917-4a0d-b033-30ab71aab807",
+        "qty": 2
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 3
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "6587a463-a108-4854-b6d1-944e89b8c8a4",
+        "qty": 1
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 1
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 1
+      },
+      {
+        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
+        "qty": 3
+      },
+      {
+        "id": "463865bc-087e-477b-9e86-84e77f1ad931",
+        "qty": 2
+      },
+      {
+        "id": "2d0c73da-ed8c-44fc-abd9-7c344b1f890d",
+        "qty": 2
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-09-15T12:04:10",
+    "recordedAt": "2025-09-15T12:04:10",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "TOP4",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 67,
+    "sourceDeckId": "PB-150",
+    "englishText": "4 Avalanche Riders\n4 Call of the Herd\n2 Disintegrate\n4 Forest\n3 Hunting Pack\n4 Karplusan Forest\n3 Lava Dart\n4 Lightning Bolt\n4 Mishra's Factory\n5 Mountain\n4 Nevinyrral's Disk\n1 Reflecting Pool\n2 Shivan Oasis\n3 Siege-Gang Commander\n4 Treetop Village\n4 Wall of Roots\n1 Wooded Foothills\n4 Yavimaya Elder\n\nSideboard\n1 Incinerate\n1 Naturalize\n3 Pyroclasm\n2 Seedborn Muse\n2 Silklash Spider\n4 Spike Feeder\n2 Tormod's Crypt\n",
+    "order": 24
+  },
+  {
+    "id": "pb-151",
+    "name": "赤緑ラヴァ・ストーム",
+    "author": "MUR",
+    "colors": [
+      "R",
+      "G"
+    ],
+    "archetype": "赤緑ラヴァ・ストーム",
+    "note": "GP群馬 · TOP8 · コミかる高崎店",
+    "hero": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+    "main": [
+      {
+        "id": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+        "qty": 4
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "92d6af2f-728e-4e41-87cb-5c90878a2f2f",
+        "qty": 2
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 2
+      },
+      {
+        "id": "15afdd88-05fc-4335-8a55-c6ee702f3bef",
+        "qty": 2
+      },
+      {
+        "id": "37445e06-88a1-4e2e-a432-383736c9b977",
+        "qty": 2
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 3
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 4
+      },
+      {
+        "id": "e48891e3-30a2-4fc8-a858-cec33c6e4ab5",
+        "qty": 3
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 5
+      },
+      {
+        "id": "12c03a03-36bf-487e-b8be-e55399525da5",
+        "qty": 4
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 1
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 3
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "6587a463-a108-4854-b6d1-944e89b8c8a4",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "27e9db49-7af7-4bef-ad4c-bf5dfb92030d",
+        "qty": 1
+      },
+      {
+        "id": "4d6a1391-817a-4ddc-840d-886b138eeb3f",
+        "qty": 2
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 3
+      },
+      {
+        "id": "3b629793-0efb-4d60-9d82-38b7b400abfd",
+        "qty": 1
+      },
+      {
+        "id": "2d0c73da-ed8c-44fc-abd9-7c344b1f890d",
+        "qty": 2
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-09-15T12:04:07",
+    "recordedAt": "2025-09-15T12:04:07",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "TOP8",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 68,
+    "sourceDeckId": "PB-151",
+    "englishText": "4 Avalanche Riders\n4 Call of the Herd\n2 Disintegrate\n2 Forest\n2 Genesis\n2 Grim Lavamancer\n3 Hunting Pack\n4 Karplusan Forest\n3 Lava Dart\n4 Lightning Bolt\n4 Mishra's Factory\n5 Mountain\n4 Mulch\n1 Pendelhaven\n1 Reflecting Pool\n3 Siege-Gang Commander\n4 Treetop Village\n4 Wall of Roots\n4 Wooded Foothills\n\nSideboard\n1 Fog\n2 Imperial Recruiter\n2 Naturalize\n3 Nevinyrral's Disk\n1 Shard Phoenix\n2 Silklash Spider\n2 Spike Feeder\n2 Tormod's Crypt\n",
+    "order": 25
+  },
+  {
+    "id": "pb-152",
+    "name": "赤緑ステロイド",
+    "author": "なおき",
+    "colors": [
+      "R",
+      "G"
+    ],
+    "archetype": "赤緑ステロイド",
+    "note": "GP群馬 · 準優勝 · コミかる高崎店",
+    "hero": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+    "main": [
+      {
+        "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+        "qty": 4
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 7
+      },
+      {
+        "id": "5748ebf1-24e3-499d-ab7c-c2cebd462a24",
+        "qty": 4
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 4
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 4
+      },
+      {
+        "id": "fbbc3acb-c917-44ff-ac6f-9dd6ebe3f4ad",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 3
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "9d2d6479-531c-4ce1-b52b-00e36fa63b64",
+        "qty": 4
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 3
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 3
+      },
+      {
+        "id": "6587a463-a108-4854-b6d1-944e89b8c8a4",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "92d6af2f-728e-4e41-87cb-5c90878a2f2f",
+        "qty": 1
+      },
+      {
+        "id": "9a40614b-50a3-422c-849e-53c8b7d3d204",
+        "qty": 2
+      },
+      {
+        "id": "0f1afedd-c60f-454f-b84a-c8117aec0128",
+        "qty": 3
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 2
+      },
+      {
+        "id": "6ffae2fa-511a-45bf-93c4-5d53c85324f5",
+        "qty": 3
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-09-15T12:04:04",
+    "recordedAt": "2025-09-15T12:04:04",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "準優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 69,
+    "sourceDeckId": "PB-152",
+    "englishText": "4 Birds of Paradise\n4 Call of the Herd\n7 Forest\n4 Giant Growth\n4 Incinerate\n4 Karplusan Forest\n4 Kird Ape\n4 Lightning Bolt\n4 Llanowar Elves\n3 Mountain\n1 Pendelhaven\n4 Rancor\n3 Siege-Gang Commander\n3 Treetop Village\n4 Wooded Foothills\n3 Yavimaya Elder\n\nSideboard\n1 Disintegrate\n2 Earthquake\n3 Manabarbs\n2 Naturalize\n2 Spike Feeder\n3 Thunderbolt\n2 Tormod's Crypt\n",
+    "order": 26
+  },
+  {
+    "id": "pb-153",
+    "name": "白単アグロ",
+    "author": "GOTO",
+    "colors": [
+      "W"
+    ],
+    "archetype": "白単アグロ",
+    "note": "GP群馬 · TOP8 · コミかる高崎店",
+    "hero": "26112ba7-2859-4af3-93c3-e62c31177216",
+    "main": [
+      {
+        "id": "e73131cd-b454-405b-9539-9d777e232b9e",
+        "qty": 4
+      },
+      {
+        "id": "cabf7953-0fac-4dbb-b3ae-05e85e02b3fc",
+        "qty": 2
+      },
+      {
+        "id": "e3886fe8-9b76-4613-8891-4ec74657c087",
+        "qty": 4
+      },
+      {
+        "id": "26112ba7-2859-4af3-93c3-e62c31177216",
+        "qty": 4
+      },
+      {
+        "id": "42798e2b-9a5c-4f93-8f77-b7bb7a916d07",
+        "qty": 4
+      },
+      {
+        "id": "94a16609-8529-4301-8a3d-47ced194f7cd",
+        "qty": 3
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "6b8119e9-a9a9-4349-be32-adcb84b8eb79",
+        "qty": 2
+      },
+      {
+        "id": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+        "qty": 2
+      },
+      {
+        "id": "71da5acb-78bc-453a-ae28-d22faa5a4e43",
+        "qty": 2
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 18
+      },
+      {
+        "id": "32599d7c-243b-447b-9d5d-e8e29830ac61",
+        "qty": 3
+      },
+      {
+        "id": "f8c9cb9f-3a37-4004-9cde-f51ca5579e1a",
+        "qty": 4
+      },
+      {
+        "id": "1093fdb6-bd4f-46a8-92e3-5aa46b52bb4f",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 3
+      },
+      {
+        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "qty": 3
+      },
+      {
+        "id": "6b8119e9-a9a9-4349-be32-adcb84b8eb79",
+        "qty": 1
+      },
+      {
+        "id": "71da5acb-78bc-453a-ae28-d22faa5a4e43",
+        "qty": 2
+      },
+      {
+        "id": "5fa4607a-6731-4599-80f3-19d6097b4b28",
+        "qty": 2
+      },
+      {
+        "id": "c77ff526-c0a8-45c7-9730-2e306a0d01b8",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-09-15T12:04:02",
+    "recordedAt": "2025-09-15T12:04:02",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "TOP8",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 70,
+    "sourceDeckId": "PB-153",
+    "englishText": "4 Battle Screech\n2 Forbidding Watchtower\n4 Glorious Anthem\n4 Icatian Javelineers\n4 Infantry Veteran\n3 Master Decoy\n4 Mishra's Factory\n2 Mobilization\n2 Paladin en-Vec\n2 Pay No Heed\n18 Plains\n3 Reconnaissance\n4 Soltari Priest\n4 Weathered Wayfarer\n\nSideboard\n3 Decree of Justice\n3 Disenchant\n1 Mobilization\n2 Pay No Heed\n2 Serrated Arrows\n2 Spirit Link\n2 Tormod's Crypt\n",
+    "order": 27
+  },
+  {
+    "id": "pb-155",
+    "name": "ゴブリン",
+    "author": "Mozzarella",
+    "colors": [
+      "R"
+    ],
+    "archetype": "ゴブリン",
+    "note": "GP群馬 · TOP4 · コミかる高崎店",
+    "hero": "d236b3fc-0d3f-4d99-875d-e32a33fe5767",
+    "main": [
+      {
+        "id": "6225a704-430a-4f56-ad87-0e8d87f285f5",
+        "qty": 2
+      },
+      {
+        "id": "9cc02c16-8cf9-4ac7-9475-231c27121968",
+        "qty": 1
+      },
+      {
+        "id": "20aecb7b-7e37-4efe-ac27-f9f9042203f4",
+        "qty": 3
+      },
+      {
+        "id": "d236b3fc-0d3f-4d99-875d-e32a33fe5767",
+        "qty": 3
+      },
+      {
+        "id": "145737a7-c597-4dec-b752-207c2d0501e3",
+        "qty": 1
+      },
+      {
+        "id": "4d74d12b-1ffb-482f-8bac-635a8d4d32e9",
+        "qty": 4
+      },
+      {
+        "id": "4100e486-0d27-436c-8429-76bc2c1a26ab",
+        "qty": 4
+      },
+      {
+        "id": "39882df0-c20f-469d-94ba-1617224e71a1",
+        "qty": 4
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 1
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 1
+      },
+      {
+        "id": "7efd5d62-6da2-428a-98e3-5b842f668656",
+        "qty": 4
+      },
+      {
+        "id": "b92fc9c1-7264-4894-90b8-a193039489c5",
+        "qty": 4
+      },
+      {
+        "id": "ac6f490b-6cf7-4afc-910e-4c8b51fcb2de",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 18
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 1
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "94fac5fe-97d5-4c12-a80c-8efff9d853ae",
+        "qty": 2
+      },
+      {
+        "id": "9cc02c16-8cf9-4ac7-9475-231c27121968",
+        "qty": 1
+      },
+      {
+        "id": "145737a7-c597-4dec-b752-207c2d0501e3",
+        "qty": 3
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 1
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 1
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 1
+      },
+      {
+        "id": "c18013e4-0b99-44e3-a2b2-027ace68723a",
+        "qty": 1
+      },
+      {
+        "id": "1602f8c7-fe00-4bc9-b4fc-b26b7223ac75",
+        "qty": 2
+      },
+      {
+        "id": "3dc8d15a-3ca7-4d1f-a819-c1b7f947a59e",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 1
+      }
+    ],
+    "updated": "2025-09-15T12:04:00",
+    "recordedAt": "2025-09-15T12:04:00",
+    "sample": false,
+    "event": "GP群馬",
+    "venue": "コミかる高崎店",
+    "result": "TOP4",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 71,
+    "sourceDeckId": "PB-155",
+    "englishText": "2 Cursed Totem\n1 Ghitu Encampment\n3 Goblin Grenade\n3 Goblin King\n1 Goblin Matron\n4 Goblin Piledriver\n4 Goblin Ringleader\n4 Goblin Warchief\n1 Incinerate\n4 Lightning Bolt\n1 Mishra's Factory\n4 Mogg Fanatic\n4 Mogg Flunkies\n4 Mogg Sentry\n18 Mountain\n1 Nevinyrral's Disk\n1 Siege-Gang Commander\n\nSideboard\n2 Blood Moon\n1 Ghitu Encampment\n3 Goblin Matron\n1 Incinerate\n1 Mishra's Factory\n1 Nevinyrral's Disk\n1 Skirk Prospector\n2 Smash\n2 Threaten\n1 Tormod's Crypt\n",
+    "order": 28
+  },
+  {
+    "id": "pb-142",
+    "name": "トリコ・エンジェル",
+    "author": "オザワ",
+    "colors": [
+      "W",
+      "U",
+      "R"
+    ],
+    "archetype": "トリコ・エンジェル",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "37445e06-88a1-4e2e-a432-383736c9b977",
+    "main": [
+      {
+        "id": "6b75b94e-83b7-457e-ac41-7ca90b5a59aa",
+        "qty": 1
+      },
+      {
+        "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+        "qty": 2
+      },
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 1
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "ae92942b-919c-4ea9-b693-85fcef765d5a",
+        "qty": 1
+      },
+      {
+        "id": "f3c7af78-a77d-4134-82a2-a5ce84285a84",
+        "qty": 3
+      },
+      {
+        "id": "0c828f10-4775-492f-9224-1e2814ad2cad",
+        "qty": 2
+      },
+      {
+        "id": "37445e06-88a1-4e2e-a432-383736c9b977",
+        "qty": 2
+      },
+      {
+        "id": "f6bd2902-7f8b-419e-bbc7-bcab0c1b7e01",
+        "qty": 4
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 4
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 3
+      },
+      {
+        "id": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 7
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 1
+      },
+      {
+        "id": "7f221ad6-7ec4-483d-a6b5-1456c95c1cad",
+        "qty": 2
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "f0801029-bcf7-4bdb-84bf-e88dcaa9dc03",
+        "qty": 3
+      },
+      {
+        "id": "0fe16212-66c3-4e45-a641-7391e9b2e304",
+        "qty": 3
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 2
+      },
+      {
+        "id": "318f7f70-e374-40ef-8afb-3389c10461d8",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "7a5a8414-4da4-4dd0-93ae-210d50f4d6f6",
+        "qty": 1
+      },
+      {
+        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "qty": 2
+      },
+      {
+        "id": "4b2e9aa9-6f91-41de-84b6-e9a89be06a53",
+        "qty": 1
+      },
+      {
+        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
+        "qty": 3
+      },
+      {
+        "id": "bb27bfdf-fe8d-45bd-ad62-8118dce06eda",
+        "qty": 1
+      },
+      {
+        "id": "6ffae2fa-511a-45bf-93c4-5d53c85324f5",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "1374ac18-01bd-452f-af72-a5f96285ed69",
+        "qty": 3
+      }
+    ],
+    "updated": "2025-08-29T21:33:01",
+    "recordedAt": "2025-08-29T21:33:01",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 62,
+    "sourceDeckId": "PB-142",
+    "englishText": "1 Battlefield Forge\n2 Coastal Tower\n1 Counterspell\n4 Fact or Fiction\n1 Fire // Ice\n3 Flooded Strand\n2 Gemstone Mine\n2 Grim Lavamancer\n4 Impulse\n4 Incinerate\n3 Island\n4 Lightning Angel\n4 Lightning Bolt\n4 Mana Leak\n7 Mountain\n1 Plains\n2 Psionic Blast\n2 Reflecting Pool\n3 Seal of Removal\n3 Shivan Reef\n2 Siege-Gang Commander\n1 Syncopate\n\nSideboard\n1 Circle of Protection: Black\n2 Disenchant\n1 Dissipate\n3 Pyroclasm\n1 Rewind\n2 Thunderbolt\n2 Tormod's Crypt\n3 Wall of Essence\n",
+    "order": 29
+  },
+  {
+    "id": "pb-131",
+    "name": "赤緑ラヴァ・ストーム",
+    "author": "JIP-JAP",
+    "colors": [
+      "R",
+      "G"
+    ],
+    "archetype": "赤緑ラヴァ・ストーム",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+    "main": [
+      {
+        "id": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+        "qty": 4
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "92d6af2f-728e-4e41-87cb-5c90878a2f2f",
+        "qty": 2
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 4
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 3
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 4
+      },
+      {
+        "id": "e48891e3-30a2-4fc8-a858-cec33c6e4ab5",
+        "qty": 3
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 5
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "9b64c0f4-b917-4a0d-b033-30ab71aab807",
+        "qty": 4
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 3
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "15afdd88-05fc-4335-8a55-c6ee702f3bef",
+        "qty": 2
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 2
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 1
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "43f89524-4b22-4707-9aba-6eb4c01d75dc",
+        "qty": 4
+      }
+    ],
+    "updated": "2025-08-01T20:58:03",
+    "recordedAt": "2025-08-01T20:58:03",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 57,
+    "sourceDeckId": "PB-131",
+    "englishText": "4 Avalanche Riders\n4 Call of the Herd\n2 Disintegrate\n4 Forest\n3 Hunting Pack\n4 Karplusan Forest\n3 Lava Dart\n4 Lightning Bolt\n4 Mishra's Factory\n5 Mountain\n4 Nevinyrral's Disk\n4 Shivan Oasis\n3 Siege-Gang Commander\n4 Treetop Village\n4 Wall of Roots\n4 Yavimaya Elder\n\nSideboard\n2 Genesis\n2 Incinerate\n1 Naturalize\n4 Spike Feeder\n2 Tormod's Crypt\n4 Whirling Dervish\n",
+    "order": 30
+  },
+  {
+    "id": "pb-130",
+    "name": "青緑不可思議",
+    "author": "JIP-JAP",
+    "colors": [
+      "U",
+      "G"
+    ],
+    "archetype": "青緑不可思議",
+    "note": "GP秋葉原 · 優勝 · 秋葉原某所",
+    "hero": "67362406-b1ca-49e2-800d-9050bfe8742a",
+    "main": [
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "0c25f6b1-8fb3-4406-9605-0282d2dbbcec",
+        "qty": 1
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 3
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 3
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 6
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 4
+      },
+      {
+        "id": "67362406-b1ca-49e2-800d-9050bfe8742a",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 1
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 3
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "232284f7-c623-4895-9ab9-8b1a39926830",
+        "qty": 3
+      },
+      {
+        "id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 1
+      },
+      {
+        "id": "bb27bfdf-fe8d-45bd-ad62-8118dce06eda",
+        "qty": 2
+      },
+      {
+        "id": "f0801029-bcf7-4bdb-84bf-e88dcaa9dc03",
+        "qty": 2
+      },
+      {
+        "id": "463865bc-087e-477b-9e86-84e77f1ad931",
+        "qty": 1
+      },
+      {
+        "id": "5fa4607a-6731-4599-80f3-19d6097b4b28",
+        "qty": 2
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 1
+      }
+    ],
+    "updated": "2025-08-01T07:46:13",
+    "recordedAt": "2025-08-01T07:46:13",
+    "sample": false,
+    "event": "GP秋葉原",
+    "venue": "秋葉原某所",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 56,
+    "sourceDeckId": "PB-130",
+    "englishText": "4 Call of the Herd\n4 Fact or Fiction\n1 Faerie Conclave\n3 Forest\n3 Hunting Pack\n6 Island\n4 Mana Leak\n4 Merfolk Looter\n4 Mishra's Factory\n4 Nevinyrral's Disk\n1 Pendelhaven\n1 Reflecting Pool\n4 Treetop Village\n3 Unsummon\n4 Wall of Roots\n3 Wonder\n4 Yavimaya Coast\n3 Yavimaya Elder\n\nSideboard\n1 Naturalize\n2 Rewind\n2 Seal of Removal\n1 Seedborn Muse\n2 Serrated Arrows\n4 Spike Feeder\n2 Tormod's Crypt\n1 Unsummon\n",
+    "order": 31
+  },
+  {
+    "id": "pb-126",
+    "name": "赤緑ラヴァ・ストーム",
+    "author": "MUR",
+    "colors": [
+      "R",
+      "G"
+    ],
+    "archetype": "赤緑ラヴァ・ストーム",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+    "main": [
+      {
+        "id": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+        "qty": 4
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 1
+      },
+      {
+        "id": "15afdd88-05fc-4335-8a55-c6ee702f3bef",
+        "qty": 2
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 3
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 3
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 4
+      },
+      {
+        "id": "e48891e3-30a2-4fc8-a858-cec33c6e4ab5",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 5
+      },
+      {
+        "id": "12c03a03-36bf-487e-b8be-e55399525da5",
+        "qty": 4
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 1
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 3
+      },
+      {
+        "id": "9f8fe514-77ed-41b4-a6f3-c6f095bb97be",
+        "qty": 2
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "6587a463-a108-4854-b6d1-944e89b8c8a4",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 3
+      },
+      {
+        "id": "0b137853-7cb9-424b-8285-12938991eafb",
+        "qty": 3
+      },
+      {
+        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
+        "qty": 3
+      },
+      {
+        "id": "2d0c73da-ed8c-44fc-abd9-7c344b1f890d",
+        "qty": 2
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-07-21T23:18:45",
+    "recordedAt": "2025-07-21T23:18:45",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 54,
+    "sourceDeckId": "PB-126",
+    "englishText": "4 Avalanche Riders\n4 Call of the Herd\n1 Forest\n2 Genesis\n3 Hunting Pack\n3 Incinerate\n4 Karplusan Forest\n4 Lava Dart\n4 Lightning Bolt\n4 Mishra's Factory\n5 Mountain\n4 Mulch\n1 Reflecting Pool\n3 Siege-Gang Commander\n2 Tranquil Thicket\n4 Treetop Village\n4 Wall of Roots\n4 Wooded Foothills\n\nSideboard\n3 Naturalize\n3 Pillage\n3 Pyroclasm\n2 Silklash Spider\n2 Spike Feeder\n2 Tormod's Crypt\n",
+    "order": 32
+  },
+  {
+    "id": "pb-125",
+    "name": "赤緑ステロイド",
+    "author": "アン",
+    "colors": [
+      "R",
+      "G"
+    ],
+    "archetype": "赤緑ステロイド",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+    "main": [
+      {
+        "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+        "qty": 4
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "9a40614b-50a3-422c-849e-53c8b7d3d204",
+        "qty": 2
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 4
+      },
+      {
+        "id": "5748ebf1-24e3-499d-ab7c-c2cebd462a24",
+        "qty": 2
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 4
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 4
+      },
+      {
+        "id": "fbbc3acb-c917-44ff-ac6f-9dd6ebe3f4ad",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+        "qty": 1
+      },
+      {
+        "id": "b5dbb212-0399-475b-a831-921f7c76cdc4",
+        "qty": 4
+      },
+      {
+        "id": "f01efb04-ad2b-46fb-852c-dfb7e523e1b7",
+        "qty": 1
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 6
+      },
+      {
+        "id": "9d2d6479-531c-4ce1-b52b-00e36fa63b64",
+        "qty": 4
+      },
+      {
+        "id": "86187aed-77ce-4b2d-aab0-0a8f807a9451",
+        "qty": 3
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 1
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "6587a463-a108-4854-b6d1-944e89b8c8a4",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "c04dd88f-fb7f-43be-b586-7fc5642073dc",
+        "qty": 2
+      },
+      {
+        "id": "0f1afedd-c60f-454f-b84a-c8117aec0128",
+        "qty": 3
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 3
+      },
+      {
+        "id": "6ffae2fa-511a-45bf-93c4-5d53c85324f5",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "43f89524-4b22-4707-9aba-6eb4c01d75dc",
+        "qty": 3
+      }
+    ],
+    "updated": "2025-07-21T23:14:53",
+    "recordedAt": "2025-07-21T23:14:53",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 53,
+    "sourceDeckId": "PB-125",
+    "englishText": "4 Birds of Paradise\n4 Call of the Herd\n2 Earthquake\n4 Forest\n2 Giant Growth\n4 Incinerate\n4 Karplusan Forest\n4 Kird Ape\n4 Lightning Bolt\n1 Llanowar Elves\n4 Maniacal Rage\n1 Mirri, Cat Warrior\n6 Mountain\n4 Rancor\n3 River Boa\n1 Spike Feeder\n4 Treetop Village\n4 Wooded Foothills\n\nSideboard\n2 Avoid Fate\n3 Manabarbs\n3 Naturalize\n2 Thunderbolt\n2 Tormod's Crypt\n3 Whirling Dervish\n",
+    "order": 33
+  },
+  {
+    "id": "pb-124",
+    "name": "青緑不可思議",
+    "author": "モガチ",
+    "colors": [
+      "U",
+      "G"
+    ],
+    "archetype": "青緑不可思議",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "67362406-b1ca-49e2-800d-9050bfe8742a",
+    "main": [
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 4
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 3
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 6
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 4
+      },
+      {
+        "id": "67362406-b1ca-49e2-800d-9050bfe8742a",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 3
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 3
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "232284f7-c623-4895-9ab9-8b1a39926830",
+        "qty": 3
+      },
+      {
+        "id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "bb27bfdf-fe8d-45bd-ad62-8118dce06eda",
+        "qty": 2
+      },
+      {
+        "id": "f0801029-bcf7-4bdb-84bf-e88dcaa9dc03",
+        "qty": 3
+      },
+      {
+        "id": "463865bc-087e-477b-9e86-84e77f1ad931",
+        "qty": 2
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 3
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 3
+      }
+    ],
+    "updated": "2025-07-21T23:06:56",
+    "recordedAt": "2025-07-21T23:06:56",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 52,
+    "sourceDeckId": "PB-124",
+    "englishText": "4 Call of the Herd\n4 Fact or Fiction\n4 Forest\n3 Hunting Pack\n6 Island\n4 Mana Leak\n4 Merfolk Looter\n4 Mishra's Factory\n3 Nevinyrral's Disk\n1 Pendelhaven\n2 Reflecting Pool\n4 Treetop Village\n3 Unsummon\n4 Wall of Roots\n3 Wonder\n4 Yavimaya Coast\n3 Yavimaya Elder\n\nSideboard\n2 Naturalize\n2 Rewind\n3 Seal of Removal\n2 Seedborn Muse\n3 Spike Feeder\n3 Tormod's Crypt\n",
+    "order": 34
+  },
+  {
+    "id": "pb-086",
+    "name": "白赤緑カーミック・ボンバー",
+    "author": "ばしぇ",
+    "colors": [
+      "W",
+      "R",
+      "G"
+    ],
+    "archetype": "白赤緑カーミック・ボンバー",
+    "note": "GP秋葉原 · 優勝 · 秋葉原某所",
+    "hero": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+    "main": [
+      {
+        "id": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+        "qty": 4
+      },
+      {
+        "id": "48bda7dd-d023-41e8-8c28-e0cfda0d07ca",
+        "qty": 1
+      },
+      {
+        "id": "6b75b94e-83b7-457e-ac41-7ca90b5a59aa",
+        "qty": 4
+      },
+      {
+        "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+        "qty": 3
+      },
+      {
+        "id": "cb479ce1-59e8-4531-9a21-f7c97d334817",
+        "qty": 1
+      },
+      {
+        "id": "5eb8b497-ec9a-4a89-ad29-1ec3ca82da7c",
+        "qty": 2
+      },
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 1
+      },
+      {
+        "id": "4acb6612-54e8-428d-acb6-c7259a5ad6a8",
+        "qty": 3
+      },
+      {
+        "id": "cade8b94-2998-4d23-87bb-9fbdddd19dea",
+        "qty": 2
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 2
+      },
+      {
+        "id": "edad60c6-80de-4033-af1b-a703ac332983",
+        "qty": 4
+      },
+      {
+        "id": "4d6a1391-817a-4ddc-840d-886b138eeb3f",
+        "qty": 3
+      },
+      {
+        "id": "8c31fec9-e4b3-4761-990e-7be38eb05604",
+        "qty": 3
+      },
+      {
+        "id": "bd912666-f37f-4767-af6f-9e6d0fcccacf",
+        "qty": 2
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 3
+      },
+      {
+        "id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+        "qty": 3
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 2
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 2
+      },
+      {
+        "id": "8d4d6806-cb01-49e3-91cc-fb0e7f7a8684",
+        "qty": 2
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 3
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "29737a60-3ebd-40d9-b935-c4f54b90d45d",
+        "qty": 1
+      },
+      {
+        "id": "6587a463-a108-4854-b6d1-944e89b8c8a4",
+        "qty": 1
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 3
+      },
+      {
+        "id": "22ba474e-f6e6-450d-a4cf-0739f0b51079",
+        "qty": 3
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 1
+      },
+      {
+        "id": "4620bfa8-7198-44ae-a162-51a19ca0f555",
+        "qty": 1
+      },
+      {
+        "id": "2d0c73da-ed8c-44fc-abd9-7c344b1f890d",
+        "qty": 1
+      },
+      {
+        "id": "8d4d6806-cb01-49e3-91cc-fb0e7f7a8684",
+        "qty": 1
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 1
+      },
+      {
+        "id": "99f9a4c8-b59f-4a41-8577-6c1e4684b240",
+        "qty": 2
+      },
+      {
+        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-07-21T22:56:25",
+    "recordedAt": "2025-07-21T22:56:25",
+    "sample": false,
+    "event": "GP秋葉原",
+    "venue": "秋葉原某所",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 33,
+    "sourceDeckId": "PB-086",
+    "englishText": "4 Avalanche Riders\n1 Aven Cloudchaser\n4 Battlefield Forge\n3 Birds of Paradise\n1 Blinding Angel\n2 Brushland\n1 Decree of Justice\n3 Eladamri's Call\n2 Elfhame Palace\n2 Forest\n4 Goblin Bombardment\n3 Imperial Recruiter\n3 Karmic Guide\n2 Karplusan Forest\n3 Lightning Bolt\n3 Mountain\n1 Pendelhaven\n2 Plains\n2 Reflecting Pool\n2 Siege-Gang Commander\n2 Thornscape Battlemage\n3 Treetop Village\n4 Wall of Roots\n1 Windswept Heath\n1 Wooded Foothills\n2 Yavimaya Elder\n\nSideboard\n3 Decree of Justice\n3 Defense Grid\n1 Lightning Bolt\n1 Ray of Revelation\n1 Silklash Spider\n1 Thornscape Battlemage\n1 Tormod's Crypt\n2 Worship\n2 Wrath of God\n",
+    "order": 35
+  },
+  {
+    "id": "pb-103",
+    "name": "青緑不可思議",
+    "author": "JIP-JAP",
+    "colors": [
+      "U",
+      "G"
+    ],
+    "archetype": "青緑不可思議",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "67362406-b1ca-49e2-800d-9050bfe8742a",
+    "main": [
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 4
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 3
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 6
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 4
+      },
+      {
+        "id": "67362406-b1ca-49e2-800d-9050bfe8742a",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 3
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 3
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "232284f7-c623-4895-9ab9-8b1a39926830",
+        "qty": 3
+      },
+      {
+        "id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "698c9882-4117-4919-8a19-b1cbffc16692",
+        "qty": 4
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "bb27bfdf-fe8d-45bd-ad62-8118dce06eda",
+        "qty": 2
+      },
+      {
+        "id": "f0801029-bcf7-4bdb-84bf-e88dcaa9dc03",
+        "qty": 2
+      },
+      {
+        "id": "463865bc-087e-477b-9e86-84e77f1ad931",
+        "qty": 1
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-05-25T12:37:13",
+    "recordedAt": "2025-05-25T12:37:13",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 43,
+    "sourceDeckId": "PB-103",
+    "englishText": "4 Call of the Herd\n4 Fact or Fiction\n4 Forest\n3 Hunting Pack\n6 Island\n4 Mana Leak\n4 Merfolk Looter\n4 Mishra's Factory\n3 Nevinyrral's Disk\n1 Pendelhaven\n2 Reflecting Pool\n4 Treetop Village\n3 Unsummon\n4 Wall of Roots\n3 Wonder\n4 Yavimaya Coast\n3 Yavimaya Elder\n\nSideboard\n4 Hunted Wumpus\n2 Naturalize\n2 Rewind\n2 Seal of Removal\n1 Seedborn Muse\n2 Spike Feeder\n2 Tormod's Crypt\n",
+    "order": 36
+  },
+  {
+    "id": "pb-098",
+    "name": "青緑不可思議",
+    "author": "モガチ",
+    "colors": [
+      "U",
+      "G"
+    ],
+    "archetype": "青緑不可思議",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "67362406-b1ca-49e2-800d-9050bfe8742a",
+    "main": [
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 4
+      },
+      {
+        "id": "d3e1848a-c236-4352-a7be-b0b4699af968",
+        "qty": 3
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 6
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 4
+      },
+      {
+        "id": "67362406-b1ca-49e2-800d-9050bfe8742a",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "f70e72e1-9abe-485b-9fea-e8b35352f5b3",
+        "qty": 1
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 1
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 2
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "232284f7-c623-4895-9ab9-8b1a39926830",
+        "qty": 4
+      },
+      {
+        "id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+        "qty": 4
+      },
+      {
+        "id": "7fd4c452-07f2-492c-9c78-d1c6362d9eec",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "fdd94383-b573-439a-8e1c-925af887c5a6",
+        "qty": 1
+      },
+      {
+        "id": "75b2dd64-a2f5-4032-a19f-5b485dc44b16",
+        "qty": 2
+      },
+      {
+        "id": "698c9882-4117-4919-8a19-b1cbffc16692",
+        "qty": 4
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "f0801029-bcf7-4bdb-84bf-e88dcaa9dc03",
+        "qty": 4
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      }
+    ],
+    "updated": "2025-04-26T12:51:00",
+    "recordedAt": "2025-04-26T12:51:00",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 40,
+    "sourceDeckId": "PB-098",
+    "englishText": "4 Call of the Herd\n4 Fact or Fiction\n4 Forest\n3 Hunting Pack\n6 Island\n4 Mana Leak\n4 Merfolk Looter\n4 Mishra's Factory\n4 Nevinyrral's Disk\n1 Pendelhaven\n1 Reflecting Pool\n4 Treetop Village\n2 Unsummon\n4 Wall of Roots\n4 Wonder\n4 Yavimaya Coast\n3 Yavimaya Elder\n\nSideboard\n1 Evacuation\n2 Flash Counter\n4 Hunted Wumpus\n2 Naturalize\n4 Seal of Removal\n2 Tormod's Crypt\n",
+    "order": 37
+  },
+  {
+    "id": "pb-090",
+    "name": "赤黒ミッドレンジ",
+    "author": "アン",
+    "colors": [
+      "B",
+      "R"
+    ],
+    "archetype": "赤黒ミッドレンジ",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "69aa1ac7-17da-4fc9-a3dc-df8a52841f4a",
+    "main": [
+      {
+        "id": "326ba371-124c-4949-a048-3a0c8962e567",
+        "qty": 2
+      },
+      {
+        "id": "69aa1ac7-17da-4fc9-a3dc-df8a52841f4a",
+        "qty": 1
+      },
+      {
+        "id": "c6a2e410-b182-48d1-aeb2-bc8de27e9cd2",
+        "qty": 4
+      },
+      {
+        "id": "9cc02c16-8cf9-4ac7-9475-231c27121968",
+        "qty": 4
+      },
+      {
+        "id": "1a2030cc-d7ee-4059-b2d7-fb95ea8e267b",
+        "qty": 2
+      },
+      {
+        "id": "2a41f61b-a419-4b79-a25f-2506eaf05f55",
+        "qty": 1
+      },
+      {
+        "id": "4d6a1391-817a-4ddc-840d-886b138eeb3f",
+        "qty": 3
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "2f554218-2072-4d9b-b4d4-34f161f1f2a9",
+        "qty": 1
+      },
+      {
+        "id": "40d02b8c-fb0e-4607-855f-49fbcec2e209",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 3
+      },
+      {
+        "id": "3b629793-0efb-4d60-9d82-38b7b400abfd",
+        "qty": 1
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 2
+      },
+      {
+        "id": "f5c38c01-4a40-469f-91a0-7479daf4e8e7",
+        "qty": 4
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 5
+      },
+      {
+        "id": "6257c2fd-005f-41e3-8a72-af76df1eb134",
+        "qty": 2
+      },
+      {
+        "id": "b81f041d-98db-4408-9472-c483e4a502bc",
+        "qty": 1
+      },
+      {
+        "id": "74f67dcf-5afb-45aa-8d4b-3cdb23f6f2a1",
+        "qty": 1
+      },
+      {
+        "id": "4e0b647a-6e1a-421b-bca9-8d5e346bda80",
+        "qty": 2
+      },
+      {
+        "id": "018129dd-f578-4fc9-b6f8-b13ed0c75a8d",
+        "qty": 4
+      },
+      {
+        "id": "29e13ec1-a239-4217-a2bd-24ff90745ec0",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
+        "qty": 3
+      },
+      {
+        "id": "d2a65ff4-ab82-42f7-9d90-feb29132121e",
+        "qty": 3
+      },
+      {
+        "id": "671a8509-3b6e-499c-a744-ff8b3c2b6e6a",
+        "qty": 3
+      },
+      {
+        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
+        "qty": 2
+      },
+      {
+        "id": "749141aa-f6c4-4ad8-b146-406e68ae9b0b",
+        "qty": 3
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 1
+      }
+    ],
+    "updated": "2025-03-16T06:56:56",
+    "recordedAt": "2025-03-16T06:56:56",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 35,
+    "sourceDeckId": "PB-090",
+    "englishText": "2 Barren Moor\n1 Bone Shredder\n4 Cremate\n4 Ghitu Encampment\n2 Gravedigger\n1 Hate Weaver\n3 Imperial Recruiter\n4 Lightning Bolt\n4 Mishra's Factory\n1 Mortivore\n4 Nantuko Shade\n4 Nevinyrral's Disk\n3 Reflecting Pool\n1 Shard Phoenix\n2 Siege-Gang Commander\n4 Sulfurous Springs\n5 Swamp\n2 Terminate\n1 Terror\n1 Triskelion\n2 Unearth\n4 Urborg Volcano\n1 Withered Wretch\n\nSideboard\n3 Duress\n3 Graveborn Muse\n3 Head Games\n2 Pyroclasm\n3 Sengir Vampire\n1 Siege-Gang Commander\n",
+    "order": 38
+  },
+  {
+    "id": "pb-078",
+    "name": "トリコ・エンジェル",
+    "author": "JIP-JAP",
+    "colors": [
+      "W",
+      "U",
+      "R"
+    ],
+    "archetype": "トリコ・エンジェル",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
+    "main": [
+      {
+        "id": "6b75b94e-83b7-457e-ac41-7ca90b5a59aa",
+        "qty": 4
+      },
+      {
+        "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+        "qty": 4
+      },
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 3
+      },
+      {
+        "id": "579cbd92-797f-4cdf-91ed-fca7a523eae5",
+        "qty": 1
+      },
+      {
+        "id": "92d6af2f-728e-4e41-87cb-5c90878a2f2f",
+        "qty": 2
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "0c25f6b1-8fb3-4406-9605-0282d2dbbcec",
+        "qty": 4
+      },
+      {
+        "id": "f3c7af78-a77d-4134-82a2-a5ce84285a84",
+        "qty": 1
+      },
+      {
+        "id": "0c828f10-4775-492f-9224-1e2814ad2cad",
+        "qty": 2
+      },
+      {
+        "id": "f6bd2902-7f8b-419e-bbc7-bcab0c1b7e01",
+        "qty": 4
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 4
+      },
+      {
+        "id": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 3
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "3b629793-0efb-4d60-9d82-38b7b400abfd",
+        "qty": 3
+      },
+      {
+        "id": "0fe16212-66c3-4e45-a641-7391e9b2e304",
+        "qty": 3
+      },
+      {
+        "id": "5b2460a5-6ae5-4cad-ba94-1a9e98e6e4c0",
+        "qty": 1
+      },
+      {
+        "id": "ca9f660b-e07d-4f42-a46e-abd0ca72510c",
+        "qty": 4
+      },
+      {
+        "id": "ac8cc74d-e43b-4118-bba0-dfa8b9c04d45",
+        "qty": 1
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 3
+      },
+      {
+        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "qty": 2
+      },
+      {
+        "id": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+        "qty": 2
+      },
+      {
+        "id": "a503d302-6b12-4d82-9ba6-73efbcb1b1a2",
+        "qty": 2
+      },
+      {
+        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "1374ac18-01bd-452f-af72-a5f96285ed69",
+        "qty": 2
+      }
+    ],
+    "updated": "2024-12-09T11:14:29",
+    "recordedAt": "2024-12-09T11:14:29",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 29,
+    "sourceDeckId": "PB-078",
+    "englishText": "4 Battlefield Forge\n4 Coastal Tower\n3 Counterspell\n1 Deep Analysis\n2 Disintegrate\n4 Fact or Fiction\n4 Faerie Conclave\n1 Flooded Strand\n2 Gemstone Mine\n4 Impulse\n4 Incinerate\n4 Lightning Angel\n4 Lightning Bolt\n3 Mana Leak\n2 Reflecting Pool\n3 Shard Phoenix\n3 Shivan Reef\n1 Snow-Covered Island\n4 Snow-Covered Mountain\n1 Snow-Covered Plains\n2 Unsummon\n\nSideboard\n3 Decree of Justice\n2 Disenchant\n2 Paladin en-Vec\n2 Persuasion\n2 Pyroclasm\n2 Tormod's Crypt\n2 Wall of Essence\n",
+    "order": 39
+  },
+  {
+    "id": "pb-071",
+    "name": "トリコ・エンジェル",
+    "author": "JIP-JAP",
+    "colors": [
+      "W",
+      "U",
+      "R"
+    ],
+    "archetype": "トリコ・エンジェル",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
+    "main": [
+      {
+        "id": "d5ad26cc-2bdb-46b7-b8bf-dd099d5fa09b",
+        "qty": 1
+      },
+      {
+        "id": "6b75b94e-83b7-457e-ac41-7ca90b5a59aa",
+        "qty": 2
+      },
+      {
+        "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+        "qty": 4
+      },
+      {
+        "id": "579cbd92-797f-4cdf-91ed-fca7a523eae5",
+        "qty": 2
+      },
+      {
+        "id": "92d6af2f-728e-4e41-87cb-5c90878a2f2f",
+        "qty": 2
+      },
+      {
+        "id": "4b2e9aa9-6f91-41de-84b6-e9a89be06a53",
+        "qty": 3
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "f3c7af78-a77d-4134-82a2-a5ce84285a84",
+        "qty": 2
+      },
+      {
+        "id": "0c828f10-4775-492f-9224-1e2814ad2cad",
+        "qty": 2
+      },
+      {
+        "id": "9cc02c16-8cf9-4ac7-9475-231c27121968",
+        "qty": 2
+      },
+      {
+        "id": "f6bd2902-7f8b-419e-bbc7-bcab0c1b7e01",
+        "qty": 4
+      },
+      {
+        "id": "d8fd7a34-8418-4e98-b79b-119c4348c667",
+        "qty": 4
+      },
+      {
+        "id": "2be85439-4606-4e1e-8be7-56d9e31f77c4",
+        "qty": 4
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "c39ea5f9-6ec0-4697-897b-779e326754a7",
+        "qty": 1
+      },
+      {
+        "id": "c61fe162-2202-4e56-9ba0-393547f9875f",
+        "qty": 4
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "0fe16212-66c3-4e45-a641-7391e9b2e304",
+        "qty": 4
+      },
+      {
+        "id": "5b2460a5-6ae5-4cad-ba94-1a9e98e6e4c0",
+        "qty": 2
+      },
+      {
+        "id": "ca9f660b-e07d-4f42-a46e-abd0ca72510c",
+        "qty": 3
+      },
+      {
+        "id": "ac8cc74d-e43b-4118-bba0-dfa8b9c04d45",
+        "qty": 1
+      },
+      {
+        "id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+        "qty": 1
+      },
+      {
+        "id": "363f8c66-fe0c-44b9-987d-1d160e3f9c54",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "qty": 3
+      },
+      {
+        "id": "37445e06-88a1-4e2e-a432-383736c9b977",
+        "qty": 2
+      },
+      {
+        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
+        "qty": 2
+      },
+      {
+        "id": "fd8722e1-9c41-4037-ab7e-47e2aa9858a0",
+        "qty": 3
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "1374ac18-01bd-452f-af72-a5f96285ed69",
+        "qty": 3
+      }
+    ],
+    "updated": "2024-10-29T08:12:13",
+    "recordedAt": "2024-10-29T08:12:13",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 28,
+    "sourceDeckId": "PB-071",
+    "englishText": "1 Adarkar Wastes\n2 Battlefield Forge\n4 Coastal Tower\n2 Deep Analysis\n2 Disintegrate\n3 Dissipate\n4 Fact or Fiction\n2 Flooded Strand\n2 Gemstone Mine\n2 Ghitu Encampment\n4 Impulse\n4 Incinerate\n4 Lightning Angel\n4 Lightning Bolt\n1 Mahamoti Djinn\n4 Mana Leak\n2 Reflecting Pool\n4 Shivan Reef\n2 Snow-Covered Island\n3 Snow-Covered Mountain\n1 Snow-Covered Plains\n1 Unsummon\n2 Urza's Rage\n\nSideboard\n3 Disenchant\n2 Grim Lavamancer\n2 Hibernation\n3 Paladin en-Vec\n2 Tormod's Crypt\n3 Wall of Essence\n",
+    "order": 40
+  },
+  {
+    "id": "pb-038",
+    "name": "緑白エンチャントレス",
+    "author": "MUR",
+    "colors": [
+      "W",
+      "G"
+    ],
+    "archetype": "緑白エンチャントレス",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "fe47535e-e50c-49ad-beda-46750d33e6f4",
+    "main": [
+      {
+        "id": "fe47535e-e50c-49ad-beda-46750d33e6f4",
+        "qty": 4
+      },
+      {
+        "id": "5eb8b497-ec9a-4a89-ad29-1ec3ca82da7c",
+        "qty": 4
+      },
+      {
+        "id": "cade8b94-2998-4d23-87bb-9fbdddd19dea",
+        "qty": 4
+      },
+      {
+        "id": "d683024d-8fe7-4509-851b-7655fadc1de7",
+        "qty": 3
+      },
+      {
+        "id": "795b096a-2bce-4588-a2c9-abc5ea40dc0c",
+        "qty": 4
+      },
+      {
+        "id": "cf14d4e5-5965-45ad-97f7-26facf2884b5",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 4
+      },
+      {
+        "id": "13f6f960-ef79-4f2c-8874-90fe9e77099e",
+        "qty": 2
+      },
+      {
+        "id": "e6ccebf4-f4f0-404f-a634-4d751ef9c8aa",
+        "qty": 4
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 3
+      },
+      {
+        "id": "9d2d6479-531c-4ce1-b52b-00e36fa63b64",
+        "qty": 4
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 1
+      },
+      {
+        "id": "a75dbe70-7e3e-446f-9a76-9fbb414f2e7c",
+        "qty": 3
+      },
+      {
+        "id": "c77ff526-c0a8-45c7-9730-2e306a0d01b8",
+        "qty": 4
+      },
+      {
+        "id": "cd98a31b-cc7e-43f9-982e-109ad9850908",
+        "qty": 4
+      },
+      {
+        "id": "29737a60-3ebd-40d9-b935-c4f54b90d45d",
+        "qty": 4
+      },
+      {
+        "id": "495fc654-7986-4d76-9d5c-bc1484e98de2",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "22ba474e-f6e6-450d-a4cf-0739f0b51079",
+        "qty": 3
+      },
+      {
+        "id": "13f6f960-ef79-4f2c-8874-90fe9e77099e",
+        "qty": 2
+      },
+      {
+        "id": "7a7425ba-4478-4bc4-855f-abf947ea4fa2",
+        "qty": 1
+      },
+      {
+        "id": "2f4abc5e-5aad-455e-b1ec-137d7ac4a10c",
+        "qty": 3
+      },
+      {
+        "id": "8776d14f-a5a2-4ef3-98d0-e1148e579e4d",
+        "qty": 2
+      },
+      {
+        "id": "a75dbe70-7e3e-446f-9a76-9fbb414f2e7c",
+        "qty": 1
+      },
+      {
+        "id": "2c275a85-5a15-46cd-a6e7-add63f9b853d",
+        "qty": 3
+      }
+    ],
+    "updated": "2024-09-16T20:53:28.999000",
+    "recordedAt": "2024-09-16T20:53:28.999000",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 11,
+    "sourceDeckId": "PB-038",
+    "englishText": "4 Auratog\n4 Brushland\n4 Elfhame Palace\n3 Emerald Medallion\n4 Enchantress's Presence\n4 Fertile Ground\n4 Forest\n2 Ground Seal\n4 Overgrowth\n3 Plains\n4 Rancor\n1 Reflecting Pool\n3 Seal of Cleansing\n4 Spirit Link\n4 Verduran Enchantress\n4 Windswept Heath\n4 Yavimaya Enchantress\n\nSideboard\n3 Defense Grid\n2 Ground Seal\n1 Lure\n3 Root Maze\n2 Sacred Mesa\n1 Seal of Cleansing\n3 Sterling Grove\n",
+    "order": 41
+  },
+  {
+    "id": "pb-037",
+    "name": "黒単コントロール",
+    "author": "ナビゲ",
+    "colors": [
+      "B"
+    ],
+    "archetype": "黒単コントロール",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "d2a65ff4-ab82-42f7-9d90-feb29132121e",
+    "main": [
+      {
+        "id": "84de4fec-2f38-4293-93d3-b3882c5aac14",
+        "qty": 1
+      },
+      {
+        "id": "7358e164-5704-4e78-9b21-6a9bf2a968ce",
+        "qty": 2
+      },
+      {
+        "id": "a88a1c53-7de3-423a-a95a-24ed5666ab96",
+        "qty": 4
+      },
+      {
+        "id": "14589b6b-1814-46f9-a364-83cc15dacac2",
+        "qty": 1
+      },
+      {
+        "id": "d2a65ff4-ab82-42f7-9d90-feb29132121e",
+        "qty": 3
+      },
+      {
+        "id": "c97361b5-af16-4a7b-af85-a429dbaf4ad2",
+        "qty": 4
+      },
+      {
+        "id": "698e79ec-c2bc-4973-a095-f3c57b50e39c",
+        "qty": 3
+      },
+      {
+        "id": "40d02b8c-fb0e-4607-855f-49fbcec2e209",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 2
+      },
+      {
+        "id": "375932e6-1b3e-48dc-8154-9b664c3add34",
+        "qty": 2
+      },
+      {
+        "id": "ee579a32-a048-4335-b966-231ba731cdea",
+        "qty": 2
+      },
+      {
+        "id": "72cecab3-519e-4a23-9623-b423a5c5a251",
+        "qty": 4
+      },
+      {
+        "id": "acdf9fb0-96eb-4520-bd4b-b6480c7c9b29",
+        "qty": 3
+      },
+      {
+        "id": "8186fd80-015f-470c-9e1c-cbf45764a057",
+        "qty": 1
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 22
+      },
+      {
+        "id": "139af10d-a3e5-4ade-b876-87324e6c8017",
+        "qty": 2
+      }
+    ],
+    "side": [
+      {
+        "id": "e32c0de7-132d-4a39-85fb-da0ed1132878",
+        "qty": 3
+      },
+      {
+        "id": "c6a2e410-b182-48d1-aeb2-bc8de27e9cd2",
+        "qty": 3
+      },
+      {
+        "id": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
+        "qty": 3
+      },
+      {
+        "id": "3abd345a-69a5-486e-ada9-dd1ca0decc28",
+        "qty": 2
+      },
+      {
+        "id": "76c229d2-4bdd-4520-97dd-afb40f8c65ec",
+        "qty": 2
+      },
+      {
+        "id": "698e79ec-c2bc-4973-a095-f3c57b50e39c",
+        "qty": 1
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 1
+      }
+    ],
+    "updated": "2024-09-16T20:53:27",
+    "recordedAt": "2024-09-16T20:53:27",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 10,
+    "sourceDeckId": "PB-037",
+    "englishText": "1 Ambition's Cost\n2 Cabal Coffers\n4 Corrupt\n1 Diabolic Tutor\n3 Graveborn Muse\n4 Mind Stone\n3 Mutilate\n4 Nantuko Shade\n2 Nevinyrral's Disk\n2 Nightmare\n2 Phyrexian Arena\n4 Rain of Tears\n3 Smother\n1 Soul Feast\n22 Swamp\n2 Twisted Abomination\n\nSideboard\n3 Ascendant Evincar\n3 Cremate\n3 Duress\n2 Haunting Echoes\n2 Mindslicer\n1 Mutilate\n1 Nevinyrral's Disk\n",
+    "order": 42
+  },
+  {
+    "id": "pb-041",
+    "name": "赤黒ミッドレンジ",
+    "author": "アン",
+    "colors": [
+      "B",
+      "R"
+    ],
+    "archetype": "赤黒ミッドレンジ",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "69aa1ac7-17da-4fc9-a3dc-df8a52841f4a",
+    "main": [
+      {
+        "id": "326ba371-124c-4949-a048-3a0c8962e567",
+        "qty": 2
+      },
+      {
+        "id": "69aa1ac7-17da-4fc9-a3dc-df8a52841f4a",
+        "qty": 2
+      },
+      {
+        "id": "9cc02c16-8cf9-4ac7-9475-231c27121968",
+        "qty": 4
+      },
+      {
+        "id": "1a2030cc-d7ee-4059-b2d7-fb95ea8e267b",
+        "qty": 2
+      },
+      {
+        "id": "759af941-f6a3-4726-91f2-9b1e4e55ea71",
+        "qty": 3
+      },
+      {
+        "id": "4d6a1391-817a-4ddc-840d-886b138eeb3f",
+        "qty": 3
+      },
+      {
+        "id": "4457ed35-7c10-48c8-9776-456485fdf070",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "2f554218-2072-4d9b-b4d4-34f161f1f2a9",
+        "qty": 2
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 3
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 3
+      },
+      {
+        "id": "acdf9fb0-96eb-4520-bd4b-b6480c7c9b29",
+        "qty": 1
+      },
+      {
+        "id": "f5c38c01-4a40-469f-91a0-7479daf4e8e7",
+        "qty": 4
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 5
+      },
+      {
+        "id": "6257c2fd-005f-41e3-8a72-af76df1eb134",
+        "qty": 1
+      },
+      {
+        "id": "b81f041d-98db-4408-9472-c483e4a502bc",
+        "qty": 1
+      },
+      {
+        "id": "139af10d-a3e5-4ade-b876-87324e6c8017",
+        "qty": 2
+      },
+      {
+        "id": "018129dd-f578-4fc9-b6f8-b13ed0c75a8d",
+        "qty": 4
+      },
+      {
+        "id": "240e85d3-e495-4877-8609-4b4056c402f7",
+        "qty": 1
+      },
+      {
+        "id": "8ffe4986-9e09-4421-ad26-296a4c0df9e4",
+        "qty": 2
+      },
+      {
+        "id": "29e13ec1-a239-4217-a2bd-24ff90745ec0",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "c9048d35-aff7-45ae-ae97-db89397b3e74",
+        "qty": 2
+      },
+      {
+        "id": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
+        "qty": 4
+      },
+      {
+        "id": "d2a65ff4-ab82-42f7-9d90-feb29132121e",
+        "qty": 2
+      },
+      {
+        "id": "3abd345a-69a5-486e-ada9-dd1ca0decc28",
+        "qty": 2
+      },
+      {
+        "id": "676c4cfa-f929-43aa-95cc-df81a596c2a2",
+        "qty": 2
+      },
+      {
+        "id": "e4bcd4ea-e7cd-4471-8f3b-18bb51d3d70c",
+        "qty": 1
+      },
+      {
+        "id": "ddc7f59a-bbb1-4ba1-82c8-6813fd191940",
+        "qty": 1
+      },
+      {
+        "id": "29e13ec1-a239-4217-a2bd-24ff90745ec0",
+        "qty": 1
+      }
+    ],
+    "updated": "2024-09-16T20:53:23",
+    "recordedAt": "2024-09-16T20:53:23",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 13,
+    "sourceDeckId": "PB-041",
+    "englishText": "2 Barren Moor\n2 Bone Shredder\n4 Ghitu Encampment\n2 Gravedigger\n3 Hypnotic Specter\n3 Imperial Recruiter\n4 Lightning Bolt\n4 Mishra's Factory\n2 Mortivore\n4 Nevinyrral's Disk\n3 Reflecting Pool\n3 Siege-Gang Commander\n1 Smother\n4 Sulfurous Springs\n5 Swamp\n1 Terminate\n1 Terror\n2 Twisted Abomination\n4 Urborg Volcano\n1 Victimize\n2 Wall of Bone\n3 Withered Wretch\n\nSideboard\n2 Avalanche Riders\n4 Duress\n2 Graveborn Muse\n2 Haunting Echoes\n2 Persecute\n1 Pyroclasm\n1 Siege-Gang Commander\n1 Withered Wretch\n",
+    "order": 43
+  },
+  {
+    "id": "pb-039",
+    "name": "白黒緑リアニメイト",
+    "author": "ツツミ",
+    "colors": [
+      "W",
+      "B",
+      "G"
+    ],
+    "archetype": "白黒緑リアニメイト",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "107f204c-9fd3-490d-8887-be63d14fc6a4",
+    "main": [
+      {
+        "id": "107f204c-9fd3-490d-8887-be63d14fc6a4",
+        "qty": 2
+      },
+      {
+        "id": "5eb8b497-ec9a-4a89-ad29-1ec3ca82da7c",
+        "qty": 2
+      },
+      {
+        "id": "8203c621-a1a0-4865-8c9a-0d4064c86107",
+        "qty": 3
+      },
+      {
+        "id": "33de01e9-ce5a-42d4-afcb-343cd54a6d80",
+        "qty": 3
+      },
+      {
+        "id": "4acb6612-54e8-428d-acb6-c7259a5ad6a8",
+        "qty": 2
+      },
+      {
+        "id": "cade8b94-2998-4d23-87bb-9fbdddd19dea",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 3
+      },
+      {
+        "id": "15afdd88-05fc-4335-8a55-c6ee702f3bef",
+        "qty": 2
+      },
+      {
+        "id": "8c31fec9-e4b3-4761-990e-7be38eb05604",
+        "qty": 3
+      },
+      {
+        "id": "82406175-63b3-4972-be8b-db0e70c908cb",
+        "qty": 3
+      },
+      {
+        "id": "32116127-cf96-4a1b-8896-a1ebc087b597",
+        "qty": 3
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 2
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 3
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 2
+      },
+      {
+        "id": "acdf9fb0-96eb-4520-bd4b-b6480c7c9b29",
+        "qty": 2
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 3
+      },
+      {
+        "id": "139af10d-a3e5-4ade-b876-87324e6c8017",
+        "qty": 3
+      },
+      {
+        "id": "63c1ac21-e3d8-40c2-8c09-3f31c52992ef",
+        "qty": 4
+      },
+      {
+        "id": "ef4d5fb3-70a3-433d-a9d3-18b2beb8d79f",
+        "qty": 3
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "29737a60-3ebd-40d9-b935-c4f54b90d45d",
+        "qty": 1
+      },
+      {
+        "id": "bb95db4d-5017-4121-bf79-d68476602d8c",
+        "qty": 3
+      }
+    ],
+    "side": [
+      {
+        "id": "d64e9152-ef24-4394-aeb0-9c3befc56549",
+        "qty": 2
+      },
+      {
+        "id": "22ba474e-f6e6-450d-a4cf-0739f0b51079",
+        "qty": 2
+      },
+      {
+        "id": "76c229d2-4bdd-4520-97dd-afb40f8c65ec",
+        "qty": 3
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "4620bfa8-7198-44ae-a162-51a19ca0f555",
+        "qty": 2
+      },
+      {
+        "id": "5b147eab-39dd-4c2a-8f59-d778037788aa",
+        "qty": 2
+      },
+      {
+        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+        "qty": 2
+      }
+    ],
+    "updated": "2024-09-16T20:53:19",
+    "recordedAt": "2024-09-16T20:53:19",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 12,
+    "sourceDeckId": "PB-039",
+    "englishText": "2 Akroma, Angel of Wrath\n2 Brushland\n3 Buried Alive\n3 Caves of Koilos\n2 Eladamri's Call\n4 Elfhame Palace\n3 Forest\n2 Genesis\n3 Karmic Guide\n3 Krosan Tusker\n3 Llanowar Wastes\n2 Nevinyrral's Disk\n3 Plains\n2 Reflecting Pool\n2 Smother\n3 Swamp\n3 Twisted Abomination\n4 Vindicate\n3 Wall of Blossoms\n4 Wall of Roots\n1 Windswept Heath\n3 Zombify\n\nSideboard\n2 Altar of Dementia\n2 Defense Grid\n3 Mindslicer\n2 Naturalize\n2 Ray of Revelation\n2 Spike Feeder\n2 Wrath of God\n",
+    "order": 44
+  },
+  {
+    "id": "pb-042",
+    "name": "黒単コントロール",
+    "author": "JIP-JAP",
+    "colors": [
+      "B"
+    ],
+    "archetype": "黒単コントロール",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "40d02b8c-fb0e-4607-855f-49fbcec2e209",
+    "main": [
+      {
+        "id": "84de4fec-2f38-4293-93d3-b3882c5aac14",
+        "qty": 2
+      },
+      {
+        "id": "7358e164-5704-4e78-9b21-6a9bf2a968ce",
+        "qty": 3
+      },
+      {
+        "id": "a88a1c53-7de3-423a-a95a-24ed5666ab96",
+        "qty": 4
+      },
+      {
+        "id": "14589b6b-1814-46f9-a364-83cc15dacac2",
+        "qty": 2
+      },
+      {
+        "id": "3abd345a-69a5-486e-ada9-dd1ca0decc28",
+        "qty": 1
+      },
+      {
+        "id": "86e64a29-6ed1-451b-a114-f74341322eeb",
+        "qty": 3
+      },
+      {
+        "id": "698e79ec-c2bc-4973-a095-f3c57b50e39c",
+        "qty": 1
+      },
+      {
+        "id": "40d02b8c-fb0e-4607-855f-49fbcec2e209",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "375932e6-1b3e-48dc-8154-9b664c3add34",
+        "qty": 2
+      },
+      {
+        "id": "72cecab3-519e-4a23-9623-b423a5c5a251",
+        "qty": 4
+      },
+      {
+        "id": "acdf9fb0-96eb-4520-bd4b-b6480c7c9b29",
+        "qty": 4
+      },
+      {
+        "id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+        "qty": 23
+      },
+      {
+        "id": "b81f041d-98db-4408-9472-c483e4a502bc",
+        "qty": 2
+      },
+      {
+        "id": "139af10d-a3e5-4ade-b876-87324e6c8017",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
+        "qty": 4
+      },
+      {
+        "id": "d2a65ff4-ab82-42f7-9d90-feb29132121e",
+        "qty": 2
+      },
+      {
+        "id": "3abd345a-69a5-486e-ada9-dd1ca0decc28",
+        "qty": 1
+      },
+      {
+        "id": "698e79ec-c2bc-4973-a095-f3c57b50e39c",
+        "qty": 1
+      },
+      {
+        "id": "676c4cfa-f929-43aa-95cc-df81a596c2a2",
+        "qty": 2
+      },
+      {
+        "id": "b81f041d-98db-4408-9472-c483e4a502bc",
+        "qty": 2
+      },
+      {
+        "id": "29e13ec1-a239-4217-a2bd-24ff90745ec0",
+        "qty": 3
+      }
+    ],
+    "updated": "2024-09-16T20:53:16",
+    "recordedAt": "2024-09-16T20:53:16",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 14,
+    "sourceDeckId": "PB-042",
+    "englishText": "2 Ambition's Cost\n3 Cabal Coffers\n4 Corrupt\n2 Diabolic Tutor\n1 Haunting Echoes\n3 Mind Sludge\n1 Mutilate\n4 Nantuko Shade\n4 Nevinyrral's Disk\n2 Nightmare\n4 Rain of Tears\n4 Smother\n23 Swamp\n2 Terror\n1 Twisted Abomination\n\nSideboard\n4 Duress\n2 Graveborn Muse\n1 Haunting Echoes\n1 Mutilate\n2 Persecute\n2 Terror\n3 Withered Wretch\n",
+    "order": 45
+  },
+  {
+    "id": "pb-031",
+    "name": "緑白ミッドレンジ",
+    "author": "アン",
+    "colors": [
+      "W",
+      "G"
+    ],
+    "archetype": "緑白ミッドレンジ",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "107f204c-9fd3-490d-8887-be63d14fc6a4",
+    "main": [
+      {
+        "id": "107f204c-9fd3-490d-8887-be63d14fc6a4",
+        "qty": 2
+      },
+      {
+        "id": "d64e9152-ef24-4394-aeb0-9c3befc56549",
+        "qty": 1
+      },
+      {
+        "id": "fc2ccab7-cab1-4463-b73d-898070136d74",
+        "qty": 2
+      },
+      {
+        "id": "5eb8b497-ec9a-4a89-ad29-1ec3ca82da7c",
+        "qty": 4
+      },
+      {
+        "id": "ee243f81-f51c-4d9a-a396-f7cef84b46c1",
+        "qty": 4
+      },
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 3
+      },
+      {
+        "id": "cade8b94-2998-4d23-87bb-9fbdddd19dea",
+        "qty": 4
+      },
+      {
+        "id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+        "qty": 2
+      },
+      {
+        "id": "8c31fec9-e4b3-4761-990e-7be38eb05604",
+        "qty": 4
+      },
+      {
+        "id": "82406175-63b3-4972-be8b-db0e70c908cb",
+        "qty": 2
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "12c03a03-36bf-487e-b8be-e55399525da5",
+        "qty": 4
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 3
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 1
+      },
+      {
+        "id": "e6e4a8bd-5c40-4654-8de1-0da9afed90fd",
+        "qty": 1
+      },
+      {
+        "id": "f6f4c684-2915-4a58-9c4b-487387f7cf73",
+        "qty": 2
+      },
+      {
+        "id": "8dec6fcf-1254-4b1b-ba23-7a3e492a7241",
+        "qty": 2
+      },
+      {
+        "id": "b53f216d-1592-4eee-b204-502a805fbc8c",
+        "qty": 4
+      },
+      {
+        "id": "ef4d5fb3-70a3-433d-a9d3-18b2beb8d79f",
+        "qty": 2
+      },
+      {
+        "id": "3a21a6ae-b2f2-4f0c-acfd-5f3e8d63fd2f",
+        "qty": 4
+      },
+      {
+        "id": "29737a60-3ebd-40d9-b935-c4f54b90d45d",
+        "qty": 1
+      },
+      {
+        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+        "qty": 4
+      }
+    ],
+    "side": [
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 1
+      },
+      {
+        "id": "22ba474e-f6e6-450d-a4cf-0739f0b51079",
+        "qty": 2
+      },
+      {
+        "id": "bdb3ca68-ec1f-4e16-81cc-d23f8f52c728",
+        "qty": 2
+      },
+      {
+        "id": "4620bfa8-7198-44ae-a162-51a19ca0f555",
+        "qty": 3
+      },
+      {
+        "id": "8b641cd3-bb08-4f2e-9dad-24f58a9c32e1",
+        "qty": 1
+      },
+      {
+        "id": "8776d14f-a5a2-4ef3-98d0-e1148e579e4d",
+        "qty": 2
+      },
+      {
+        "id": "2d0c73da-ed8c-44fc-abd9-7c344b1f890d",
+        "qty": 2
+      },
+      {
+        "id": "c77ff526-c0a8-45c7-9730-2e306a0d01b8",
+        "qty": 2
+      }
+    ],
+    "updated": "2024-08-28T03:17:58",
+    "recordedAt": "2024-08-28T03:17:58",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "MTG Playbook export",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 8,
+    "sourceDeckId": "PB-031",
+    "englishText": "2 Akroma, Angel of Wrath\n1 Altar of Dementia\n2 Ancestor's Chosen\n4 Brushland\n4 Call of the Herd\n3 Decree of Justice\n4 Elfhame Palace\n2 Forest\n4 Karmic Guide\n2 Krosan Tusker\n4 Mishra's Factory\n4 Mulch\n3 Plains\n1 Reflecting Pool\n1 Regrowth\n2 Rhox\n2 Secluded Steppe\n4 Treetop Village\n2 Wall of Blossoms\n4 Wall of Roots\n1 Windswept Heath\n4 Wrath of God\n\nSideboard\n1 Decree of Justice\n2 Defense Grid\n2 Naturalize\n3 Ray of Revelation\n1 Restock\n2 Sacred Mesa\n2 Silklash Spider\n2 Spirit Link\n",
+    "order": 46
+  },
+  {
+    "id": "txt-999",
+    "name": "青白コントロール",
+    "author": "モガチ",
+    "colors": [
+      "W",
+      "U"
+    ],
+    "archetype": "青白コントロール",
+    "note": "定例大会 · 優勝 · コミかる高崎店",
+    "hero": "fc2ccab7-cab1-4463-b73d-898070136d74",
+    "main": [
+      {
+        "id": "fc2ccab7-cab1-4463-b73d-898070136d74",
+        "qty": 2
+      },
+      {
+        "id": "318f7f70-e374-40ef-8afb-3389c10461d8",
+        "qty": 4
+      },
+      {
+        "id": "cc187110-1148-4090-bbb8-e205694a39f5",
+        "qty": 4
+      },
+      {
+        "id": "dc4a4996-108a-4aac-850f-2d9f76403446",
+        "qty": 2
+      },
+      {
+        "id": "e6fb4f0d-ce49-4913-a2ef-88365e4916cf",
+        "qty": 2
+      },
+      {
+        "id": "4b2e9aa9-6f91-41de-84b6-e9a89be06a53",
+        "qty": 2
+      },
+      {
+        "id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+        "qty": 4
+      },
+      {
+        "id": "67a98359-6f02-4556-ad47-c01b643686d6",
+        "qty": 4
+      },
+      {
+        "id": "96230edf-568a-47dd-b877-9d92aa58fac8",
+        "qty": 4
+      },
+      {
+        "id": "579cbd92-797f-4cdf-91ed-fca7a523eae5",
+        "qty": 3
+      },
+      {
+        "id": "34515b16-c9a4-4f98-8c77-416a7a523407",
+        "qty": 2
+      },
+      {
+        "id": "d5ad26cc-2bdb-46b7-b8bf-dd099d5fa09b",
+        "qty": 4
+      },
+      {
+        "id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+        "qty": 4
+      },
+      {
+        "id": "5963e0ef-e0bc-4611-ad4f-813a4c0eacfb",
+        "qty": 4
+      },
+      {
+        "id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+        "qty": 3
+      },
+      {
+        "id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+        "qty": 3
+      },
+      {
+        "id": "f3c7af78-a77d-4134-82a2-a5ce84285a84",
+        "qty": 3
+      },
+      {
+        "id": "67f43ac6-2a58-4b53-b5d7-0330e2a252e2",
+        "qty": 3
+      },
+      {
+        "id": "0c25f6b1-8fb3-4406-9605-0282d2dbbcec",
+        "qty": 2
+      },
+      {
+        "id": "cabf7953-0fac-4dbb-b3ae-05e85e02b3fc",
+        "qty": 1
+      }
+    ],
+    "side": [
+      {
+        "id": "75e09ac6-d789-4c4d-9aca-845d68f3899f",
+        "qty": 2
+      },
+      {
+        "id": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
+        "qty": 2
+      },
+      {
+        "id": "1573f7f9-672c-421a-b1ac-3d0d8aea59ca",
+        "qty": 2
+      },
+      {
+        "id": "a7e97fa9-4b72-4548-b854-5be5f18a6f1a",
+        "qty": 4
+      },
+      {
+        "id": "75b2dd64-a2f5-4032-a19f-5b485dc44b16",
+        "qty": 1
+      },
+      {
+        "id": "633b541b-e37f-451a-be73-3398e61e0f75",
+        "qty": 2
+      },
+      {
+        "id": "8776d14f-a5a2-4ef3-98d0-e1148e579e4d",
+        "qty": 2
+      }
+    ],
+    "updated": "2024-07-21T00:00:00",
+    "recordedAt": "2024-07-21T00:00:00",
+    "sample": false,
+    "event": "定例大会",
+    "venue": "コミかる高崎店",
+    "result": "優勝",
+    "source": "添付 999_WU Control.txt",
+    "sourceWorkbook": "deckIndex_review.xlsx",
+    "sourceSheet": "deckIndex_results",
+    "sourceRow": 100,
+    "sourceDeckId": "TXT-999",
+    "englishText": "2 Ancestor's Chosen\n4 Syncopate\n4 Counterspell\n2 Boomerang\n2 Last Breath\n2 Dissipate\n4 Fact or Fiction\n4 Decree of Justice\n4 Nevinyrral's Disk\n3 Deep Analysis\n2 Wrath of God\n4 Adarkar Wastes\n4 Coastal Tower\n4 Mishra's Factory\n3 Plains\n3 Island\n3 Flooded Strand\n3 Reflecting Pool\n2 Faerie Conclave\n1 Forbidding Watchtower\n\nSideboard\n2 Windborn Muse\n2 Serra Angel\n2 Tormod's Crypt\n4 Disenchant\n1 Flash Counter\n2 Hibernation\n2 Sacred Mesa\n",
+    "order": 47
   }
 ]

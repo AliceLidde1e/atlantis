@@ -31,7 +31,7 @@ def main():
         assert name in mo
     assert home.count('name="robots" content="noindex,nofollow"') == 1
     assert mo.count('name="robots" content="noindex,nofollow"') == 1
-    assert "掲載デッキはサンプルです。大会の正式案内は未掲載です。" in home
+    assert "大会結果のあるデッキリストを掲載しています。大会の正式案内は未掲載です。" in home
     typography = (SITE / "typography.css").read_text(encoding="utf-8")
     assert all('href="typography.css"' in page for page in (home, mo))
     for font_ref in (name for name in EXPECTED if name.endswith(".woff2")):
@@ -46,10 +46,24 @@ def main():
     ids = {c["id"] for c in cards["cards"]}
     assert len(ids) == len(cards["cards"]) == 1015
     assert ids == set(printings["cards"])
-    assert all(x.get("sample") is True for x in decks + events)
+    assert all(x.get("sample") is True for x in events)
+    card_map = {c["id"]: c for c in cards["cards"]}
+    assert len({d["id"] for d in decks}) == len(decks)
+    for deck in decks:
+        assert deck.get("sample") is False
+        assert all(deck.get(k) for k in ("event", "venue", "result", "author", "source", "sourceDeckId"))
+        assert deck["hero"] in ids
+        assert sum(x["qty"] for x in deck["main"]) >= 60
+        assert sum(x["qty"] for x in deck["side"]) <= 15
+        for zone in ("main", "side"):
+            assert len({x["id"] for x in deck[zone]}) == len(deck[zone])
+            assert all(x["id"] in ids and isinstance(x["qty"], int) and x["qty"] > 0 for x in deck[zone])
+        expected = "\n".join(f'{x["qty"]} {card_map[x["id"]]["name"]}' for x in deck["main"])
+        expected += "\n\nSideboard\n" + "\n".join(f'{x["qty"]} {card_map[x["id"]]["name"]}' for x in deck["side"]) + "\n"
+        assert deck["englishText"] == expected, deck["id"]
     assert all(x.get("id") and x.get("name") for x in decks)
     assert all(x.get("id") and x.get("title") for x in events)
-    print("ATLANTIS Pages package: 1,015 cards, labeled samples, safe file boundary, relative links OK")
+    print("ATLANTIS Pages package: 1,015 cards, tournament-result decks, safe file boundary, relative links OK")
 
 
 if __name__ == "__main__":

@@ -19,7 +19,7 @@ export function cardColorsMatch(card,selected=[],mode='includes'){
 }
 export function cardMatches(c,f){return (!normalize(f.name)||c.nameIndex.includes(normalize(f.name)))&&oracleMatch(c,f.oracle)&&(!normalize(f.keyword)||c.nameIndex.includes(normalize(f.keyword))||c.subtypeIndex.includes(normalize(f.keyword))||oracleMatch(c,f.keyword))&&cardColorsMatch(c,f.colors,f.colorMode)&&(!f.type||c.type.split(' // ').some(v=>(v.split(' — ')[0]||'').split(' ').includes(f.type)))&&(f.min===''||c.mv>=Number(f.min))&&(f.max===''||c.mv<=Number(f.max));}
 export function deckMatches(d,f,cards){
-  if(normalize(f.query)&&!normalize(d.name+' '+d.author).includes(normalize(f.query)))return false;
+  if(normalize(f.query)&&!normalize([d.name,d.author,d.event,d.venue,d.result].filter(Boolean).join(' ')).includes(normalize(f.query)))return false;
   if(!colorsMatch(d.colors,f.colors,f.colorMode)||f.archetype&&d.archetype!==f.archetype)return false;
   const lines=[...d.main,...(f.side?d.side:[])];
   return (f.cards||[]).every(id=>lines.some(line=>line.id===id));
