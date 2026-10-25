@@ -1,6 +1,7 @@
 # ATLANTIS クローズドテスト版
 
 現行の要件・実装状況・引継ぎは [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md) を参照してください。
+次回の変更候補・未実装・反映済みの整理は [docs/NEXT-UPDATE.md](docs/NEXT-UPDATE.md) を参照してください（2026-10-25更新）。
 
 旧枠モダンのカード検索、掲載デッキ検索、大会案内、ブラウザ内のマイデッキ、MOテキスト取込・書出しを備えた静的Webアプリです。`site/` がGitHub Pagesへそのまま配信されます。サーバー、利用者アカウント、書込APIはありません。
 

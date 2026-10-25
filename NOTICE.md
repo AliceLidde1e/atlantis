@@ -4,7 +4,7 @@ ATLANTISは非公式のファンサイトです。ウィザーズ・オブ・ザ
 
 カード情報と画像URLは[Scryfall](https://scryfall.com/)を参照しています。画像ファイルそのものは、このリポジトリには含めていません。
 
-このテスト版は無料です。掲載デッキと大会案内は架空のサンプルであり、実際の大会実績や開催情報を示しません。
+このテスト版は無料です。掲載デッキは提供資料で大会結果を確認できた48件です。正式な大会案内は未掲載で、データ内の大会サンプルは画面に表示しません。
 
 参照：[Wizards of the Coast Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy)、[Scryfall API guidance](https://scryfall.com/docs/faqs/i-m-having-trouble-accessing-the-scryfall-api-or-i-m-blocked-17)。
 
