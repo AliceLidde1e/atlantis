@@ -46,3 +46,7 @@ node --check site/site-bridge-ui.mjs
 ## 開発元
 
 この配信用リポジトリは、ATLANTISの検証用Site checkoutから生成した公開可能な静的ファイルのみを含みます。編集用原稿、取得ログ、Sites固有設定は含みません。元の生成入口は `package-mvp.py` です。
+
+## 掲載データの更新
+
+[単一HTMLのJSONエディター](tools/atlantis-editor.html)を保存して手元で開きます。[掲載・検証・停止・復元の手順](docs/PUBLISHING.md)と[正式リリース準備表](docs/RELEASE-CHECKLIST.md)を参照してください。対象の変更をmainへ反映すると、検証成功後にPagesへ自動配信します。

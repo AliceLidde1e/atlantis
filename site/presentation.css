@@ -1,0 +1,16 @@
+/* 01 BRASS RAIL, from the user-selected scrollbar study. Native scrolling. */
+*{scrollbar-width:auto;scrollbar-color:#c5af82 #091c1c}
+@supports selector(::-webkit-scrollbar){*{scrollbar-color:auto}}
+::-webkit-scrollbar{width:15px;height:15px}
+::-webkit-scrollbar-track{background:#0c1c1c;border-left:1px solid #8b7651;border-right:1px solid #524a3c;box-shadow:inset 0 0 0 3px #152928}
+::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#776448 0%,#ddc997 24%,#9d855e 55%,#dfc995 100%);border:3px solid #0e2422;border-top:1px solid #e7d9b2;border-bottom:1px solid #66563c;min-height:55px;min-width:55px}
+::-webkit-scrollbar-button{height:13px;width:13px;background:#a48d65;border:3px solid #0c1f1d}
+::-webkit-scrollbar-corner{background:#0c1c1c}
+/* Clip only the scan's corner background. Do not zoom/crop printed borders. */
+.printing-image img.card-image,.art img[data-mo-card],.deck-tile img{background:transparent!important;clip-path:inset(0 round 4.75% / 3.4%);border-radius:0!important}
+.result-table-wrap{max-width:100%;overflow:auto;margin-block:16px}
+.result-table{width:100%;border-collapse:collapse;min-width:420px}
+.result-table th,.result-table td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tournament-result{min-width:0}
+#tournament-results{display:grid;gap:20px}
+@media(forced-colors:active){*{scrollbar-color:auto}::-webkit-scrollbar-thumb{background:ButtonText;border-color:Canvas}::-webkit-scrollbar-track{background:Canvas;box-shadow:none}}
