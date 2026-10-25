@@ -11,6 +11,6 @@
 .result-table-wrap{max-width:100%;overflow:auto;margin-block:16px}
 .result-table{width:100%;border-collapse:collapse;min-width:420px}
 .result-table th,.result-table td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
-.tournament-result{min-width:0}
+.tournament-result{min-width:0;overflow-wrap:anywhere}
 #tournament-results{display:grid;gap:20px}
 @media(forced-colors:active){*{scrollbar-color:auto}::-webkit-scrollbar-thumb{background:ButtonText;border-color:Canvas}::-webkit-scrollbar-track{background:Canvas;box-shadow:none}}

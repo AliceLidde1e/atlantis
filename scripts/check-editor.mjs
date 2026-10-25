@@ -9,9 +9,10 @@ const element=id=>{if(!elements.has(id))elements.set(id,{value:'',textContent:''
 const sandbox={console,URL,Blob,Date,Set,Map,JSON,setTimeout:fn=>fn(),confirm:()=>true,document:{getElementById:element,querySelector:()=>null,querySelectorAll:()=>[],createElement:()=>({click(){downloads.push(this.download);}})},window:{addEventListener(){}},testData:{}};
 sandbox.URL=class extends URL{static createObjectURL(){return 'blob:test';}static revokeObjectURL(){}};
 const ctx=vm.createContext(sandbox);vm.runInContext(js,ctx);
+vm.runInContext("download('decks')",ctx);assert.equal(downloads.length,0,'Unloaded empty data must not be exported');
 const load=name=>JSON.parse(readFileSync(new URL('../site/data/'+name+'.json',import.meta.url),'utf8'));
 sandbox.testData={cards:load('cards').cards,events:load('events'),results:load('results'),decks:load('decks')};
-vm.runInContext('Object.assign(state,testData);',ctx);
+vm.runInContext('Object.assign(state,testData);for(const kind of Object.keys(testData))loadedKinds.add(kind);',ctx);
 assert.equal(vm.runInContext('validate().length',ctx),0);
 vm.runInContext("state.tab='events';mark();state.tab='decks';mark();download('events');",ctx);
 assert.equal(vm.runInContext('state.changed',ctx),true,'Saving events must not mark unsaved decks as saved');
