@@ -8,6 +8,14 @@
 ::-webkit-scrollbar-corner{background:#0c1c1c}
 /* Clip only the scan's corner background. Do not zoom/crop printed borders. */
 .printing-image img.card-image,.art img[data-mo-card],.deck-tile img{background:transparent!important;clip-path:inset(0 round 4.75% / 3.4%);border-radius:0!important}
+.printing-image[data-printing-set="lea"] img.card-image,.art img[data-printing-set="lea"],.deck-tile img[data-printing-set="lea"]{clip-path:inset(0 round 9% / 6.46%)}
+.color-B>span{color:#000;-webkit-text-stroke:0;text-shadow:none}
+.input-autocomplete{position:relative;min-width:0;flex:1}
+.input-autocomplete>input{padding-right:32px!important}
+.input-autocomplete .autocomplete-toggle{position:absolute;right:4px;top:4px;bottom:4px;padding:0 6px;border:0;box-shadow:none;background:transparent;color:var(--text);font-family:inherit}
+.autocomplete-options{position:absolute;top:100%;left:0;right:0;z-index:70;max-height:240px;overflow-y:auto;overscroll-behavior:contain;background:#102a2c;border:2px solid #83988a;box-shadow:0 8px 18px #0008;font-size:13px;font-weight:400}
+.autocomplete-options [role="option"]{padding:9px 10px;border-bottom:1px solid #4e635a;cursor:pointer;overflow-wrap:anywhere}
+.autocomplete-options [role="option"]:hover,.autocomplete-options [aria-selected="true"]{background:#385749;color:#efd5a0}
 .result-table-wrap{max-width:100%;overflow:auto;margin-block:16px}
 .result-table{width:100%;border-collapse:collapse;min-width:420px}
 .result-table th,.result-table td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}

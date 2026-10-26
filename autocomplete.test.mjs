@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {filterSuggestions} from './site/autocomplete.mjs';
+const options=[{value:'稲妻',label:'Lightning Bolt'},{value:'Lightning Bolt',label:'稲妻'},{value:'稲妻',label:'Duplicate'},{value:'Black Lotus',label:'ブラック・ロータス'}];
+assert.deepEqual(filterSuggestions(options,'lightning').map(x=>x.value),['稲妻','Lightning Bolt']);
+assert.deepEqual(filterSuggestions(options,'稲妻').map(x=>x.value),['稲妻','Lightning Bolt']);
+assert.deepEqual(filterSuggestions(options,'ＬＩＧＨＴＮＩＮＧ').map(x=>x.value),['稲妻','Lightning Bolt']);
+assert.equal(filterSuggestions(options,'not found').length,0);
+assert.equal(filterSuggestions(options,'',1).length,1);
+assert.equal(filterSuggestions(Array.from({length:2000},(_,i)=>({value:'Card '+i,label:''})),'').length,60);
+assert.equal(filterSuggestions(options,'').length,3);
+console.log('Autocomplete matching: Japanese, English, full-width, deduplication, empty and bounded results OK');

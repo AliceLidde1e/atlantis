@@ -40,6 +40,7 @@ jobs:
       - run: node scripts/build-editor.mjs --check
       - run: node scripts/validate-publishing.mjs
       - run: node publishing.test.mjs
+      - run: node autocomplete.test.mjs
       - run: node scripts/check-editor.mjs
       - run: node scripts/rehearse-publishing.mjs
       - run: python check_site.py

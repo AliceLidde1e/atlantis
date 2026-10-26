@@ -6,7 +6,7 @@ ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
 EXPECTED = {
     ".nojekyll", "index.html", "mo-storage.html", "style.css", "museum.css", "atlantis-logo.svg",
-    "mo-theme.css", "favicon.svg", "app.mjs", "core.mjs", "japanese-names.mjs", "publishing.mjs", "presentation.css", "data/results.json",
+    "mo-theme.css", "favicon.svg", "app.mjs", "core.mjs", "japanese-names.mjs", "publishing.mjs", "autocomplete.mjs", "presentation.css", "data/results.json",
     "site-bridge.mjs", "site-bridge-ui.mjs", "data/cards.json",
     "data/printings.json", "data/decks.json", "data/events.json",
     "typography.css", "fonts/iceberg/iceberg-400.woff2", "fonts/iceberg/OFL.txt",

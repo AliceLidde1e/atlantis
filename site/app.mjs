@@ -1,3 +1,4 @@
+import {attachAutocomplete} from './autocomplete.mjs?v=20261026a';
 import {validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './publishing.mjs?v=20261025a';
 import {normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261024names1';
 
@@ -27,7 +28,7 @@ function cardCaption(c){return c.ja?`${c.ja} / ${c.name}`:c.name+'（日本語�
 function tags(colors){return (colors.length?colors:['C']).map(c=>`<span class="tag">${colorNames[c]}</span>`).join('');}
 function imageMarkup(c,art=false){
  const selection=printingOptions(printings?.cards[c?.id],printingMode),chosen=selection.choices[0],url=art?(chosen?.art||chosen?.image):chosen?.image,cls=art?'art':'card-image',caption=printingCaption(chosen);
- return !url||hideImages?`<div class="${cls} image-failed">${esc(cardName(c))}<br>画像なし・テキストで確認</div>`:`<figure class="printing-image" data-selected-print="${esc(chosen.id)}"><img class="${cls}" src="${esc(url)}" alt="${esc(cardName(c))} — ${esc(caption)}" data-image-card="${esc(c.id)}" data-image-art="${art?'1':'0'}" data-image-index="0" loading="lazy" decoding="async" referrerpolicy="no-referrer"><figcaption><span class="printing-caption">${esc(caption)}</span><span class="printing-fallback" ${selection.reason?'':'hidden'}>${esc(selection.reason)}</span></figcaption></figure>`;
+ return !url||hideImages?`<div class="${cls} image-failed">${esc(cardName(c))}<br>画像なし・テキストで確認</div>`:`<figure class="printing-image" data-selected-print="${esc(chosen.id)}" data-printing-set="${esc(chosen.set)}"><img class="${cls}" src="${esc(url)}" alt="${esc(cardName(c))} — ${esc(caption)}" data-image-card="${esc(c.id)}" data-image-art="${art?'1':'0'}" data-image-index="0" loading="lazy" decoding="async" referrerpolicy="no-referrer"><figcaption><span class="printing-caption">${esc(caption)}</span><span class="printing-fallback" ${selection.reason?'':'hidden'}>${esc(selection.reason)}</span></figcaption></figure>`;
 }
 document.addEventListener('error',e=>{
  const img=e.target;if(img.tagName!=='IMG'||!img.dataset.imageCard)return;
@@ -35,7 +36,7 @@ document.addEventListener('error',e=>{
  if(!figure)return;
  if(next){
   const caption=printingCaption(next),reason=printingFallbackReason(record,printingMode,next,{imageFailed:true});
-  img.dataset.imageIndex=index;figure.dataset.selectedPrint=next.id;
+  img.dataset.imageIndex=index;figure.dataset.selectedPrint=next.id;figure.dataset.printingSet=next.set;
   img.alt=cardName(c)+' — '+caption+' — '+reason;
   figure.querySelector('.printing-caption').textContent=caption;
   const status=figure.querySelector('.printing-fallback');status.textContent=reason;status.hidden=false;
@@ -343,3 +344,5 @@ $('#card-printing-open').onclick=$('#settings-open').onclick;
 $('#menu-open').onclick=()=>$('#menu-dialog').showModal();
 $$('input[name="printing-choice"]').forEach(input=>input.onchange=()=>{$('#printing-mode').value=input.value;$('#printing-mode').dispatchEvent(new Event('change'));$('#settings-dialog').close();});
 for(const id of ['settings-dialog','menu-dialog'])$('#'+id).addEventListener('click',e=>{if(e.target.id===id)$('#'+id).close();});
+
+['card-name','deck-card','deck-query'].forEach(id=>attachAutocomplete($('#'+id)));
