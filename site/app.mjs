@@ -1,5 +1,5 @@
 import {attachAutocomplete} from './autocomplete.mjs?v=20261026a';
-import {validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './publishing.mjs?v=20261025a';
+import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './publishing.mjs?v=20261027b';
 import {groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261027a';
 
 const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
@@ -133,8 +133,12 @@ function openCard(id){
  showDetail(`<div class="detail-top"><div>${imageMarkup(c)}</div><div><h1>${esc(cardName(c))}</h1><p>${esc(c.name)}</p>${c.japaneseNameSource?`<p class="hint">日本語名：${c.japaneseNameMethod==='official correction'?'公式資料に基づき補正':c.japaneseNameMethod==='catalog override'?'API欠落を資料から補完':'Scryfall収録名'} · <a href="${esc(c.japaneseNameSource)}" target="_blank" rel="noopener noreferrer">出典</a></p>`:''}<p>${esc(c.type)}</p><p>サブタイプ：${esc(subtypes(c).flatMap(s=>[s,subtypeNames[s]||'']).filter(Boolean).join(' / ')||'なし')}</p><p>マナ・コスト ${esc(c.manaCost||'なし')} / マナ総量 ${c.mv}</p><h2>Oracle Text</h2><p class="oracle">${esc(c.oracle||'能力テキストなし')}</p><div class="detail-storage"><h2>Add to My Storage</h2><div class="actions"><button type="button" data-build-card="${c.id}" data-build-zone="main" data-detail-count="main">Add to Main (${count('main')})</button><button type="button" data-build-card="${c.id}" data-build-zone="side" data-detail-count="side">Add to Sideboard (${count('side')})</button><button type="button" id="detail-open-storage">My Storage (${count('main')+count('side')})</button></div></div><p class="muted">画像の版はSettingsのPrintingに従います。</p><a data-printing-link href="${esc(printingOptions(printings?.cards[c.id],printingMode).choices[0]?.url||c.url)}" target="_blank" rel="noopener noreferrer">Scryfallで確認</a></div></div><h2>このカードを使う掲載デッキ</h2>${related.length?related.map(d=>`<p><button class="link-button" data-deck="${d.id}">${esc(d.name)}</button> ${d.sample?'<span class="badge">サンプル</span>':''}</p>`).join(''):'<p>掲載デッキには採用例がありません。</p>'}`,'card',id);
 }
 function deckText(d){return d.englishText;}
-function listTable(lines){return groupDeckLines(lines,cardMap).filter(group=>group.lines.length).map(group=>`<section class="deck-card-group" aria-label="${group.label}"><h3>${group.label} ${group.total}枚</h3><table class="deck-table"><tbody>${group.lines.map(l=>{const c=cardMap.get(l.id);return `<tr><td>${l.qty}</td><td><button class="link-button" data-card="${c.id}">${esc(cardName(c))}</button><br><span class="muted">${esc(c.name)}</span></td></tr>`;}).join('')}</tbody></table></section>`).join('');}
-function openDeck(id){const d=decks.find(d=>d.id===id);if(!d)return;showDetail(`<div class="detail-top"><div>${imageMarkup(cardMap.get(d.hero))}</div><div>${d.sample?'<span class="badge">検証用サンプル・実績なし</span>':''}<h1>${esc(d.name)}</h1><p>${esc(d.author)}</p>${d.result?`<p><strong>${esc(d.event)} · ${esc(d.result)}</strong><br>${esc(d.venue)}</p><p class="hint">出典：${esc(d.source)} · ${esc(d.sourceDeckId)}<br>記録日：${esc(d.recordedAt.slice(0,10))}</p>`:''}<div class="tags">${tags(d.colors)}<span class="tag">${esc(d.archetype)}</span></div>${d.sample?'<p class="hint">表示・検索・持ち出しの検証用構成です。大会提出リストや推奨構築ではありません。</p>':''}<div class="actions"><button data-copy="${d.id}">Copy List</button><button data-download="${d.id}">Download List</button></div><p class="hint">実MTGOへの取込は未検証です。</p></div></div><div class="two-col"><div><h2>メイン ${d.main.reduce((s,x)=>s+x.qty,0)}枚</h2>${listTable(d.main)}</div><div><h2>サイド ${d.side.reduce((s,x)=>s+x.qty,0)}枚</h2>${listTable(d.side)}</div></div>${d.sidePlan?`<h2>サイドプラン</h2><p>${esc(d.sidePlan)}</p>`:''}`,'deck',id);}
+function listTable(lines,grouped=true){
+ const table=rows=>`<table class="deck-table"><tbody>${rows.map(l=>{const c=cardMap.get(l.id);return `<tr><td>${l.qty}</td><td><button class="link-button" data-card="${c.id}">${esc(cardName(c))}</button><br><span class="muted">${esc(c.name)}</span></td></tr>`;}).join('')}</tbody></table>`;
+ if(!grouped)return table(lines);
+ return groupDeckLines(lines,cardMap).filter(group=>group.lines.length).map(group=>`<section class="deck-card-group" aria-label="${group.label}"><h3>${group.label} ${group.total}枚</h3>${table(group.lines)}</section>`).join('');
+}
+function openDeck(id){const d=decks.find(d=>d.id===id);if(!d)return;showDetail(`<div class="detail-top"><div>${imageMarkup(cardMap.get(d.hero))}</div><div>${d.sample?'<span class="badge">検証用サンプル・実績なし</span>':''}<h1>${esc(d.name)}</h1><p>${esc(d.author)}</p>${d.result?`<p><strong>${esc(d.event)} · ${esc(d.result)}</strong><br>${esc(d.venue)}</p>${confirmedDeckDate(d)?`<p class="hint">開催日：<time datetime="${confirmedDeckDate(d)}">${confirmedDeckDate(d)}</time></p>`:''}`:''}<div class="tags">${tags(d.colors)}<span class="tag">${esc(d.archetype)}</span></div>${d.sample?'<p class="hint">表示・検索・持ち出しの検証用構成です。大会提出リストや推奨構築ではありません。</p>':''}<div class="actions"><button data-copy="${d.id}">Copy List</button><button data-download="${d.id}">Download List</button></div><p class="hint">実MTGOへの取込は未検証です。</p></div></div><div class="two-col"><div><h2>メイン ${d.main.reduce((s,x)=>s+x.qty,0)}枚</h2>${listTable(d.main)}</div><div><h2>サイド ${d.side.reduce((s,x)=>s+x.qty,0)}枚</h2>${listTable(d.side,false)}</div></div>${d.sidePlan?`<h2>サイドプラン</h2><p>${esc(d.sidePlan)}</p>`:''}`,'deck',id);}
 const parsedDeckCache=new WeakMap();
 function parsedLocalDeck(d){const hit=parsedDeckCache.get(d);if(hit?.map===cardMap&&hit.text===d.text)return hit.value;const value=parseDeck(d.text,cardMap);parsedDeckCache.set(d,{map:cardMap,text:d.text,value});return value;}
 function renderMy(){renderBuilder(); $('#my-count').textContent=local.decks.length;const q=normalize(field('my-query'));const rows=local.decks.filter(d=>normalize(d.name).includes(q)).sort((a,b)=>field('my-sort')==='name'?a.name.localeCompare(b.name,'ja'):b.updated.localeCompare(a.updated));if(storageOk){$('#my-status').textContent=`${rows.length} / ${local.decks.length} 件 · このブラウザだけに保存`;}$('#my-results').innerHTML=rows.map(d=>deckTile(d,{localDeck:true})).join('')||(local.decks.length?empty('条件に合うマイデッキはありません','my'):'<div class="empty"><h2>マイデッキはまだありません</h2><p>保存したデータはこのブラウザだけに残ります。</p><button class="primary" id="empty-new">+ New Deck</button></div>');}
@@ -228,26 +232,28 @@ colorControls('card');colorControls('deck');$('#card-type').innerHTML+=[...Objec
 for(const aside of $$('.filters')){const prefix=aside.querySelector('#card-colors')?'card':'deck';const colors=$('#'+prefix+'-colors');const mode=$('#'+prefix+'-color-mode').closest('label');const basic=document.createElement('div');basic.className='basic-filters';basic.append(colors,mode);const content=document.createElement('div');content.className='filter-body';while(aside.firstChild)content.append(aside.firstChild);aside.append(basic,content);aside.classList.add('collapseable');const b=document.createElement('button');b.type='button';b.className='filter-toggle';b.textContent='Filters';b.setAttribute('aria-expanded','false');b.onclick=()=>{const open=aside.classList.toggle('open');b.setAttribute('aria-expanded',String(open));};aside.insertBefore(b,content);}
 document.addEventListener('compositionstart',()=>composing=true);document.addEventListener('compositionend',()=>composing=false);
 $('#deck-form').onsubmit=e=>{e.preventDefault();searchFor('decks');};$('#card-form').onsubmit=e=>{e.preventDefault();searchFor('cards');};$('#add-card').onclick=addDeckCard;$('#deck-card').onkeydown=e=>{if(e.key==='Enter'&&!e.isComposing&&!composing){e.preventDefault();addDeckCard();}};
-// Cards has a permanent search sidebar on desktop and stacked rows on mobile.
+// Shared permanent search sidebar; stack above results on smaller screens.
 for(const kind of ['decks','cards']){
  const view=$('#view-'+kind),prefix=kind==='decks'?'deck':'card',form=$('#'+prefix+'-form'),filters=view.querySelector('.filters'),toolbar=view.querySelector('.toolbar'),workspace=view.querySelector('.workspace');
- const controls=document.createElement('div');controls.className='search-controls';form.before(controls);
+ const controls=document.createElement('div');controls.className='search-controls search-sidebar '+prefix+'-search-sidebar';form.before(controls);
  const basic=filters.querySelector('.basic-filters'),body=filters.querySelector('.filter-body'),toggle=filters.querySelector('.filter-toggle');
- const colorRow=document.createElement('div');colorRow.className='search-color-row';colorRow.append(basic);
- body.id=prefix+'-filter-body';toggle.setAttribute('aria-controls',body.id);
- if(kind==='decks'){
-  controls.append(form,colorRow,toolbar,filters);toolbar.insertBefore(toggle,toolbar.querySelector('label'));
- }else{
-  const layout=document.createElement('div');layout.className='card-browser';controls.before(layout);layout.append(controls,workspace);
-  controls.classList.add('card-search-sidebar');controls.setAttribute('role','search');controls.setAttribute('aria-label','カード検索と絞り込み');
-  colorRow.append($('#card-sort').closest('label'),toolbar.querySelector('.display'));
-  const help=document.createElement('details');help.className='search-help';const summary=document.createElement('summary');summary.textContent='検索方法';
-  help.append(summary,form.querySelector('.hint'),body.querySelector('.hint'),view.querySelector('.language-help'));
-  body.querySelector('h2').remove();toggle.remove();filters.classList.remove('collapseable');
-  controls.append(form,colorRow,filters,help);filters.append(body);
+ const colorRow=document.createElement('div');colorRow.className='search-color-row';colorRow.append(basic,$('#'+prefix+'-sort').closest('label'));
+ body.id=prefix+'-filter-body';
+ const layout=document.createElement('div');layout.className='card-browser search-browser';controls.before(layout);layout.append(controls,workspace);
+ controls.setAttribute('role','search');controls.setAttribute('aria-label',(kind==='decks'?'デッキ':'カード')+'検索と絞り込み');
+ form.classList.add('card-search');
+ const help=document.createElement('details');help.className='search-help';const summary=document.createElement('summary');summary.textContent='検索方法';help.append(summary);
+ body.querySelector('h2').remove();toggle.remove();filters.classList.remove('collapseable');
+ if(kind==='cards'){
+  colorRow.append(toolbar.querySelector('.display'));
+  help.append(form.querySelector('.hint'),body.querySelector('.hint'),view.querySelector('.language-help'));
   const topPages=document.createElement('div');topPages.id='card-pages-top';topPages.className='pagination card-pagination';topPages.setAttribute('aria-label','検索結果のページ送り（上部）');
-  toolbar.insertBefore(topPages,$('#card-printing-open'));workspace.querySelector('.results-area').prepend(toolbar);
+  toolbar.insertBefore(topPages,$('#card-printing-open'));
+ }else{
+  help.append(body.querySelector('.hint'));
  }
+ controls.append(form,colorRow,filters,help);filters.append(body);
+ workspace.querySelector('.results-area').prepend(toolbar);
 }
 for(const sel of ['#deck-colors input','#deck-color-mode','#deck-archetype','#deck-side','#deck-sort'])$$(sel).forEach(x=>x.addEventListener('change',()=>searchFor('decks')));
 for(const sel of ['#card-colors input','#card-color-mode','#card-type','#card-min','#card-max','#card-sort'])$$(sel).forEach(x=>x.addEventListener('change',()=>searchFor('cards')));

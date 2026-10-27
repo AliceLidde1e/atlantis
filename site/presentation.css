@@ -22,3 +22,14 @@
 .tournament-result{min-width:0;overflow-wrap:anywhere}
 #tournament-results{display:grid;gap:20px}
 @media(forced-colors:active){*{scrollbar-color:auto}::-webkit-scrollbar-thumb{background:ButtonText;border-color:Canvas}::-webkit-scrollbar-track{background:Canvas;box-shadow:none}}
+
+/* File pickers use the same display face as adjacent action buttons. */
+.museum-frame label.file-button{font-family:var(--font-display)}
+.museum-frame #view-my .file-button,.museum-frame #view-my #backup{font-size:14px;font-weight:400;line-height:1.5}
+.museum-frame .deck-search-sidebar .inline{min-width:0}
+.museum-frame .deck-search-sidebar .inline>.input-autocomplete{min-width:0}
+@media(min-width:1024px){.search-browser #deck-results{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:640px) and (max-width:1023px){
+ .museum-frame .deck-search-sidebar .card-search{grid-template-columns:minmax(0,1fr) auto}
+ .museum-frame .deck-search-sidebar .filter-body>fieldset{grid-column:1/-1}
+}

@@ -220,31 +220,31 @@ dialog .dialog-toolbar button:focus-visible,#pool-close:focus-visible{outline:2p
 
 /* Cards: permanent filters to the left; result controls stay above the list. */
 .card-browser{display:grid;grid-template-columns:300px minmax(0,1fr);align-items:start;gap:20px}
-.museum-frame #view-cards>.section-head{position:static}
+.museum-frame :is(#view-cards,#view-decks)>.section-head{position:static}
 .museum-frame .card-browser>.workspace{display:block;min-width:0;margin:0}
-.museum-frame .card-search-sidebar.search-controls{
+.museum-frame .search-sidebar.search-controls{
  position:sticky;top:12px;display:flex;align-items:stretch;gap:14px;
  max-height:calc(100dvh - 24px);overflow-y:auto;overflow-x:hidden;
  padding:14px;background:var(--surface);border:3px double var(--line);
  z-index:1;scrollbar-gutter:stable;
 }
-.museum-frame .card-search-sidebar .card-search{display:grid;grid-template-columns:1fr;gap:10px}
-.museum-frame .card-search-sidebar .search-color-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
-.museum-frame .card-search-sidebar .basic-filters{display:contents}
-.card-search-sidebar #card-colors{grid-column:1/-1}
-.museum-frame .card-search-sidebar .basic-filters>label{min-width:0}
-.museum-frame .card-search-sidebar .display{display:block;grid-column:1/-1;min-height:0;margin:0}
-.museum-frame .card-search-sidebar .filters{display:block;margin:0;padding:0;border:0;background:none}
-.museum-frame .card-search-sidebar .filters .filter-body{
+.museum-frame .search-sidebar .card-search{display:grid;grid-template-columns:1fr;gap:10px}
+.museum-frame .search-sidebar .search-color-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+.museum-frame .search-sidebar .basic-filters{display:contents}
+.search-sidebar :is(#card-colors,#deck-colors){grid-column:1/-1}
+.museum-frame .search-sidebar .basic-filters>label{min-width:0}
+.museum-frame .search-sidebar .display{display:block;grid-column:1/-1;min-height:0;margin:0}
+.museum-frame .search-sidebar .filters{display:block;width:100%;min-width:0;align-self:stretch;margin:0;padding:0;border:0;background:none}
+.museum-frame .search-sidebar .filters .filter-body{
  display:grid;position:static;width:auto;max-height:none;min-height:0;overflow:visible;
  grid-template-columns:1fr;gap:10px;padding:0;border:0;background:none;box-shadow:none;
 }
-.museum-frame .card-search-sidebar label,.museum-frame .card-search-sidebar fieldset{margin:0;min-width:0}
-.museum-frame .card-search-sidebar fieldset{padding:0;border:0}
-.museum-frame .card-search-sidebar input:not([type=checkbox]),.museum-frame .card-search-sidebar select{width:100%;min-width:0}
-.card-search-sidebar .search-help{font-size:12px;border-top:1px solid var(--line);padding-top:10px}
-.card-search-sidebar .search-help summary{cursor:pointer;color:var(--light)}
-.card-search-sidebar .language-help>div{overflow-wrap:anywhere}
+.museum-frame .search-sidebar label,.museum-frame .search-sidebar fieldset{margin:0;min-width:0}
+.museum-frame .search-sidebar fieldset{padding:0;border:0}
+.museum-frame .search-sidebar input:not([type=checkbox]),.museum-frame .search-sidebar select{width:100%;min-width:0}
+.search-sidebar .search-help{font-size:12px;border-top:1px solid var(--line);padding-top:10px}
+.search-sidebar .search-help summary{cursor:pointer;color:var(--light)}
+.search-sidebar .language-help>div{overflow-wrap:anywhere}
 .museum-frame .card-browser .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 12px;padding-bottom:12px}
 .card-browser .toolbar>strong{white-space:nowrap;font-size:12px}
 .card-browser #card-pages-top{flex:1;margin:0;justify-content:center}
@@ -254,12 +254,12 @@ dialog .dialog-toolbar button:focus-visible,#pool-close:focus-visible{outline:2p
 .card-browser #card-printing-open{font-size:12px;padding:6px 10px}
 @media(max-width:1023px){
  .card-browser{display:block}
- .museum-frame .card-search-sidebar.search-controls{position:relative;top:auto;max-height:none;overflow:visible;margin-bottom:16px;scrollbar-gutter:auto}
- .museum-frame .card-search-sidebar .card-search{grid-template-columns:repeat(3,minmax(0,1fr)) auto}
- .museum-frame .card-search-sidebar .search-color-row{display:flex;gap:12px;flex-wrap:wrap}
- .museum-frame .card-search-sidebar .basic-filters{display:flex;align-items:end;gap:12px;flex-wrap:wrap}
- .museum-frame .card-search-sidebar .display{grid-column:auto}
- .museum-frame .card-search-sidebar .filters .filter-body{grid-template-columns:minmax(130px,1fr) minmax(180px,1fr) auto;align-items:end}
+ .museum-frame .search-sidebar.search-controls{position:relative;top:auto;max-height:none;overflow:visible;margin-bottom:16px;scrollbar-gutter:auto}
+ .museum-frame .search-sidebar .card-search{grid-template-columns:repeat(3,minmax(0,1fr)) auto}
+ .museum-frame .search-sidebar .search-color-row{display:flex;gap:12px;flex-wrap:wrap}
+ .museum-frame .search-sidebar .basic-filters{display:flex;align-items:end;gap:12px;flex-wrap:wrap}
+ .museum-frame .search-sidebar .display{grid-column:auto}
+ .museum-frame .search-sidebar .filters .filter-body{grid-template-columns:minmax(130px,1fr) minmax(180px,1fr) auto;align-items:end}
  .card-browser .toolbar>strong{margin-right:auto}
 }
 @media(max-width:639px){
@@ -269,13 +269,13 @@ dialog .dialog-toolbar button:focus-visible,#pool-close:focus-visible{outline:2p
  #detail-body>.detail-top>div:last-child>h1{padding-right:0;min-height:0}
  #detail-body>h1,#detail.has-back #detail-body>h1{padding-right:100px;min-height:94px}
  #detail.has-back #detail-body>.detail-top>div:last-child>h1{padding-right:0}
- .museum-frame .card-search-sidebar.search-controls{padding:10px;gap:12px}
- .museum-frame .card-search-sidebar .card-search{grid-template-columns:1fr}
- .museum-frame .card-search-sidebar .search-color-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
- .museum-frame .card-search-sidebar .basic-filters{display:contents}
- .museum-frame .card-search-sidebar .display{grid-column:1/-1}
- .museum-frame .card-search-sidebar .filters .filter-body{grid-template-columns:1fr}
- .museum-frame .card-search-sidebar input:not([type=checkbox]),.museum-frame .card-search-sidebar select,.museum-frame .card-search-sidebar button{min-height:44px}
+ .museum-frame .search-sidebar.search-controls{padding:10px;gap:12px}
+ .museum-frame .search-sidebar .card-search{grid-template-columns:1fr}
+ .museum-frame .search-sidebar .search-color-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+ .museum-frame .search-sidebar .basic-filters{display:contents}
+ .museum-frame .search-sidebar .display{grid-column:1/-1}
+ .museum-frame .search-sidebar .filters .filter-body{grid-template-columns:1fr}
+ .museum-frame .search-sidebar input:not([type=checkbox]),.museum-frame .search-sidebar select,.museum-frame .search-sidebar button{min-height:44px}
  .card-browser .toolbar{justify-content:space-between}
  .card-browser #card-pages-top{flex-basis:100%;order:1}
  .card-browser #card-printing-open{margin-left:auto;order:2}

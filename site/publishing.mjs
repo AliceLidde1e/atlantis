@@ -22,6 +22,7 @@ export function validatePublishingData({cards=[],events=[],results=[],decks=[]}=
   const p=`decks/${d.id}`;
   for(const key of ['name','author','event','venue','result','source','sourceDeckId','englishText'])if(!text(d[key]))fail(p,`${key}が必要です`);
   if(d.sample!==false)fail(p,'公開デッキはsample:falseにしてください');
+  if(d.heldOn!==undefined&&d.heldOn!==null&&d.heldOn!==''&&!date(d.heldOn))fail(p,'確認済み開催日は実在するYYYY-MM-DD形式です。未確認なら空欄にしてください');
   if(!Array.isArray(d.colors)||d.colors.some(c=>!['W','U','B','R','G'].includes(c))||new Set(d.colors).size!==d.colors.length)fail(p,'色はW,U,B,R,Gの重複しない配列です');
   if(!byId.has(d.hero))fail(p,'代表カードが辞書にありません');
   for(const zone of ['main','side']){
@@ -61,6 +62,10 @@ export function validatePublishingData({cards=[],events=[],results=[],decks=[]}=
  return errors;
 }
 
+export function confirmedDeckDate(deck){
+ const value=deck.heldOn;
+ return typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&!Number.isNaN(Date.parse(value+'T00:00:00Z'))&&new Date(value+'T00:00:00Z').toISOString().slice(0,10)===value?value:'';
+}
 export function renderTournamentResults(results,decks){
  const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const byId=new Map(decks.map(d=>[d.id,d]));

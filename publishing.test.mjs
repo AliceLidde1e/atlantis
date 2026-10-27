@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './site/publishing.mjs';
+import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './site/publishing.mjs';
 const load=x=>JSON.parse(readFileSync(new URL('./site/data/'+x+'.json',import.meta.url),'utf8'));
 const live={cards:load('cards').cards,events:load('events'),results:load('results'),decks:load('decks')};
 assert.deepEqual(validatePublishingData(live),[]);
@@ -28,3 +28,12 @@ assert.equal((renderTournamentResults([privateDeck],valid.decks).match(/data-dec
 assert(renderPublishedDeckResults(valid.decks).includes('&lt;script&gt;'));
 assert.equal(renderPublishedDeckResults(valid.decks,valid.results),'');
 console.log('Publishing: live data, valid results, invalid/unsafe data, top-cut links, escaping and empty state OK');
+
+assert.equal(confirmedDeckDate({recordedAt:'2026-09-19T00:00:00',updated:'2026-09-19T00:00:00'}),'');
+for(const heldOn of [undefined,null,'','2026-02-30','2026-9-1','<script>'])assert.equal(confirmedDeckDate({heldOn}),'');
+for(const heldOn of ['2026-09-19','2024-02-29']){
+ const candidate=structuredClone(valid);candidate.decks[0].heldOn=heldOn;
+ assert.deepEqual(validatePublishingData(candidate),[]);assert.equal(confirmedDeckDate(candidate.decks[0]),heldOn);
+}
+const invalidDate=structuredClone(valid);invalidDate.decks[0].heldOn='2026-02-30';assert(validatePublishingData(invalidDate).some(x=>x.includes('開催日')));
+console.log('Confirmed tournament dates: separate from recorded timestamps, valid dates only, blank/unconfirmed hidden OK');
