@@ -39,3 +39,5 @@ const invalidDate=structuredClone(valid);invalidDate.decks[0].heldOn='2026-02-30
 console.log('Confirmed tournament dates: separate from recorded timestamps, valid dates only, blank/unconfirmed hidden OK');
 
 const recent=renderPublishedDeckResults(Array.from({length:8},(_,i)=>({...deck,id:'recent-'+i,order:7-i})));assert.equal((recent.match(/data-deck=/g)||[]).length,5);assert(recent.indexOf('recent-7')<recent.indexOf('recent-6'));assert(!recent.includes('recent-0'));assert(recent.includes('直近の入賞リスト'));
+
+const illustrated=renderPublishedDeckResults(valid.decks,[],()=>'<figure class="fixture-art"></figure>');assert(illustrated.includes('recent-deck-art'));assert(illustrated.includes('fixture-art'));assert(illustrated.includes('&lt;script&gt;'));

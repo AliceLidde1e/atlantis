@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {prepare,cardMatches,deckMatches,colorsMatch,validateLocalState,createBackup} from './site/core.mjs';
+import {archetypeEnglish,prepare,cardMatches,deckMatches,colorsMatch,validateLocalState,createBackup} from './site/core.mjs';
 const cards=JSON.parse(readFileSync(new URL('./site/data/cards.json',import.meta.url))).cards.map(prepare);
 const filters={name:'',oracle:'',keyword:'',colors:[],colorMode:'includes',type:'',min:'',max:''};
 const artifact=c=>c.type.split(' // ').some(face=>(face.split(' — ')[0]||'').split(' ').includes('Artifact'));
@@ -18,3 +18,5 @@ assert.deepEqual(decks.filter(d=>deckMatches(d,df,new Map())).map(d=>d.id),decks
 const saved={id:'legacy',name:'Deck',text:'1 Island',note:'Existing note',updated:'2026-10-24T00:00:00Z'};
 assert.equal(createBackup(validateLocalState({version:2,decks:[saved],trash:[]}).decks).decks[0].note,saved.note);
 console.log('Search regression: OR colors, colorless, artifacts, Exact, decks, legacy notes OK');
+
+for(const d of decks){assert(archetypeEnglish[d.archetype],`Missing English archetype: ${d.archetype}`);assert(!/[\u3040-\u30ff\u3400-\u9fff]/.test(archetypeEnglish[d.archetype]));}
