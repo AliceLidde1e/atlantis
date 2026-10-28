@@ -3,7 +3,7 @@ import {readFileSync} from 'node:fs';
 import {printingOptions,printingFallbackReason,printingCaption} from './site/core.mjs';
 const snapshot=JSON.parse(readFileSync(new URL('./site/data/printings.json',import.meta.url)));
 const cards=JSON.parse(readFileSync(new URL('./site/data/cards.json',import.meta.url))).cards;
-assert.equal(snapshot.meta.ruleVersion,3);
+assert.equal(snapshot.meta.ruleVersion,2);
 assert.equal(Object.keys(snapshot.cards).length,1015);
 for(const c of cards){
  const record=snapshot.cards[c.id];
@@ -12,7 +12,8 @@ for(const c of cards){
   const selected=printingOptions(record,lang);
   assert(selected.choices.length,`${c.name}/${lang} has no usable candidate`);
   assert.equal(new Set(selected.choices.map(p=>p.id)).size,selected.choices.length);
-  if(lang==='en'){assert.equal(selected.choices[0].regular,true,`${c.name}/${lang} normal printing`);assert(selected.choices[0].finishes.includes('nonfoil'),`${c.name}/${lang} nonfoil printing`);}else if(!selected.choices[0].regular||!selected.choices[0].finishes.includes('nonfoil'))assert(selected.reason,`${c.name}: relaxed finish must be explained`);
+  assert.equal(selected.choices[0].regular,true,`${c.name}/${lang} normal printing`);
+  assert(selected.choices[0].finishes.includes('nonfoil'),`${c.name}/${lang} nonfoil printing`);
  }
 }
 for(const [name,set,number] of [['Beast of Burden','ulg','122'],['Withered Wretch','lgn','86'],['Soul Collector','scg','74']]){
@@ -39,5 +40,3 @@ assert.match(printingOptions(record,'en').reason,/通常・非FOIL版なし/);
 assert.match(printingFallbackReason(record,'en',foil,{imageFailed:true}),/画像取得失敗/);
 assert.equal(printingCaption(ja),'JA ABC #1');
 console.log('Printing selection: all 1,015 cards/languages, known promos, missing images, foil-only and cross-language fallbacks OK');
-
-for(const [name,set] of [['Lightning Bolt','m10'],['Counterspell','mh2']]){const r=snapshot.cards[cards.find(c=>c.name===name).id];assert.equal(r.ja.targetSet,set);assert.equal(printingOptions(r,'ja').choices[0].set,set);}

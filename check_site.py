@@ -46,7 +46,7 @@ def main():
     ids = {c["id"] for c in cards["cards"]}
     assert len(ids) == len(cards["cards"]) == 1015
     assert ids == set(printings["cards"])
-    assert printings["meta"]["ruleVersion"] == 3
+    assert printings["meta"]["ruleVersion"] == 2
     for record in printings["cards"].values():
         assert record["en"]["candidates"] or record["ja"]["candidates"]
         for lang in ("en", "ja"):

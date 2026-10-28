@@ -15,7 +15,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RULE_VERSION = 3
+RULE_VERSION = 2
 FIELDS = ('id oracle_id lang released_at set collector_number promo variation full_art '
           'border_color frame_effects games layout oversized image_status image_uris '
           'card_faces scryfall_uri digital set_type finishes').split()
@@ -50,16 +50,8 @@ def natural(value):
 
 def rank(card, lang):
     date = int(card['released_at'].replace('-', ''))
-    return (tier(card), date,
+    return (tier(card), date if lang == 'en' else -date,
             card['set'], natural(card['collector_number']), card['id'])
-
-
-def modern_set(card):
-    # Sets which introduce cards to Modern; bonus sheets and Masters do not.
-    # Wizards' Modern set list: https://magic.wizards.com/en/formats/modern
-    return (card.get('released_at', '') >= '2003-07-28' and
-            (card.get('set_type') in ('core', 'expansion') or
-             card.get('set') in ('tsb', 'mh1', 'mh2', 'mh3', 'ltr', 'acr')))
 
 
 def compact(card):
@@ -75,23 +67,6 @@ def compact(card):
 
 
 def select(rows, lang, today):
-    if lang == 'ja':
-        eligible_rows = [r for r in rows if eligible(r, today)]
-        modern = [r for r in eligible_rows if modern_set(r)]
-        first = min(modern, key=lambda r: (r['released_at'], r['set'])) if modern else None
-        target_set = first['set'] if first else None
-        same_set = [r for r in eligible_rows if r['set'] == target_set]
-        japanese = sorted((r for r in same_set if r['lang'] == 'ja'), key=lambda r: rank(r, lang))
-        target = compact(japanese[0]) if japanese else None
-        # Try the target set's Japanese image, then its English image, before
-        # relaxing the set. Always retain an actual image of this same card.
-        ordered = sorted(same_set, key=lambda r: (r['lang'] != 'ja', rank(r, lang)))
-        ordered += sorted((r for r in eligible_rows if r['set'] != target_set),
-                          key=lambda r: (r['lang'] != 'ja', rank(r, lang)))
-        images = [compact(r) for r in ordered if compact(r)['image']]
-        return dict(target=target, candidates=images[:4], count=len(japanese),
-                    targetSet=target_set,
-                    status='available' if target else 'target-language-absent')
     options = sorted((r for r in rows if r.get('lang') == lang and eligible(r, today)),
                      key=lambda r: rank(r, lang))
     # Keep the ideal target even if its image is unavailable, so the UI can explain fallback.
