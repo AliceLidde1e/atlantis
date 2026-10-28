@@ -26,7 +26,7 @@ assert.equal(renderTournamentResults([],[]),'');assert.equal(renderTournamentRes
 const privateDeck=structuredClone(result);privateDeck.standings[1].deckId=deck.id;
 assert.equal((renderTournamentResults([privateDeck],valid.decks).match(/data-deck=/g)||[]).length,1);
 assert(renderPublishedDeckResults(valid.decks).includes('&lt;script&gt;'));
-assert.equal(renderPublishedDeckResults(valid.decks,valid.results),'');
+assert(renderPublishedDeckResults(valid.decks,valid.results).includes('data-deck="fixture-deck"'));
 console.log('Publishing: live data, valid results, invalid/unsafe data, top-cut links, escaping and empty state OK');
 
 assert.equal(confirmedDeckDate({recordedAt:'2026-09-19T00:00:00',updated:'2026-09-19T00:00:00'}),'');
@@ -37,3 +37,5 @@ for(const heldOn of ['2026-09-19','2024-02-29']){
 }
 const invalidDate=structuredClone(valid);invalidDate.decks[0].heldOn='2026-02-30';assert(validatePublishingData(invalidDate).some(x=>x.includes('開催日')));
 console.log('Confirmed tournament dates: separate from recorded timestamps, valid dates only, blank/unconfirmed hidden OK');
+
+const recent=renderPublishedDeckResults(Array.from({length:8},(_,i)=>({...deck,id:'recent-'+i,order:7-i})));assert.equal((recent.match(/data-deck=/g)||[]).length,5);assert(recent.indexOf('recent-7')<recent.indexOf('recent-6'));assert(!recent.includes('recent-0'));assert(recent.includes('直近の入賞リスト'));

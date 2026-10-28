@@ -1,6 +1,6 @@
 import {attachAutocomplete} from './autocomplete.mjs?v=20261026a';
-import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './publishing.mjs?v=20261027b';
-import {groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261027a';
+import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './publishing.mjs?v=20261028a';
+import {groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261028a';
 
 const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -40,7 +40,7 @@ document.addEventListener('error',e=>{
   img.alt=cardName(c)+' — '+caption+' — '+reason;
   figure.querySelector('.printing-caption').textContent=caption;
   const status=figure.querySelector('.printing-fallback');status.textContent=reason;status.hidden=false;
-  const card=figure.closest('.card');if(card){const meta=card.querySelector('.list-printing-meta');if(meta)meta.textContent=caption;const tileMeta=card.querySelector('.card-tile-meta');if(tileMeta)tileMeta.textContent=c.type+' · '+next.set.toUpperCase();const note=card.querySelector('.card-fallback');if(note){note.textContent=reason;note.hidden=false;}}
+  const card=figure.closest('.card');if(card){const meta=card.querySelector('.card-set');if(meta)meta.textContent=next.set.toUpperCase();const note=card.querySelector('.card-fallback');if(note){note.textContent=reason;note.hidden=false;}}
   const link=figure.closest('.detail-top')?.querySelector('[data-printing-link]');if(link)link.href=next.url;
   img.src=img.dataset.imageArt==='1'?(next.art||next.image):next.image;return;
  }
@@ -88,7 +88,7 @@ function renderCards(){
  const result=cards.filter(c=>cardMatches(c,f));result.sort((a,b)=>field('card-sort')==='mana'?a.mv-b.mv||cardName(a).localeCompare(cardName(b),'ja'):cardName(a).localeCompare(cardName(b),'ja'));
  const pages=Math.max(1,Math.ceil(result.length/pageSize));cardPage=Math.min(cardPage,pages);$('#card-result-count').textContent=`${result.length.toLocaleString()} / ${cards.length.toLocaleString()} 件`;
  const list=field('card-display')==='list';$('#card-results').className=list?'card-list':'card-grid';
- $('#card-results').innerHTML=result.slice((cardPage-1)*pageSize,cardPage*pageSize).map(c=>`<article class="card"><button type="button" class="card-image-button" data-card="${c.id}" aria-label="${esc(cardName(c))} — Card Details">${imageMarkup(c)}</button><div>${list?`<p class="list-printing-meta">${esc((()=>{const p=printingOptions(printings?.cards[c.id],printingMode).choices[0];return p?`${p.lang.toUpperCase()} ${p.set.toUpperCase()} #${p.number}`:'';})())}</p>`:''}<h3><button data-card="${c.id}">${esc(cardName(c))}</button></h3><p class="muted">${esc(c.name)}</p><p class="card-fallback" ${printingOptions(printings?.cards[c.id],printingMode).reason?'':'hidden'}>${esc(printingOptions(printings?.cards[c.id],printingMode).reason)}</p><p class="card-tile-meta">${esc(c.type)} · ${esc(printingOptions(printings?.cards[c.id],printingMode).choices[0]?.set?.toUpperCase()||'')}</p>${!c.ja?'<span class="badge">日本語名未収録</span>':''}${list?`<p>${esc(c.oracle.slice(0,160))}${c.oracle.length>160?'…':''}</p>`:''}</div></article>`).join('')||empty('該当するカードはありません','cards');
+ $('#card-results').innerHTML=result.slice((cardPage-1)*pageSize,cardPage*pageSize).map(c=>`<article class="card"><button type="button" class="card-image-button" data-card="${c.id}" aria-label="${esc(cardName(c))} — Card Details">${imageMarkup(c)}</button><div><h3><button data-card="${c.id}">${esc(cardName(c))}</button></h3><p class="card-english-name"><span>${esc(c.name)}</span><span class="card-set">${esc(printingOptions(printings?.cards[c.id],printingMode).choices[0]?.set?.toUpperCase()||'')}</span></p><p class="card-fallback" ${printingOptions(printings?.cards[c.id],printingMode).reason?'':'hidden'}>${esc(printingOptions(printings?.cards[c.id],printingMode).reason)}</p><p class="card-tile-meta">${esc(c.type)}</p>${!c.ja?'<span class="badge">日本語名未収録</span>':''}${list?`<p>${esc(c.oracle.slice(0,160))}${c.oracle.length>160?'…':''}</p>`:''}</div></article>`).join('')||empty('該当するカードはありません','cards');
  setCardPages(result.length?`<button data-page="1" ${cardPage===1?'disabled':''}>First</button><button data-page="${cardPage-1}" ${cardPage===1?'disabled':''}>Previous</button><span>${cardPage} / ${pages}</span><button data-page="${cardPage+1}" ${cardPage===pages?'disabled':''}>Next</button><button data-page="${pages}" ${cardPage===pages?'disabled':''}>LAST</button>`:'');
 }
 let detailOpener=null,restoringDetail=false,activeDetailKey=null;
@@ -115,6 +115,7 @@ function showDetail(html,type,id,mode='visual'){
  dialog.dataset.kind=type;dialog.classList.toggle('has-back',(history.state?.detailDepth||1)>1);
  $('#detail-back').hidden=(history.state?.detailDepth||1)<=1;
  $('#detail-body').innerHTML=html;
+ const actions=$('#detail-actions');actions.innerHTML=type==='deck'?`<button data-copy="${esc(id)}">Copy</button><button data-download="${esc(id)}">Download</button>`:'';
  if(!wasOpen){if(!restoringDetail)detailOpener=document.activeElement;dialog.showModal();}
  dialog.scrollTop=position;
  requestAnimationFrame(()=>{if(dialog.open)dialog.scrollTop=position;});
@@ -133,12 +134,12 @@ function openCard(id){
  showDetail(`<div class="detail-top"><div>${imageMarkup(c)}</div><div><h1>${esc(cardName(c))}</h1><p>${esc(c.name)}</p>${c.japaneseNameSource?`<p class="hint">日本語名：${c.japaneseNameMethod==='official correction'?'公式資料に基づき補正':c.japaneseNameMethod==='catalog override'?'API欠落を資料から補完':'Scryfall収録名'} · <a href="${esc(c.japaneseNameSource)}" target="_blank" rel="noopener noreferrer">出典</a></p>`:''}<p>${esc(c.type)}</p><p>サブタイプ：${esc(subtypes(c).flatMap(s=>[s,subtypeNames[s]||'']).filter(Boolean).join(' / ')||'なし')}</p><p>マナ・コスト ${esc(c.manaCost||'なし')} / マナ総量 ${c.mv}</p><h2>Oracle Text</h2><p class="oracle">${esc(c.oracle||'能力テキストなし')}</p><div class="detail-storage"><h2>Add to My Storage</h2><div class="actions"><button type="button" data-build-card="${c.id}" data-build-zone="main" data-detail-count="main">Add to Main (${count('main')})</button><button type="button" data-build-card="${c.id}" data-build-zone="side" data-detail-count="side">Add to Sideboard (${count('side')})</button><button type="button" id="detail-open-storage">My Storage (${count('main')+count('side')})</button></div></div><p class="muted">画像の版はSettingsのPrintingに従います。</p><a data-printing-link href="${esc(printingOptions(printings?.cards[c.id],printingMode).choices[0]?.url||c.url)}" target="_blank" rel="noopener noreferrer">Scryfallで確認</a></div></div><h2>このカードを使う掲載デッキ</h2>${related.length?related.map(d=>`<p><button class="link-button" data-deck="${d.id}">${esc(d.name)}</button> ${d.sample?'<span class="badge">サンプル</span>':''}</p>`).join(''):'<p>掲載デッキには採用例がありません。</p>'}`,'card',id);
 }
 function deckText(d){return d.englishText;}
-function listTable(lines,grouped=true){
- const table=rows=>`<table class="deck-table"><tbody>${rows.map(l=>{const c=cardMap.get(l.id);return `<tr><td>${l.qty}</td><td><button class="link-button" data-card="${c.id}">${esc(cardName(c))}</button><br><span class="muted">${esc(c.name)}</span></td></tr>`;}).join('')}</tbody></table>`;
- if(!grouped)return table(lines);
- return groupDeckLines(lines,cardMap).filter(group=>group.lines.length).map(group=>`<section class="deck-card-group" aria-label="${group.label}"><h3>${group.label} ${group.total}枚</h3>${table(group.lines)}</section>`).join('');
+function visualDeckLines(lines,grouped=true){
+ const grid=rows=>`<div class="published-deck-grid">${rows.map(l=>{const c=cardMap.get(l.id);return `<article><button class="card-image-button" data-card="${esc(c.id)}" aria-label="${esc(cardName(c))} — Card Details">${imageMarkup(c)}</button><strong>${l.qty}枚</strong><button class="link-button" data-card="${esc(c.id)}">${esc(cardName(c))}</button><p class="muted">${esc(c.name)}</p></article>`;}).join('')}</div>`;
+ if(!grouped)return grid(lines);
+ return groupDeckLines(lines,cardMap).filter(group=>group.lines.length).map(group=>`<section class="deck-card-group" aria-label="${group.label}"><h3>${group.label} ${group.total}枚</h3>${grid(group.lines)}</section>`).join('');
 }
-function openDeck(id){const d=decks.find(d=>d.id===id);if(!d)return;showDetail(`<div class="detail-top"><div>${imageMarkup(cardMap.get(d.hero))}</div><div>${d.sample?'<span class="badge">検証用サンプル・実績なし</span>':''}<h1>${esc(d.name)}</h1><p>${esc(d.author)}</p>${d.result?`<p><strong>${esc(d.event)} · ${esc(d.result)}</strong><br>${esc(d.venue)}</p>${confirmedDeckDate(d)?`<p class="hint">開催日：<time datetime="${confirmedDeckDate(d)}">${confirmedDeckDate(d)}</time></p>`:''}`:''}<div class="tags">${tags(d.colors)}<span class="tag">${esc(d.archetype)}</span></div>${d.sample?'<p class="hint">表示・検索・持ち出しの検証用構成です。大会提出リストや推奨構築ではありません。</p>':''}<div class="actions"><button data-copy="${d.id}">Copy List</button><button data-download="${d.id}">Download List</button></div><p class="hint">実MTGOへの取込は未検証です。</p></div></div><div class="two-col"><div><h2>メイン ${d.main.reduce((s,x)=>s+x.qty,0)}枚</h2>${listTable(d.main)}</div><div><h2>サイド ${d.side.reduce((s,x)=>s+x.qty,0)}枚</h2>${listTable(d.side,false)}</div></div>${d.sidePlan?`<h2>サイドプラン</h2><p>${esc(d.sidePlan)}</p>`:''}`,'deck',id);}
+function openDeck(id){const d=decks.find(d=>d.id===id);if(!d)return;showDetail(`<div class="published-deck-heading"><h1>${esc(d.name)}</h1><p>${esc(d.author)}</p><p><strong>${esc(d.event)} · ${esc(d.result)}</strong><br>${esc(d.venue)}</p>${confirmedDeckDate(d)?`<p class="hint">開催日：<time datetime="${confirmedDeckDate(d)}">${confirmedDeckDate(d)}</time></p>`:''}<div class="tags">${tags(d.colors)}<span class="tag">${esc(d.archetype)}</span></div><p class="hint">実MTGOへの取込は未検証です。</p></div><section class="published-main"><h2>メイン ${d.main.reduce((s,x)=>s+x.qty,0)}枚</h2>${visualDeckLines(d.main)}</section><section class="published-side"><h2>サイド ${d.side.reduce((s,x)=>s+x.qty,0)}枚</h2>${visualDeckLines(d.side,false)}</section>`,'deck',id);}
 const parsedDeckCache=new WeakMap();
 function parsedLocalDeck(d){const hit=parsedDeckCache.get(d);if(hit?.map===cardMap&&hit.text===d.text)return hit.value;const value=parseDeck(d.text,cardMap);parsedDeckCache.set(d,{map:cardMap,text:d.text,value});return value;}
 function renderMy(){renderBuilder(); $('#my-count').textContent=local.decks.length;const q=normalize(field('my-query'));const rows=local.decks.filter(d=>normalize(d.name).includes(q)).sort((a,b)=>field('my-sort')==='name'?a.name.localeCompare(b.name,'ja'):b.updated.localeCompare(a.updated));if(storageOk){$('#my-status').textContent=`${rows.length} / ${local.decks.length} 件 · このブラウザだけに保存`;}$('#my-results').innerHTML=rows.map(d=>deckTile(d,{localDeck:true})).join('')||(local.decks.length?empty('条件に合うマイデッキはありません','my'):'<div class="empty"><h2>マイデッキはまだありません</h2><p>保存したデータはこのブラウザだけに残ります。</p><button class="primary" id="empty-new">+ New Deck</button></div>');}
@@ -248,7 +249,7 @@ for(const kind of ['decks','cards']){
   colorRow.append(toolbar.querySelector('.display'));
   help.append(form.querySelector('.hint'),body.querySelector('.hint'),view.querySelector('.language-help'));
   const topPages=document.createElement('div');topPages.id='card-pages-top';topPages.className='pagination card-pagination';topPages.setAttribute('aria-label','検索結果のページ送り（上部）');
-  toolbar.insertBefore(topPages,$('#card-printing-open'));
+  toolbar.append(topPages);
  }else{
   help.append(body.querySelector('.hint'));
  }
@@ -283,8 +284,8 @@ function renderResults(){
  if(!cards.length)return;
  const errors=validatePublishingData({cards,events,results:tournamentResults,decks});
  if(errors.length){status.textContent='大会結果の内容を確認できませんでした。';target.innerHTML='<button id="results-retry">大会結果を再読込</button>';return;}
- status.textContent=tournamentResults.length?`通算成績 ${tournamentResults.length}件`:'通算成績はまだ登録されていません。';
- target.innerHTML=renderTournamentResults(tournamentResults,decks)+renderPublishedDeckResults(decks,tournamentResults);
+ status.textContent='';
+ target.innerHTML=renderPublishedDeckResults(decks,tournamentResults);
  if(!target.innerHTML)target.innerHTML='<p>大会結果はまだありません。</p>';
 }
 async function loadEvents(){eventLoadState='loading';renderEvents();try{const r=await fetch('data/events.json',{cache:'no-store'});if(!r.ok)throw new Error('Event fetch error');const data=await r.json();if(validatePublishingData({events:data}).length)throw new Error('Invalid events');events=data;$('#event-sample-notice').hidden=true;eventLoadState='ready';}catch{eventLoadState='error';}renderEvents();renderResults();}
@@ -337,8 +338,8 @@ for(const k of ['name','text','note'])$('#edit-'+k).addEventListener('input',sav
 $('#draft-as-new').onclick=()=>{if(!draftActive)return;try{readLocal();if(!storageOk)throw new Error('保存領域を読み取れません。');$('#edit-id').value='';draftRevision=null;draftStorageBaseline=storageBaseline;saveDraftRecovery();$('#editor-form').requestSubmit();}catch(error){$('#save-error').textContent=error.message;}};
 for(const dialog of $$('dialog')){let outside=false,pointer=null;const isOutside=e=>{const r=dialog.getBoundingClientRect();return e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom);};const dismiss=()=>{if(dialog.id==='detail')closeDetail();else if(dialog.id==='builder')closePool();else dialog.close();};dialog.addEventListener('pointerdown',e=>{outside=e.button===0&&isOutside(e);pointer=e.pointerId;});dialog.addEventListener('pointerup',e=>{if(canDismissBackdrop(outside&&pointer===e.pointerId,isOutside(e)))dismiss();outside=false;});dialog.addEventListener('pointercancel',()=>outside=false);dialog.addEventListener('close',()=>{outside=false;saveDraftRecovery();});}
 $('#printing-mode').value=printingMode;
-$('#card-printing-open').textContent=`Printing: ${printingMode==='ja'?'Latest JP':'First EN'}`;
-$('#printing-mode').onchange=()=>{printingMode=field('printing-mode')==='ja'?'ja':'en';try{localStorage.setItem(PRINT_MODE,printingMode);$('#printing-status').textContent='このブラウザの全画面に適用';}catch{$('#printing-status').textContent='保存領域を使えないため、このページ内だけに適用';}$('#card-printing-open').textContent=`Printing: ${printingMode==='ja'?'Latest JP':'First EN'}`;allResults();renderFeatured();refreshDetail();};
+
+$('#printing-mode').onchange=()=>{printingMode=field('printing-mode')==='ja'?'ja':'en';try{localStorage.setItem(PRINT_MODE,printingMode);$('#printing-status').textContent='このブラウザの全画面に適用';}catch{$('#printing-status').textContent='保存領域を使えないため、このページ内だけに適用';}allResults();renderFeatured();refreshDetail();};
 async function loadPrintings(){try{const response=await fetch('data/printings.json',{cache:'no-store'});if(!response.ok)throw new Error();const d=await response.json();if(!d.meta.complete)throw new Error();printings=d;$('#printing-status').textContent=`表示版データ ${d.meta.snapshotDate} · 規則 v${d.meta.ruleVersion}`;}catch{$('#printing-status').textContent='表示版データの読込失敗。画像を表示できません。';}allResults();renderFeatured();refreshDetail();}
 loadPrintings();
 
@@ -346,9 +347,11 @@ function renderFeatured(){
  $('#featured-decks').innerHTML=decks.filter(d=>!d.sample&&d.result).slice().sort((a,b)=>a.order-b.order).slice(0,3).map(d=>deckTile(d)).join('');
 }
 $('#settings-open').onclick=()=>{$('#settings-dialog').showModal();$(`input[name="printing-choice"][value="${printingMode}"]`).checked=true;};
-$('#card-printing-open').onclick=$('#settings-open').onclick;
+
 $('#menu-open').onclick=()=>$('#menu-dialog').showModal();
 $$('input[name="printing-choice"]').forEach(input=>input.onchange=()=>{$('#printing-mode').value=input.value;$('#printing-mode').dispatchEvent(new Event('change'));$('#settings-dialog').close();});
 for(const id of ['settings-dialog','menu-dialog'])$('#'+id).addEventListener('click',e=>{if(e.target.id===id)$('#'+id).close();});
 
 ['card-name','deck-card','deck-query'].forEach(id=>attachAutocomplete($('#'+id)));
+
+fetch('version.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(v=>{$('#site-version').textContent=`rev.${v.count} · ${v.revision}`;$('#site-version').title=`更新：${v.date} / Git履歴に基づく版番号`;}).catch(()=>{$('#site-version').textContent='development';});

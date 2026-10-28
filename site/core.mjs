@@ -142,7 +142,7 @@ export function printingFallbackReason(record,mode,chosen,{imageFailed=false}={}
  if(chosen.lang!==lang)labels.push(chosen.lang==='ja'?'日本語版':'英語版');
  if(chosen.regular===false)labels.push(chosen.promo?'プロモ版':'特殊仕様版');
  if(Array.isArray(chosen.finishes)&&!chosen.finishes.includes('nonfoil'))labels.push(chosen.finishes.includes('foil')?'FOIL版':'特殊加工版');
- const why=imageFailed?'画像取得失敗':!target?(lang==='ja'?'日本語版なし':'英語版なし'):chosen.id!==target.id?'指定版の画像なし':labels.length?'通常・非FOIL版なし':'';
+ const why=imageFailed?'画像取得失敗':!target?(lang==='ja'?(record?.ja?.targetSet?`対象セット（${record.ja.targetSet.toUpperCase()}）の日本語版なし`:'対象となるモダン収録セットなし'):'英語版なし'):chosen.id!==target.id?'指定版の画像なし':labels.length?'通常・非FOIL版なし':'';
  return why?`代替表示：${labels.join('／')||'別の印刷版'}（${why}）`:'';
 }
 export function printingOptions(record,mode){

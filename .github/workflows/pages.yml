@@ -29,12 +29,15 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: node scripts/build-version.mjs
       - run: node scripts/apply-japanese-names.mjs
       - run: node japanese-names.test.mjs
       - run: node scripts/build-editor.mjs --check

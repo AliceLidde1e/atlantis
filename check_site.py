@@ -6,7 +6,7 @@ ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
 EXPECTED = {
     ".nojekyll", "index.html", "mo-storage.html", "style.css", "museum.css", "atlantis-logo.svg",
-    "mo-theme.css", "favicon.svg", "app.mjs", "core.mjs", "japanese-names.mjs", "publishing.mjs", "autocomplete.mjs", "presentation.css", "data/results.json",
+    "mo-theme.css", "favicon.svg", "app.mjs", "core.mjs", "japanese-names.mjs", "publishing.mjs", "autocomplete.mjs", "presentation.css", "version.json", "data/results.json",
     "site-bridge.mjs", "site-bridge-ui.mjs", "data/cards.json",
     "data/printings.json", "data/decks.json", "data/events.json",
     "typography.css", "fonts/iceberg/iceberg-400.woff2", "fonts/iceberg/OFL.txt",
@@ -46,7 +46,7 @@ def main():
     ids = {c["id"] for c in cards["cards"]}
     assert len(ids) == len(cards["cards"]) == 1015
     assert ids == set(printings["cards"])
-    assert printings["meta"]["ruleVersion"] == 2
+    assert printings["meta"]["ruleVersion"] == 3
     for record in printings["cards"].values():
         assert record["en"]["candidates"] or record["ja"]["candidates"]
         for lang in ("en", "ja"):

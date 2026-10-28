@@ -33,3 +33,35 @@
  .museum-frame .deck-search-sidebar .card-search{grid-template-columns:minmax(0,1fr) auto}
  .museum-frame .deck-search-sidebar .filter-body>fieldset{grid-column:1/-1}
 }
+/* Published decks use the full dialog for the visual card list. */
+#detail>.dialog-toolbar{position:sticky;top:0;float:none;width:100%;height:auto;max-width:none;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:8px;margin:0 0 14px;padding:0;background:none;border:0;box-shadow:none}
+#detail>.dialog-toolbar>button,#detail-actions>button{min-height:44px;height:44px;padding:8px 12px;margin:0;line-height:1}
+#detail-back{margin-right:auto!important}
+#detail-actions{display:flex;gap:8px;margin-left:auto}
+#detail-body>.detail-top>div:last-child>h1,#detail.has-back #detail-body>.detail-top>div:last-child>h1,#detail-body>h1,#detail.has-back #detail-body>h1{padding-right:0;min-height:0}
+.published-deck-heading h1{margin:0 0 12px}
+.published-deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:14px;align-items:start}
+.published-deck-grid article{min-width:0;overflow-wrap:anywhere}
+.published-deck-grid strong{display:block;margin:4px 0}
+.published-deck-grid .printing-image{margin:0}
+.published-deck-grid .printing-caption{display:none}
+.published-deck-grid .card-image-button{width:100%;padding:0;min-height:0;background:none;border:0;box-shadow:none}
+.published-deck-grid .card-image{width:100%;display:block}
+.published-deck-grid .link-button{font-size:13px}
+.published-deck-grid p{margin:3px 0;font-size:11px}
+.published-main,.published-side{margin-top:22px}
+.museum-frame .card-list .card{align-items:start}
+.museum-frame .card-list .card h3{margin-top:0;padding-right:0}
+.card-english-name{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.card-set{font-family:var(--font-data);font-size:11px;color:var(--muted)}
+.recent-standings{display:grid;gap:12px}
+.recent-standings h4{margin:0;font-size:16px}
+.recent-standings p{margin:8px 0 0}
+#site-version{font-family:var(--font-data);font-size:10px;white-space:nowrap}
+@media(max-width:639px){
+ #detail>.dialog-toolbar{flex-direction:row;gap:5px}
+ #detail>.dialog-toolbar>button,#detail-actions>button{padding:8px;font-size:13px}
+ #detail-actions{gap:5px}
+ .published-deck-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ #detail-body .detail-top>div:first-child .printing-image{width:160px;max-width:100%}
+}
