@@ -20,3 +20,15 @@ assert.equal(createBackup(validateLocalState({version:2,decks:[saved],trash:[]})
 console.log('Search regression: OR colors, colorless, artifacts, Exact, decks, legacy notes OK');
 
 for(const d of decks){assert(archetypeEnglish[d.archetype],`Missing English archetype: ${d.archetype}`);assert(!/[\u3040-\u30ff\u3400-\u9fff]/.test(archetypeEnglish[d.archetype]));}
+
+// Multi-select types are a union, including multi-type cards and both faces.
+for(const selected of [[],['Creature'],['Creature','Instant'],['Artifact','Land']]){
+ const expected=cards.filter(c=>(!selected.length||c.type.split(' // ').some(face=>selected.some(type=>face.split(' — ')[0].split(' ').includes(type))))&&c.mv>=2&&c.mv<=4).map(c=>c.id);
+ assert.deepEqual(cards.filter(c=>cardMatches(c,{...filters,types:selected,min:'2',max:'4'})).map(c=>c.id),expected);
+}
+const dual=prepare({name:'Type fixture',ja:'',oracle:'',type:'Artifact Creature — Construct',colors:[],mv:3});
+assert(cardMatches(dual,{...filters,types:['Artifact','Instant']}));
+assert(!cardMatches(dual,{...filters,types:['Land','Instant']}));
+assert(!cardMatches(dual,{...filters,types:['Artifact'],max:'2'}));
+assert(cardMatches(prepare({...dual,type:'Instant // Sorcery'}),{...filters,types:['Sorcery']}));
+console.log('Multi-select types: OR, multi-type, second face, combined mana bounds OK');

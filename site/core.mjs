@@ -34,7 +34,7 @@ export function cardColorsMatch(card,selected=[],mode='includes'){
  if(mode==='exact')return (!selected.includes('A')||artifact)&&colorsMatch(card.colors,colors,mode);
  return !selected.length||(colors.length>0&&colorsMatch(card.colors,colors,mode))||(selected.includes('A')&&artifact);
 }
-export function cardMatches(c,f){return (!normalize(f.name)||c.nameIndex.includes(normalize(f.name)))&&oracleMatch(c,f.oracle)&&(!normalize(f.keyword)||c.nameIndex.includes(normalize(f.keyword))||c.subtypeIndex.includes(normalize(f.keyword))||oracleMatch(c,f.keyword))&&cardColorsMatch(c,f.colors,f.colorMode)&&(!f.type||c.type.split(' // ').some(v=>(v.split(' — ')[0]||'').split(' ').includes(f.type)))&&(f.min===''||c.mv>=Number(f.min))&&(f.max===''||c.mv<=Number(f.max));}
+export function cardMatches(c,f){return (!normalize(f.name)||c.nameIndex.includes(normalize(f.name)))&&oracleMatch(c,f.oracle)&&(!normalize(f.keyword)||c.nameIndex.includes(normalize(f.keyword))||c.subtypeIndex.includes(normalize(f.keyword))||oracleMatch(c,f.keyword))&&cardColorsMatch(c,f.colors,f.colorMode)&&(!(f.types?.length||f.type)||c.type.split(' // ').some(v=>(f.types?.length?f.types:[f.type]).some(type=>(v.split(' — ')[0]||'').split(' ').includes(type))))&&(f.min===''||c.mv>=Number(f.min))&&(f.max===''||c.mv<=Number(f.max));}
 // Partition for display only; preserve source order and quantities in each group.
 export function groupDeckLines(lines,cards){
  const groups=[{key:'spells',label:'呪文',lines:[]},{key:'lands',label:'土地',lines:[]}];

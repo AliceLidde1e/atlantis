@@ -44,6 +44,7 @@ jobs:
       - run: node scripts/validate-publishing.mjs
       - run: node publishing.test.mjs
       - run: node autocomplete.test.mjs
+      - run: node search.test.mjs
       - run: node deck-list.test.mjs
       - run: node workbench.test.mjs
       - run: node scripts/check-editor.mjs

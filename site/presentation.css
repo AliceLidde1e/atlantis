@@ -184,3 +184,25 @@
 #card-results.card-grid .card-content{flex:1}
 #card-results .card-add-actions{margin-top:auto;padding-top:10px}
 #card-results .card-oracle-preview{margin:0 0 8px;overflow-wrap:anywhere}
+/* Bilingual titles above scans; quantities stay on the lower left of the image. */
+.published-deck-grid article{display:grid;grid-template-rows:subgrid;grid-row:span 2;gap:8px}
+.museum-frame .published-deck-grid .published-card-name{display:block;align-self:start;width:100%;min-height:0;font-family:var(--font-ui);font-size:12px;line-height:1.6;white-space:normal}
+.counted-card-image{display:block;position:relative}
+.published-deck-grid .published-quantity{position:absolute;left:7px;bottom:7px;z-index:1;display:block;margin:0;padding:3px 9px;background:rgba(48,48,48,.76);color:#fff;border-radius:3px;font-family:var(--font-ui);font-size:14px;line-height:1.5;font-weight:700;pointer-events:none}
+/* Type checkboxes sit immediately below Colors. */
+.museum-frame .search-sidebar #card-types{grid-column:1/-1;width:100%;flex-basis:100%}
+.type-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.museum-frame .search-sidebar .type-checks label{display:flex;gap:5px;align-items:center;min-height:32px;padding:4px 5px;border:1px solid var(--line);font-size:12px;font-weight:400;cursor:pointer}
+.museum-frame .search-sidebar .type-checks input{margin:0;flex:none;width:13px;height:13px}
+.type-checks label:has(input:checked){background:#344b40;border-color:var(--bronze);color:var(--light)}
+.mana-sliders{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.museum-frame .search-sidebar .mana-sliders label{display:flex;align-items:baseline;justify-content:space-between;font-size:12px}
+.mana-sliders output{font-family:var(--font-data);font-size:14px;color:var(--light);font-variant-numeric:tabular-nums}
+.museum-frame .search-sidebar input[type=range]{appearance:none;-webkit-appearance:none;display:block;width:100%;height:36px;min-height:36px;margin:0;padding:0;border:0;border-radius:0;background:transparent;cursor:pointer;box-shadow:none}
+.museum-frame .search-sidebar input[type=range]::-webkit-slider-runnable-track{height:6px;border:1px solid #837451;background:linear-gradient(to right,#c5af82 0 var(--range-position),#07191e var(--range-position) 100%);box-shadow:inset 0 1px 2px #0008}
+.museum-frame .search-sidebar input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:22px;margin-top:-9px;border:2px outset #ddc997;border-radius:1px;background:linear-gradient(90deg,#8b7651,#ddc997 45%,#9d855e);box-shadow:0 2px 3px #0006}
+.museum-frame .search-sidebar input[type=range]::-moz-range-track{height:4px;border:1px solid #837451;background:linear-gradient(to right,#c5af82 0 var(--range-position),#07191e var(--range-position) 100%)}
+.museum-frame .search-sidebar input[type=range]::-moz-range-thumb{width:12px;height:18px;border:2px outset #ddc997;border-radius:1px;background:linear-gradient(90deg,#8b7651,#ddc997 45%,#9d855e)}
+@media(max-width:1023px){.museum-frame .card-search-sidebar #card-colors{width:100%;flex-basis:100%}}
+@media(pointer:coarse){.museum-frame .search-sidebar .type-checks label{min-height:44px}.museum-frame .search-sidebar input[type=range]{height:44px;min-height:44px}}
+@media(forced-colors:active){.museum-frame .search-sidebar input[type=range]{appearance:auto;-webkit-appearance:auto}.published-deck-grid .published-quantity{background:Canvas;color:CanvasText;border:1px solid CanvasText}}
