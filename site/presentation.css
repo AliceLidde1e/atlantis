@@ -52,7 +52,7 @@
 .published-main,.published-side{margin-top:22px}
 .museum-frame .card-list .card{align-items:start}
 .museum-frame .card-list .card h3{margin-top:0;padding-right:0}
-.card-english-name{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.card-english-name{display:flex;align-items:baseline;justify-content:flex-start;gap:.4em;flex-wrap:wrap}
 .card-set{font-family:var(--font-data);font-size:11px;color:var(--muted)}
 .recent-standings{display:grid;gap:12px}
 .recent-standings h4{margin:0;font-size:16px}
@@ -177,3 +177,12 @@
 #builder .workbench-heading{background:transparent;border:0;box-shadow:none;position:static;padding:0}
 
 #view-guide>.section-head{background:transparent;border:0;padding:0}
+
+/* Card browsing annotations: actions belong to an active deck and follow Oracle. */
+[data-deck-add-actions][hidden]{display:none!important}
+.detail-add-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#card-results .card-content{display:flex;flex-direction:column;min-width:0;align-self:stretch}
+#card-results.card-grid .card{display:flex;flex-direction:column}
+#card-results.card-grid .card-content{flex:1}
+#card-results .card-add-actions{margin-top:auto;padding-top:10px}
+#card-results .card-oracle-preview{margin:0 0 8px;overflow-wrap:anywhere}
