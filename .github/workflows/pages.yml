@@ -45,11 +45,14 @@ jobs:
       - run: node publishing.test.mjs
       - run: node autocomplete.test.mjs
       - run: node deck-list.test.mjs
+      - run: node workbench.test.mjs
       - run: node scripts/check-editor.mjs
       - run: node scripts/rehearse-publishing.mjs
       - run: python check_site.py
       - run: node --check site/app.mjs
       - run: node --check site/core.mjs
+      - run: node --check site/workbench.mjs
+      - run: node --check site/deck-store.mjs
       - run: node --check site/site-bridge.mjs
       - run: node --check site/site-bridge-ui.mjs
       - run: node printing.test.mjs

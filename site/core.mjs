@@ -1,4 +1,10 @@
 import {applyJapaneseNameCorrection} from './japanese-names.mjs';
+export function uuid(){
+ if(globalThis.crypto.randomUUID)return globalThis.crypto.randomUUID();
+ const bytes=globalThis.crypto.getRandomValues(new Uint8Array(16));bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;
+ const hex=[...bytes].map(x=>x.toString(16).padStart(2,'0')).join('');
+ return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
+}
 export const normalize = value => String(value ?? '').normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim();
 export function externalEntryUrl(value){if(!value)return null;try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password?url.href:null;}catch{return null;}}
 export const colorNames = {W:'白',U:'青',B:'黒',R:'赤',G:'緑',C:'無色',A:'Artifacts'};
@@ -53,7 +59,7 @@ function readDeck(record,version,{local=false}={}){
   if(typeof text!=='string'||text.length>DECK_TEXT_LIMIT)throw new Error('本文は201,000文字以内にしてください。');
   if((local||d.updated!==undefined)&&(typeof d.updated!=='string'||!Number.isFinite(Date.parse(d.updated))))throw new Error('更新日時が不正です。');
   if(local&&(typeof d.id!=='string'||!d.id))throw new Error('保存IDが不正です。');
-  return {id:local?d.id:crypto.randomUUID(),name:d.name.trim(),text,note:d.note,updated:d.updated?new Date(d.updated).toISOString():new Date().toISOString()};
+  return {id:local?d.id:uuid(),name:d.name.trim(),text,note:d.note,updated:d.updated?new Date(d.updated).toISOString():new Date().toISOString()};
 }
 export function validateBackup(data){
   if(!data||data.format!=='atlantis-local-decks'||![1,2].includes(data.version)||!Array.isArray(data.decks)||data.decks.length>1000)throw new Error('ATLANTISのバックアップ形式を確認してください。');
@@ -87,7 +93,7 @@ export function addSearchCard(text,card,quantity,start=text.length,end=start){
   return insertDeckText(text,quantity+' '+(card.ja||card.name),caret,caret,true);
 }
 export function stageSearchCard(pool,card,zone){
-  if(!card?.id||typeof card.name!=='string'||!['main','side'].includes(zone))throw new Error('追加先を確認してください。');
+  if(!card?.id||typeof card.name!=='string'||!['main','side','maybe'].includes(zone))throw new Error('追加先を確認してください。');
   const previous=pool.find(item=>item.id===card.id&&item.zone===zone);
   if(previous&&previous.qty>=1000)throw new Error('同じカードの一時プールは区分ごとに1,000枚以内にしてください。');
   return previous?pool.map(item=>item.id===card.id&&item.zone===zone?{...item,qty:item.qty+1}:item):[...pool,{id:card.id,zone,qty:1}];
@@ -113,15 +119,16 @@ export function applyCardPool(text,pool,cards){
   return result;
 }
 export function setPoolQuantity(pool,id,zone,qty){
-  if(!['main','side'].includes(zone)||!Number.isInteger(qty)||qty<0||qty>1000)throw new Error('枚数は0〜1,000の整数で入力してください。');
+  if(!['main','side','maybe'].includes(zone)||!Number.isInteger(qty)||qty<0||qty>1000)throw new Error('枚数は0〜1,000の整数で入力してください。');
   if(!qty)return pool.filter(x=>!(x.id===id&&x.zone===zone));
   if(pool.some(x=>x.id===id&&x.zone===zone))return pool.map(x=>x.id===id&&x.zone===zone?{...x,qty}:x);
   return [...pool,{id,zone,qty}];
 }
-export function movePoolCard(pool,id,from){
+export function movePoolCard(pool,id,from,to=from==='main'?'side':'main'){
+  if(!['main','side','maybe'].includes(from)||!['main','side','maybe'].includes(to)||from===to)throw new Error('移動先を確認してください。');
   const item=pool.find(x=>x.id===id&&x.zone===from);
   if(!item)throw new Error('移動するカードがありません。');
-  const to=from==='main'?'side':'main',qty=pool.find(x=>x.id===id&&x.zone===to)?.qty||0;
+  const qty=pool.find(x=>x.id===id&&x.zone===to)?.qty||0;
   if(qty>=1000)throw new Error('移動先は1,000枚以内にしてください。');
   return setPoolQuantity(setPoolQuantity(pool,id,from,item.qty-1),id,to,qty+1);
 }
@@ -135,7 +142,7 @@ export function validOptionalDate(value){return value==null||value===''||(typeof
 export function eventDate(value){return value==null||value===''?'未定':!validOptionalDate(value)?'日時を確認中':new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'long',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(value));}
 export function eventSortKey(event){return event.start?Date.parse(event.start):Infinity;}
 
-export function deckHeading(line){const s=normalize(line).replace(/\s*\(\d+\)\s*$/,'').replace(/:$/,'').trim();return ['sideboard','サイドボード'].includes(s)?'side':['main','mainboard','メイン','メインボード'].includes(s)?'main':null;}
+export function deckHeading(line){const s=normalize(line).replace(/\s*\(\d+\)\s*$/,'').replace(/:$/,'').trim();return ['sideboard','サイドボード'].includes(s)?'side':['main','mainboard','メイン','メインボード'].includes(s)?'main':['maybe','maybeboard','検討中'].includes(s)?'maybe':null;}
 export function parseDeck(text,cards){
  const names=new Map();for(const c of cards.values())for(const name of [c.name,c.ja].filter(Boolean)){const key=normalize(name);if(!names.has(key))names.set(key,new Set());names.get(key).add(c.id);}
  const exact=s=>{const ids=names.get(normalize(s));return ids?.size===1?[...ids][0]:null;};

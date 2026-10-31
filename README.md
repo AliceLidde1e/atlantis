@@ -1,11 +1,11 @@
 # ATLANTIS クローズドテスト版
 
 現行の要件・実装状況・引継ぎは [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md) を参照してください。
-次回の変更候補・未実装・反映済みの整理は [docs/NEXT-UPDATE.md](docs/NEXT-UPDATE.md) を参照してください（2026-10-25更新）。
+次回の変更候補・未実装・反映済みの整理は [docs/NEXT-UPDATE.md](docs/NEXT-UPDATE.md) を参照してください（2026-10-31更新）。
 
 旧枠モダンのカード検索、掲載デッキ検索、大会案内、ブラウザ内のマイデッキ、MOテキスト取込・書出しを備えた静的Webアプリです。`site/` がGitHub Pagesへそのまま配信されます。サーバー、利用者アカウント、書込APIはありません。
 
-外観と画面導線は「ATLANTIS デザイン仕様書 v1.4」に合わせています。ホームには Navigation、Featured Decks、Information を配置し、主要メニューは Decks、Cards、Events、My Decks です。Cards の検索結果から画像を選ぶと詳細が開き、そこで My Storage の Main / Sideboard へ追加できます。幅639px以下の My Storage はカード名、画像、Main +、Side +、削除を一行に表示します。
+外観と画面導線は「ATLANTIS デザイン仕様書 v1.4」に合わせています。ホームには Navigation、Featured Decks、Information を配置し、主要メニューは Decks、Cards、Events、My Decks です。Cards の検索結果からMain／Side／Maybeへ直接追加できます。PCは検索と編集を並べ、モバイルは編集モーダルで切り替えます。保存済みデッキは表示モーダルを開き、Edit Deckから編集します。
 
 フォントは共通の `site/typography.css` で管理します。英語見出し・ボタン・タブは **Iceberg**、日本語見出し・解説・記事本文は **Shippori Mincho（しっぽり明朝）**、検索・デッキエディタ等の実用UIは **Zen Kaku Gothic New** です。数値・補助データは必要に応じて等幅書体を使用します。3書体はSIL Open Font License 1.1のもと、WOFF2と許諾文を `site/fonts/` に同梱し、外部フォントサービスへの通信なしで表示します。
 
@@ -13,7 +13,7 @@
 
 - カード集合は旧枠モダンのカード集合1,015種類を収録しています。
 - 掲載デッキ48件は、提供された `deckIndex_review.xlsx` の戦績欄が入力されているリストです。戦績空欄の59件と既存のサンプル8件は掲載していません。カード明細40件と同梱テキスト8件をカード集合・枚数・英語書出しと照合済みです。大会の正式案内は未掲載です。データに残る大会サンプル2件は画面に表示しません。
-- マイデッキはブラウザのlocalStorage、MO画面の保存はIndexedDBです。端末やブラウザ間で自動同期されません。サイトのドメインが変わっても保存内容は自動移行されません。
+- マイデッキと下書きはIndexedDBです。旧localStorageは初回に引き継ぎ、MO専用画面との互換コピーとして維持します。MO画面の別IndexedDBは保持します。端末やブラウザ間で自動同期されません。サイトのドメインが変わっても保存内容は自動移行されません。
 - Scryfallへの検索とカード画像取得には通信が必要です。
 - PagesのURLは公開アクセス可能です。`noindex`は検索エンジンへの依頼であり、閲覧制限ではありません。機密情報を掲載しないでください。
 
@@ -35,7 +35,7 @@ node --check site/site-bridge-ui.mjs
 - テスト用Webアプリ：<https://alicelidde1e.github.io/atlantis/>
 - **Settings → Pages → Build and deployment → Source** は **GitHub Actions** に設定済みです。
 
-今後、`main` に修正を反映すると **Check ATLANTIS site** が自動で検査します。検査結果が成功したら、GitHubの **Actions → Deploy ATLANTIS closed test → Run workflow** を選びます。配信は手動なので、修正を反映しただけでは公開ページは更新されません。配信完了後、Actionsの`deploy`結果に表示されるURLでトップ・カード検索・MO画面を確認してください。
+`main` に修正を反映すると **Check ATLANTIS site** が自動で検査します。手動で配信する場合はGitHubの **Actions → Deploy ATLANTIS closed test → Run workflow** を選びます。現在は対象ファイルのmainへの変更で、検証成功後に自動配信します。手動起動も利用できます。配信完了後、Actionsの`deploy`結果に表示されるURLでトップ・カード検索・MO画面を確認してください。
 
 テスターにはWebアプリのURLを共有します。URLを知る人以外を技術的に遮断する構成ではありません。アクセス制限が必要になった場合は認証付きの配信先へ移します。
 

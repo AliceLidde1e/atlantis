@@ -113,3 +113,65 @@
  .detail-action-short{display:inline;white-space:nowrap}
  .card-english-title{font-size:16px}
 }
+
+/* Getting Started: scoped reading layout, with the adopted 2026-10-31 copy. */
+#view-guide{max-width:960px;margin-inline:auto}
+#view-guide .section-head{margin-bottom:24px}
+#view-guide .guide-catch{font-family:var(--font-japanese, 'Shippori Mincho',serif);font-size:1.35rem;color:var(--light)}
+#view-guide .guide-art{width:100%;height:200px;margin:0 0 32px;overflow:hidden}
+#view-guide .guide-art img{width:100%;height:100%;object-fit:cover}
+#view-guide .guide-body{max-width:760px;margin-inline:auto;font-family:var(--font-japanese,'Shippori Mincho',serif);line-height:1.95;overflow-wrap:anywhere}
+#view-guide .guide-body>section{margin-block:0 44px}
+#view-guide h2{font-family:var(--font-display);font-size:2rem;border-bottom:1px solid var(--line);padding-bottom:10px;margin:0 0 22px}
+#view-guide h3{font-family:var(--font-display);font-size:1.45rem;margin:0 0 8px;color:var(--light)}
+#view-guide p{margin-block:0 18px}
+#view-guide .guide-strategies{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:26px 0}
+#view-guide .guide-strategies article{border-left:2px solid var(--bronze);padding-left:16px;min-width:0}
+#view-guide .guide-link{display:inline-block;padding:8px 0;font-family:var(--font-display);font-size:1.2rem}
+@media(max-width:639px){#view-guide .guide-strategies{grid-template-columns:1fr}#view-guide .guide-art{height:150px}#view-guide h2{font-size:1.65rem}}
+
+/* One deck workbench next to Cards; the same dialog becomes modal on mobile. */
+#workbench-target{overflow-wrap:anywhere}
+.card-add-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.museum-frame .card-add-actions button{flex:1;padding:5px 6px;min-width:56px;font-size:12px}
+#builder.deck-workbench{background:var(--surface,#142e2c);color:var(--text);border:3px ridge var(--edge);width:min(640px,calc(100% - 24px));max-width:none;max-height:calc(100dvh - 24px);padding:16px;overflow:hidden}
+#builder.deck-workbench[open]{display:flex;flex-direction:column;gap:10px}
+#builder .workbench-heading{display:flex;align-items:start;justify-content:space-between;gap:12px}
+#builder .workbench-heading h2{margin:0;font-family:var(--font-display);font-size:24px}
+#builder label{display:block;margin:0}
+#builder #workbench-name{width:100%;font-family:var(--font-ui);font-size:16px}
+#builder #workbench-status{font-size:12px;margin:0;color:var(--light)}
+#builder #workbench-tabs{gap:8px;margin:0}
+#builder #workbench-tabs button{flex:1;font-family:var(--font-display)}
+#builder #workbench-tabs [aria-pressed=true]{background:#425b46;border-color:var(--light);color:var(--light)}
+#builder #builder-pool{min-height:60px;flex:1;overflow:auto;overscroll-behavior:contain}
+#builder .workbench-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px;padding:8px 0;border-bottom:1px solid var(--line)}
+#builder .workbench-card{display:flex;align-items:center;gap:6px;min-width:0;border:0;padding:0;background:transparent;box-shadow:none;text-align:left;font-family:var(--font-ui);font-size:12px}
+#builder .workbench-card span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#builder .workbench-card img{width:28px;height:36px;object-fit:cover;flex-shrink:0}
+#builder .workbench-row-actions{display:flex;gap:3px;align-items:center}
+#builder .workbench-row-actions button{padding:3px;min-width:28px;min-height:34px;font-size:12px;font-family:var(--font-display)}
+#builder .workbench-row-actions input{width:35px;min-width:0;padding:4px 0;text-align:center;appearance:textfield;font-size:14px}
+#builder .workbench-row-actions input::-webkit-inner-spin-button{appearance:none}
+#builder .workbench-tools{gap:6px;margin:0;flex-wrap:wrap}
+#builder .workbench-tools button{font-size:12px;padding:6px 9px}
+#builder .workbench-footer{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border-top:1px solid var(--line);padding-top:12px}
+#builder .workbench-footer details{flex-basis:100%;font-size:13px}
+#builder .workbench-footer details button{margin:8px 8px 0 0}
+#builder #workbench-maybe-note,#builder #workbench-unknown{margin:0;font-size:12px}
+.maybe-candidates{margin-top:24px;border-top:1px solid var(--line);padding-top:14px}
+.maybe-candidates>summary{font-family:var(--font-display);color:var(--light);margin-bottom:16px}
+#my-draft-list button small{font-family:var(--font-ui)}
+@media(min-width:1100px){
+ .workbench-layout:has(#builder[open]){display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:22px;align-items:start}
+ .workbench-layout>.card-browser{min-width:0}
+ .workbench-layout:has(#builder[open]) .card-browser{grid-template-columns:230px minmax(0,1fr);gap:16px}
+ .workbench-layout:has(#builder[open]) .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #builder.deck-workbench[open]:not(:modal){position:sticky;top:12px;inset-inline:auto;margin:0;width:100%;max-height:calc(100dvh - 24px);height:auto;min-height:460px;z-index:36}
+ #builder.deck-workbench:not(:modal) #builder-pool{max-height:44dvh}
+ #builder:not(:modal) #pool-close{display:none}
+}
+@media(max-width:639px){.museum-frame .card-add-actions button{min-width:0;padding:5px 3px;font-size:11px}#builder.deck-workbench{padding:12px}#view-cards #pool-toggle{white-space:normal;text-align:left}#builder .workbench-row{grid-template-columns:1fr}#builder .workbench-row-actions{justify-content:space-between}#builder .workbench-row-actions button{min-width:38px;min-height:44px}#builder .workbench-row-actions input{width:38px;font-size:16px}#builder .workbench-card{min-height:40px}#builder .workbench-card span{white-space:normal}#builder .workbench-footer>button{flex:1}}
+@media(pointer:coarse){.card-add-actions button{min-height:44px}#builder button{min-height:44px}}
+
+#builder .workbench-heading{background:transparent;border:0;box-shadow:none;position:static;padding:0}
