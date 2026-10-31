@@ -175,3 +175,5 @@
 @media(pointer:coarse){.card-add-actions button{min-height:44px}#builder button{min-height:44px}}
 
 #builder .workbench-heading{background:transparent;border:0;box-shadow:none;position:static;padding:0}
+
+#view-guide>.section-head{background:transparent;border:0;padding:0}
