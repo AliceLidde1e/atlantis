@@ -153,11 +153,9 @@
 #builder .workbench-row-actions button{padding:3px;min-width:28px;min-height:34px;font-size:12px;font-family:var(--font-display)}
 #builder .workbench-row-actions input{width:35px;min-width:0;padding:4px 0;text-align:center;appearance:textfield;font-size:14px}
 #builder .workbench-row-actions input::-webkit-inner-spin-button{appearance:none}
-#builder .workbench-tools{gap:6px;margin:0;flex-wrap:wrap}
-#builder .workbench-tools button{font-size:12px;padding:6px 9px}
-#builder .workbench-footer{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border-top:1px solid var(--line);padding-top:12px}
-#builder .workbench-footer details{flex-basis:100%;font-size:13px}
-#builder .workbench-footer details button{margin:8px 8px 0 0}
+#builder .workbench-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0}
+#builder .workbench-footer{display:grid;grid-template-columns:.7fr 1.5fr 1fr 1fr;gap:6px;border-top:1px solid var(--line);padding:10px 0 0;margin:0}
+#builder .workbench-tools button,#builder .workbench-footer>button{min-width:0;min-height:38px;font-size:12px;padding:6px 3px;white-space:nowrap}
 #builder #workbench-maybe-note,#builder #workbench-unknown{margin:0;font-size:12px}
 .maybe-candidates{margin-top:24px;border-top:1px solid var(--line);padding-top:14px}
 .maybe-candidates>summary{font-family:var(--font-display);color:var(--light);margin-bottom:16px}
