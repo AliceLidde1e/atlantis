@@ -16,5 +16,5 @@ for(const [id,expected] of Object.entries(japaneseNameCorrections)){
  assert.throws(()=>applyJapaneseNameCorrection({...stored,name:'Another card'}),/mismatch/);
 }
 const other={id:'unrelated',name:'Other',ja:'元の名前'};assert.equal(applyJapaneseNameCorrection(other),other);
-assert.equal(data.meta.japaneseNameCorrections,2);
+assert.equal(data.meta.japaneseNameCorrections,Object.keys(japaneseNameCorrections).length);
 console.log('Japanese names: official sources, refreshed wrong names, search, MO records, ID mismatch and idempotence OK');

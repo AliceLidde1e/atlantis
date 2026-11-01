@@ -32,3 +32,14 @@ assert(!cardMatches(dual,{...filters,types:['Land','Instant']}));
 assert(!cardMatches(dual,{...filters,types:['Artifact'],max:'2'}));
 assert(cardMatches(prepare({...dual,type:'Instant // Sorcery'}),{...filters,types:['Sorcery']}));
 console.log('Multi-select types: OR, multi-type, second face, combined mana bounds OK');
+
+// AND requires every chosen condition, while allowing additional colors.
+assert(colorsMatch(['W','U','R'],['W','U'],'and'));
+assert(!colorsMatch(['W'],['W','U'],'and'));
+assert(colorsMatch([],['C'],'and'));
+assert(!colorsMatch(['U'],['C','U'],'and'));
+for(const selection of [[],['U'],['U','G'],['C','U'],['A'],['A','U'],['A','C']]){
+ const expected=cards.filter(c=>selection.every(s=>s==='A'?artifact(c):s==='C'?!c.colors.length:c.colors.includes(s))).map(c=>c.id);
+ assert.deepEqual(cards.filter(c=>cardMatches(c,{...filters,colors:selection,colorMode:'and'})).map(c=>c.id),expected);
+}
+console.log('AND colors: all chosen colors, additional colors, colorless and artifact intersection OK');

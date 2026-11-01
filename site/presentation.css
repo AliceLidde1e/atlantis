@@ -206,3 +206,30 @@
 @media(max-width:1023px){.museum-frame .card-search-sidebar #card-colors{width:100%;flex-basis:100%}}
 @media(pointer:coarse){.museum-frame .search-sidebar .type-checks label{min-height:44px}.museum-frame .search-sidebar input[type=range]{height:44px;min-height:44px}}
 @media(forced-colors:active){.museum-frame .search-sidebar input[type=range]{appearance:auto;-webkit-appearance:auto}.published-deck-grid .published-quantity{background:Canvas;color:CanvasText;border:1px solid CanvasText}}
+/* One native scroll button at each end, across the entire site. */
+::-webkit-scrollbar-button{display:none;width:0;height:0}
+::-webkit-scrollbar-button:vertical:start:decrement,::-webkit-scrollbar-button:vertical:end:increment{display:block;width:15px;height:13px;background:#a48d65;border:3px solid #0c1f1d}
+::-webkit-scrollbar-button:horizontal:start:decrement,::-webkit-scrollbar-button:horizontal:end:increment{display:block;width:13px;height:15px;background:#a48d65;border:3px solid #0c1f1d}
+/* Search actions remain a vertical pair: Search, then Reset. */
+.card-search-actions{display:grid;gap:6px;align-self:stretch}
+.museum-frame .card-search-actions>button{width:100%}
+.color-default-note{margin:6px 0 0}
+/* Use the desktop dialog's width for player and event information. */
+.published-deck-heading{display:grid;gap:12px}
+.published-deck-heading h1{margin:0}
+.published-deck-heading p{margin:4px 0 0}
+.published-deck-heading .tags{margin-bottom:0}
+.published-deck-player,.published-deck-event{min-width:0;overflow-wrap:anywhere}
+@media(min-width:760px){
+ .published-deck-heading{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px;row-gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+ .published-deck-heading h1{grid-column:1/-1}
+ .published-deck-event{padding-left:24px;border-left:1px solid var(--line)}
+}
+/* My Deck actions stay below the tile and visible on small screens. */
+.museum-frame #my-results .small-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;margin-top:auto}
+.museum-frame #my-results .small-actions button{min-width:0;min-height:44px;padding:6px;font-size:13px}
+@media(max-width:639px){
+ .museum-frame #my-results .featured-card{height:auto}
+ .museum-frame #my-results .featured-open{height:auto}
+ .museum-frame #my-results .small-actions{margin-top:0}
+}

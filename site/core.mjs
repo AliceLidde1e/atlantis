@@ -1,4 +1,4 @@
-import {applyJapaneseNameCorrection} from './japanese-names.mjs';
+import {applyJapaneseNameCorrection} from './japanese-names.mjs?v=20261101a';
 export function uuid(){
  if(globalThis.crypto.randomUUID)return globalThis.crypto.randomUUID();
  const bytes=globalThis.crypto.getRandomValues(new Uint8Array(16));bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;
@@ -27,11 +27,11 @@ export function oracleMatch(card,query){const q=normalize(query);if(!q)return tr
 export function colorsMatch(actual=[],selected=[],mode='includes'){
   if(!selected.length)return true;
   const colors=actual.length ? actual : ['C'];
-  return mode==='exact'?selected.every(c=>colors.includes(c))&&colors.length===selected.length:selected.some(c=>colors.includes(c));
+  return mode==='exact'?selected.every(c=>colors.includes(c))&&colors.length===selected.length:mode==='and'?selected.every(c=>colors.includes(c)):selected.some(c=>colors.includes(c));
 }
 export function cardColorsMatch(card,selected=[],mode='includes'){
  const colors=selected.filter(c=>c!=='A'),artifact=card.type.split(' // ').some(face=>(face.split(' — ')[0]||'').split(' ').includes('Artifact'));
- if(mode==='exact')return (!selected.includes('A')||artifact)&&colorsMatch(card.colors,colors,mode);
+ if(mode==='exact'||mode==='and')return (!selected.includes('A')||artifact)&&colorsMatch(card.colors,colors,mode);
  return !selected.length||(colors.length>0&&colorsMatch(card.colors,colors,mode))||(selected.includes('A')&&artifact);
 }
 export function cardMatches(c,f){return (!normalize(f.name)||c.nameIndex.includes(normalize(f.name)))&&oracleMatch(c,f.oracle)&&(!normalize(f.keyword)||c.nameIndex.includes(normalize(f.keyword))||c.subtypeIndex.includes(normalize(f.keyword))||oracleMatch(c,f.keyword))&&cardColorsMatch(c,f.colors,f.colorMode)&&(!(f.types?.length||f.type)||c.type.split(' // ').some(v=>(f.types?.length?f.types:[f.type]).some(type=>(v.split(' — ')[0]||'').split(' ').includes(type))))&&(f.min===''||c.mv>=Number(f.min))&&(f.max===''||c.mv<=Number(f.max));}
