@@ -114,12 +114,12 @@
  .card-english-title{font-size:16px}
 }
 
-/* Getting Started: scoped reading layout, with the adopted 2026-10-31 copy. */
+/* Getting Started: scoped reading layout and approved copy. */
 #view-guide{max-width:960px;margin-inline:auto}
 #view-guide .section-head{margin-bottom:24px}
 #view-guide .guide-catch{font-family:var(--font-japanese, 'Shippori Mincho',serif);font-size:1.35rem;color:var(--light)}
-#view-guide .guide-art{width:100%;height:200px;margin:0 0 32px;overflow:hidden}
-#view-guide .guide-art img{width:100%;height:100%;object-fit:cover}
+#view-guide .guide-art{width:min(100%,640px);height:auto;min-height:0;margin:0 auto 32px;overflow:visible}
+#view-guide .guide-art img{display:block;width:100%;height:auto;min-height:0;object-fit:contain}
 #view-guide .guide-body{max-width:760px;margin-inline:auto;font-family:var(--font-japanese,'Shippori Mincho',serif);line-height:1.95;overflow-wrap:anywhere}
 #view-guide .guide-body>section{margin-block:0 44px}
 #view-guide h2{font-family:var(--font-display);font-size:2rem;border-bottom:1px solid var(--line);padding-bottom:10px;margin:0 0 22px}
@@ -128,7 +128,7 @@
 #view-guide .guide-strategies{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:26px 0}
 #view-guide .guide-strategies article{border-left:2px solid var(--bronze);padding-left:16px;min-width:0}
 #view-guide .guide-link{display:inline-block;padding:8px 0;font-family:var(--font-display);font-size:1.2rem}
-@media(max-width:639px){#view-guide .guide-strategies{grid-template-columns:1fr}#view-guide .guide-art{height:150px}#view-guide h2{font-size:1.65rem}}
+@media(max-width:639px){#view-guide .guide-strategies{grid-template-columns:1fr}#view-guide .guide-art{height:auto}#view-guide h2{font-size:1.65rem}}
 
 /* One deck workbench next to Cards; the same dialog becomes modal on mobile. */
 #workbench-target{overflow-wrap:anywhere}

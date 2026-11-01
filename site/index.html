@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="既知のカード、未知の景色。旧枠モダンのデッキとカードを探すATLANTISのクローズドテスト版"><title>ATLANTIS｜クローズドテスト</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="museum.css?v=20261031c"><link rel="stylesheet" href="typography.css"><link rel="stylesheet" href="presentation.css?v=20261101a"><link rel="icon" href="favicon.svg?v=20261024a" type="image/svg+xml"><meta name="robots" content="noindex,nofollow"><script type="module" src="app.mjs?v=20261101a"></script></head>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="既知のカード、未知の景色。旧枠モダンのデッキとカードを探すATLANTISのクローズドテスト版"><title>ATLANTIS｜クローズドテスト</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="museum.css?v=20261031c"><link rel="stylesheet" href="typography.css"><link rel="stylesheet" href="presentation.css?v=20261101b"><link rel="icon" href="favicon.svg?v=20261024a" type="image/svg+xml"><meta name="robots" content="noindex,nofollow"><script type="module" src="app.mjs?v=20261101b"></script></head>
 <body><div class="museum-frame"><div class="museum-topline"><span>ATLANTIS</span><span id="site-version">development</span></div>
 <a class="skip" href="#main">本文へ</a>
 <header class="site-header"><div class="header-inner"><a class="brand" href="#home" aria-label="ATLANTIS Home"><img src="atlantis-logo.svg" alt="ATLANTIS" width="244" height="58"></a><nav class="desktop-nav" aria-label="Main navigation"><a href="#decks">Decks</a><a href="#pool">Cards</a><a href="#events">Events</a><a href="#mydecks">My Decks <span id="my-count">0</span></a></nav><div class="header-tools"><button id="settings-open" class="icon-button" type="button" aria-label="Settings">⚙</button><button id="menu-open" class="icon-button more" type="button" aria-label="Menu">☰</button></div></div></header>
@@ -22,13 +22,13 @@
 <section id="view-events" class="view" hidden aria-labelledby="events-title"><div class="section-head"><div><h1 id="events-title">Events</h1><p>開催日時・会場・参加費・ルールと、大会結果を確認できます。</p></div><span class="badge">大会案内・大会結果</span></div><div id="event-sample-notice" class="local-note"><strong>架空のサンプルを含みます。</strong> 実際の開催告知・申込受付ではありません。MVPでは管理者が案内を掲載し、参加申込は案内に記載された外部サイトで行います。</div><p id="event-count" role="status"></p><h2>大会案内</h2><div id="event-results" class="event-grid"></div><p id="tournament-status" role="status"></p><div id="tournament-results"></div></section>
 <section id="view-my" class="view" hidden aria-labelledby="my-title"><div class="section-head"><div><h1 id="my-title">My Decks</h1><p>このブラウザに保存。アカウントとの紐付け・自動同期はありません。</p></div><button class="primary" id="new-deck">+ New Deck</button></div><div class="local-note">同じブラウザプロファイルを共用すると、同じデータが見えます。ブラウザのサイトデータを削除すると消えるため、バックアップをご利用ください。</div><div class="toolbar"><label class="grow">Deck Name<input id="my-query" type="search" placeholder="保存したデッキを探す"></label><label>Sort<select id="my-sort"><option value="updated">Recently</option><option value="name">Name</option></select></label><button id="backup">Export JSON</button><label class="file-button">Import JSON<input id="restore-file" type="file" accept="application/json,.json" class="sr-only"></label></div><div id="saved-deck-action" class="local-note" hidden><strong id="saved-deck-name"></strong> を保存しました。 <button id="saved-deck-open" type="button">Open Deck</button></div><p id="my-draft-note" class="local-note" hidden>編集中のマイデッキがあります。<button id="resume-draft" type="button">Resume Editing</button></p><p id="my-status" role="status"></p><div id="my-draft-list" class="actions" aria-label="保存されている下書き"></div><div id="my-results" class="deck-grid"></div></section>
 <section id="view-guide" class="view" hidden aria-labelledby="guide-title">
-  <header class="section-head"><div><span class="eyebrow">WELCOME TO THE FORMAT</span><h1 id="guide-title">Getting Started</h1><p class="guide-catch">既知のカード、未知の景色。</p><p>旧枠モダンの世界へようこそ。</p></div></header>
-  <figure class="guide-art" id="guide-artwork" aria-label="旧枠カードのイラスト"></figure>
+  <header class="section-head"><div><span class="eyebrow">WELCOME TO THE FORMAT</span><h1 id="guide-title">Getting Started</h1><p class="guide-catch">既知のカード、未知の景色。</p><p>旧枠モダン・ポータルサイト、ATLANTISへようこそ。</p></div></header>
+  <figure class="guide-art" id="guide-artwork" aria-label="City of Brass [ARN]のイラスト" data-printing-set="arn"><img src="https://cards.scryfall.io/art_crop/front/f/4/f4e32327-380d-471e-813b-4c27477787ce.jpg?1783948376" alt="《真鍮の都 / City of Brass》[ARN]のイラスト全体" loading="lazy" decoding="async" referrerpolicy="no-referrer"></figure>
   <div class="guide-body">
     <section aria-labelledby="format-title"><h2 id="format-title">The Format</h2>
-      <p>旧枠モダンは、旧枠時代のカードと、モダンの使用条件を組み合わせた非公式フォーマットです。</p>
+      <p>旧枠モダンは、秋葉原で生まれた非公式フォーマットです。</p>
       <p>使用できるのは、次の<strong>両方</strong>を満たすカードです。</p>
-      <ul><li>『第7版』『スカージ』までに初版が存在していた。</li><li>現在のモダンで使用できる。</li></ul>
+      <ul><li>基本セット『第7版』、拡張セット『スカージ』までに初版が発売されている。</li><li>現在の公式フォーマット「モダン」で使用可能である。</li></ul>
       <p>条件を満たすカードなら、再録された新枠のカードも使用できます。<br>一方、近年の製品で初めて旧枠版が登場したカードは、それだけでは使用できません。</p>
       <p>禁止カードはモダンに準じます。<br>したがって、《花盛りの夏/Summer Bloom》は禁止カードです。</p>
     </section>
@@ -42,15 +42,14 @@
     </section>
     <section aria-labelledby="metagame-title"><h2 id="metagame-title">Metagame</h2>
       <p>旧枠モダンでは、ビートダウン、コントロール、コンボ等、多様なデッキが競い合っています。</p>
-      <p>環境を見る入口として、代表的な戦い方を紹介します。</p>
+      <p>メタゲームでよく見られる、アーキタイプをいくつか紹介します。</p>
       <div class="guide-strategies">
         <article><h3>Aggro</h3><p>特徴：クリーチャーを主戦力とし、相手が態勢を整える前に攻め切る。</p><p>デッキの例：赤緑ステロイド、ゴブリン、白単アグロ</p></article>
         <article><h3>Midrange</h3><p>特徴：除去や強力なクリーチャーを組み合わせ、盤面の優位を勝利につなげる。</p><p>デッキの例：トリコ・エンジェル、緑白ミラーリ・ウェイク、赤緑ラヴァストーム</p></article>
         <article><h3>Control</h3><p>特徴：妨害で相手の攻めをさばき、アドバンテージ差を広げる。</p><p>デッキの例：青白コントロール、黒単コントロール、青単</p></article>
         <article><h3>Combo</h3><p>特徴：特定のカードを組み合わせ、大量のダメージやトークンで勝負を決める。</p><p>デッキの例：カーミック・ボンバー、青赤緑激動アサルト</p></article>
       </div>
-      <p>同じカードプールでも、注目されるデッキが変われば、活躍するカードも変わります。</p>
-      <p>群馬GPでは、第2回は青白緑コントロール、第3回はトリコ・エンジェルが優勝。第3回のTOP8には、アグロ、コントロール、コンボなど異なる戦略が並びました。</p>
+      <p>同じカードプールでも、メタゲームで注目されるデッキが変われば、活躍するデッキも変化します。</p>
       <p>大会結果を見るときは、優勝デッキとあわせて、ほかにどんなデッキが参加していたかにも注目してみてください。</p>
       <a class="guide-link" href="#decks">Decks →</a>
     </section>
