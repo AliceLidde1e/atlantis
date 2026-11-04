@@ -285,20 +285,26 @@ async function leaveDetailForEdit(){
  if(!history.state?.detailDepth){closeDetail();return;}
  await new Promise(resolve=>{window.addEventListener('popstate',resolve,{once:true});closeDetail();});
 }
+let workbenchStowed=false;
 function syncWorkbenchLayout(){
  const pane=$('#builder'),wide=matchMedia('(min-width:1100px)').matches;
- if(currentView!=='cards'||!draftActive){if(pane.open)pane.close();$('#pool-toggle').setAttribute('aria-expanded','false');return;}
+ if(currentView!=='cards'||!draftActive||workbenchStowed){if(pane.open)pane.close();$('#pool-toggle').setAttribute('aria-expanded','false');return;}
  if(wide){if(pane.matches(':modal'))pane.close();if(!pane.open)pane.show();}
  else if(pane.open&&!pane.matches(':modal'))pane.close();
  $('#pool-toggle').setAttribute('aria-expanded',String(pane.open));
 }
 function openPool(){
  if(!draftActive){editor();return;}
+ workbenchStowed=false;
  poolOpener=document.activeElement;syncWorkbenchLayout();
  if(!matchMedia('(min-width:1100px)').matches&&!$('#builder').open)$('#builder').showModal();
  $('#pool-toggle').setAttribute('aria-expanded','true');
 }
-function closePool(){if($('#builder').open)$('#builder').close();$('#pool-toggle').setAttribute('aria-expanded','false');if(poolOpener?.isConnected)poolOpener.focus({preventScroll:true});}
+function closePool(){
+ workbenchStowed=true;
+ syncWorkbenchLayout();
+ if(poolOpener?.isConnected)poolOpener.focus({preventScroll:true});
+}
 function renderBuilder(){
  const activeControl=$('#workbench-selection').contains(document.activeElement)?document.activeElement:null;
  const focusLabel=activeControl?.getAttribute('aria-label');
@@ -326,7 +332,21 @@ function renderBuilder(){
  if(selected){
   const c=cardMap.get(selected.id),zone=selected.zone;
   const moves=destinations[zone].map(([to])=>`<button type="button" data-workbench-move="${esc(c.id)}" data-zone="${zone}" data-to="${to}" aria-label="${esc(cardName(c))}を1枚${zones[to]}へ移動">${to==='main'?'←':'→'} ${zones[to]}</button>`).join('');
-  selection.innerHTML=`<div class="selection-heading"><strong>${esc(cardName(c))} · ${zones[zone]}</strong><button type="button" data-workbench-deselect aria-label="カードの選択を解除">×</button></div><div class="workbench-row-actions"><button data-workbench-adjust="${c.id}" data-zone="${zone}" data-delta="-1" aria-label="${esc(cardName(c))}を1枚減らす">−</button><input type="number" min="0" max="1000" step="1" inputmode="numeric" value="${selected.qty}" data-workbench-qty="${c.id}" data-zone="${zone}" aria-label="${esc(cardName(c))}の${zones[zone]}枚数"><button data-workbench-adjust="${c.id}" data-zone="${zone}" data-delta="1" aria-label="${esc(cardName(c))}を1枚増やす">+</button>${moves}<button data-workbench-remove="${c.id}" data-zone="${zone}" aria-label="${esc(cardName(c))}を${zones[zone]}から削除">Delete</button><button data-card="${c.id}">Details</button></div>`;
+  selection.innerHTML=`
+   <div class="selection-heading">
+    <strong>${esc(cardName(c))} · ${zones[zone]}</strong>
+    <button type="button" data-workbench-deselect aria-label="カードの選択を解除">×</button>
+   </div>
+   <div class="selection-actions">
+    <div class="selection-quantity" role="group" aria-label="枚数変更">
+     <button type="button" data-workbench-adjust="${c.id}" data-zone="${zone}" data-delta="-1" aria-label="${esc(cardName(c))}を1枚減らす">−</button>
+     <input type="number" min="0" max="1000" step="1" inputmode="numeric" value="${selected.qty}" data-workbench-qty="${c.id}" data-zone="${zone}" aria-label="${esc(cardName(c))}の${zones[zone]}枚数">
+     <button type="button" data-workbench-adjust="${c.id}" data-zone="${zone}" data-delta="1" aria-label="${esc(cardName(c))}を1枚増やす">+</button>
+    </div>
+    <div class="selection-moves" role="group" aria-label="1枚移動">${moves}</div>
+    <button type="button" data-card="${c.id}">Details</button>
+    <button type="button" class="danger" data-workbench-remove="${c.id}" data-zone="${zone}" aria-label="${esc(cardName(c))}を${zones[zone]}から削除">Delete</button>
+   </div>`;
  }else selection.replaceChildren();
  if(focusLabel&&selected){[...selection.querySelectorAll('[aria-label]')].find(el=>el.getAttribute('aria-label')===focusLabel)?.focus({preventScroll:true});}
  $('#workbench-unknown').hidden=!parsed.unknown.length;
@@ -511,7 +531,11 @@ async function boot(){
  catch(error){storageOk=false;message('保存領域を読み込めません。元データを保持しています。'+error.message);}
  await load();loadEvents();loadResults();
 }
-$('#pool-toggle').onclick=openPool;$('#pool-close').onclick=closePool;
+$('#pool-toggle').onclick=()=>{
+ if($('#builder').open)closePool();
+ else openPool();
+};
+$('#pool-close').onclick=closePool;
 $('#workbench-add-cards').onclick=()=>{
  closePool();
  navigate('cards');
