@@ -3,7 +3,7 @@ import {openDeckStore} from './deck-store.mjs?v=20261031a';
 import {zones,destinations,setDeckQuantity,moveDeckCard,officialDeckText} from './workbench.mjs?v=20261031a';
 import {attachAutocomplete} from './autocomplete.mjs?v=20261026a';
 import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './publishing.mjs?v=20261104a';
-import {uuid,archetypeEnglish,groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261104b';
+import {uuid,archetypeEnglish,groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261105a';
 
 const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -202,11 +202,32 @@ $('#detail').addEventListener('scroll',()=>{if($('#detail').open)detailPositions
 $('#detail-back').onclick=()=>{captureDetailPosition();history.back();};
 function detailAddLabel(zone,qty){const name=zone==='main'?'Main':'Sideboard';return `<span class="detail-action-full">Add to ${name} (${qty})</span><span class="detail-action-short">${zone==='main'?'Main':'Side'} + (${qty})</span>`;}
 function detailStorageLabel(){const total=cardPool.reduce((sum,x)=>sum+x.qty,0);return `<span class="detail-action-full">My Storage (${total})</span><span class="detail-action-short">Storage (${total})</span>`;}
+function cardRulesMarkup(card){
+ return `<section class="card-rules" aria-label="能力テキスト">
+ <div class="card-rules-switch" role="group" aria-label="能力テキストの言語">
+ <button type="button" data-rules-language="ja" aria-controls="card-rules-ja" aria-pressed="true">JPN-TEXT</button>
+ <button type="button" data-rules-language="en" aria-controls="card-rules-en" aria-pressed="false">OracleText</button>
+ </div>
+ <div aria-live="polite">
+ <p id="card-rules-ja" class="oracle" lang="ja">${esc(card.oracleJa||(card.oracle?'日本語テキストは未収録です。':'能力テキストなし'))}</p>
+ <p id="card-rules-en" class="oracle" lang="en" hidden>${esc(card.oracle||'No rules text.')}</p>
+ </div>
+ </section>`;
+}
+$('#detail-body').addEventListener('click',event=>{
+ const button=event.target.closest('button[data-rules-language]');
+ if(!button)return;
+ for(const option of button.parentElement.querySelectorAll('button[data-rules-language]')){
+  const selected=option===button;
+  option.setAttribute('aria-pressed',String(selected));
+  document.getElementById(option.getAttribute('aria-controls')).hidden=!selected;
+ }
+});
 function openCard(id){
  const c=cardMap.get(id);if(!c)return;
  const related=decks.filter(d=>[...d.main,...d.side].some(l=>l.id===id));
  const subs=subtypes(c);
- showDetail(`<div class="detail-top"><div>${imageMarkup(c)}</div><div>${subs.length?`<p class="detail-subtypes eyebrow">${esc(subs.join(' / '))}</p>`:''}<h1 class="card-detail-name"><span>${esc(cardName(c))}</span>${c.ja?`<span class="card-name-separator">/</span><span class="card-english-title">${esc(c.name)}</span>`:''}</h1><p class="hint"><a href="${esc(c.japaneseNameSource||c.url)}" target="_blank" rel="noopener noreferrer">Scryfallで見る</a></p><p>${esc(c.type.split(' // ').map(face=>face.split(' — ')[0]).join(' // '))}</p><h2>Oracle Text</h2><p class="oracle">${esc(c.oracle||'能力テキストなし')}</p></div></div><h2>このカードを使う掲載デッキ</h2>${related.length?related.map(d=>`<p class="related-deck"><button class="link-button" data-deck="${d.id}">${esc(d.name)}</button><span class="related-deck-info">${esc(d.author)} · ${confirmedDeckDate(d)?`開催日：<time datetime="${confirmedDeckDate(d)}">${confirmedDeckDate(d)}</time>`:'開催日未登録'}</span> ${d.sample?'<span class="badge">サンプル</span>':''}</p>`).join(''):'<p>掲載デッキには採用例がありません。</p>'}`,'card',id);
+ showDetail(`<div class="detail-top"><div>${imageMarkup(c)}</div><div>${subs.length?`<p class="detail-subtypes eyebrow">${esc(subs.join(' / '))}</p>`:''}<h1 class="card-detail-name"><span>${esc(cardName(c))}</span>${c.ja?`<span class="card-name-separator">/</span><span class="card-english-title">${esc(c.name)}</span>`:''}</h1><p class="hint"><a href="${esc(c.japaneseNameSource||c.url)}" target="_blank" rel="noopener noreferrer">Scryfallで見る</a></p><p>${esc(c.type.split(' // ').map(face=>face.split(' — ')[0]).join(' // '))}</p>${cardRulesMarkup(c)}</div></div><h2>このカードを使う掲載デッキ</h2>${related.length?related.map(d=>`<p class="related-deck"><button class="link-button" data-deck="${d.id}">${esc(d.name)}</button><span class="related-deck-info">${esc(d.author)} · ${confirmedDeckDate(d)?`開催日：<time datetime="${confirmedDeckDate(d)}">${confirmedDeckDate(d)}</time>`:'開催日未登録'}</span> ${d.sample?'<span class="badge">サンプル</span>':''}</p>`).join(''):'<p>掲載デッキには採用例がありません。</p>'}`,'card',id);
 }
 
 async function copyPublishedDeck(button){

@@ -93,6 +93,8 @@
 .guide-steps h3{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px}
 .guide-steps h3 small{font-family:var(--font-ui);font-size:14px;font-weight:700}
 /* Card details: subtype above the bilingual name; actions share the close row. */
+.card-rules-switch{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.museum-frame .card-rules-switch button[aria-pressed="true"]{background:#425b46;border-color:var(--light);color:var(--light)}
 .card-detail-name{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;line-height:1.5}
 .card-english-title{font-family:var(--font-ui);font-size:18px;font-weight:400}
 .card-name-separator{font-weight:400;font-size:18px}
