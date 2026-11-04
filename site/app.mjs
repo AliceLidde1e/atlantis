@@ -3,7 +3,7 @@ import {openDeckStore} from './deck-store.mjs?v=20261031a';
 import {zones,destinations,setDeckQuantity,moveDeckCard,officialDeckText} from './workbench.mjs?v=20261031a';
 import {attachAutocomplete} from './autocomplete.mjs?v=20261026a';
 import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './publishing.mjs?v=20261104a';
-import {uuid,archetypeEnglish,groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261101a';
+import {uuid,archetypeEnglish,groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261104b';
 
 const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -216,36 +216,31 @@ async function copyPublishedDeck(button){
  finally{if(button.isConnected)button.disabled=false;}
 }
 function deckText(d){return d.englishText;}
-function visualDeckLines(lines,grouped=true){
- const grid=rows=>`<div class="published-deck-grid">${rows.map(l=>{const c=cardMap.get(l.id);return `<article><button class="link-button published-card-name" data-card="${esc(c.id)}">《${esc(cardCaption(c))}》</button><button class="card-image-button" data-card="${esc(c.id)}" aria-label="${esc(cardCaption(c))}、${l.qty}枚 — Card Details">${imageMarkup(c,false,l.qty)}</button></article>`;}).join('')}</div>`;
- if(!grouped)return grid(lines);
- return groupDeckLines(lines,cardMap).filter(group=>group.lines.length).map(group=>`<section class="deck-card-group" aria-label="${group.label}"><h3>${group.key==='spells'?'Spells':'Lands'}: ${group.total}</h3>${grid(group.lines)}</section>`).join('');
+function visualDeckLines(lines,grouped=true,editZone=null){
+ const groups=groupDeckLines(lines,cardMap);
+ const grid=rows=>`<div class="deck-card-grid">${rows.map(l=>{const c=cardMap.get(l.id),selected=editZone&&selectedWorkbenchCard?.id===l.id&&selectedWorkbenchCard.zone===editZone;return `<article><button type="button" class="card-image-button" ${editZone?`data-workbench-select="${esc(c.id)}" data-zone="${editZone}" aria-pressed="${!!selected}" aria-controls="workbench-selection"`:`data-card="${esc(c.id)}"`} aria-label="${esc(cardCaption(c))}、${l.qty}枚 — ${editZone?'Edit '+zones[editZone]:'Card Details'}">${imageMarkup(c,false,l.qty)}</button></article>`;}).join('')}</div>`;
+ if(!lines.length)return '<p class="deck-board-empty">カードはありません。</p>';
+ if(!grouped){const merged=new Map(groups.flatMap(g=>g.lines).map(line=>[line.id,line]));return grid([...new Set(lines.map(line=>line.id))].map(id=>merged.get(id)));}
+ return groups.filter(group=>group.lines.length).map(group=>`<section class="deck-card-group" aria-label="${group.label}"><h3>${group.label}: ${group.total}</h3>${grid(group.lines)}</section>`).join('');
 }
-function openDeck(id){const d=decks.find(d=>d.id===id);if(!d)return;showDetail(`<div class="published-deck-heading"><h1>${esc(d.name)}</h1><div class="published-deck-player"><span class="eyebrow">PLAYER</span><p>${esc(d.author)}</p><div class="tags">${tags(d.colors)}<span class="tag">${esc(d.archetype)}</span></div></div><div class="published-deck-event"><span class="eyebrow">EVENT / RESULT</span><p><strong>${esc(d.event)} · ${esc(d.result)}</strong><br>${esc(d.venue)}</p>${confirmedDeckDate(d)?`<p class="hint">開催日：<time datetime="${confirmedDeckDate(d)}">${confirmedDeckDate(d)}</time></p>`:''}</div></div><section class="published-main"><h2>Mainboard: ${d.main.reduce((s,x)=>s+x.qty,0)}</h2>${visualDeckLines(d.main)}</section><section class="published-side"><h2>Sideboard: ${d.side.reduce((s,x)=>s+x.qty,0)}</h2>${visualDeckLines(d.side,false)}</section>`,'deck',id);}
+function deckBoard(lines,zone,editing=false){
+ const labels={main:'Mainboard',side:'Sideboard',maybe:'Maybe'};
+ return `<section class="deck-board" data-board="${zone}"><h2>${labels[zone]}: ${lines.reduce((sum,line)=>sum+line.qty,0)}</h2>${visualDeckLines(lines,zone==='main',editing?zone:null)}</section>`;
+}
+function openDeck(id){const d=decks.find(d=>d.id===id);if(!d)return;showDetail(`<div class="published-deck-heading"><h1>${esc(d.name)}</h1><div class="published-deck-player"><span class="eyebrow">PLAYER</span><p>${esc(d.author)}</p><div class="tags">${tags(d.colors)}<span class="tag">${esc(d.archetype)}</span></div></div><div class="published-deck-event"><span class="eyebrow">EVENT / RESULT</span><p><strong>${esc(d.event)} · ${esc(d.result)}</strong><br>${esc(d.venue)}</p>${confirmedDeckDate(d)?`<p class="hint">開催日：<time datetime="${confirmedDeckDate(d)}">${confirmedDeckDate(d)}</time></p>`:''}</div></div>${deckBoard(d.main,'main')}${deckBoard(d.side,'side')}`,'deck',id);}
 const parsedDeckCache=new WeakMap();
 function parsedLocalDeck(d){const hit=parsedDeckCache.get(d);if(hit?.map===cardMap&&hit.text===d.text)return hit.value;const value=parseDeck(d.text,cardMap);parsedDeckCache.set(d,{map:cardMap,text:d.text,value});return value;}
 function renderMy(){renderBuilder(); $('#my-count').textContent=local.decks.length;const q=normalize(field('my-query'));const rows=local.decks.filter(d=>normalize(d.name).includes(q)).sort((a,b)=>field('my-sort')==='name'?a.name.localeCompare(b.name,'ja'):b.updated.localeCompare(a.updated));if(storageOk){$('#my-status').textContent=`${rows.length} / ${local.decks.length} 件 · このブラウザだけに保存`;}$('#my-results').innerHTML=rows.map(d=>deckTile(d,{localDeck:true})).join('')||(local.decks.length?empty('条件に合うマイデッキはありません','my'):'<div class="empty"><h2>マイデッキはまだありません</h2><p>保存したデータはこのブラウザだけに残ります。</p><button class="primary" id="empty-new">+ New Deck</button></div>');}
 function openMyDeck(id,mode='visual'){
  const d=local.decks.find(x=>x.id===id);if(!d)return;const parsed=parsedLocalDeck(d);
- const grid=rows=>{
-  const groups={Creatures:[],Spells:[],Lands:[]};
-  for(const row of rows){
-   const card=cardMap.get(row.id);
-   const cardTypes=card.type.split(' // ').flatMap(face=>face.split(' — ')[0].split(' '));
-   groups[cardTypes.includes('Land')?'Lands':cardTypes.includes('Creature')?'Creatures':'Spells'].push(row);
-  }
-  return Object.entries(groups).filter(([,items])=>items.length).map(([label,items])=>`<section class="saved-card-group"><h2>${label}: ${items.reduce((sum,item)=>sum+item.qty,0)}</h2><div class="visual-grid">${items.map(row=>{
-   const card=cardMap.get(row.id);
-   return `<article><button type="button" class="card-image-button" data-card="${esc(card.id)}" aria-label="${esc(cardName(card))} — Card Details">${imageMarkup(card)}</button><strong>${row.qty}${row.zone==='side'?' · Side':''}</strong></article>`;
-  }).join('')}</div></section>`).join('');
- };
- const official=parsed.rows.filter(x=>x.zone!=='maybe'),maybe=parsed.rows.filter(x=>x.zone==='maybe');
- showDetail(`<h1>${esc(d.name)}</h1><div class="actions"><button data-local-view="${esc(id)}" aria-pressed="${mode==='visual'}">Visual</button><button data-local-text="${esc(id)}" aria-pressed="${mode==='text'}">Text</button><button data-edit="${esc(id)}">Edit Deck</button><button data-local-copy="${esc(id)}" aria-label="${esc(d.name)}をMy Deckとして複製">Copy</button><button data-local-export="${esc(id)}">Export MO</button></div>${mode==='text'?`<pre class="raw-deck">${esc(d.text)}</pre>`:grid(official)+`<details class="maybe-candidates"><summary>MAYBE · 検討中</summary>${grid(maybe)}</details>${parsed.unknown.length?`<h2>読み取れなかった行 ${parsed.unknown.length}件</h2><ol class="unknown-lines">${parsed.unknown.map(x=>`<li value="${x.line}"><code>${esc(x.text)}</code></li>`).join('')}</ol>`:''}`}`,'local',id,mode);
+ const main=parsed.rows.filter(x=>x.zone==='main'),side=parsed.rows.filter(x=>x.zone==='side'),maybe=parsed.rows.filter(x=>x.zone==='maybe');
+ showDetail(`<h1>${esc(d.name)}</h1><div class="actions"><button data-local-view="${esc(id)}" aria-pressed="${mode==='visual'}">Visual</button><button data-local-text="${esc(id)}" aria-pressed="${mode==='text'}">Text</button><button data-edit="${esc(id)}">Edit Deck</button><button data-local-copy="${esc(id)}" aria-label="${esc(d.name)}をMy Deckとして複製">Copy</button><button data-local-export="${esc(id)}">Export MO</button></div>${mode==='text'?`<pre class="raw-deck">${esc(d.text)}</pre>`:deckBoard(main,'main')+deckBoard(side,'side')+`<details class="maybe-candidates"><summary>MAYBE · 検討中</summary>${visualDeckLines(maybe,false)}</details>${parsed.unknown.length?`<h2>読み取れなかった行 ${parsed.unknown.length}件</h2><ol class="unknown-lines">${parsed.unknown.map(x=>`<li value="${x.line}"><code>${esc(x.text)}</code></li>`).join('')}</ol>`:''}`}`,'local',id,mode);
 }
 function refreshDetail(){const state=history.state;if(!$('#detail').open||!state?.detail)return;captureDetailPosition();renderDetailState(history.state);}
 function draftSnapshot(){return Object.fromEntries(['id','name','text','note'].map(k=>[k,field('edit-'+k)]));}
 function draftDirty(){return draftActive&&JSON.stringify(draftSnapshot())!==JSON.stringify(draftBase);}
 const draftShelf=new Map();
+let selectedWorkbenchCard=null,selectionDeckId=null;
 let builderZone='main',draftWrite=Promise.resolve(),savingDeck=false,deckStore=null;
 let draftOwner;try{draftOwner=sessionStorage.getItem('atlantis.draft.owner')||uuid();sessionStorage.setItem('atlantis.draft.owner',draftOwner);}catch{draftOwner=uuid();}
 function draftKey(id=field('edit-id')){return draftOwner+':'+(id||'new');}
@@ -305,6 +300,8 @@ function openPool(){
 }
 function closePool(){if($('#builder').open)$('#builder').close();$('#pool-toggle').setAttribute('aria-expanded','false');if(poolOpener?.isConnected)poolOpener.focus({preventScroll:true});}
 function renderBuilder(){
+ const activeControl=$('#workbench-selection').contains(document.activeElement)?document.activeElement:null;
+ const focusLabel=activeControl?.getAttribute('aria-label');
  $$('[data-deck-add-actions]').forEach(actions=>actions.hidden=!draftActive);
  const parsed=parseDeck(field('edit-text'),cardMap);cardPool=draftActive?parsed.rows:[];
  $('#workbench-name').value=draftActive?field('edit-name'):'';
@@ -319,11 +316,19 @@ function renderBuilder(){
   button.setAttribute('aria-pressed',String(zone===builderZone));
   button.textContent=zone.toUpperCase()+': '+totals[zone];
  }
- $('#builder-pool').innerHTML=cardPool.filter(x=>x.zone===builderZone).map(row=>{
-  const c=cardMap.get(row.id),p=printingOptions(printings?.cards[c.id],printingMode).choices[0],art=imagesDisabled()?null:p?.art||p?.image;
-  const moves=destinations[builderZone].map(([to,label])=>`<button type="button" data-workbench-move="${esc(row.id)}" data-to="${to}" aria-label="${esc(cardName(c))}を1枚${zones[to]}へ移動" title="1枚を${zones[to]}へ移動">${label}</button>`).join('');
-  return `<div class="workbench-row"><button class="workbench-card" data-card="${esc(c.id)}">${art?`<img src="${esc(art)}" alt="" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer">`:''}<span>${esc(cardName(c))}</span></button><div class="workbench-row-actions"><button data-workbench-adjust="${c.id}" data-delta="-1" aria-label="${esc(cardName(c))}を1枚減らす">−</button><input type="number" min="0" max="1000" step="1" inputmode="numeric" value="${row.qty}" data-workbench-qty="${c.id}" aria-label="${esc(cardName(c))}の${zones[builderZone]}枚数"><button data-workbench-adjust="${c.id}" data-delta="1" aria-label="${esc(cardName(c))}を1枚増やす">+</button>${moves}<button data-workbench-remove="${c.id}" aria-label="${esc(cardName(c))}を${zones[builderZone]}から削除">×</button></div></div>`;
- }).join('')||'<p class="empty">検索結果からカードを追加してください。</p>';
+ if(selectionDeckId!==field('edit-id')){selectedWorkbenchCard=null;selectionDeckId=field('edit-id');}
+ const selected=selectedWorkbenchCard&&cardPool.find(row=>row.id===selectedWorkbenchCard.id&&row.zone===selectedWorkbenchCard.zone);
+ if(!selected)selectedWorkbenchCard=null;
+ const pool=$('#builder-pool'),scrollTop=pool.scrollTop,maybeOpen=pool.querySelector('.maybe-candidates')?.open;
+ pool.innerHTML=deckBoard(cardPool.filter(x=>x.zone==='main'),'main',true)+deckBoard(cardPool.filter(x=>x.zone==='side'),'side',true)+`<details class="maybe-candidates" ${maybeOpen||builderZone==='maybe'?'open':''}><summary>Maybe: ${totals.maybe} · 検討中</summary>${deckBoard(cardPool.filter(x=>x.zone==='maybe'),'maybe',true)}</details>`;
+ pool.scrollTop=scrollTop;
+ const selection=$('#workbench-selection');selection.hidden=!selected;
+ if(selected){
+  const c=cardMap.get(selected.id),zone=selected.zone;
+  const moves=destinations[zone].map(([to])=>`<button type="button" data-workbench-move="${esc(c.id)}" data-zone="${zone}" data-to="${to}" aria-label="${esc(cardName(c))}を1枚${zones[to]}へ移動">${to==='main'?'←':'→'} ${zones[to]}</button>`).join('');
+  selection.innerHTML=`<div class="selection-heading"><strong>${esc(cardName(c))} · ${zones[zone]}</strong><button type="button" data-workbench-deselect aria-label="カードの選択を解除">×</button></div><div class="workbench-row-actions"><button data-workbench-adjust="${c.id}" data-zone="${zone}" data-delta="-1" aria-label="${esc(cardName(c))}を1枚減らす">−</button><input type="number" min="0" max="1000" step="1" inputmode="numeric" value="${selected.qty}" data-workbench-qty="${c.id}" data-zone="${zone}" aria-label="${esc(cardName(c))}の${zones[zone]}枚数"><button data-workbench-adjust="${c.id}" data-zone="${zone}" data-delta="1" aria-label="${esc(cardName(c))}を1枚増やす">+</button>${moves}<button data-workbench-remove="${c.id}" data-zone="${zone}" aria-label="${esc(cardName(c))}を${zones[zone]}から削除">Delete</button><button data-card="${c.id}">Details</button></div>`;
+ }else selection.replaceChildren();
+ if(focusLabel&&selected){[...selection.querySelectorAll('[aria-label]')].find(el=>el.getAttribute('aria-label')===focusLabel)?.focus({preventScroll:true});}
  $('#workbench-unknown').hidden=!parsed.unknown.length;
  $('#workbench-unknown-count').textContent=parsed.unknown.length;
  $('#workbench-undo').disabled=!poolUndo.length;
@@ -534,11 +539,13 @@ window.addEventListener('resize',syncWorkbenchLayout);
 window.addEventListener('storage',e=>{if(e.key===STORAGE)message('別のタブで保存内容が変わりました。Reload Decksで確認してください。');});
 let workbenchAction=Promise.resolve();
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
- if(b.dataset.workbenchZone){builderZone=b.dataset.workbenchZone;renderBuilder();}
+ if(b.dataset.workbenchZone){builderZone=b.dataset.workbenchZone;if(selectedWorkbenchCard?.zone!==builderZone)selectedWorkbenchCard=null;renderBuilder();$('#builder-pool').querySelector(`[data-board="${builderZone}"]`)?.scrollIntoView({block:'start'});}
+ if(b.dataset.workbenchSelect){selectedWorkbenchCard={id:b.dataset.workbenchSelect,zone:b.dataset.zone};builderZone=b.dataset.zone;renderBuilder();$('#workbench-selection button')?.focus({preventScroll:true});}
+ if(b.hasAttribute('data-workbench-deselect')){const previous=selectedWorkbenchCard;selectedWorkbenchCard=null;renderBuilder();$$('[data-workbench-select]').find(x=>x.dataset.workbenchSelect===previous?.id&&x.dataset.zone===previous?.zone)?.focus({preventScroll:true});}
  if(b.dataset.resumeKey){const r=draftShelf.get(b.dataset.resumeKey);if(r)restoreWorkbenchDraft(r);}
- try{const id=b.dataset.workbenchMove||b.dataset.workbenchAdjust||b.dataset.workbenchRemove;if(!id)return;let text=field('edit-text');if(b.dataset.workbenchMove)text=moveDeckCard(text,cardMap,id,builderZone,b.dataset.to);else{const qty=parseDeck(text,cardMap).rows.find(x=>x.id===id&&x.zone===builderZone)?.qty||0;text=setDeckQuantity(text,cardMap,id,builderZone,b.dataset.workbenchRemove?0:qty+Number(b.dataset.delta));}commitWorkbenchText(text,'デッキを変更しました。');}catch(error){message(error.message);}
+ try{const id=b.dataset.workbenchMove||b.dataset.workbenchAdjust||b.dataset.workbenchRemove;if(!id)return;const zone=b.dataset.zone;let text=field('edit-text');if(b.dataset.workbenchMove)text=moveDeckCard(text,cardMap,id,zone,b.dataset.to);else{const qty=parseDeck(text,cardMap).rows.find(x=>x.id===id&&x.zone===zone)?.qty||0;text=setDeckQuantity(text,cardMap,id,zone,b.dataset.workbenchRemove?0:qty+Number(b.dataset.delta));}commitWorkbenchText(text,'デッキを変更しました。');}catch(error){message(error.message);}
 });
-document.addEventListener('change',e=>{const id=e.target.dataset.workbenchQty;if(!id)return;try{commitWorkbenchText(setDeckQuantity(field('edit-text'),cardMap,id,builderZone,Number(e.target.value)),'枚数を変更しました。');}catch(error){message(error.message);renderBuilder();}});
+document.addEventListener('change',e=>{const id=e.target.dataset.workbenchQty;if(!id)return;try{commitWorkbenchText(setDeckQuantity(field('edit-text'),cardMap,id,e.target.dataset.zone,Number(e.target.value)),'枚数を変更しました。');}catch(error){message(error.message);renderBuilder();}});
 $('#paste-deck').onclick=async()=>{
   const button=$('#paste-deck'),input=$('#edit-text'),before=input.value,start=input.selectionStart,end=input.selectionEnd,epoch=draftEpoch;
   button.disabled=true;$('#paste-status').textContent='';

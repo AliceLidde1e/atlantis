@@ -37,8 +37,14 @@ export function cardColorsMatch(card,selected=[],mode='includes'){
 export function cardMatches(c,f){return (!normalize(f.name)||c.nameIndex.includes(normalize(f.name)))&&oracleMatch(c,f.oracle)&&(!normalize(f.keyword)||c.nameIndex.includes(normalize(f.keyword))||c.subtypeIndex.includes(normalize(f.keyword))||oracleMatch(c,f.keyword))&&cardColorsMatch(c,f.colors,f.colorMode)&&(!(f.types?.length||f.type)||c.type.split(' // ').some(v=>(f.types?.length?f.types:[f.type]).some(type=>(v.split(' — ')[0]||'').split(' ').includes(type))))&&(f.min===''||c.mv>=Number(f.min))&&(f.max===''||c.mv<=Number(f.max));}
 // Partition for display only; preserve source order and quantities in each group.
 export function groupDeckLines(lines,cards){
- const groups=[{key:'spells',label:'呪文',lines:[]},{key:'lands',label:'土地',lines:[]}];
- for(const line of lines){const card=cards.get(line.id);if(!card)throw Error('Unknown deck card: '+line.id);const land=String(card.type).split(' // ').some(face=>face.split(' — ')[0].split(/\s+/).includes('Land'));groups[land?1:0].lines.push(line);}
+ const groups=[{key:'creatures',label:'Creatures',lines:[]},{key:'spells',label:'Spells',lines:[]},{key:'lands',label:'Lands',lines:[]}];
+ for(const line of lines){
+  const card=cards.get(line.id);if(!card)throw Error('Unknown deck card: '+line.id);
+  const cardTypes=String(card.type).split(' // ').flatMap(face=>face.split(' — ')[0].split(/\s+/));
+  const group=groups[cardTypes.includes('Land')?2:cardTypes.includes('Creature')?0:1];
+  const existing=group.lines.find(item=>item.id===line.id);
+  if(existing)existing.qty+=line.qty;else group.lines.push({...line});
+ }
  return groups.map(group=>({...group,total:group.lines.reduce((sum,line)=>sum+line.qty,0)}));
 }
 export function deckMatches(d,f,cards){

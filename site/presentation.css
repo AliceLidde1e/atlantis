@@ -260,3 +260,34 @@
  .recent-mobile-tile{display:block;min-width:0}
  .museum-frame .recent-mobile-tile .content{height:auto}
 }
+
+/* Shared visual deck list: full card faces, board totals and per-card counts. */
+.deck-board{container-type:inline-size;min-width:0;margin-block:20px}
+.deck-board>h2{margin:0 0 18px;padding:14px 12px;border-block:1px solid var(--line);background:var(--surface,#142e2c);font-family:var(--font-display);font-size:clamp(20px,3vw,28px)}
+.deck-card-group{margin-block:18px 24px}
+.deck-card-group>h3{margin:0 0 12px;font-family:var(--font-display);font-size:20px}
+.deck-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+.deck-card-grid article{min-width:0}
+.museum-frame .deck-card-grid .card-image-button{display:block;width:100%;min-height:0;padding:0;border:0;border-radius:7px;background:transparent;box-shadow:none;text-align:left}
+.deck-card-grid .printing-image{margin:0}
+.deck-card-grid .card-image,.deck-card-grid .image-failed{display:block;width:100%;height:auto;aspect-ratio:488/680;object-fit:contain;border-radius:7px}
+.deck-card-grid .image-failed{display:flex;align-items:center;justify-content:center;padding:10px 6px;border:1px solid var(--line);font-size:12px;text-align:center;overflow-wrap:anywhere}
+.deck-card-grid .counted-card-image{overflow:hidden;border-radius:7px}
+.deck-card-grid .published-quantity{position:absolute;left:0;bottom:0;z-index:1;margin:0;padding:4px 10px;background:#000;color:#fff;border-radius:0 10px 0 0;font-family:var(--font-ui);font-size:clamp(18px,3cqi,28px);line-height:1.25;font-weight:700;pointer-events:none}
+.museum-frame .deck-card-grid .card-image-button:is(:focus-visible,[aria-pressed=true]){outline:3px solid var(--light);outline-offset:2px}
+.deck-board-empty{padding-inline:12px;font-size:13px;color:var(--muted)}
+@container(min-width:620px){.deck-card-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@container(min-width:820px){.deck-card-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+#builder #builder-pool{min-height:90px;padding:4px;scrollbar-gutter:stable}
+#builder .deck-board{margin-block:8px 20px}
+#builder .deck-board>h2{font-size:20px;padding:10px 6px}
+#builder .deck-card-group>h3{font-size:17px}
+#builder .deck-card-grid{gap:10px}
+#builder .workbench-selection{flex-shrink:0;border-top:1px solid var(--line);padding-top:8px}
+#builder .selection-heading{display:flex;align-items:center;justify-content:space-between;gap:6px;font-family:var(--font-ui);font-size:12px;overflow-wrap:anywhere}
+#builder .selection-heading>button{min-width:36px;min-height:36px;padding:2px;flex-shrink:0}
+#builder .workbench-selection .workbench-row-actions{flex-wrap:wrap;justify-content:flex-start;gap:5px}
+#builder .workbench-selection .workbench-row-actions button{min-height:44px;min-width:34px;padding:5px;font-size:12px}
+#builder .workbench-selection input{height:44px;width:45px;font-size:16px}
+@media(max-width:639px){.deck-card-grid{gap:10px}.deck-board>h2{padding:12px 8px}.deck-card-grid .published-quantity{padding:3px 7px}}
+@media(forced-colors:active){.deck-card-grid .published-quantity{background:Canvas;color:CanvasText;border:1px solid CanvasText}}
