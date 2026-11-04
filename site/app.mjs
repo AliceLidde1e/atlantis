@@ -205,7 +205,7 @@ function detailStorageLabel(){const total=cardPool.reduce((sum,x)=>sum+x.qty,0);
 function cardRulesMarkup(card){
  return `<section class="card-rules" aria-label="能力テキスト">
  <div class="card-rules-switch" role="group" aria-label="能力テキストの言語">
- <button type="button" data-rules-language="ja" aria-controls="card-rules-ja" aria-pressed="true">JNP-TEXT</button>
+ <button type="button" data-rules-language="ja" aria-controls="card-rules-ja" aria-pressed="true">JPN-TEXT</button>
  <button type="button" data-rules-language="en" aria-controls="card-rules-en" aria-pressed="false">OracleText</button>
  </div>
  <div aria-live="polite">
