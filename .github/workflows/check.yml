@@ -28,6 +28,7 @@ jobs:
       - run: node publishing.test.mjs
       - run: node autocomplete.test.mjs
       - run: node search.test.mjs
+      - run: node routing.test.mjs
       - run: node deck-list.test.mjs
       - run: node workbench.test.mjs
       - run: node scripts/check-editor.mjs
