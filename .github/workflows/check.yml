@@ -30,6 +30,8 @@ jobs:
       - run: node search.test.mjs
       - run: node deck-list.test.mjs
       - run: node workbench.test.mjs
+      - run: node pwa.test.mjs
+      - run: node --check site/sw.js
       - run: node scripts/check-editor.mjs
       - run: node scripts/rehearse-publishing.mjs
       - run: python check_site.py

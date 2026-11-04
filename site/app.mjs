@@ -1,3 +1,4 @@
+import {loadCatalogFile,registerPwa} from './pwa.mjs';
 import {openDeckStore} from './deck-store.mjs?v=20261031a';
 import {zones,destinations,setDeckQuantity,moveDeckCard,officialDeckText} from './workbench.mjs?v=20261031a';
 import {attachAutocomplete} from './autocomplete.mjs?v=20261026a';
@@ -7,8 +8,9 @@ import {uuid,archetypeEnglish,groupDeckLines,normalize,colorNames,types,subtypeN
 const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const STORAGE='atlantis.functional.mydecks.v1', SESSION='atlantis.functional.search.v1';
-let cards=[], decks=[], events=[], eventLoadState="loading", tournamentResults=[], resultLoadState="loading", cardMap=new Map(), meta={}, loadFailed=false, hideImages=false, selectedCards=[], cardPage=1, toastTimer, pendingDelete=null, local={version:2,decks:[],trash:[]}, storageOk=true, currentView='home', composing=false;
+let cards=[], decks=[], deckLoadFailed=false, events=[], eventLoadState="loading", tournamentResults=[], resultLoadState="loading", cardMap=new Map(), meta={}, loadFailed=false, hideImages=false, selectedCards=[], cardPage=1, toastTimer, pendingDelete=null, local={version:2,decks:[],trash:[]}, storageOk=true, currentView='home', composing=false;
 const pageSize=24;
+const imagesDisabled=()=>hideImages||!navigator.onLine;
 const PRINT_MODE='atlantis.printing.mode.v1',DRAFT_SESSION='atlantis.editor.draft.v1';
 const DEFAULT_PRINTING_MODE='en';
 let printingMode=DEFAULT_PRINTING_MODE,printings=null,pendingDraft=null,draftRevision=null,draftStorageBaseline=null;
@@ -44,13 +46,13 @@ function tags(colors){return (colors.length?colors:['C']).map(c=>`<span class="t
 function imageMarkup(c,art=false,quantity=null){
  const counted=content=>quantity===null?content:`<span class="counted-card-image">${content}<strong class="published-quantity">${quantity}</strong></span>`;
  const selection=printingOptions(printings?.cards[c?.id],printingMode),chosen=selection.choices[0],url=art?(chosen?.art||chosen?.image):chosen?.image,cls=art?'art':'card-image',caption=printingCaption(chosen);
- return !url||hideImages?counted(`<div class="${cls} image-failed">${esc(cardName(c))}<br>画像なし・テキストで確認</div>`):`<figure class="printing-image" data-selected-print="${esc(chosen.id)}" data-printing-set="${esc(chosen.set)}">${counted(`<img class="${cls}" src="${esc(url)}" alt="${esc(cardName(c))} — ${esc(caption)}" data-image-card="${esc(c.id)}" data-image-art="${art?'1':'0'}" data-image-index="0" loading="lazy" decoding="async" referrerpolicy="no-referrer">`)}<figcaption ${selection.reason?'':'hidden'}><span class="printing-fallback" ${selection.reason?'':'hidden'}>${esc(selection.reason)}</span></figcaption></figure>`;
+ return !url||imagesDisabled()?counted(`<div class="${cls} image-failed">${esc(cardName(c))}<br>画像なし・テキストで確認</div>`):`<figure class="printing-image" data-selected-print="${esc(chosen.id)}" data-printing-set="${esc(chosen.set)}">${counted(`<img class="${cls}" src="${esc(url)}" alt="${esc(cardName(c))} — ${esc(caption)}" data-image-card="${esc(c.id)}" data-image-art="${art?'1':'0'}" data-image-index="0" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer">`)}<figcaption ${selection.reason?'':'hidden'}><span class="printing-fallback" ${selection.reason?'':'hidden'}>${esc(selection.reason)}</span></figcaption></figure>`;
 }
 document.addEventListener('error',e=>{
  const img=e.target;if(img.tagName!=='IMG'||!img.dataset.imageCard)return;
  const c=cardMap.get(img.dataset.imageCard),record=printings?.cards[c?.id],selection=printingOptions(record,printingMode),index=Number(img.dataset.imageIndex||0)+1,next=selection.choices[index],figure=img.closest('.printing-image');
  if(!figure)return;
- if(next){
+ if(next&&navigator.onLine){
   const caption=printingCaption(next),reason=printingFallbackReason(record,printingMode,next,{imageFailed:true});
   img.dataset.imageIndex=index;figure.dataset.selectedPrint=next.id;figure.dataset.printingSet=next.set;
   img.alt=cardName(c)+' — '+caption+' — '+reason;
@@ -91,7 +93,7 @@ function deckTile(d,{localDeck=false}={}){
  return `<article class="deck-card featured-card"><button type="button" class="featured-open" ${action}="${esc(d.id)}" aria-label="${esc(d.name)} details">${imageMarkup(hero,true)}<div class="content"><span class="eyebrow">${esc(localDeck?'MY DECK':archetypeEnglish[d.archetype]||d.archetype)}</span><h3>${esc(d.name)}</h3><div class="deck-card-meta"><span>${esc(localDeck?'ブラウザ内のみ':d.author+(d.sample?' · SAMPLE':''))}${!localDeck&&d.result?`<br>${esc(d.event)} · ${esc(d.result)}`:''}</span><span>${(colors.length?colors:['C']).map(x=>colorNames[x]).join(' / ')}</span></div></div></button>${localDeck?`<div class="small-actions"><button data-local-view="${esc(d.id)}">Open</button><button data-local-copy="${esc(d.id)}" aria-label="${esc(d.name)}をMy Deckとして複製">Copy</button><button data-local-export="${esc(d.id)}" aria-label="${esc(d.name)}をMO形式のTXTで書き出し">Export MO</button><button data-delete="${esc(d.id)}">Delete</button></div>`:''}</article>`;
 }
 function renderDecks(){
- if(loadFailed){$('#deck-result-count').textContent='読込失敗';$('#deck-results').innerHTML='<p class="empty">データを読み込めません。再読込をお試しください。</p>';return;}
+ if(loadFailed||deckLoadFailed){$('#deck-result-count').textContent='読込失敗';$('#deck-results').innerHTML='<p class="empty">データを読み込めません。再読込をお試しください。</p>';return;}
  const f=deckFilters(),results=decks.filter(d=>deckMatches(d,f,cardMap)),sort=field('deck-sort');
  results.sort((a,b)=>sort==='name'?a.name.localeCompare(b.name,'ja'):sort==='updated'?b.updated.localeCompare(a.updated):a.order-b.order);
  $('#deck-result-count').textContent=`${results.length} / ${decks.length} 件`;renderSelected();addActiveFilters('#deck-active',f,'deck');
@@ -255,9 +257,9 @@ function renderBuilder(){
  $('#workbench-maybe-note').hidden=builderZone!=='maybe';
  $$('#workbench-tabs button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.workbenchZone===builderZone)));
  $('#builder-pool').innerHTML=cardPool.filter(x=>x.zone===builderZone).map(row=>{
-  const c=cardMap.get(row.id),p=printingOptions(printings?.cards[c.id],printingMode).choices[0],art=p?.art||p?.image;
+  const c=cardMap.get(row.id),p=printingOptions(printings?.cards[c.id],printingMode).choices[0],art=imagesDisabled()?null:p?.art||p?.image;
   const moves=destinations[builderZone].map(([to,label])=>`<button type="button" data-workbench-move="${esc(row.id)}" data-to="${to}" aria-label="${esc(cardName(c))}を1枚${zones[to]}へ移動" title="1枚を${zones[to]}へ移動">${label}</button>`).join('');
-  return `<div class="workbench-row"><button class="workbench-card" data-card="${esc(c.id)}">${art?`<img src="${esc(art)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:''}<span>${esc(cardName(c))}</span></button><div class="workbench-row-actions"><button data-workbench-adjust="${c.id}" data-delta="-1" aria-label="${esc(cardName(c))}を1枚減らす">−</button><input type="number" min="0" max="1000" step="1" inputmode="numeric" value="${row.qty}" data-workbench-qty="${c.id}" aria-label="${esc(cardName(c))}の${zones[builderZone]}枚数"><button data-workbench-adjust="${c.id}" data-delta="1" aria-label="${esc(cardName(c))}を1枚増やす">+</button>${moves}<button data-workbench-remove="${c.id}" aria-label="${esc(cardName(c))}を${zones[builderZone]}から削除">×</button></div></div>`;
+  return `<div class="workbench-row"><button class="workbench-card" data-card="${esc(c.id)}">${art?`<img src="${esc(art)}" alt="" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer">`:''}<span>${esc(cardName(c))}</span></button><div class="workbench-row-actions"><button data-workbench-adjust="${c.id}" data-delta="-1" aria-label="${esc(cardName(c))}を1枚減らす">−</button><input type="number" min="0" max="1000" step="1" inputmode="numeric" value="${row.qty}" data-workbench-qty="${c.id}" aria-label="${esc(cardName(c))}の${zones[builderZone]}枚数"><button data-workbench-adjust="${c.id}" data-delta="1" aria-label="${esc(cardName(c))}を1枚増やす">+</button>${moves}<button data-workbench-remove="${c.id}" aria-label="${esc(cardName(c))}を${zones[builderZone]}から削除">×</button></div></div>`;
  }).join('')||'<p class="empty">検索結果からカードを追加してください。</p>';
  $('#workbench-unknown').hidden=!parsed.unknown.length;
  $('#workbench-unknown-count').textContent=parsed.unknown.length;
@@ -330,7 +332,10 @@ async function exportBackup(rows=local.decks){try{await draftWrite;const drafts=
 function reset(kind){if(kind==='cards'){for(const id of ['card-name','card-oracle','card-keyword'])$('#'+id).value='';$$('#card-colors input,#card-types input').forEach(x=>x.checked=false);clearManaBound('card-min');clearManaBound('card-max');$('#card-color-mode').value='includes';cardPage=1;renderCards();}else if(kind==='decks'){for(const id of ['deck-query','deck-archetype','deck-card'])$('#'+id).value='';selectedCards=[];$('#deck-side').checked=false;$('#deck-color-mode').value='includes';$$('#deck-colors input').forEach(x=>x.checked=false);renderDecks();}else{$('#my-query').value='';renderMy();}saveSearch();}
 function allResults(){renderDecks();renderCards();renderMy();renderResults();}
 function searchFor(kind){if(composing)return;if(kind==='cards'){cardPage=1;renderCards();}else renderDecks();saveSearch();}
-async function load(){loadFailed=false;$('#load-status').className='';$('#load-status').textContent='データを読み込んでいます…';try{const responses=await Promise.all([fetch('data/cards.json',{cache:'no-store'}),fetch('data/decks.json',{cache:'no-store'})]);if(responses.some(r=>!r.ok))throw new Error('HTTP error');const [c,d]=await Promise.all(responses.map(r=>r.json()));meta=c.meta;cards=c.cards.map(prepare);const manaLimit=Math.max(1,...cards.map(card=>Math.ceil(card.mv)));for(const id of ['card-min','card-max'])$('#'+id).max=String(manaLimit);$('#card-min').value='0';$('#card-max').value=String(manaLimit);syncManaSliders();cardMap=new Map(cards.map(c=>[c.id,c]));decks=d;renderResults();$('#deck-sample-notice').hidden=!decks.some(d=>d.sample);$('#card-suggestions').innerHTML=cards.map(c=>`<option value="${esc(c.ja||c.name)}" label="${esc(c.name)}"></option>${c.ja?`<option value="${esc(c.name)}" label="${esc(c.ja)}"></option>`:''}`).join('');$('#deck-suggestions').innerHTML=decks.map(d=>`<option value="${esc(d.name)}"></option>`).join('');$('#deck-archetype').innerHTML='<option value="">All</option>'+[...new Set(decks.map(d=>d.archetype))].map(t=>`<option>${esc(t)}</option>`).join('');$('#source-info').textContent=`Scryfall基準クエリ「${meta.query}」の取得結果：${cards.length.toLocaleString()}件、日本語名 ${meta.japaneseNames.toLocaleString()}件。初回取得 ${date(meta.fetchedAt)}、全件再照合 ${date(meta.lastAuditAt||meta.fetchedAt)}。全ページ取得・前回集合との一致を確認。日本語名はAPI ${meta.japaneseNamesFromScryfall??meta.japaneseNames}件と出典付き補完 ${meta.japaneseNameOverrides||0}件、公式資料に基づく補正 ${meta.japaneseNameCorrections||0}件。日本語印刷文の収録は ${meta.japanesePrintedText??0}件で、日本語全文検索には使いません。`;restoreSearch();searchReady=true;$('#load-status').textContent='';allResults();checkPoolRecovery();checkDraftRecovery();navigate(location.hash.slice(1)||'home');renderFeatured();}catch(e){loadFailed=true;$('#load-status').className='status-error';$('#load-status').innerHTML='カード・デッキデータの読込に失敗しました。検索条件は保持しています。<button id="load-retry">再試行</button>';allResults();}}
+async function load(){loadFailed=false;$('#load-status').className='';$('#load-status').textContent='データを読み込んでいます…';try{const [c,d]=await Promise.all([
+ loadCatalogFile('data/cards.json',data=>data?.meta?.paginationComplete===true&&Array.isArray(data.cards)&&data.cards.length>0&&data.cards.length===data.meta.count),
+ loadCatalogFile('data/decks.json',Array.isArray).catch(()=>null),
+]);deckLoadFailed=d===null;meta=c.meta;cards=c.cards.map(prepare);const manaLimit=Math.max(1,...cards.map(card=>Math.ceil(card.mv)));for(const id of ['card-min','card-max'])$('#'+id).max=String(manaLimit);$('#card-min').value='0';$('#card-max').value=String(manaLimit);syncManaSliders();cardMap=new Map(cards.map(c=>[c.id,c]));decks=d??decks;renderResults();$('#deck-sample-notice').hidden=!decks.some(d=>d.sample);$('#card-suggestions').innerHTML=cards.map(c=>`<option value="${esc(c.ja||c.name)}" label="${esc(c.name)}"></option>${c.ja?`<option value="${esc(c.name)}" label="${esc(c.ja)}"></option>`:''}`).join('');$('#deck-suggestions').innerHTML=decks.map(d=>`<option value="${esc(d.name)}"></option>`).join('');$('#deck-archetype').innerHTML='<option value="">All</option>'+[...new Set(decks.map(d=>d.archetype))].map(t=>`<option>${esc(t)}</option>`).join('');$('#source-info').textContent=`Scryfall基準クエリ「${meta.query}」の取得結果：${cards.length.toLocaleString()}件、日本語名 ${meta.japaneseNames.toLocaleString()}件。初回取得 ${date(meta.fetchedAt)}、全件再照合 ${date(meta.lastAuditAt||meta.fetchedAt)}。全ページ取得・前回集合との一致を確認。日本語名はAPI ${meta.japaneseNamesFromScryfall??meta.japaneseNames}件と出典付き補完 ${meta.japaneseNameOverrides||0}件、公式資料に基づく補正 ${meta.japaneseNameCorrections||0}件。日本語印刷文の収録は ${meta.japanesePrintedText??0}件で、日本語全文検索には使いません。`;restoreSearch();searchReady=true;$('#load-status').textContent='';allResults();checkPoolRecovery();checkDraftRecovery();navigate(location.hash.slice(1)||'home');renderFeatured();}catch(e){loadFailed=true;$('#load-status').className='status-error';$('#load-status').innerHTML=(navigator.onLine?'カードデータの読込に失敗しました。検索条件は保持しています。':'保存済みのカードデータがありません。オンラインでカード一覧を開いてください。My Decksはテキスト入力で編集できます。')+'<button id="load-retry">再試行</button>';allResults();}}
 
 colorControls('card');colorControls('deck');$('#card-types .type-checks').innerHTML=Object.keys(types).filter(en=>en!=='Planeswalker').map(en=>`<label><input id="card-type-${en}" type="checkbox" value="${en}"><span>${en}</span></label>`).join('');$('#language-help').innerHTML='<strong>能力語</strong><p>'+esc(Object.keys(oracleWords).join(' / '))+'</p><strong>サブタイプ</strong><p>'+esc(Object.values(subtypeNames).join(' / '))+'</p>';
 for(const aside of $$('.filters')){const prefix=aside.querySelector('#card-colors')?'card':'deck';const colors=$('#'+prefix+'-colors');const mode=$('#'+prefix+'-color-mode').closest('label');const basic=document.createElement('div');basic.className='basic-filters';basic.append(colors,mode);const content=document.createElement('div');content.className='filter-body';while(aside.firstChild)content.append(aside.firstChild);aside.append(basic,content);aside.classList.add('collapseable');const b=document.createElement('button');b.type='button';b.className='filter-toggle';b.textContent='Filters';b.setAttribute('aria-expanded','false');b.onclick=()=>{const open=aside.classList.toggle('open');b.setAttribute('aria-expanded',String(open));};aside.insertBefore(b,content);}
@@ -451,7 +456,18 @@ for(const dialog of $$('dialog')){let outside=false,pointer=null;const isOutside
 $('#printing-mode').value=printingMode;
 
 $('#printing-mode').onchange=()=>{printingMode=field('printing-mode')==='ja'?'ja':'en';try{localStorage.setItem(PRINT_MODE,printingMode);$('#printing-status').textContent='このブラウザの全画面に適用';}catch{$('#printing-status').textContent='保存領域を使えないため、このページ内だけに適用';}allResults();renderFeatured();refreshDetail();};
-async function loadPrintings(){try{const response=await fetch('data/printings.json',{cache:'no-store'});if(!response.ok)throw new Error();const d=await response.json();if(!d.meta.complete)throw new Error();printings=d;$('#printing-status').textContent=`表示版データ ${d.meta.snapshotDate} · 規則 v${d.meta.ruleVersion}`;}catch{$('#printing-status').textContent='表示版データの読込失敗。画像を表示できません。';}allResults();renderFeatured();refreshDetail();}
+async function loadPrintings(){if(!navigator.onLine){$('#printing-status').textContent='オフライン中はテキストで表示';return;}try{const response=await fetch('data/printings.json',{cache:'no-store'});if(!response.ok)throw new Error();const d=await response.json();if(!d.meta.complete)throw new Error();printings=d;$('#printing-status').textContent=`表示版データ ${d.meta.snapshotDate} · 規則 v${d.meta.ruleVersion}`;}catch{$('#printing-status').textContent='表示版データの読込失敗。画像を表示できません。';}allResults();renderFeatured();refreshDetail();}
+function updateConnectionDisplay(){
+ const offline=!navigator.onLine;
+ $('#offline-status').hidden=!offline;
+ $('#guide-artwork').classList.toggle('offline-artwork',offline);
+}
+updateConnectionDisplay();
+for(const type of ['online','offline'])window.addEventListener(type,()=>{
+ updateConnectionDisplay();
+ allResults();renderFeatured();refreshDetail();
+ if(navigator.onLine&&!printings)loadPrintings();
+});
 loadPrintings();
 
 function renderFeatured(){
@@ -467,4 +483,5 @@ for(const id of ['settings-dialog','menu-dialog'])$('#'+id).addEventListener('cl
 
 fetch('version.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(v=>{$('#site-version').textContent=`rev.${v.count} · ${v.revision}`;$('#site-version').title=`更新：${v.date} / Git履歴に基づく版番号`;}).catch(()=>{$('#site-version').textContent='development';});
 
+registerPwa();
 boot();
