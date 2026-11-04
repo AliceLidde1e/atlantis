@@ -1,10 +1,14 @@
 """Offline checks for the exact public GitHub Pages directory."""
 import json
+import struct
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
 EXPECTED = {
+    "manifest.webmanifest", "pwa.mjs", "sw.js", "sw-release.js",
+    "icons/atlantis-180.png", "icons/atlantis-192.png", "icons/atlantis-512.png",
+    "icons/atlantis-maskable-512.png",
     ".nojekyll", "index.html", "mo-storage.html", "style.css", "museum.css", "atlantis-logo.svg",
     "mo-theme.css", "favicon.svg", "app.mjs", "core.mjs", "workbench.mjs", "deck-store.mjs", "japanese-names.mjs", "publishing.mjs", "autocomplete.mjs", "presentation.css", "version.json", "data/results.json",
     "site-bridge.mjs", "site-bridge-ui.mjs", "data/cards.json",
@@ -23,6 +27,18 @@ def main():
     assert not any(p.is_symlink() for p in SITE.rglob("*"))
     home = (SITE / "index.html").read_text(encoding="utf-8")
     mo = (SITE / "mo-storage.html").read_text(encoding="utf-8")
+    assert 'rel="manifest" href="manifest.webmanifest"' in home
+    assert 'rel="apple-touch-icon" href="icons/atlantis-180.png"' in home
+    manifest = json.loads((SITE / "manifest.webmanifest").read_text(encoding="utf-8"))
+    assert (manifest["id"], manifest["scope"], manifest["start_url"]) == ("./", "./", "./#home")
+    assert manifest["display"] == "standalone"
+    icons = {icon["src"]: icon["sizes"] for icon in manifest["icons"]}
+    assert set(icons.values()) == {"192x192", "512x512"}
+    assert any(icon["purpose"] == "maskable" for icon in manifest["icons"])
+    for path, size in {**icons, "icons/atlantis-180.png": "180x180"}.items():
+        png = (SITE / path).read_bytes()
+        assert png[:8] == b"\x89PNG\r\n\x1a\n"
+        assert struct.unpack(">II", png[16:24]) == tuple(map(int, size.split("x")))
     for name in ("museum.css", "atlantis-logo.svg", "favicon.svg", "mo-storage.html"):
         assert name in home
     for label in ("Featured Decks", "Information", "Getting Started", "My Storage", "Decks", "Cards", "Events", "My Decks"):
