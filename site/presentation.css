@@ -148,10 +148,6 @@
 #builder .workbench-card{display:flex;align-items:center;gap:6px;min-width:0;border:0;padding:0;background:transparent;box-shadow:none;text-align:left;font-family:var(--font-ui);font-size:12px}
 #builder .workbench-card span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #builder .workbench-card img{width:28px;height:36px;object-fit:cover;flex-shrink:0}
-#builder .workbench-row-actions{display:flex;gap:3px;align-items:center}
-#builder .workbench-row-actions button{padding:3px;min-width:28px;min-height:34px;font-size:12px;font-family:var(--font-display)}
-#builder .workbench-row-actions input{width:35px;min-width:0;padding:4px 0;text-align:center;appearance:textfield;font-size:14px}
-#builder .workbench-row-actions input::-webkit-inner-spin-button{appearance:none}
 #builder .workbench-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0}
 #builder .workbench-footer{display:grid;grid-template-columns:.7fr 1.5fr 1fr 1fr;gap:6px;border-top:1px solid var(--line);padding:10px 0 0;margin:0}
 #builder .workbench-tools button,#builder .workbench-footer>button{min-width:0;min-height:38px;font-size:12px;padding:6px 3px;white-space:nowrap}
@@ -168,7 +164,7 @@
  #builder.deck-workbench:not(:modal) #builder-pool{max-height:44dvh}
  #builder:not(:modal) #pool-close{display:none}
 }
-@media(max-width:639px){.museum-frame .card-add-actions button{min-width:0;padding:5px 3px;font-size:11px}#builder.deck-workbench{padding:12px}#view-cards #pool-toggle{white-space:normal;text-align:left}#builder .workbench-row{grid-template-columns:1fr}#builder .workbench-row-actions{justify-content:space-between}#builder .workbench-row-actions button{min-width:38px;min-height:44px}#builder .workbench-row-actions input{width:38px;font-size:16px}#builder .workbench-card{min-height:40px}#builder .workbench-card span{white-space:normal}#builder .workbench-footer>button{flex:1}}
+@media(max-width:639px){.museum-frame .card-add-actions button{min-width:0;padding:5px 3px;font-size:11px}#builder.deck-workbench{padding:12px}#view-cards #pool-toggle{white-space:normal;text-align:left}#builder .workbench-row{grid-template-columns:1fr}#builder .workbench-card{min-height:40px}#builder .workbench-card span{white-space:normal}#builder .workbench-footer>button{flex:1}}
 @media(pointer:coarse){.card-add-actions button{min-height:44px}#builder button{min-height:44px}}
 
 #builder .workbench-heading{background:transparent;border:0;box-shadow:none;position:static;padding:0}
@@ -286,8 +282,17 @@
 #builder .workbench-selection{flex-shrink:0;border-top:1px solid var(--line);padding-top:8px}
 #builder .selection-heading{display:flex;align-items:center;justify-content:space-between;gap:6px;font-family:var(--font-ui);font-size:12px;overflow-wrap:anywhere}
 #builder .selection-heading>button{min-width:36px;min-height:36px;padding:2px;flex-shrink:0}
-#builder .workbench-selection .workbench-row-actions{flex-wrap:wrap;justify-content:flex-start;gap:5px}
-#builder .workbench-selection .workbench-row-actions button{min-height:44px;min-width:34px;padding:5px;font-size:12px}
-#builder .workbench-selection input{height:44px;width:45px;font-size:16px}
+#builder .selection-actions{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px;
+}
+#builder :is(.selection-quantity,.selection-moves){
+ display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px;min-width:0;
+}
+#builder .selection-actions :is(button,input){
+ width:100%;min-width:0;min-height:44px;padding:4px 2px;font-size:12px;text-align:center;
+}
+#builder .selection-actions button{font-family:var(--font-display);white-space:nowrap}
+#builder .selection-quantity input{font-size:16px;appearance:textfield}
+#builder .selection-quantity input::-webkit-inner-spin-button{appearance:none}
 @media(max-width:639px){.deck-card-grid{gap:10px}.deck-board>h2{padding:12px 8px}.deck-card-grid .published-quantity{padding:3px 7px}}
 @media(forced-colors:active){.deck-card-grid .published-quantity{background:Canvas;color:CanvasText;border:1px solid CanvasText}}
