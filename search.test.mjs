@@ -43,3 +43,17 @@ for(const selection of [[],['U'],['U','G'],['C','U'],['A'],['A','U'],['A','C']])
  assert.deepEqual(cards.filter(c=>cardMatches(c,{...filters,colors:selection,colorMode:'and'})).map(c=>c.id),expected);
 }
 console.log('AND colors: all chosen colors, additional colors, colorless and artifact intersection OK');
+
+// Both search fields use Japanese rules text, and English queries still work.
+const siegeGang = cards.find(c => c.name === 'Siege-Gang Commander');
+assert(cardMatches(siegeGang, {...filters, oracle:'トークン3体を生成する'}));
+assert(cardMatches(siegeGang, {...filters, keyword:'トークン３体を生成する'}));
+assert(cardMatches(siegeGang, {...filters, oracle:'create three'}));
+const hammer = cards.find(c => c.name === 'Hammer of Bogardan');
+assert(cardMatches(hammer, {...filters, oracle:'アップキープの間にのみ起動できる'}));
+const auction = cards.find(c => c.name === "Thieves' Auction");
+assert(cardMatches(auction, {...filters, oracle:'トークンでないすべてのパーマネントを追放'}));
+assert.equal(cards.filter(c => c.oracle.trim()).length, 983);
+assert(cards.every(c => Boolean(c.oracle.trim()) === Boolean(c.oracleJaIndex)));
+assert(cardMatches(prepare({name:'Legacy', ja:'', type:'Instant', oracle:'Draw a card.'}), {...filters, oracle:'draw'}));
+console.log('Japanese rules text: bilingual search, supplemental text, and full coverage OK');
