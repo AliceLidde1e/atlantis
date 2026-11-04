@@ -52,7 +52,6 @@
 .published-main,.published-side{margin-top:22px}
 .museum-frame .card-list .card{align-items:start}
 .museum-frame .card-list .card h3{margin-top:0;padding-right:0}
-.card-english-name{display:flex;align-items:baseline;justify-content:flex-start;gap:.4em;flex-wrap:wrap}
 .card-set{font-family:var(--font-data);font-size:11px;color:var(--muted)}
 .recent-standings{display:grid;gap:12px}
 .recent-standings h4{margin:0;font-size:16px}
@@ -183,7 +182,6 @@
 #card-results.card-grid .card{display:flex;flex-direction:column}
 #card-results.card-grid .card-content{flex:1}
 #card-results .card-add-actions{margin-top:auto;padding-top:10px}
-#card-results .card-oracle-preview{margin:0 0 8px;overflow-wrap:anywhere}
 /* Bilingual titles above scans; quantities stay on the lower left of the image. */
 .published-deck-grid article{display:grid;grid-template-rows:subgrid;grid-row:span 2;gap:8px}
 .museum-frame .published-deck-grid .published-card-name{display:block;align-self:start;width:100%;min-height:0;font-family:var(--font-ui);font-size:12px;line-height:1.6;white-space:normal}
@@ -235,3 +233,30 @@
 }
 
 .offline-artwork{display:none}
+/* Two-state search controls retain the current option at a glance. */
+.museum-frame .search-sidebar .search-switch-field{display:grid;gap:5px;min-width:0;font-size:12px;font-weight:700}
+.museum-frame .search-sidebar .card-color-switch{grid-column:1/-1;flex-basis:100%}
+.museum-frame .search-sidebar .search-switch{display:grid;grid-template-columns:1fr 1fr;gap:2px;width:100%;padding:2px;font-family:var(--font-ui)}
+.search-switch span{padding:5px 2px;text-align:center}
+.search-switch[aria-checked=false] span:first-child,.search-switch[aria-checked=true] span:last-child{background:#b79b67;color:#122726;font-weight:700}
+#card-results .card-result-title{overflow-wrap:anywhere}
+#card-results .card-result-title button{display:inline;padding-inline:0;text-align:left}
+#card-results .card-result-title .card-set{white-space:nowrap}
+.saved-card-group{margin-block:18px}
+.museum-frame .saved-card-group .card-image-button{display:block;width:100%;min-height:0;padding:0;border:0;background:none;box-shadow:none}
+.saved-card-group .printing-image{margin:0}
+.workbench-heading-actions{display:flex;align-items:center;gap:6px}
+#workbench-add-cards{white-space:nowrap}
+#builder .workbench-heading-actions button{padding-inline:7px;font-size:12px}
+#builder #workbench-tabs button{min-width:0;padding-inline:3px;font-size:12px;white-space:nowrap}
+.mana-ticks{position:relative;height:20px;margin:-4px 8px 5px;font-size:10px;color:var(--muted);pointer-events:none}
+.mana-ticks span{position:absolute;top:0;transform:translateX(-50%);width:1em;text-align:center;line-height:1}
+.mana-ticks span::before{content:"";display:block;width:1px;height:4px;margin:0 auto 2px;background:currentColor}
+.mana-ticks .major::before{height:8px}
+.recent-mobile-tile{display:none}
+@media(min-width:1100px){#workbench-add-cards{display:none}}
+@media(max-width:639px){
+ .recent-standings>.recent-deck{display:none}
+ .recent-mobile-tile{display:block;min-width:0}
+ .museum-frame .recent-mobile-tile .content{height:auto}
+}

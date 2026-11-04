@@ -2,7 +2,7 @@ import {loadCatalogFile,registerPwa} from './pwa.mjs';
 import {openDeckStore} from './deck-store.mjs?v=20261031a';
 import {zones,destinations,setDeckQuantity,moveDeckCard,officialDeckText} from './workbench.mjs?v=20261031a';
 import {attachAutocomplete} from './autocomplete.mjs?v=20261026a';
-import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './publishing.mjs?v=20261028c';
+import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './publishing.mjs?v=20261104a';
 import {uuid,archetypeEnglish,groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261101a';
 
 const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
@@ -35,6 +35,25 @@ function syncManaSliders(changed){
  const min=$('#card-min'),max=$('#card-max');
  if(Number(min.value)>Number(max.value)){if(changed==='card-min')max.value=min.value;else min.value=max.value;}
  for(const input of [min,max]){const value=Number(input.value),limit=Number(input.max);$('#'+input.id+'-value').value=String(value);input.setAttribute('aria-valuetext',String(value));input.style.setProperty('--range-position',(limit?value/limit*100:0)+'%');}
+}
+function renderManaTicks(limit){
+ for(const id of ['card-min','card-max']){
+  const input=$('#'+id);
+  let ruler=input.nextElementSibling;
+  if(!ruler?.classList.contains('mana-ticks')){
+   ruler=document.createElement('div');
+   ruler.className='mana-ticks';
+   ruler.setAttribute('aria-hidden','true');
+   input.after(ruler);
+  }
+  ruler.replaceChildren();
+  for(let value=0;value<=limit;value++){
+   const tick=document.createElement('span');
+   if(value%5===0){tick.className='major';tick.textContent=String(value);}
+   tick.style.left=(value/limit*100)+'%';
+   ruler.append(tick);
+  }
+ }
 }
 function clearManaBound(id){const input=$('#'+id);input.value=id==='card-min'?'0':input.max;syncManaSliders();}
 function deckFilters(){return {query:field('deck-query'),cards:[...selectedCards],side:$('#deck-side').checked,colors:selectedColors('deck'),colorMode:field('deck-color-mode'),archetype:field('deck-archetype')};}
@@ -86,13 +105,34 @@ function addActiveFilters(container,filters,kind){let out=[];const labels=kind==
 function renderSelected(){ $('#selected-cards').innerHTML=selectedCards.map(id=>chip(cardName(cardMap.get(id)),`data-remove-card="${id}"`)).join(''); }
 function addDeckCard(){const q=normalize(field('deck-card'));if(!q)return;let c=cards.find(c=>normalize(c.name)===q||normalize(c.ja)===q);if(!c){const matches=cards.filter(c=>c.nameIndex.includes(q));if(matches.length===1)c=matches[0];else{message(matches.length?'候補からカード名を選んでください。':'取得データ内にカードが見つかりません。');return;}}if(!selectedCards.includes(c.id))selectedCards.push(c.id);$('#deck-card').value='';renderDecks();saveSearch();}
 function empty(text,kind){return `<div class="empty"><h2>${esc(text)}</h2><p>検索語を短くするか、選択した条件を解除してください。</p><button type="button" data-reset="${kind}">Reset</button></div>`;}
-function deckTile(d,{localDeck=false}={}){
+function deckTile(d,{localDeck=false,eventSummary=false}={}){
  const parsed=localDeck?parsedLocalDeck(d):null, hero=cardMap.get(localDeck?parsed.rows[0]?.id:d.hero);
  const colors=localDeck?[...new Set(parsed.rows.flatMap(row=>cardMap.get(row.id)?.colors||[]))]:d.colors;
  const action=localDeck?'data-local-view':'data-deck';
- return `<article class="deck-card featured-card"><button type="button" class="featured-open" ${action}="${esc(d.id)}" aria-label="${esc(d.name)} details">${imageMarkup(hero,true)}<div class="content"><span class="eyebrow">${esc(localDeck?'MY DECK':archetypeEnglish[d.archetype]||d.archetype)}</span><h3>${esc(d.name)}</h3><div class="deck-card-meta"><span>${esc(localDeck?'ブラウザ内のみ':d.author+(d.sample?' · SAMPLE':''))}${!localDeck&&d.result?`<br>${esc(d.event)} · ${esc(d.result)}`:''}</span><span>${(colors.length?colors:['C']).map(x=>colorNames[x]).join(' / ')}</span></div></div></button>${localDeck?`<div class="small-actions"><button data-local-view="${esc(d.id)}">Open</button><button data-local-copy="${esc(d.id)}" aria-label="${esc(d.name)}をMy Deckとして複製">Copy</button><button data-local-export="${esc(d.id)}" aria-label="${esc(d.name)}をMO形式のTXTで書き出し">Export MO</button><button data-delete="${esc(d.id)}">Delete</button></div>`:''}</article>`;
+ return `<article class="deck-card featured-card"><button type="button" class="featured-open" ${action}="${esc(d.id)}" aria-label="${esc(d.name)} details">${imageMarkup(hero,true)}<div class="content"><span class="eyebrow">${esc(localDeck?'MY DECK':archetypeEnglish[d.archetype]||d.archetype)}</span><h3>${esc(d.name)}</h3><div class="deck-card-meta"><span>${esc(localDeck?'ブラウザ内のみ':d.author+(d.sample?' · SAMPLE':''))}${!localDeck&&d.result?`<br>${esc(d.event)} · ${esc(d.result)}${eventSummary?'<br>'+esc(d.venue)+(confirmedDeckDate(d)?' · '+confirmedDeckDate(d):''):''}`:''}</span><span>${(colors.length?colors:['C']).map(x=>colorNames[x]).join(' / ')}</span></div></div></button>${localDeck?`<div class="small-actions"><button data-local-view="${esc(d.id)}">Open</button><button data-local-copy="${esc(d.id)}" aria-label="${esc(d.name)}をMy Deckとして複製">Copy</button><button data-local-export="${esc(d.id)}" aria-label="${esc(d.name)}をMO形式のTXTで書き出し">Export MO</button><button data-delete="${esc(d.id)}">Delete</button></div>`:''}</article>`;
+}
+function renderGuideDeckLinks(){
+ const aliases={
+  'カーミック・ボンバー':'白赤緑カーミック・ボンバー',
+  '青赤緑激動アサルト':'青赤緑アサルト',
+  '緑白ミラーリ・ウェイク':'緑白ミラーリウェイク'
+ };
+ for(const entry of $$('[data-guide-deck]')){
+  const label=entry.dataset.guideDeck;
+  const latest=decks.filter(deck=>!deck.sample&&deck.name===(aliases[label]||label))
+   .sort((a,b)=>confirmedDeckDate(b).localeCompare(confirmedDeckDate(a))||b.updated.localeCompare(a.updated)||a.order-b.order)[0];
+  entry.textContent=label;
+  if(!latest)continue;
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='link-button';
+  button.dataset.deck=latest.id;
+  button.textContent=label;
+  entry.replaceChildren(button);
+ }
 }
 function renderDecks(){
+ syncSearchSwitches();
  if(loadFailed||deckLoadFailed){$('#deck-result-count').textContent='読込失敗';$('#deck-results').innerHTML='<p class="empty">データを読み込めません。再読込をお試しください。</p>';return;}
  const f=deckFilters(),results=decks.filter(d=>deckMatches(d,f,cardMap)),sort=field('deck-sort');
  results.sort((a,b)=>sort==='name'?a.name.localeCompare(b.name,'ja'):sort==='updated'?b.updated.localeCompare(a.updated):a.order-b.order);
@@ -101,15 +141,21 @@ function renderDecks(){
 }
 function setCardPages(html){for(const target of $$('.card-pagination'))target.innerHTML=html;}
 function renderCards(){
+ syncSearchSwitches();
  if(loadFailed){setCardPages('');$('#card-result-count').textContent='読込失敗';$('#card-results').innerHTML='<p class="empty">データを読み込めません。再読込をお試しください。</p>';return;}
  const f=cardFilters();addActiveFilters('#card-active',f,'card');
  if(f.min!==''&&f.max!==''&&Number(f.min)>Number(f.max)){$('#card-result-count').textContent='マナ総量の範囲を確認';$('#card-results').innerHTML='<p class="empty">下限を上限以下にしてください。</p>';setCardPages('');return;}
- const result=cards.filter(c=>cardMatches(c,f));result.sort((a,b)=>field('card-sort')==='mana'?a.mv-b.mv||cardName(a).localeCompare(cardName(b),'ja'):cardName(a).localeCompare(cardName(b),'ja'));
+ const sort=field('card-sort');
+ const result=cards.filter(c=>cardMatches(c,f));
+ result.sort((a,b)=>{
+  const mana=sort==='mana'?a.mv-b.mv:sort==='mana-desc'?b.mv-a.mv:0;
+  return mana||cardName(a).localeCompare(cardName(b),'ja');
+ });
  const pages=Math.max(1,Math.ceil(result.length/pageSize));cardPage=Math.min(cardPage,pages);$('#card-result-count').textContent=`${result.length.toLocaleString()} / ${cards.length.toLocaleString()} 件`;
  const list=field('card-display')==='list';$('#card-results').className=list?'card-list':'card-grid';
  $('#card-results').innerHTML=result.slice((cardPage-1)*pageSize,cardPage*pageSize).map(c=>{
   const selection=printingOptions(printings?.cards[c.id],printingMode),set=selection.choices[0]?.set?.toUpperCase();
-  return `<article class="card"><button type="button" class="card-image-button" data-card="${c.id}" aria-label="${esc(cardName(c))} — Card Details">${imageMarkup(c)}</button><div class="card-content"><h3><button data-card="${c.id}">${esc(cardName(c))}</button></h3><p class="card-english-name"><span>${esc(c.name)}</span> <span class="card-set">${set?'['+esc(set)+']':''}</span></p><p class="card-fallback" ${selection.reason?'':'hidden'}>${esc(selection.reason)}</p><p class="card-tile-meta">${esc(c.type)}</p>${!c.ja?'<span class="badge">日本語名未収録</span>':''}${list?`<p class="card-oracle-preview">${esc(c.oracle.slice(0,160))}${c.oracle.length>160?'…':''}</p>`:''}<div class="card-add-actions" data-deck-add-actions ${draftActive?'':'hidden'}>${Object.keys(zones).map(zone=>`<button type="button" data-build-card="${c.id}" data-build-zone="${zone}" aria-label="${esc(cardName(c))}を${zones[zone]}に追加">+ ${zones[zone]}</button>`).join('')}</div></div></article>`;
+  return `<article class="card"><button type="button" class="card-image-button" data-card="${c.id}" aria-label="${esc(cardName(c))} — Card Details">${imageMarkup(c)}</button><div class="card-content"><h3 class="card-result-title"><button data-card="${c.id}">《${esc(cardName(c))}${c.ja&&c.ja!==c.name?' / '+esc(c.name):''}》</button> <span class="card-set">${set?'['+esc(set)+']':''}</span></h3><p class="card-fallback" ${selection.reason?'':'hidden'}>${esc(selection.reason)}</p><p class="card-tile-meta">${esc(c.type)}</p>${!c.ja?'<span class="badge">日本語名未収録</span>':''}<div class="card-add-actions" data-deck-add-actions ${draftActive?'':'hidden'}>${Object.keys(zones).map(zone=>`<button type="button" data-build-card="${c.id}" data-build-zone="${zone}" aria-label="${esc(cardName(c))}を${zones[zone]}に追加">+ ${zones[zone]}</button>`).join('')}</div></div></article>`;
  }).join('')||empty('該当するカードはありません','cards');
  setCardPages(result.length?`<button data-page="1" ${cardPage===1?'disabled':''}>First</button><button data-page="${cardPage-1}" ${cardPage===1?'disabled':''}>Previous</button><span>${cardPage} / ${pages}</span><button data-page="${cardPage+1}" ${cardPage===pages?'disabled':''}>Next</button><button data-page="${pages}" ${cardPage===pages?'disabled':''}>LAST</button>`:'');
 }
@@ -181,7 +227,18 @@ function parsedLocalDeck(d){const hit=parsedDeckCache.get(d);if(hit?.map===cardM
 function renderMy(){renderBuilder(); $('#my-count').textContent=local.decks.length;const q=normalize(field('my-query'));const rows=local.decks.filter(d=>normalize(d.name).includes(q)).sort((a,b)=>field('my-sort')==='name'?a.name.localeCompare(b.name,'ja'):b.updated.localeCompare(a.updated));if(storageOk){$('#my-status').textContent=`${rows.length} / ${local.decks.length} 件 · このブラウザだけに保存`;}$('#my-results').innerHTML=rows.map(d=>deckTile(d,{localDeck:true})).join('')||(local.decks.length?empty('条件に合うマイデッキはありません','my'):'<div class="empty"><h2>マイデッキはまだありません</h2><p>保存したデータはこのブラウザだけに残ります。</p><button class="primary" id="empty-new">+ New Deck</button></div>');}
 function openMyDeck(id,mode='visual'){
  const d=local.decks.find(x=>x.id===id);if(!d)return;const parsed=parsedLocalDeck(d);
- const grid=(rows)=>`<div class="visual-grid">${rows.map(x=>{const c=cardMap.get(x.id);return `<article>${imageMarkup(c)}<strong>${x.qty}${x.zone==='side'?' · Side':''}</strong><button class="link-button" data-card="${esc(c.id)}">${esc(cardName(c))}</button><p class="muted">${esc(c.name)}</p></article>`;}).join('')}</div>`;
+ const grid=rows=>{
+  const groups={Creatures:[],Spells:[],Lands:[]};
+  for(const row of rows){
+   const card=cardMap.get(row.id);
+   const cardTypes=card.type.split(' // ').flatMap(face=>face.split(' — ')[0].split(' '));
+   groups[cardTypes.includes('Land')?'Lands':cardTypes.includes('Creature')?'Creatures':'Spells'].push(row);
+  }
+  return Object.entries(groups).filter(([,items])=>items.length).map(([label,items])=>`<section class="saved-card-group"><h2>${label}: ${items.reduce((sum,item)=>sum+item.qty,0)}</h2><div class="visual-grid">${items.map(row=>{
+   const card=cardMap.get(row.id);
+   return `<article><button type="button" class="card-image-button" data-card="${esc(card.id)}" aria-label="${esc(cardName(card))} — Card Details">${imageMarkup(card)}</button><strong>${row.qty}${row.zone==='side'?' · Side':''}</strong></article>`;
+  }).join('')}</div></section>`).join('');
+ };
  const official=parsed.rows.filter(x=>x.zone!=='maybe'),maybe=parsed.rows.filter(x=>x.zone==='maybe');
  showDetail(`<h1>${esc(d.name)}</h1><div class="actions"><button data-local-view="${esc(id)}" aria-pressed="${mode==='visual'}">Visual</button><button data-local-text="${esc(id)}" aria-pressed="${mode==='text'}">Text</button><button data-edit="${esc(id)}">Edit Deck</button><button data-local-copy="${esc(id)}" aria-label="${esc(d.name)}をMy Deckとして複製">Copy</button><button data-local-export="${esc(id)}">Export MO</button></div>${mode==='text'?`<pre class="raw-deck">${esc(d.text)}</pre>`:grid(official)+`<details class="maybe-candidates"><summary>MAYBE · 検討中</summary>${grid(maybe)}</details>${parsed.unknown.length?`<h2>読み取れなかった行 ${parsed.unknown.length}件</h2><ol class="unknown-lines">${parsed.unknown.map(x=>`<li value="${x.line}"><code>${esc(x.text)}</code></li>`).join('')}</ol>`:''}`}`,'local',id,mode);
 }
@@ -255,7 +312,13 @@ function renderBuilder(){
  $('#workbench-target').textContent=draftActive?'追加先：'+(field('edit-name')||'無題のデッキ'):'Start a Deckから編集を開始すると、カードを追加できます';
  $('#workbench-status').textContent=!draftActive?'未保存':draftDirty()?'変更あり':local.decks.some(d=>d.id===field('edit-id'))?'保存済み':'未保存';
  $('#workbench-maybe-note').hidden=builderZone!=='maybe';
- $$('#workbench-tabs button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.workbenchZone===builderZone)));
+ const totals={main:0,side:0,maybe:0};
+ for(const row of cardPool)totals[row.zone]+=row.qty;
+ for(const button of $$('#workbench-tabs button')){
+  const zone=button.dataset.workbenchZone;
+  button.setAttribute('aria-pressed',String(zone===builderZone));
+  button.textContent=zone.toUpperCase()+': '+totals[zone];
+ }
  $('#builder-pool').innerHTML=cardPool.filter(x=>x.zone===builderZone).map(row=>{
   const c=cardMap.get(row.id),p=printingOptions(printings?.cards[c.id],printingMode).choices[0],art=imagesDisabled()?null:p?.art||p?.image;
   const moves=destinations[builderZone].map(([to,label])=>`<button type="button" data-workbench-move="${esc(row.id)}" data-to="${to}" aria-label="${esc(cardName(c))}を1枚${zones[to]}へ移動" title="1枚を${zones[to]}へ移動">${label}</button>`).join('');
@@ -335,7 +398,7 @@ function searchFor(kind){if(composing)return;if(kind==='cards'){cardPage=1;rende
 async function load(){loadFailed=false;$('#load-status').className='';$('#load-status').textContent='データを読み込んでいます…';try{const [c,d]=await Promise.all([
  loadCatalogFile('data/cards.json',data=>data?.meta?.paginationComplete===true&&Array.isArray(data.cards)&&data.cards.length>0&&data.cards.length===data.meta.count),
  loadCatalogFile('data/decks.json',Array.isArray).catch(()=>null),
-]);deckLoadFailed=d===null;meta=c.meta;cards=c.cards.map(prepare);const manaLimit=Math.max(1,...cards.map(card=>Math.ceil(card.mv)));for(const id of ['card-min','card-max'])$('#'+id).max=String(manaLimit);$('#card-min').value='0';$('#card-max').value=String(manaLimit);syncManaSliders();cardMap=new Map(cards.map(c=>[c.id,c]));decks=d??decks;renderResults();$('#deck-sample-notice').hidden=!decks.some(d=>d.sample);$('#card-suggestions').innerHTML=cards.map(c=>`<option value="${esc(c.ja||c.name)}" label="${esc(c.name)}"></option>${c.ja?`<option value="${esc(c.name)}" label="${esc(c.ja)}"></option>`:''}`).join('');$('#deck-suggestions').innerHTML=decks.map(d=>`<option value="${esc(d.name)}"></option>`).join('');$('#deck-archetype').innerHTML='<option value="">All</option>'+[...new Set(decks.map(d=>d.archetype))].map(t=>`<option>${esc(t)}</option>`).join('');$('#source-info').textContent=`Scryfall基準クエリ「${meta.query}」の取得結果：${cards.length.toLocaleString()}件、日本語名 ${meta.japaneseNames.toLocaleString()}件。初回取得 ${date(meta.fetchedAt)}、全件再照合 ${date(meta.lastAuditAt||meta.fetchedAt)}。全ページ取得・前回集合との一致を確認。日本語名はAPI ${meta.japaneseNamesFromScryfall??meta.japaneseNames}件と出典付き補完 ${meta.japaneseNameOverrides||0}件、公式資料に基づく補正 ${meta.japaneseNameCorrections||0}件。日本語印刷文の収録は ${meta.japanesePrintedText??0}件で、日本語全文検索には使いません。`;restoreSearch();searchReady=true;$('#load-status').textContent='';allResults();checkPoolRecovery();checkDraftRecovery();navigate(location.hash.slice(1)||'home');renderFeatured();}catch(e){loadFailed=true;$('#load-status').className='status-error';$('#load-status').innerHTML=(navigator.onLine?'カードデータの読込に失敗しました。検索条件は保持しています。':'保存済みのカードデータがありません。オンラインでカード一覧を開いてください。My Decksはテキスト入力で編集できます。')+'<button id="load-retry">再試行</button>';allResults();}}
+]);deckLoadFailed=d===null;meta=c.meta;cards=c.cards.map(prepare);const manaLimit=Math.max(1,...cards.map(card=>Math.ceil(card.mv)));for(const id of ['card-min','card-max'])$('#'+id).max=String(manaLimit);$('#card-min').value='0';$('#card-max').value=String(manaLimit);syncManaSliders();renderManaTicks(manaLimit);cardMap=new Map(cards.map(c=>[c.id,c]));decks=d??decks;renderGuideDeckLinks();renderResults();$('#deck-sample-notice').hidden=!decks.some(d=>d.sample);$('#card-suggestions').innerHTML=cards.map(c=>`<option value="${esc(c.ja||c.name)}" label="${esc(c.name)}"></option>${c.ja?`<option value="${esc(c.name)}" label="${esc(c.ja)}"></option>`:''}`).join('');$('#deck-suggestions').innerHTML=decks.map(d=>`<option value="${esc(d.name)}"></option>`).join('');$('#deck-archetype').innerHTML='<option value="">All</option>'+[...new Set(decks.map(d=>d.archetype))].map(t=>`<option>${esc(t)}</option>`).join('');$('#source-info').textContent=`Scryfall基準クエリ「${meta.query}」の取得結果：${cards.length.toLocaleString()}件、日本語名 ${meta.japaneseNames.toLocaleString()}件。初回取得 ${date(meta.fetchedAt)}、全件再照合 ${date(meta.lastAuditAt||meta.fetchedAt)}。全ページ取得・前回集合との一致を確認。日本語名はAPI ${meta.japaneseNamesFromScryfall??meta.japaneseNames}件と出典付き補完 ${meta.japaneseNameOverrides||0}件、公式資料に基づく補正 ${meta.japaneseNameCorrections||0}件。日本語印刷文の収録は ${meta.japanesePrintedText??0}件で、日本語全文検索には使いません。`;restoreSearch();searchReady=true;$('#load-status').textContent='';allResults();checkPoolRecovery();checkDraftRecovery();navigate(location.hash.slice(1)||'home');renderFeatured();}catch(e){loadFailed=true;$('#load-status').className='status-error';$('#load-status').innerHTML=(navigator.onLine?'カードデータの読込に失敗しました。検索条件は保持しています。':'保存済みのカードデータがありません。オンラインでカード一覧を開いてください。My Decksはテキスト入力で編集できます。')+'<button id="load-retry">再試行</button>';allResults();}}
 
 colorControls('card');colorControls('deck');$('#card-types .type-checks').innerHTML=Object.keys(types).filter(en=>en!=='Planeswalker').map(en=>`<label><input id="card-type-${en}" type="checkbox" value="${en}"><span>${en}</span></label>`).join('');$('#language-help').innerHTML='<strong>能力語</strong><p>'+esc(Object.keys(oracleWords).join(' / '))+'</p><strong>サブタイプ</strong><p>'+esc(Object.values(subtypeNames).join(' / '))+'</p>';
 for(const aside of $$('.filters')){const prefix=aside.querySelector('#card-colors')?'card':'deck';const colors=$('#'+prefix+'-colors');const mode=$('#'+prefix+'-color-mode').closest('label');const basic=document.createElement('div');basic.className='basic-filters';basic.append(colors,mode);const content=document.createElement('div');content.className='filter-body';while(aside.firstChild)content.append(aside.firstChild);aside.append(basic,content);aside.classList.add('collapseable');const b=document.createElement('button');b.type='button';b.className='filter-toggle';b.textContent='Filters';b.setAttribute('aria-expanded','false');b.onclick=()=>{const open=aside.classList.toggle('open');b.setAttribute('aria-expanded',String(open));};aside.insertBefore(b,content);}
@@ -353,9 +416,13 @@ for(const kind of ['decks','cards']){
  form.classList.add('card-search');
  const help=document.createElement('details');help.className='search-help';const summary=document.createElement('summary');summary.textContent='検索方法';help.append(summary);
  body.querySelector('h2').remove();toggle.remove();filters.classList.remove('collapseable');
+ const actions=document.createElement('div');
+ actions.className='card-search-actions';
+ actions.append(form.querySelector('button[type="submit"]'),body.querySelector('[data-reset="'+kind+'"]'));
+ form.append(actions);
  if(kind==='cards'){
-  basic.querySelector('#card-colors').after($('#card-types'));
-  const actions=document.createElement('div');actions.className='card-search-actions';actions.append(form.querySelector('button[type="submit"]'),body.querySelector('[data-reset="cards"]'));form.append(actions);
+  basic.querySelector('#card-colors').after(basic.querySelector('label:has(#card-color-mode)'),$('#card-types'));
+
   colorRow.append(toolbar.querySelector('.display'));
   help.append(form.querySelector('.hint'),body.querySelector('.hint'),view.querySelector('.language-help'));
   const topPages=document.createElement('div');topPages.id='card-pages-top';topPages.className='pagination card-pagination';topPages.setAttribute('aria-label','検索結果のページ送り（上部）');
@@ -366,6 +433,36 @@ for(const kind of ['decks','cards']){
  controls.append(form,colorRow,filters,help);filters.append(body);
  workspace.querySelector('.results-area').prepend(toolbar);
 }
+const searchSwitches=[];
+for(const [id,label] of [['deck-color-mode','Color Match'],['card-color-mode','Color Match'],['card-display','Display']]){
+ const select=$('#'+id), container=select.closest('label');
+ const button=document.createElement('button');
+ button.type='button';
+ button.className='search-switch';
+ button.setAttribute('role','switch');
+ button.setAttribute('aria-label',label+' · '+select.options[1].text);
+ for(const option of select.options){
+  const segment=document.createElement('span');
+  segment.textContent=option.text;
+  button.append(segment);
+ }
+ button.onclick=()=>{
+  select.selectedIndex=select.selectedIndex===0?1:0;
+  syncSearchSwitches();
+  select.dispatchEvent(new Event('change'));
+ };
+ select.hidden=true;
+ const group=document.createElement('div');
+ group.className=container.className+' search-switch-field';
+ if(id==='card-color-mode')group.classList.add('card-color-switch');
+ container.replaceWith(group);
+ group.append(label,select,button);
+ searchSwitches.push({select,button});
+}
+function syncSearchSwitches(){
+ for(const {select,button} of searchSwitches)button.setAttribute('aria-checked',String(select.selectedIndex===1));
+}
+syncSearchSwitches();
 const cardBrowser=$('#view-cards .card-browser'),workbenchLayout=document.createElement('div');workbenchLayout.className='workbench-layout';cardBrowser.before(workbenchLayout);workbenchLayout.append(cardBrowser,$('#builder'));
 for(const sel of ['#deck-colors input','#deck-color-mode','#deck-archetype','#deck-side','#deck-sort'])$$(sel).forEach(x=>x.addEventListener('change',()=>searchFor('decks')));
 for(const sel of ['#card-colors input','#card-types input','#card-color-mode','#card-sort'])$$(sel).forEach(x=>x.addEventListener('change',()=>searchFor('cards')));
@@ -397,7 +494,7 @@ function renderResults(){
  const errors=validatePublishingData({cards,events,results:tournamentResults,decks});
  if(errors.length){status.textContent='大会結果の内容を確認できませんでした。';target.innerHTML='<button id="results-retry">大会結果を再読込</button>';return;}
  status.textContent='';
- target.innerHTML=renderPublishedDeckResults(decks,tournamentResults,d=>imageMarkup(cardMap.get(d.hero),true));
+ target.innerHTML=renderPublishedDeckResults(decks,tournamentResults,d=>imageMarkup(cardMap.get(d.hero),true),d=>deckTile(d,{eventSummary:true}));
  if(!target.innerHTML)target.innerHTML='<p>大会結果はまだありません。</p>';
 }
 async function loadEvents(){eventLoadState='loading';renderEvents();try{const r=await fetch('data/events.json',{cache:'no-store'});if(!r.ok)throw new Error('Event fetch error');const data=await r.json();if(validatePublishingData({events:data}).length)throw new Error('Invalid events');events=data;$('#event-sample-notice').hidden=true;eventLoadState='ready';}catch{eventLoadState='error';}renderEvents();renderResults();}
@@ -410,6 +507,11 @@ async function boot(){
  await load();loadEvents();loadResults();
 }
 $('#pool-toggle').onclick=openPool;$('#pool-close').onclick=closePool;
+$('#workbench-add-cards').onclick=()=>{
+ closePool();
+ navigate('cards');
+ $('#card-name').focus();
+};
 $('#builder').addEventListener('cancel',e=>{e.preventDefault();closePool();});
 $('#workbench-name').oninput=e=>{$('#edit-name').value=e.target.value;saveDraftRecovery();$('#workbench-target').textContent='追加先：'+(e.target.value||'無題のデッキ');$('#workbench-status').textContent='変更あり';};
 $('#workbench-save').onclick=()=>saveWorkbench();$('#workbench-as-new').onclick=()=>saveWorkbench(true);
