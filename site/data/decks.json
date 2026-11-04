@@ -119,7 +119,8 @@
     "sourceRow": 101,
     "sourceDeckId": "NOTE-01",
     "englishText": "4 Lightning Angel\n4 Karmic Guide\n4 Serra Angel\n4 Lightning Bolt\n2 Earthquake\n4 Counterspell\n4 Glorious Anthem\n4 Absorb\n4 Fact or Fiction\n2 Noble Purpose\n4 Adarkar Wastes\n4 Shivan Reef\n4 Coastal Tower\n4 Reflecting Pool\n3 Plains\n2 Mountain\n2 City of Brass\n1 Island\n\nSideboard\n3 Tormod's Crypt\n3 Goblin Bombardment\n3 Cursed Totem\n4 Dismantling Blow\n2 Evacuation\n",
-    "order": 0
+    "order": 0,
+    "heldOn": "2026-09-22"
   },
   {
     "id": "note-02",
@@ -285,7 +286,8 @@
     "sourceRow": 102,
     "sourceDeckId": "NOTE-02",
     "englishText": "1 Spore Frog\n4 Wall of Roots\n4 Yavimaya Elder\n3 Imperial Recruiter\n1 Thornscape Battlemage\n3 Siege-Gang Commander\n1 Genesis\n1 Shard Phoenix\n2 Krosan Tusker\n4 Lightning Bolt\n2 Mana Leak\n3 Seismic Assault\n4 Fact or Fiction\n2 Upheaval\n5 Mountain\n4 Forest\n4 Shivan Oasis\n3 Island\n3 Treetop Village\n2 Yavimaya Coast\n2 Karplusan Forest\n2 Reflecting Pool\n1 Plains\n\nSideboard\n1 Groundskeeper\n1 Spike Feeder\n1 Fledgling Dragon\n1 Genesis\n2 Tormod's Crypt\n2 Ray of Revelation\n1 Naturalize\n1 Savage Twister\n1 Hibernation\n2 Quash\n2 Hunting Pack\n",
-    "order": 1
+    "order": 1,
+    "heldOn": "2026-09-22"
   },
   {
     "id": "note-03",
@@ -442,7 +444,8 @@
     "sourceRow": 103,
     "sourceDeckId": "NOTE-03",
     "englishText": "4 Birds of Paradise\n2 Weathered Wayfarer\n4 Wall of Roots\n4 Soltari Priest\n2 Hunting Moa\n1 Thornscape Battlemage\n1 Paladin en-Vec\n4 Serra Angel\n4 Rancor\n3 Giant Growth\n4 Call of the Herd\n1 Pariah\n4 Might of Oaks\n4 Treetop Village\n4 Windswept Heath\n4 Brushland\n3 Plains\n2 Elfhame Palace\n2 Reflecting Pool\n2 Mishra's Factory\n1 Forest\n1 City of Brass\n\nSideboard\n1 Thornscape Battlemage\n1 Paladin en-Vec\n2 Mystic Enforcer\n1 Aven Cloudchaser\n2 Genesis\n1 Staunch Defenders\n1 Tormod's Crypt\n4 Defense Grid\n1 Ray of Revelation\n1 Pariah\n",
-    "order": 2
+    "order": 2,
+    "heldOn": "2026-09-22"
   },
   {
     "id": "note-04",
@@ -571,7 +574,8 @@
     "sourceRow": 104,
     "sourceDeckId": "NOTE-04",
     "englishText": "4 Wall of Roots\n4 Yavimaya Elder\n4 Avalanche Riders\n3 Siege-Gang Commander\n4 Lightning Bolt\n3 Lava Dart\n2 Disintegrate\n4 Call of the Herd\n4 Nevinyrral's Disk\n3 Hunting Pack\n5 Mountain\n4 Treetop Village\n4 Karplusan Forest\n4 Shivan Oasis\n4 Mishra's Factory\n3 Forest\n1 Pendelhaven\n\nSideboard\n3 Spike Feeder\n2 Shard Phoenix\n1 Triskelion\n1 Tormod's Crypt\n3 Naturalize\n2 Pyroclasm\n1 Serrated Arrows\n2 Flame Wave\n",
-    "order": 3
+    "order": 3,
+    "heldOn": "2026-09-22"
   },
   {
     "id": "note-05",
@@ -724,7 +728,8 @@
     "sourceRow": 105,
     "sourceDeckId": "NOTE-05",
     "englishText": "4 Wall of Blossoms\n4 Wall of Roots\n2 Yavimaya Elder\n1 Thornscape Battlemage\n1 Spike Feeder\n1 Triskelion\n1 Akroma, Angel of Wrath\n3 Eladamri's Call\n1 Wing Shards\n4 Wrath of God\n4 Decree of Justice\n2 Chastise\n2 Nevinyrral's Disk\n4 Mirari's Wake\n2 Hunting Pack\n4 Plains\n4 Forest\n4 Treetop Village\n4 Brushland\n3 Windswept Heath\n3 Mishra's Factory\n2 Elfhame Palace\n\nSideboard\n1 Spike Feeder\n1 Genesis\n1 Blinding Angel\n3 Tormod's Crypt\n2 Circle of Protection: Black\n2 Last Breath\n2 Ray of Revelation\n1 Seal of Cleansing\n2 Worship\n",
-    "order": 4
+    "order": 4,
+    "heldOn": "2026-09-22"
   },
   {
     "id": "note-06",
@@ -868,7 +873,8 @@
     "sourceRow": 106,
     "sourceDeckId": "NOTE-06",
     "englishText": "2 Ghost Ship\n3 Seal of Removal\n3 Syncopate\n1 Unsummon\n4 Impulse\n4 Counterspell\n2 Merchant Scroll\n1 Trade Routes\n1 Boomerang\n3 Dissipate\n2 Exclude\n1 Psionic Blast\n3 Fact or Fiction\n3 Nevinyrral's Disk\n2 Plagiarize\n1 Evacuation\n10 Island\n4 Faerie Conclave\n4 Mishra's Factory\n3 Lonely Sandbar\n2 Cephalid Coliseum\n1 Quicksand\n\nSideboard\n2 Bottle Gnomes\n2 Tormod's Crypt\n2 Annul\n3 Hibernation\n3 Serrated Arrows\n2 Quash\n1 Evacuation\n",
-    "order": 5
+    "order": 5,
+    "heldOn": "2026-09-22"
   },
   {
     "id": "note-07",
@@ -1038,7 +1044,8 @@
     "sourceRow": 107,
     "sourceDeckId": "NOTE-07",
     "englishText": "4 Wall of Roots\n4 Imperial Recruiter\n2 Yavimaya Elder\n1 Thornscape Battlemage\n1 Spike Feeder\n4 Avalanche Riders\n3 Karmic Guide\n2 Siege-Gang Commander\n1 Shard Phoenix\n1 Triskelion\n1 Krosan Tusker\n4 Lightning Bolt\n2 Disintegrate\n4 Goblin Bombardment\n2 Eladamri's Call\n4 Treetop Village\n4 Battlefield Forge\n3 Mountain\n3 Reflecting Pool\n2 Plains\n2 Forest\n2 Brushland\n2 Karplusan Forest\n2 Elfhame Palace\n1 Pendelhaven\n\nSideboard\n2 Paladin en-Vec\n1 Thornscape Battlemage\n1 Aven Cloudchaser\n2 Silklash Spider\n1 Shard Phoenix\n2 Tormod's Crypt\n1 Naturalize\n1 Ray of Revelation\n2 Worship\n2 Wrath of God\n",
-    "order": 6
+    "order": 6,
+    "heldOn": "2026-09-22"
   },
   {
     "id": "note-08",
@@ -1150,7 +1157,8 @@
     "sourceRow": 108,
     "sourceDeckId": "NOTE-08",
     "englishText": "4 Dauthi Slayer\n3 Crypt Rats\n3 Bottle Gnomes\n2 Bone Shredder\n1 Junk Diver\n2 Zuran Orb\n4 Unearth\n4 Mind Stone\n2 Terror\n4 Ensnaring Bridge\n3 Diabolic Tutor\n2 Nevinyrral's Disk\n2 Citanul Flute\n22 Swamp\n2 Cabal Coffers\n\nSideboard\n4 Hypnotic Specter\n1 Junk Diver\n4 Blackmail\n2 Duress\n1 Nevinyrral's Disk\n3 Haunting Echoes\n",
-    "order": 7
+    "order": 7,
+    "heldOn": "2026-09-22"
   },
   {
     "id": "pb-188",
@@ -1287,7 +1295,8 @@
     "sourceRow": 91,
     "sourceDeckId": "PB-188",
     "englishText": "4 Adarkar Wastes\n4 Blinding Angel\n2 Boomerang\n4 Coastal Tower\n3 Counterspell\n4 Desert\n4 Fact or Fiction\n4 Faerie Conclave\n2 Flooded Strand\n2 Island\n3 Mana Leak\n4 Nevinyrral's Disk\n4 Plains\n2 Reflecting Pool\n3 Seal of Removal\n4 Serra Angel\n1 Story Circle\n2 Wall of Essence\n2 Whispers of the Muse\n2 Wrath of God\n\nSideboard\n3 Cursed Totem\n2 Disenchant\n3 Last Breath\n1 Story Circle\n2 Tormod's Crypt\n2 Unsummon\n2 Wall of Essence\n",
-    "order": 8
+    "order": 8,
+    "heldOn": "2026-03-22"
   },
   {
     "id": "pb-187",
@@ -1408,7 +1417,8 @@
     "sourceRow": 90,
     "sourceDeckId": "PB-187",
     "englishText": "4 Call of the Herd\n4 Fact or Fiction\n3 Forest\n3 Hunting Pack\n6 Island\n2 Lay of the Land\n4 Mana Leak\n4 Merfolk Looter\n4 Mishra's Factory\n4 Nevinyrral's Disk\n1 Pendelhaven\n3 Seal of Removal\n4 Treetop Village\n4 Wall of Roots\n3 Wonder\n4 Yavimaya Coast\n3 Yavimaya Elder\n\nSideboard\n2 Naturalize\n2 Rewind\n2 Serrated Arrows\n4 Spike Feeder\n2 Tormod's Crypt\n3 Wall of Blossoms\n",
-    "order": 9
+    "order": 9,
+    "heldOn": "2026-04-12"
   },
   {
     "id": "pb-181",
@@ -1534,7 +1544,8 @@
     "sourceRow": 87,
     "sourceDeckId": "PB-181",
     "englishText": "4 Adarkar Wastes\n1 Akroma, Angel of Wrath\n4 Blinding Angel\n3 City of Brass\n4 Coastal Tower\n4 Counterspell\n2 Earthquake\n4 Fact or Fiction\n4 Fire // Ice\n1 Island\n3 Karmic Guide\n4 Lightning Angel\n4 Lightning Bolt\n2 Mountain\n2 Noble Purpose\n2 Plains\n4 Reflecting Pool\n4 Serra Angel\n4 Shivan Reef\n\nSideboard\n2 Cursed Totem\n3 Defense Grid\n4 Dismantling Blow\n3 Orim's Chant\n3 Tormod's Crypt\n",
-    "order": 10
+    "order": 10,
+    "heldOn": "2026-02-08"
   },
   {
     "id": "pb-174",
@@ -1704,7 +1715,8 @@
     "sourceRow": 82,
     "sourceDeckId": "PB-174",
     "englishText": "2 Adarkar Wastes\n1 Ancestor's Chosen\n1 Aven Cloudchaser\n4 Coastal Tower\n4 Counterspell\n2 Decree of Justice\n1 Desert\n2 Eladamri's Call\n4 Elfhame Palace\n4 Fact or Fiction\n2 Forest\n2 Genesis\n2 Island\n2 Krosan Tusker\n1 Mystic Snake\n2 Plains\n3 Reflecting Pool\n2 Story Circle\n3 Treetop Village\n2 Triskelion\n2 Unsummon\n4 Wall of Blossoms\n3 Wing Shards\n3 Wrath of God\n2 Yavimaya Coast\n\nSideboard\n2 Akroma, Angel of Wrath\n1 Decree of Justice\n1 Disenchant\n1 Dismantling Blow\n2 Dissipate\n1 Exclude\n1 Ray of Revelation\n3 Staunch Defenders\n2 Tormod's Crypt\n1 Wrath of God\n",
-    "order": 11
+    "order": 11,
+    "heldOn": "2026-01-25"
   },
   {
     "id": "pb-176",
@@ -1832,7 +1844,8 @@
     "sourceRow": 84,
     "sourceDeckId": "PB-176",
     "englishText": "4 Bottle Gnomes\n2 Cabal Coffers\n4 Corrupt\n4 Crypt Rats\n2 Darkness\n4 Dauthi Slayer\n3 Diabolic Tutor\n1 Ensnaring Bridge\n1 Greed\n1 Mind Sludge\n3 Mutilate\n3 Phyrexian Arena\n24 Swamp\n3 Unearth\n1 Zuran Orb\n\nSideboard\n1 Ascendant Evincar\n1 Ensnaring Bridge\n1 Haunting Echoes\n3 Hypnotic Specter\n1 Mind Sludge\n1 Mutilate\n3 Nevinyrral's Disk\n1 Persecute\n2 Thrull Surgeon\n1 Tormod's Crypt\n",
-    "order": 12
+    "order": 12,
+    "heldOn": "2026-01-25"
   },
   {
     "id": "pb-175",
@@ -1977,7 +1990,8 @@
     "sourceRow": 83,
     "sourceDeckId": "PB-175",
     "englishText": "1 Akroma, Angel of Wrath\n1 Aven Cloudchaser\n4 Brushland\n4 Call of the Herd\n4 Decree of Justice\n3 Eladamri's Call\n4 Elfhame Palace\n3 Harrow\n4 Mirari's Wake\n4 Mishra's Factory\n1 Mountain\n2 Reflecting Pool\n1 Silklash Spider\n3 Snow-Covered Forest\n3 Snow-Covered Plains\n2 Starlight Invoker\n1 Staunch Defenders\n3 Thornscape Battlemage\n4 Treetop Village\n1 Verdeloth the Ancient\n4 Wall of Roots\n3 Yavimaya Elder\n\nSideboard\n1 Kamahl, Pit Fighter\n4 Plow Under\n3 Ray of Revelation\n1 Silklash Spider\n3 Soul Warden\n1 Staunch Defenders\n2 Wing Shards\n",
-    "order": 13
+    "order": 13,
+    "heldOn": "2026-01-25"
   },
   {
     "id": "pb-177",
@@ -2085,7 +2099,8 @@
     "sourceRow": 85,
     "sourceDeckId": "PB-177",
     "englishText": "4 Angelic Page\n4 Battle Screech\n2 Forbidding Watchtower\n4 Glorious Anthem\n4 Mishra's Factory\n4 Paladin en-Vec\n1 Pendelhaven\n15 Plains\n4 Reconnaissance\n2 Sacred Mesa\n2 Secluded Steppe\n4 Soltari Priest\n4 Soul Warden\n4 Weathered Wayfarer\n2 Worship\n\nSideboard\n3 Cursed Totem\n2 Orim's Chant\n4 Seal of Cleansing\n2 Slate of Ancestry\n4 Windborn Muse\n",
-    "order": 14
+    "order": 14,
+    "heldOn": "2026-01-25"
   },
   {
     "id": "pb-171",
@@ -2209,7 +2224,8 @@
     "sourceRow": 80,
     "sourceDeckId": "PB-171",
     "englishText": "4 Bottle Gnomes\n2 Cabal Coffers\n4 Corrupt\n4 Crypt Rats\n4 Darkness\n4 Dauthi Slayer\n3 Diabolic Tutor\n1 Ensnaring Bridge\n1 Mind Sludge\n3 Mutilate\n3 Phyrexian Arena\n24 Swamp\n3 Unearth\n\nSideboard\n2 Cremate\n1 Duress\n1 Ensnaring Bridge\n2 Hypnotic Specter\n1 Infest\n1 Mind Sludge\n1 Mutilate\n2 Nevinyrral's Disk\n2 Rain of Tears\n1 Terror\n1 Tormod's Crypt\n",
-    "order": 15
+    "order": 15,
+    "heldOn": "2026-01-04"
   },
   {
     "id": "pb-169",
@@ -2313,7 +2329,8 @@
     "sourceRow": 79,
     "sourceDeckId": "PB-169",
     "englishText": "4 Battle Screech\n4 Glorious Anthem\n4 Mishra's Factory\n4 Paladin en-Vec\n16 Plains\n4 Reconnaissance\n2 Sacred Mesa\n2 Secluded Steppe\n4 Soltari Priest\n4 Soul Warden\n2 Stalking Stones\n4 Starlight Invoker\n4 Weathered Wayfarer\n2 Worship\n\nSideboard\n3 Decree of Justice\n4 Disenchant\n3 Pay No Heed\n2 Sacred Ground\n3 Wall of Essence\n",
-    "order": 16
+    "order": 16,
+    "heldOn": "2025-12-07"
   },
   {
     "id": "pb-167",
@@ -2434,7 +2451,8 @@
     "sourceRow": 77,
     "sourceDeckId": "PB-167",
     "englishText": "2 Blood Moon\n4 Bloodstained Mire\n2 Goblin Grenade\n4 Goblin King\n4 Goblin Matron\n4 Goblin Piledriver\n4 Goblin Ringleader\n4 Goblin Warchief\n4 Mogg Fanatic\n4 Mogg Sentry\n11 Mountain\n1 Phyrexian Tower\n1 Reflecting Pool\n2 Siege-Gang Commander\n4 Sulfurous Springs\n1 Swamp\n4 Unearth\n\nSideboard\n2 Cover of Darkness\n4 Cremate\n3 Duress\n2 Serrated Arrows\n2 Terminate\n2 Vendetta\n",
-    "order": 17
+    "order": 17,
+    "heldOn": "2025-11-24"
   },
   {
     "id": "pb-165",
@@ -2563,7 +2581,8 @@
     "sourceRow": 76,
     "sourceDeckId": "PB-165",
     "englishText": "4 Birds of Paradise\n4 Call of the Herd\n7 Forest\n4 Giant Growth\n2 Hunting Moa\n4 Incinerate\n4 Karplusan Forest\n4 Kird Ape\n4 Lightning Bolt\n4 Llanowar Elves\n3 Mountain\n1 Pendelhaven\n4 Rancor\n2 Siege-Gang Commander\n3 Treetop Village\n4 Wooded Foothills\n2 Yavimaya Elder\n\nSideboard\n1 Disintegrate\n2 Earthquake\n3 Manabarbs\n2 Naturalize\n2 Spike Feeder\n2 Spreading Algae\n2 Tormod's Crypt\n1 Treetop Village\n",
-    "order": 18
+    "order": 18,
+    "heldOn": "2025-11-24"
   },
   {
     "id": "pb-164",
@@ -2659,7 +2678,8 @@
     "sourceRow": 75,
     "sourceDeckId": "PB-164",
     "englishText": "4 Battle Screech\n2 Forbidding Watchtower\n4 Glorious Anthem\n4 Mishra's Factory\n4 Paladin en-Vec\n16 Plains\n4 Reconnaissance\n2 Secluded Steppe\n4 Soltari Priest\n4 Soul Warden\n4 Spirit Link\n4 Weathered Wayfarer\n4 White Knight\n\nSideboard\n4 Disenchant\n4 Karma\n4 Pay No Heed\n3 Story Circle\n",
-    "order": 19
+    "order": 19,
+    "heldOn": "2025-11-24"
   },
   {
     "id": "pb-156",
@@ -2775,7 +2795,8 @@
     "sourceRow": 72,
     "sourceDeckId": "PB-156",
     "englishText": "2 Goblin Grenade\n4 Goblin King\n4 Goblin Matron\n4 Goblin Piledriver\n4 Goblin Ringleader\n4 Goblin Warchief\n4 Karplusan Forest\n4 Lightning Bolt\n3 Mishra's Factory\n4 Mogg Fanatic\n2 Mogg Flunkies\n4 Mogg Sentry\n12 Mountain\n1 Siege-Gang Commander\n4 Wooded Foothills\n\nSideboard\n3 Blood Moon\n3 Fecundity\n1 Forest\n3 Ground Seal\n2 Naturalize\n1 Siege-Gang Commander\n2 Tormod's Crypt\n",
-    "order": 20
+    "order": 20,
+    "heldOn": "2025-10-05"
   },
   {
     "id": "pb-146",
@@ -2888,7 +2909,8 @@
     "sourceRow": 64,
     "sourceDeckId": "PB-146",
     "englishText": "4 Birds of Paradise\n4 Call of the Herd\n3 Forest\n4 Giant Growth\n4 Incinerate\n4 Karplusan Forest\n4 Kird Ape\n4 Lightning Bolt\n4 Llanowar Elves\n4 Mountain\n1 Pendelhaven\n4 Rancor\n4 River Boa\n4 Skizzik\n4 Treetop Village\n4 Wooded Foothills\n\nSideboard\n3 Blood Moon\n4 Manabarbs\n4 Naturalize\n2 Spike Feeder\n2 Tormod's Crypt\n",
-    "order": 21
+    "order": 21,
+    "heldOn": "2025-09-13"
   },
   {
     "id": "pb-147",
@@ -3021,7 +3043,8 @@
     "sourceRow": 65,
     "sourceDeckId": "PB-147",
     "englishText": "1 Bone Shredder\n1 Carrion Feeder\n4 Dauthi Slayer\n4 Ghitu Encampment\n1 Goblin Bombardment\n4 Imperial Recruiter\n4 Lightning Bolt\n4 Mishra's Factory\n4 Nevinyrral's Disk\n2 Phyrexian Tower\n2 Reflecting Pool\n4 Rukh Egg\n3 Siege-Gang Commander\n4 Sulfurous Springs\n4 Swamp\n2 Terminate\n4 Twisted Abomination\n4 Urborg Volcano\n4 Victimize\n\nSideboard\n2 Avalanche Riders\n4 Duress\n2 Grave Pact\n2 Graveborn Muse\n1 Haunting Echoes\n1 Terminate\n3 Withered Wretch\n",
-    "order": 22
+    "order": 22,
+    "heldOn": "2025-09-13"
   },
   {
     "id": "pb-149",
@@ -3179,7 +3202,8 @@
     "sourceRow": 66,
     "sourceDeckId": "PB-149",
     "englishText": "3 Fact or Fiction\n1 Fledgling Dragon\n3 Forest\n1 Genesis\n3 Imperial Recruiter\n3 Impulse\n4 Island\n1 Krosan Tusker\n4 Lightning Bolt\n4 Mana Leak\n3 Mountain\n3 Reflecting Pool\n2 Seismic Assault\n1 Shard Phoenix\n4 Shivan Oasis\n3 Shivan Reef\n1 Siege-Gang Commander\n1 Silklash Spider\n3 Treetop Village\n1 Triskelion\n2 Unsummon\n2 Upheaval\n4 Wall of Blossoms\n2 Yavimaya Coast\n2 Yavimaya Elder\n\nSideboard\n2 Hibernation\n2 Hunting Pack\n2 Naturalize\n2 Nimble Mongoose\n2 Serrated Arrows\n4 Spike Feeder\n1 Tormod's Crypt\n",
-    "order": 23
+    "order": 23,
+    "heldOn": "2025-09-13"
   },
   {
     "id": "pb-150",
@@ -3308,7 +3332,8 @@
     "sourceRow": 67,
     "sourceDeckId": "PB-150",
     "englishText": "4 Avalanche Riders\n4 Call of the Herd\n2 Disintegrate\n4 Forest\n3 Hunting Pack\n4 Karplusan Forest\n3 Lava Dart\n4 Lightning Bolt\n4 Mishra's Factory\n5 Mountain\n4 Nevinyrral's Disk\n1 Reflecting Pool\n2 Shivan Oasis\n3 Siege-Gang Commander\n4 Treetop Village\n4 Wall of Roots\n1 Wooded Foothills\n4 Yavimaya Elder\n\nSideboard\n1 Incinerate\n1 Naturalize\n3 Pyroclasm\n2 Seedborn Muse\n2 Silklash Spider\n4 Spike Feeder\n2 Tormod's Crypt\n",
-    "order": 24
+    "order": 24,
+    "heldOn": "2025-09-13"
   },
   {
     "id": "pb-151",
@@ -3445,7 +3470,8 @@
     "sourceRow": 68,
     "sourceDeckId": "PB-151",
     "englishText": "4 Avalanche Riders\n4 Call of the Herd\n2 Disintegrate\n2 Forest\n2 Genesis\n2 Grim Lavamancer\n3 Hunting Pack\n4 Karplusan Forest\n3 Lava Dart\n4 Lightning Bolt\n4 Mishra's Factory\n5 Mountain\n4 Mulch\n1 Pendelhaven\n1 Reflecting Pool\n3 Siege-Gang Commander\n4 Treetop Village\n4 Wall of Roots\n4 Wooded Foothills\n\nSideboard\n1 Fog\n2 Imperial Recruiter\n2 Naturalize\n3 Nevinyrral's Disk\n1 Shard Phoenix\n2 Silklash Spider\n2 Spike Feeder\n2 Tormod's Crypt\n",
-    "order": 25
+    "order": 25,
+    "heldOn": "2025-09-13"
   },
   {
     "id": "pb-152",
@@ -3566,7 +3592,8 @@
     "sourceRow": 69,
     "sourceDeckId": "PB-152",
     "englishText": "4 Birds of Paradise\n4 Call of the Herd\n7 Forest\n4 Giant Growth\n4 Incinerate\n4 Karplusan Forest\n4 Kird Ape\n4 Lightning Bolt\n4 Llanowar Elves\n3 Mountain\n1 Pendelhaven\n4 Rancor\n3 Siege-Gang Commander\n3 Treetop Village\n4 Wooded Foothills\n3 Yavimaya Elder\n\nSideboard\n1 Disintegrate\n2 Earthquake\n3 Manabarbs\n2 Naturalize\n2 Spike Feeder\n3 Thunderbolt\n2 Tormod's Crypt\n",
-    "order": 26
+    "order": 26,
+    "heldOn": "2025-09-13"
   },
   {
     "id": "pb-153",
@@ -3678,7 +3705,8 @@
     "sourceRow": 70,
     "sourceDeckId": "PB-153",
     "englishText": "4 Battle Screech\n2 Forbidding Watchtower\n4 Glorious Anthem\n4 Icatian Javelineers\n4 Infantry Veteran\n3 Master Decoy\n4 Mishra's Factory\n2 Mobilization\n2 Paladin en-Vec\n2 Pay No Heed\n18 Plains\n3 Reconnaissance\n4 Soltari Priest\n4 Weathered Wayfarer\n\nSideboard\n3 Decree of Justice\n3 Disenchant\n1 Mobilization\n2 Pay No Heed\n2 Serrated Arrows\n2 Spirit Link\n2 Tormod's Crypt\n",
-    "order": 27
+    "order": 27,
+    "heldOn": "2025-09-13"
   },
   {
     "id": "pb-155",
@@ -3814,7 +3842,8 @@
     "sourceRow": 71,
     "sourceDeckId": "PB-155",
     "englishText": "2 Cursed Totem\n1 Ghitu Encampment\n3 Goblin Grenade\n3 Goblin King\n1 Goblin Matron\n4 Goblin Piledriver\n4 Goblin Ringleader\n4 Goblin Warchief\n1 Incinerate\n4 Lightning Bolt\n1 Mishra's Factory\n4 Mogg Fanatic\n4 Mogg Flunkies\n4 Mogg Sentry\n18 Mountain\n1 Nevinyrral's Disk\n1 Siege-Gang Commander\n\nSideboard\n2 Blood Moon\n1 Ghitu Encampment\n3 Goblin Matron\n1 Incinerate\n1 Mishra's Factory\n1 Nevinyrral's Disk\n1 Skirk Prospector\n2 Smash\n2 Threaten\n1 Tormod's Crypt\n",
-    "order": 28
+    "order": 28,
+    "heldOn": "2025-09-13"
   },
   {
     "id": "pb-142",
@@ -3964,7 +3993,8 @@
     "sourceRow": 62,
     "sourceDeckId": "PB-142",
     "englishText": "1 Battlefield Forge\n2 Coastal Tower\n1 Counterspell\n4 Fact or Fiction\n1 Fire // Ice\n3 Flooded Strand\n2 Gemstone Mine\n2 Grim Lavamancer\n4 Impulse\n4 Incinerate\n3 Island\n4 Lightning Angel\n4 Lightning Bolt\n4 Mana Leak\n7 Mountain\n1 Plains\n2 Psionic Blast\n2 Reflecting Pool\n3 Seal of Removal\n3 Shivan Reef\n2 Siege-Gang Commander\n1 Syncopate\n\nSideboard\n1 Circle of Protection: Black\n2 Disenchant\n1 Dissipate\n3 Pyroclasm\n1 Rewind\n2 Thunderbolt\n2 Tormod's Crypt\n3 Wall of Essence\n",
-    "order": 29
+    "order": 29,
+    "heldOn": "2025-08-29"
   },
   {
     "id": "pb-131",
@@ -4081,7 +4111,8 @@
     "sourceRow": 57,
     "sourceDeckId": "PB-131",
     "englishText": "4 Avalanche Riders\n4 Call of the Herd\n2 Disintegrate\n4 Forest\n3 Hunting Pack\n4 Karplusan Forest\n3 Lava Dart\n4 Lightning Bolt\n4 Mishra's Factory\n5 Mountain\n4 Nevinyrral's Disk\n4 Shivan Oasis\n3 Siege-Gang Commander\n4 Treetop Village\n4 Wall of Roots\n4 Yavimaya Elder\n\nSideboard\n2 Genesis\n2 Incinerate\n1 Naturalize\n4 Spike Feeder\n2 Tormod's Crypt\n4 Whirling Dervish\n",
-    "order": 30
+    "order": 30,
+    "heldOn": "2025-08-01"
   },
   {
     "id": "pb-130",
@@ -4214,7 +4245,8 @@
     "sourceRow": 56,
     "sourceDeckId": "PB-130",
     "englishText": "4 Call of the Herd\n4 Fact or Fiction\n1 Faerie Conclave\n3 Forest\n3 Hunting Pack\n6 Island\n4 Mana Leak\n4 Merfolk Looter\n4 Mishra's Factory\n4 Nevinyrral's Disk\n1 Pendelhaven\n1 Reflecting Pool\n4 Treetop Village\n3 Unsummon\n4 Wall of Roots\n3 Wonder\n4 Yavimaya Coast\n3 Yavimaya Elder\n\nSideboard\n1 Naturalize\n2 Rewind\n2 Seal of Removal\n1 Seedborn Muse\n2 Serrated Arrows\n4 Spike Feeder\n2 Tormod's Crypt\n1 Unsummon\n",
-    "order": 31
+    "order": 31,
+    "heldOn": "2025-07-04"
   },
   {
     "id": "pb-126",
@@ -4339,7 +4371,8 @@
     "sourceRow": 54,
     "sourceDeckId": "PB-126",
     "englishText": "4 Avalanche Riders\n4 Call of the Herd\n1 Forest\n2 Genesis\n3 Hunting Pack\n3 Incinerate\n4 Karplusan Forest\n4 Lava Dart\n4 Lightning Bolt\n4 Mishra's Factory\n5 Mountain\n4 Mulch\n1 Reflecting Pool\n3 Siege-Gang Commander\n2 Tranquil Thicket\n4 Treetop Village\n4 Wall of Roots\n4 Wooded Foothills\n\nSideboard\n3 Naturalize\n3 Pillage\n3 Pyroclasm\n2 Silklash Spider\n2 Spike Feeder\n2 Tormod's Crypt\n",
-    "order": 32
+    "order": 32,
+    "heldOn": "2025-01-25"
   },
   {
     "id": "pb-125",
@@ -4464,7 +4497,8 @@
     "sourceRow": 53,
     "sourceDeckId": "PB-125",
     "englishText": "4 Birds of Paradise\n4 Call of the Herd\n2 Earthquake\n4 Forest\n2 Giant Growth\n4 Incinerate\n4 Karplusan Forest\n4 Kird Ape\n4 Lightning Bolt\n1 Llanowar Elves\n4 Maniacal Rage\n1 Mirri, Cat Warrior\n6 Mountain\n4 Rancor\n3 River Boa\n1 Spike Feeder\n4 Treetop Village\n4 Wooded Foothills\n\nSideboard\n2 Avoid Fate\n3 Manabarbs\n3 Naturalize\n2 Thunderbolt\n2 Tormod's Crypt\n3 Whirling Dervish\n",
-    "order": 33
+    "order": 33,
+    "heldOn": "2025-02-23"
   },
   {
     "id": "pb-124",
@@ -4585,7 +4619,8 @@
     "sourceRow": 52,
     "sourceDeckId": "PB-124",
     "englishText": "4 Call of the Herd\n4 Fact or Fiction\n4 Forest\n3 Hunting Pack\n6 Island\n4 Mana Leak\n4 Merfolk Looter\n4 Mishra's Factory\n3 Nevinyrral's Disk\n1 Pendelhaven\n2 Reflecting Pool\n4 Treetop Village\n3 Unsummon\n4 Wall of Roots\n3 Wonder\n4 Yavimaya Coast\n3 Yavimaya Elder\n\nSideboard\n2 Naturalize\n2 Rewind\n3 Seal of Removal\n2 Seedborn Muse\n3 Spike Feeder\n3 Tormod's Crypt\n",
-    "order": 34
+    "order": 34,
+    "heldOn": "2025-04-26"
   },
   {
     "id": "pb-086",
@@ -4755,7 +4790,8 @@
     "sourceRow": 33,
     "sourceDeckId": "PB-086",
     "englishText": "4 Avalanche Riders\n1 Aven Cloudchaser\n4 Battlefield Forge\n3 Birds of Paradise\n1 Blinding Angel\n2 Brushland\n1 Decree of Justice\n3 Eladamri's Call\n2 Elfhame Palace\n2 Forest\n4 Goblin Bombardment\n3 Imperial Recruiter\n3 Karmic Guide\n2 Karplusan Forest\n3 Lightning Bolt\n3 Mountain\n1 Pendelhaven\n2 Plains\n2 Reflecting Pool\n2 Siege-Gang Commander\n2 Thornscape Battlemage\n3 Treetop Village\n4 Wall of Roots\n1 Windswept Heath\n1 Wooded Foothills\n2 Yavimaya Elder\n\nSideboard\n3 Decree of Justice\n3 Defense Grid\n1 Lightning Bolt\n1 Ray of Revelation\n1 Silklash Spider\n1 Thornscape Battlemage\n1 Tormod's Crypt\n2 Worship\n2 Wrath of God\n",
-    "order": 35
+    "order": 35,
+    "heldOn": "2024-11-09"
   },
   {
     "id": "pb-103",
@@ -4880,7 +4916,8 @@
     "sourceRow": 43,
     "sourceDeckId": "PB-103",
     "englishText": "4 Call of the Herd\n4 Fact or Fiction\n4 Forest\n3 Hunting Pack\n6 Island\n4 Mana Leak\n4 Merfolk Looter\n4 Mishra's Factory\n3 Nevinyrral's Disk\n1 Pendelhaven\n2 Reflecting Pool\n4 Treetop Village\n3 Unsummon\n4 Wall of Roots\n3 Wonder\n4 Yavimaya Coast\n3 Yavimaya Elder\n\nSideboard\n4 Hunted Wumpus\n2 Naturalize\n2 Rewind\n2 Seal of Removal\n1 Seedborn Muse\n2 Spike Feeder\n2 Tormod's Crypt\n",
-    "order": 36
+    "order": 36,
+    "heldOn": "2025-05-25"
   },
   {
     "id": "pb-098",
@@ -5001,7 +5038,8 @@
     "sourceRow": 40,
     "sourceDeckId": "PB-098",
     "englishText": "4 Call of the Herd\n4 Fact or Fiction\n4 Forest\n3 Hunting Pack\n6 Island\n4 Mana Leak\n4 Merfolk Looter\n4 Mishra's Factory\n4 Nevinyrral's Disk\n1 Pendelhaven\n1 Reflecting Pool\n4 Treetop Village\n2 Unsummon\n4 Wall of Roots\n4 Wonder\n4 Yavimaya Coast\n3 Yavimaya Elder\n\nSideboard\n1 Evacuation\n2 Flash Counter\n4 Hunted Wumpus\n2 Naturalize\n4 Seal of Removal\n2 Tormod's Crypt\n",
-    "order": 37
+    "order": 37,
+    "heldOn": "2025-06-26"
   },
   {
     "id": "pb-090",
@@ -5146,7 +5184,8 @@
     "sourceRow": 35,
     "sourceDeckId": "PB-090",
     "englishText": "2 Barren Moor\n1 Bone Shredder\n4 Cremate\n4 Ghitu Encampment\n2 Gravedigger\n1 Hate Weaver\n3 Imperial Recruiter\n4 Lightning Bolt\n4 Mishra's Factory\n1 Mortivore\n4 Nantuko Shade\n4 Nevinyrral's Disk\n3 Reflecting Pool\n1 Shard Phoenix\n2 Siege-Gang Commander\n4 Sulfurous Springs\n5 Swamp\n2 Terminate\n1 Terror\n1 Triskelion\n2 Unearth\n4 Urborg Volcano\n1 Withered Wretch\n\nSideboard\n3 Duress\n3 Graveborn Muse\n3 Head Games\n2 Pyroclasm\n3 Sengir Vampire\n1 Siege-Gang Commander\n",
-    "order": 38
+    "order": 38,
+    "heldOn": "2025-03-16"
   },
   {
     "id": "pb-078",
@@ -5288,7 +5327,8 @@
     "sourceRow": 29,
     "sourceDeckId": "PB-078",
     "englishText": "4 Battlefield Forge\n4 Coastal Tower\n3 Counterspell\n1 Deep Analysis\n2 Disintegrate\n4 Fact or Fiction\n4 Faerie Conclave\n1 Flooded Strand\n2 Gemstone Mine\n4 Impulse\n4 Incinerate\n4 Lightning Angel\n4 Lightning Bolt\n3 Mana Leak\n2 Reflecting Pool\n3 Shard Phoenix\n3 Shivan Reef\n1 Snow-Covered Island\n4 Snow-Covered Mountain\n1 Snow-Covered Plains\n2 Unsummon\n\nSideboard\n3 Decree of Justice\n2 Disenchant\n2 Paladin en-Vec\n2 Persuasion\n2 Pyroclasm\n2 Tormod's Crypt\n2 Wall of Essence\n",
-    "order": 39
+    "order": 39,
+    "heldOn": "2024-11-23"
   },
   {
     "id": "pb-071",
@@ -5434,7 +5474,8 @@
     "sourceRow": 28,
     "sourceDeckId": "PB-071",
     "englishText": "1 Adarkar Wastes\n2 Battlefield Forge\n4 Coastal Tower\n2 Deep Analysis\n2 Disintegrate\n3 Dissipate\n4 Fact or Fiction\n2 Flooded Strand\n2 Gemstone Mine\n2 Ghitu Encampment\n4 Impulse\n4 Incinerate\n4 Lightning Angel\n4 Lightning Bolt\n1 Mahamoti Djinn\n4 Mana Leak\n2 Reflecting Pool\n4 Shivan Reef\n2 Snow-Covered Island\n3 Snow-Covered Mountain\n1 Snow-Covered Plains\n1 Unsummon\n2 Urza's Rage\n\nSideboard\n3 Disenchant\n2 Grim Lavamancer\n2 Hibernation\n3 Paladin en-Vec\n2 Tormod's Crypt\n3 Wall of Essence\n",
-    "order": 40
+    "order": 40,
+    "heldOn": "2024-10-26"
   },
   {
     "id": "pb-038",
@@ -5559,7 +5600,8 @@
     "sourceRow": 11,
     "sourceDeckId": "PB-038",
     "englishText": "4 Auratog\n4 Brushland\n4 Elfhame Palace\n3 Emerald Medallion\n4 Enchantress's Presence\n4 Fertile Ground\n4 Forest\n2 Ground Seal\n4 Overgrowth\n3 Plains\n4 Rancor\n1 Reflecting Pool\n3 Seal of Cleansing\n4 Spirit Link\n4 Verduran Enchantress\n4 Windswept Heath\n4 Yavimaya Enchantress\n\nSideboard\n3 Defense Grid\n2 Ground Seal\n1 Lure\n3 Root Maze\n2 Sacred Mesa\n1 Seal of Cleansing\n3 Sterling Grove\n",
-    "order": 41
+    "order": 41,
+    "heldOn": "2024-09-14"
   },
   {
     "id": "pb-037",
@@ -5679,7 +5721,8 @@
     "sourceRow": 10,
     "sourceDeckId": "PB-037",
     "englishText": "1 Ambition's Cost\n2 Cabal Coffers\n4 Corrupt\n1 Diabolic Tutor\n3 Graveborn Muse\n4 Mind Stone\n3 Mutilate\n4 Nantuko Shade\n2 Nevinyrral's Disk\n2 Nightmare\n2 Phyrexian Arena\n4 Rain of Tears\n3 Smother\n1 Soul Feast\n22 Swamp\n2 Twisted Abomination\n\nSideboard\n3 Ascendant Evincar\n3 Cremate\n3 Duress\n2 Haunting Echoes\n2 Mindslicer\n1 Mutilate\n1 Nevinyrral's Disk\n",
-    "order": 42
+    "order": 42,
+    "heldOn": "2024-09-14"
   },
   {
     "id": "pb-041",
@@ -5828,7 +5871,8 @@
     "sourceRow": 13,
     "sourceDeckId": "PB-041",
     "englishText": "2 Barren Moor\n2 Bone Shredder\n4 Ghitu Encampment\n2 Gravedigger\n3 Hypnotic Specter\n3 Imperial Recruiter\n4 Lightning Bolt\n4 Mishra's Factory\n2 Mortivore\n4 Nevinyrral's Disk\n3 Reflecting Pool\n3 Siege-Gang Commander\n1 Smother\n4 Sulfurous Springs\n5 Swamp\n1 Terminate\n1 Terror\n2 Twisted Abomination\n4 Urborg Volcano\n1 Victimize\n2 Wall of Bone\n3 Withered Wretch\n\nSideboard\n2 Avalanche Riders\n4 Duress\n2 Graveborn Muse\n2 Haunting Echoes\n2 Persecute\n1 Pyroclasm\n1 Siege-Gang Commander\n1 Withered Wretch\n",
-    "order": 43
+    "order": 43,
+    "heldOn": "2024-09-14"
   },
   {
     "id": "pb-039",
@@ -5974,7 +6018,8 @@
     "sourceRow": 12,
     "sourceDeckId": "PB-039",
     "englishText": "2 Akroma, Angel of Wrath\n2 Brushland\n3 Buried Alive\n3 Caves of Koilos\n2 Eladamri's Call\n4 Elfhame Palace\n3 Forest\n2 Genesis\n3 Karmic Guide\n3 Krosan Tusker\n3 Llanowar Wastes\n2 Nevinyrral's Disk\n3 Plains\n2 Reflecting Pool\n2 Smother\n3 Swamp\n3 Twisted Abomination\n4 Vindicate\n3 Wall of Blossoms\n4 Wall of Roots\n1 Windswept Heath\n3 Zombify\n\nSideboard\n2 Altar of Dementia\n2 Defense Grid\n3 Mindslicer\n2 Naturalize\n2 Ray of Revelation\n2 Spike Feeder\n2 Wrath of God\n",
-    "order": 44
+    "order": 44,
+    "heldOn": "2024-09-14"
   },
   {
     "id": "pb-042",
@@ -6090,7 +6135,8 @@
     "sourceRow": 14,
     "sourceDeckId": "PB-042",
     "englishText": "2 Ambition's Cost\n3 Cabal Coffers\n4 Corrupt\n2 Diabolic Tutor\n1 Haunting Echoes\n3 Mind Sludge\n1 Mutilate\n4 Nantuko Shade\n4 Nevinyrral's Disk\n2 Nightmare\n4 Rain of Tears\n4 Smother\n23 Swamp\n2 Terror\n1 Twisted Abomination\n\nSideboard\n4 Duress\n2 Graveborn Muse\n1 Haunting Echoes\n1 Mutilate\n2 Persecute\n2 Terror\n3 Withered Wretch\n",
-    "order": 45
+    "order": 45,
+    "heldOn": "2024-09-14"
   },
   {
     "id": "pb-031",
@@ -6239,7 +6285,8 @@
     "sourceRow": 8,
     "sourceDeckId": "PB-031",
     "englishText": "2 Akroma, Angel of Wrath\n1 Altar of Dementia\n2 Ancestor's Chosen\n4 Brushland\n4 Call of the Herd\n3 Decree of Justice\n4 Elfhame Palace\n2 Forest\n4 Karmic Guide\n2 Krosan Tusker\n4 Mishra's Factory\n4 Mulch\n3 Plains\n1 Reflecting Pool\n1 Regrowth\n2 Rhox\n2 Secluded Steppe\n4 Treetop Village\n2 Wall of Blossoms\n4 Wall of Roots\n1 Windswept Heath\n4 Wrath of God\n\nSideboard\n1 Decree of Justice\n2 Defense Grid\n2 Naturalize\n3 Ray of Revelation\n1 Restock\n2 Sacred Mesa\n2 Silklash Spider\n2 Spirit Link\n",
-    "order": 46
+    "order": 46,
+    "heldOn": "2024-09-14"
   },
   {
     "id": "txt-999",
@@ -6376,6 +6423,7 @@
     "sourceRow": 100,
     "sourceDeckId": "TXT-999",
     "englishText": "2 Ancestor's Chosen\n4 Syncopate\n4 Counterspell\n2 Boomerang\n2 Last Breath\n2 Dissipate\n4 Fact or Fiction\n4 Decree of Justice\n4 Nevinyrral's Disk\n3 Deep Analysis\n2 Wrath of God\n4 Adarkar Wastes\n4 Coastal Tower\n4 Mishra's Factory\n3 Plains\n3 Island\n3 Flooded Strand\n3 Reflecting Pool\n2 Faerie Conclave\n1 Forbidding Watchtower\n\nSideboard\n2 Windborn Muse\n2 Serra Angel\n2 Tormod's Crypt\n4 Disenchant\n1 Flash Counter\n2 Hibernation\n2 Sacred Mesa\n",
-    "order": 47
+    "order": 47,
+    "heldOn": "2024-07-21"
   }
 ]
