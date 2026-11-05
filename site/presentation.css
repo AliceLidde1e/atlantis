@@ -348,3 +348,11 @@
 
 .event-grid>.event-list-disclosure{grid-column:1 / -1;min-width:0;margin-bottom:0}
 .event-list-disclosure>.event-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+
+/* Home starts with the hero above navigation and news on phones. */
+@media(max-width:639px){
+ #view-home .museum-exhibits{display:contents}
+ #view-home .hero{order:0;min-width:0}
+ #view-home .museum-sidebar{order:1}
+ #view-home .collection-section{order:2;min-width:0}
+}
