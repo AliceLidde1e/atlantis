@@ -336,3 +336,12 @@
  .event-deck-table td::before{content:attr(data-label);display:block;color:var(--muted);font-size:11px}
  .event-deck-table .link-button{padding-left:0;padding-right:0}
 }
+
+/* Event lists stay collapsed until the reader expands the relevant section. */
+.event-list-disclosure{margin-bottom:24px}
+.event-list-disclosure>summary{width:fit-content;min-height:44px;padding:10px 14px;cursor:pointer;color:var(--link);font-family:var(--font-display);border:1px solid var(--line)}
+.event-list-disclosure>summary:hover{background:var(--surface)}
+.event-list-disclosure>summary:focus-visible{outline:2px solid var(--link);outline-offset:3px}
+.event-list-disclosure .event-less-label,.event-list-disclosure[open] .event-more-label{display:none}
+.event-list-disclosure[open] .event-less-label{display:inline}
+.event-list-disclosure[open]>summary{margin-bottom:16px}
