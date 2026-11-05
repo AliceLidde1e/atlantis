@@ -1,34 +1,58 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1224" height="288" viewBox="0 0 1224 288" role="img" aria-labelledby="title desc">
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2532" height="512" viewBox="0 0 1266 256" role="img" aria-labelledby="title desc">
 <title id="title">ATLANTIS — machined brass ambigram</title>
-<desc id="desc">Smooth original ambigram glyphs preserved. A-T and I-S bounding-box gaps reduced symmetrically from 8 to 4 SVG units; other letter positions unchanged. Brass surfaces with inset structural edges following each letter. No surrounding frame, pixel effects, fonts or external assets. Transparent background.</desc>
+<desc id="desc">Adopted ATLANTIS ambigram, with balanced stroke weights and extended L/T terminals. Existing machined brass palette, brushed surface and inset structural edges retained. Transparent background.</desc>
 <defs>
-  <g id="letter-silhouette" transform="translate(3 4)">
-    <path id="glyph-part-0" d="M 104 40 L 56 152 L 141 163 C 155.66665 185.66664 158.66666 202.00001 150 212 C 142.66667 220.66666 127.66664 218.99999 105 207 L 65 187 C 58.33334 184.33334 53.999998 186.33334 52 193 L 40 240 L 47 240 C 56.333324 215.33336 69.000016 206.66667 85 214 L 172 240 L 184 234 L 159 148 L 125 148 C 91.6667 146 75 136.66665 75 120 C 75.666666 109.33334 82.000012 100.33333 94 93 C 102.66666 87.666672 111.66668 88.33334 121 95 L 142 119 L 149 117 L 110 40 L 104 40 z" transform="translate(4 0)"/>
-    <path id="glyph-part-1" d="M 200 40 L 192 50 L 192 64 L 258 64 L 258 177 L 283 159 L 283 64 L 337 64 L 337 40 L 200 40 z"/>
-    <path id="glyph-part-2" d="M 399 40 L 386 48 L 383 240 L 472 240 L 462 213 L 412 213 L 412 56 L 399 40 z"/>
-    <path id="glyph-part-3" d="M 478 40 L 474 174 L 480 215 L 504 240 L 500 90 L 611 230 L 614 216 L 478 40 z"/>
-    <path id="glyph-part-4" d="M 714 40 L 718 190 L 607 50 L 604 64 L 740 240 L 744 106 L 738 65 L 714 40 z"/>
-    <path id="glyph-part-5" d="M 746 40 L 756 67 L 806 67 L 806 224 L 819 240 L 832 232 L 835 40 L 746 40 z"/>
-    <path id="glyph-part-6" d="M 935 40 L 935 100 L 960 81 L 960 40 L 935 40 z"/>
-    <path id="glyph-part-7" d="M 1046 40 L 1034 46 L 1059 132 L 1093 132 C 1126.3333 134 1143 143.33335 1143 160 C 1142.3333 170.66666 1136 179.66667 1124 187 C 1115.3333 192.33333 1106.3333 191.66666 1097 185 L 1076 161 L 1069 163 L 1108 240 L 1114 240 L 1162 128 L 1077 117 C 1062.3333 94.333356 1059.3333 77.99999 1068 68 C 1075.3333 59.333342 1090.3334 61.000012 1113 73 L 1153 93 C 1159.6667 95.666664 1164 93.66666 1166 87 L 1178 40 L 1171 40 C 1161.6667 64.666642 1149 73.333326 1133 66 L 1046 40 z" transform="translate(-4 0)"/>
-    <path id="glyph-part-8" d="M 848 44 L 848 69 L 881 69 L 891 44 L 848 44 z"/>
-    <path id="glyph-part-9" d="M 600 80 L 600 178 L 618 200 L 618 102 L 600 80 z"/>
-    <path id="glyph-part-10" d="M 663 98 L 680 122 L 710 122 L 710 98 L 663 98 z"/>
-    <path id="glyph-part-11" d="M 960 103 L 935 121 L 935 216 L 881 216 L 881 240 L 1018 240 L 1026 230 L 1026 216 L 960 216 L 960 103 z"/>
-    <path id="glyph-part-12" d="M 508 158 L 508 182 L 555 182 L 538 158 L 508 158 z"/>
-    <path id="glyph-part-13" d="M 283 180 L 258 199 L 258 240 L 283 240 L 283 180 z"/>
-    <path id="glyph-part-14" d="M 337 211 L 327 236 L 370 236 L 370 211 L 337 211 z"/>
-  </g>
-  <clipPath id="inside-letters"><use xlink:href="#letter-silhouette"/></clipPath>
-  <linearGradient id="brass-face" x1="0" y1="44" x2="0" y2="244" gradientUnits="userSpaceOnUse">
+  <g id="letter-silhouette" fill-rule="evenodd">
+    <g id="outer-A" transform="translate(20.519231,-12)">
+      <path id="glyph-part-0" d="M104 40L56 152L141 163C155.66665 185.66664 158.66666 202.00001 150 212C142.66667 220.66666 127.66664 218.99999 105 207L65 187C58.33334 184.33334 53.999998 186.33334 52 193L40 240H47C56.333324 215.33336 69.000016 206.66667 85 214L172 240L184 234L159 136H125C102 136 90 130 90 120C90 110 88 99 103 96C110 94 114 98 121 104L142 119L149 117L110 40Z" transform="translate(4)"/>
+    </g>
+    <g id="outer-S" transform="translate(18.012821,-9.2948718)">
+      <path id="glyph-part-7" d="M104 40L56 152L141 163C155.66665 185.66664 158.66666 202.00001 150 212C142.66667 220.66666 127.66664 218.99999 105 207L65 187C58.33334 184.33334 53.999998 186.33334 52 193L40 240H47C56.333324 215.33336 69.000016 206.66667 85 214L172 240L184 234L159 136H125C102 136 90 130 90 120C90 110 88 99 103 96C110 94 114 98 121 104L142 119L149 117L110 40Z" transform="translate(-4) rotate(180 609 140)"/>
+    </g>
+    <g id="approved-central-six" transform="translate(158 0)">
+      <g id="central-six-glyphs" fill-rule="evenodd">
+        <g id="pair-T-I">
+          <g id="glyph-T" transform="translate(28 28)">
+            <path id="glyph-T-head-and-stem" d="M0 0H168V28H134A36 36 0 0 0 98 64V152L70 124V64A36 36 0 0 0 34 28H0Z"/>
+            <path id="glyph-T-foot" d="M70 142L98 170V200H70Z"/>
+          </g>
+          <g id="glyph-I" transform="translate(922 228) rotate(180)">
+            <path id="glyph-I-head-and-stem" d="M0 0H168V28H134A36 36 0 0 0 98 64V152L70 124V64A36 36 0 0 0 34 28H0Z"/>
+            <path id="glyph-I-foot" d="M70 142L98 170V200H70Z"/>
+          </g>
+        </g>
+        <g id="pair-L-T">
+          <g id="glyph-L" transform="translate(140 28)">
+            <path id="glyph-L-detached-foot" d="M0 181.333333L42 167.333333V200H0Z"/>
+            <path id="glyph-L-stem-and-foot" d="M70 0H98V144A28 28 0 0 0 126 172H163.46267L191.46267 200H56V162.666667L70 158Z"/>
+          </g>
+          <g id="glyph-T-from-L" transform="translate(810 228) rotate(180)">
+            <path id="glyph-T-from-L-detached-foot" d="M0 181.333333L42 167.333333V200H0Z"/>
+            <path id="glyph-T-from-L-stem-and-foot" d="M70 0H98V144A28 28 0 0 0 126 172H163.46267L191.46267 200H56V162.666667L70 158Z"/>
+          </g>
+        </g>
+        <g id="pair-A-N">
+          <g id="glyph-A" transform="translate(322 28)">
+            <path id="glyph-A-body" d="M0 0L160 200H124.142504L92.111277 159.960966A36 36 0 0 0 28 182.449988V200L0 165ZM28 79.821870V118H58.542504Z"/>
+          </g>
+          <g id="glyph-N" transform="translate(628 228) rotate(180)">
+            <path id="glyph-N-body" d="M0 0L160 200H124.142504L92.111277 159.960966A36 36 0 0 0 28 182.449988V200L0 165ZM28 79.821870V118H58.542504Z"/>
+          </g>
+          <path id="AN-shared-stem" transform="translate(322 28)" d="M139 13.660935L167 48.660935V186.339065L139 151.339065Z"/>
+        </g>
+      </g>
+    </g>
+    </g>
+<clipPath id="inside-letters"><use xlink:href="#letter-silhouette"/></clipPath>
+  <linearGradient id="brass-face" x1="0" y1="28" x2="0" y2="228" gradientUnits="userSpaceOnUse">
     <stop offset="0" stop-color="#a58b39"/><stop offset=".12" stop-color="#e1c871"/>
     <stop offset=".29" stop-color="#b49843"/><stop offset=".43" stop-color="#8a712d"/>
     <stop offset=".5" stop-color="#d5bb62"/><stop offset=".57" stop-color="#8a712d"/>
     <stop offset=".71" stop-color="#b49843"/><stop offset=".88" stop-color="#e1c871"/>
     <stop offset="1" stop-color="#a58b39"/>
   </linearGradient>
-  <linearGradient id="brass-edge" x1="0" y1="44" x2="0" y2="244" gradientUnits="userSpaceOnUse">
+  <linearGradient id="brass-edge" x1="0" y1="28" x2="0" y2="228" gradientUnits="userSpaceOnUse">
     <stop offset="0" stop-color="#fff1b5"/><stop offset=".2" stop-color="#b79a45"/>
     <stop offset=".38" stop-color="#e8d18a"/><stop offset=".5" stop-color="#8c7230"/>
     <stop offset=".62" stop-color="#e8d18a"/><stop offset=".8" stop-color="#b79a45"/>

@@ -2,6 +2,7 @@
 import json
 import struct
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent
 SITE = ROOT / "site"
@@ -28,7 +29,7 @@ def main():
     home = (SITE / "index.html").read_text(encoding="utf-8")
     mo = (SITE / "mo-storage.html").read_text(encoding="utf-8")
     assert 'rel="manifest" href="manifest.webmanifest"' in home
-    assert 'rel="apple-touch-icon" href="icons/atlantis-180.png"' in home
+    assert 'rel="apple-touch-icon" href="icons/atlantis-180.png?v=20261105logo"' in home
     manifest = json.loads((SITE / "manifest.webmanifest").read_text(encoding="utf-8"))
     assert (manifest["id"], manifest["scope"], manifest["start_url"]) == ("./", "./", "./#home")
     assert manifest["display"] == "standalone"
@@ -36,7 +37,7 @@ def main():
     assert set(icons.values()) == {"192x192", "512x512"}
     assert any(icon["purpose"] == "maskable" for icon in manifest["icons"])
     for path, size in {**icons, "icons/atlantis-180.png": "180x180"}.items():
-        png = (SITE / path).read_bytes()
+        png = (SITE / urlsplit(path).path).read_bytes()
         assert png[:8] == b"\x89PNG\r\n\x1a\n"
         assert struct.unpack(">II", png[16:24]) == tuple(map(int, size.split("x")))
     for name in ("museum.css", "atlantis-logo.svg", "favicon.svg", "mo-storage.html"):
