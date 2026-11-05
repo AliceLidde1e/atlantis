@@ -70,9 +70,11 @@
 .museum-frame .featured-card{display:flex;flex-direction:column;height:100%;min-width:0}
 .museum-frame .featured-card .featured-open{display:flex;flex-direction:column;align-items:stretch;flex:1;height:100%;min-width:0}
 .museum-frame .featured-card .printing-image{flex:none;height:132px;min-height:132px}
-.museum-frame .featured-card .content{display:flex;flex-direction:column;box-sizing:border-box;flex:none;height:190px;min-height:190px;width:100%;min-width:0}
+.museum-frame .featured-card .content{display:flex;flex-direction:column;box-sizing:border-box;flex:1;min-height:190px;width:100%;min-width:0}
 .museum-frame .featured-card .eyebrow{line-height:1.4;min-height:2.8em;overflow-wrap:anywhere}
 .museum-frame .featured-card h3{height:3em;min-height:3em;margin:4px 0 10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.museum-frame .featured-card .published-deck-date{margin:0 0 6px}
+.museum-frame .featured-card h3:has(+.published-deck-date){margin-bottom:2px}
 .museum-frame .featured-card .deck-card-meta{display:grid;grid-template-columns:minmax(0,1fr);margin-top:auto;gap:4px;min-height:57px;overflow-wrap:anywhere}
 .museum-frame .featured-card .small-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .recent-deck{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:stretch}
@@ -218,7 +220,7 @@
 .published-deck-player,.published-deck-event{min-width:0;overflow-wrap:anywhere}
 @media(min-width:760px){
  .published-deck-heading{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px;row-gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line)}
- .published-deck-heading h1{grid-column:1/-1}
+ .published-deck-title{grid-column:1/-1}
  .published-deck-event{padding-left:24px;border-left:1px solid var(--line)}
 }
 /* My Deck actions stay below the tile and visible on small screens. */
