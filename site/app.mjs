@@ -528,12 +528,22 @@ $('#test-error').onclick=()=>{saveSearch();loadFailed=true;$('#load-status').cla
 
 function entryLink(event){const url=externalEntryUrl(event.entryUrl);return url?`<a class="file-button" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(event.entryLabel||'外部の申込先を開く')} ↗</a>`:'<span class="badge">申込先未設定</span>';}
 function eventFields(e){return `<dl class="event-facts"><dt>開催日時（日本時間）</dt><dd><time ${e.start?`datetime="${esc(e.start)}"`:''}>${esc(eventDate(e.start))}</time>〜<br><time ${e.end?`datetime="${esc(e.end)}"`:''}>${esc(eventDate(e.end))}</time></dd><dt>会場</dt><dd>${esc(e.venue||'未定')}</dd><dt>参加費</dt><dd>${esc(e.fee||'未定')}</dd><dt>大会形式</dt><dd>${esc(e.format||'未定')}</dd></dl>`;}
+function collapseEventList(target,label){
+ const extra=[...target.children].slice(6);
+ if(!extra.length)return;
+ const disclosure=document.createElement('details');disclosure.className='event-list-disclosure';
+ const summary=document.createElement('summary');summary.setAttribute('aria-label',label+'の残り'+extra.length+'件を開閉');
+ summary.innerHTML=`<span class="event-more-label">More... (${extra.length})</span><span class="event-less-label">Close</span>`;
+ const grid=document.createElement('div');grid.className='event-grid';grid.append(...extra);
+ disclosure.append(summary,grid);target.append(disclosure);
+}
 function renderEvents(){
   if(eventLoadState==='loading'){$('#event-count').textContent='大会案内を読み込んでいます…';$('#event-results').innerHTML='';return;}
   if(eventLoadState==='error'){$('#event-count').textContent='大会案内を読み込めませんでした。';$('#event-results').innerHTML='<div class="empty"><p>ほかの機能とマイデッキはそのまま利用できます。</p><button id="event-retry">大会案内を再読込</button></div>';return;}
   const listed=events.filter(e=>!e.sample);
   $('#event-count').textContent=listed.length?`${listed.length} 件`:'';
   $('#event-results').innerHTML=[...listed].sort((a,b)=>eventSortKey(a)-eventSortKey(b)).map(e=>`<article class="event-card"><h2><button class="link-button" data-event="${esc(e.id)}">${esc(e.title)}</button></h2>${eventFields(e)}<p>${esc(e.description)}</p><div class="actions"><button data-event="${esc(e.id)}">Details / Rules</button>${entryLink(e)}</div><p class="hint">${esc(e.entryNote)}</p></article>`).join('')||'<div class="empty"><h2>大会案内はまだありません</h2><p>日時、会場、参加方法などの正式な情報が決まり次第ご案内します。</p><a href="#decks">Decksを見る →</a></div>';
+  collapseEventList($('#event-results'),'大会案内');
 }
 function openEvent(id){const event=events.find(e=>e.id===id);if(!event)return;showDetail(`${event.sample?'<span class="badge">架空のサンプル・実際の受付なし</span>':''}<h1>${esc(event.title)}</h1>${eventFields(event)}<h2>会場・住所</h2><p>${esc(event.address)}</p><h2>大会について</h2><p>${esc(event.description)}</p><h2>ルール・注意事項</h2><p class="event-rules">${esc(event.rules)}</p><h2>参加申込の案内</h2><p>参加申込は外部の案内先で行う想定です。ATLANTIS内での申込・キャンセル・定員管理はMVP対象外です。</p><div class="actions">${entryLink(event)}</div><p class="hint">${esc(event.entryNote)}</p>`,'event',id);}
 function renderResults(){
@@ -550,6 +560,7 @@ function renderResults(){
  if(errors.length){showState('大会結果の内容を確認できませんでした。',true);return;}
  status.textContent='';
  target.innerHTML=renderPublishedDeckResults(decks,tournamentResults)||'<p>大会結果はまだありません。</p>';
+ collapseEventList(target,'大会結果');
  if(!location.hash.startsWith('#events/'))return;
  let id;try{id=decodeURIComponent(location.hash.slice('#events/'.length));}catch{}
  const group=collectEventResults(decks,tournamentResults).find(g=>g.id===id);

@@ -337,7 +337,7 @@
  .event-deck-table .link-button{padding-left:0;padding-right:0}
 }
 
-/* Event lists stay collapsed until the reader expands the relevant section. */
+/* Keep six events visible; only the remaining cards live inside the disclosure. */
 .event-list-disclosure{margin-bottom:24px}
 .event-list-disclosure>summary{width:fit-content;min-height:44px;padding:10px 14px;cursor:pointer;color:var(--link);font-family:var(--font-display);border:1px solid var(--line)}
 .event-list-disclosure>summary:hover{background:var(--surface)}
@@ -345,3 +345,6 @@
 .event-list-disclosure .event-less-label,.event-list-disclosure[open] .event-more-label{display:none}
 .event-list-disclosure[open] .event-less-label{display:inline}
 .event-list-disclosure[open]>summary{margin-bottom:16px}
+
+.event-grid>.event-list-disclosure{grid-column:1 / -1;min-width:0;margin-bottom:0}
+.event-list-disclosure>.event-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
