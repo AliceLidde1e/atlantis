@@ -72,9 +72,50 @@ export function renderTournamentResults(results,decks){
  return [...results].filter(r=>!r.sample).sort((a,b)=>b.date.localeCompare(a.date)||a.id.localeCompare(b.id)).map(r=>`<article class="event-card tournament-result"><h3>${esc(r.title)}</h3><p><time datetime="${esc(r.date)}">${esc(r.date)}</time> · ${esc(r.venue)} · ${r.players}名</p><p class="hint">通算成績／上位${r.topCut}名のデッキを掲載</p><div class="result-table-wrap" tabindex="0" role="region" aria-label="${esc(r.title)}の通算成績"><table class="result-table"><thead><tr><th scope="col">順位</th><th scope="col">プレイヤー</th><th scope="col">通算成績</th><th scope="col">デッキ</th></tr></thead><tbody>${[...r.standings].sort((a,b)=>a.rank-b.rank).map(s=>`<tr><td>${s.rank}</td><td>${esc(s.player)}</td><td>${s.wins}勝${s.losses}敗${s.draws?`${s.draws}分`:''}</td><td>${s.rank<=r.topCut&&byId.has(s.deckId)?`<button class="link-button" data-deck="${esc(s.deckId)}">${esc(byId.get(s.deckId).name)}</button>`:'—'}</td></tr>`).join('')}</tbody></table></div><p class="hint">出典：${esc(r.source)}</p></article>`).join('');
 }
 
-export function renderPublishedDeckResults(decks,results=[],artForDeck=()=>'',mobileTile=()=>''){
- const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const rows=decks.filter(d=>d.sample===false).map((d,index)=>({d,index})).sort((a,b)=>(a.d.order??a.index)-(b.d.order??b.index)||a.index-b.index).slice(0,5).map(x=>x.d);
- if(!rows.length)return '';
- return '<section class="recent-standings"><h3>直近の入賞リスト</h3>'+rows.map(d=>`<article class="event-card recent-deck"><div class="recent-deck-info"><h4><button class="link-button" data-deck="${esc(d.id)}">${esc(d.name)}</button></h4><p>${esc(d.result)} · ${esc(d.author)}</p><p>${esc(d.event)} · ${esc(d.venue)}</p>${confirmedDeckDate(d)?`<time datetime="${confirmedDeckDate(d)}">${confirmedDeckDate(d)}</time>`:''}</div>${artForDeck(d)?`<button class="recent-deck-art" type="button" data-deck="${esc(d.id)}" aria-label="${esc(d.name)} details">${artForDeck(d)}</button>`:''}</article>`) .join('')+rows.map(d=>{const tile=mobileTile(d);return tile?'<div class="recent-mobile-tile">'+tile+'</div>':'';}).join('')+'</section>';
+// Historical decks use confirmed dates, never workbook/import timestamps.
+const escapeResult=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function eventResultHref(id){return '#events/'+encodeURIComponent(id);}
+export function publishedDeckRank(value){
+ const label=String(value??'').trim();
+ if(label==='優勝')return 1;
+ if(label==='準優勝')return 2;
+ const match=/^(?:TOP\s*([1-9]\d*)|([1-9]\d*)位)$/i.exec(label);
+ return match?Number(match[1]||match[2]):Infinity;
+}
+export function collectEventResults(decks,results=[]){
+ const published=decks.filter(d=>d.sample===false),byId=new Map(published.map(d=>[d.id,d])),linked=new Set();
+ const groups=results.filter(r=>!r.sample).map(r=>{
+  const rows=r.standings.filter(s=>s.rank<=r.topCut&&byId.has(s.deckId)).map(s=>{
+   linked.add(s.deckId);return {deck:byId.get(s.deckId),rank:s.rank,label:String(s.rank)};
+  });
+  return {id:'result-'+r.id,title:r.title,date:r.date,players:r.players,venue:r.venue,rows};
+ });
+ const historical=new Map();
+ for(const deck of published){
+  if(linked.has(deck.id))continue;
+  const date=confirmedDeckDate(deck),row={deck,rank:publishedDeckRank(deck.result),label:deck.result||'—'};
+  const matches=groups.filter(g=>date&&g.title===deck.event&&g.date===date&&g.venue===deck.venue);
+  if(matches.length===1){matches[0].rows.push(row);continue;}
+  // Without a confirmed date, do not merge potentially different occurrences.
+  const key=JSON.stringify([deck.event,deck.venue,date||deck.id]);
+  if(!historical.has(key))historical.set(key,{title:deck.event,date,players:null,venue:deck.venue,rows:[]});
+  historical.get(key).rows.push(row);
+ }
+ for(const group of historical.values()){
+  group.id='decks-'+group.rows.map(r=>r.deck.id).sort()[0];groups.push(group);
+ }
+ for(const group of groups)group.rows.sort((a,b)=>a.rank-b.rank||(a.deck.order??Infinity)-(b.deck.order??Infinity)||a.deck.id.localeCompare(b.deck.id));
+ return groups.sort((a,b)=>b.date.localeCompare(a.date)||a.title.localeCompare(b.title,'ja')||a.id.localeCompare(b.id));
+}
+function eventResultFacts(group){
+ const esc=escapeResult;
+ return `<dl class="event-result-facts"><div><dt>開催日</dt><dd>${group.date?`<time datetime="${esc(group.date)}">${esc(group.date)}</time>`:'未確認'}</dd></div><div><dt>参加人数</dt><dd>${Number.isSafeInteger(group.players)&&group.players>0?`${group.players}名`:'未確認'}</dd></div></dl>`;
+}
+export function renderPublishedDeckResults(decks,results=[]){
+ const esc=escapeResult,groups=collectEventResults(decks,results);
+ return groups.map(group=>`<article class="event-card event-result-summary"><h3><a href="${esc(eventResultHref(group.id))}">${esc(group.title)}</a></h3>${eventResultFacts(group)}<a class="file-button" href="${esc(eventResultHref(group.id))}">View Decks →</a></article>`).join('');
+}
+export function renderEventResult(group){
+ const esc=escapeResult;
+ return `<div class="section-head"><h1 id="event-result-title">${esc(group.title)}</h1></div>${eventResultFacts(group)}<h2>Decks</h2>${group.rows.length?`<table class="event-deck-table"><thead><tr><th scope="col">順位</th><th scope="col">使用者</th><th scope="col">デッキ名</th></tr></thead><tbody>${group.rows.map(row=>`<tr><td data-label="順位">${esc(row.label)}</td><td data-label="使用者">${esc(row.deck.author)}</td><td data-label="デッキ名"><button class="link-button" type="button" data-deck="${esc(row.deck.id)}">${esc(row.deck.name)}</button></td></tr>`).join('')}</tbody></table>`:'<p>掲載デッキはまだありません。</p>'}`;
 }

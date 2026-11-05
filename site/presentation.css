@@ -53,9 +53,6 @@
 .museum-frame .card-list .card{align-items:start}
 .museum-frame .card-list .card h3{margin-top:0;padding-right:0}
 .card-set{font-family:var(--font-data);font-size:11px;color:var(--muted)}
-.recent-standings{display:grid;gap:12px}
-.recent-standings h4{margin:0;font-size:16px}
-.recent-standings p{margin:8px 0 0}
 #site-version{font-family:var(--font-data);font-size:10px;white-space:nowrap}
 @media(max-width:639px){
  #detail>.dialog-toolbar{flex-direction:row;gap:5px}
@@ -77,17 +74,9 @@
 .museum-frame .featured-card h3:has(+.published-deck-date){margin-bottom:2px}
 .museum-frame .featured-card .deck-card-meta{display:grid;grid-template-columns:minmax(0,1fr);margin-top:auto;gap:4px;min-height:57px;overflow-wrap:anywhere}
 .museum-frame .featured-card .small-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-.recent-deck{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:stretch}
-.recent-deck-info{min-width:0;overflow-wrap:anywhere}
-.museum-frame .recent-deck-art{display:block;min-width:0;width:100%;padding:0;border:0;box-shadow:none;background:transparent}
-.recent-deck-art .printing-image{margin:0;height:120px;overflow:hidden}
-.recent-deck-art img.art{display:block;width:100%;height:100%;object-fit:cover;clip-path:none;border-radius:0}
-.recent-deck-art figcaption{display:none}
 @media(max-width:639px){
  .museum-frame .featured-card .featured-open{display:grid;grid-template-columns:34% minmax(0,1fr);flex:none}
  .museum-frame .featured-card .printing-image{height:190px;min-height:190px}
- .recent-deck{grid-template-columns:minmax(0,1fr)}
- .recent-deck-art .printing-image{height:100px}
 }
 /* Getting Started: old-frame illustration and paired navigation labels. */
 .museum-frame .guide-art{display:block;margin:0;padding:0;overflow:hidden;min-height:190px;background:var(--surface)}
@@ -281,13 +270,7 @@
 .mana-ticks span{position:absolute;top:0;transform:translateX(-50%);width:1em;text-align:center;line-height:1}
 .mana-ticks span::before{content:"";display:block;width:1px;height:4px;margin:0 auto 2px;background:currentColor}
 .mana-ticks .major::before{height:8px}
-.recent-mobile-tile{display:none}
 @media(min-width:1100px){#workbench-add-cards{display:none}}
-@media(max-width:639px){
- .recent-standings>.recent-deck{display:none}
- .recent-mobile-tile{display:block;min-width:0}
- .museum-frame .recent-mobile-tile .content{height:auto}
-}
 
 /* Shared visual deck list: full card faces, board totals and per-card counts. */
 .deck-board{container-type:inline-size;min-width:0;margin-block:20px}
@@ -328,3 +311,28 @@
 #builder .selection-quantity input::-webkit-inner-spin-button{appearance:none}
 @media(max-width:639px){.deck-card-grid{gap:10px}.deck-board>h2{padding:12px 8px}.deck-card-grid .published-quantity{padding:3px 7px}}
 @media(forced-colors:active){.deck-card-grid .published-quantity{background:Canvas;color:CanvasText;border:1px solid CanvasText}}
+
+/* Event results: a compact event directory and a three-column deck list. */
+#tournament-results.event-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
+.event-result-summary{min-width:0;overflow-wrap:anywhere}
+.event-result-summary h3{margin-top:0}
+.event-result-facts{display:flex;flex-wrap:wrap;gap:12px 36px;margin:16px 0 24px}
+.event-result-facts>div{display:grid;gap:4px}
+.event-result-facts dt{font-size:12px;color:var(--muted)}
+.event-result-facts dd{margin:0}
+#event-result-content{min-width:0;overflow-wrap:anywhere}
+.event-deck-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.event-deck-table th,.event-deck-table td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:middle;overflow-wrap:anywhere}
+.event-deck-table th:first-child{width:90px}
+.event-deck-table th:nth-child(2){width:25%}
+.event-deck-table .link-button{min-height:44px;text-align:left;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:639px){
+ .event-deck-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ .event-deck-table,.event-deck-table tbody{display:block}
+ .event-deck-table tr{display:grid;grid-template-columns:60px minmax(0,1fr);gap:4px 12px;padding:12px 0;border-bottom:1px solid var(--line)}
+ .event-deck-table td{display:block;padding:0;border:0;min-width:0}
+ .event-deck-table td:first-child{grid-column:1;grid-row:1 / 3}
+ .event-deck-table td:nth-child(2),.event-deck-table td:nth-child(3){grid-column:2}
+ .event-deck-table td::before{content:attr(data-label);display:block;color:var(--muted);font-size:11px}
+ .event-deck-table .link-button{padding-left:0;padding-right:0}
+}

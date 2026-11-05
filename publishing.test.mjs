@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './site/publishing.mjs';
+import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults,collectEventResults,renderEventResult,publishedDeckRank,eventResultHref} from './site/publishing.mjs';
 const load=x=>JSON.parse(readFileSync(new URL('./site/data/'+x+'.json',import.meta.url),'utf8'));
 const live={cards:load('cards').cards,events:load('events'),results:load('results'),decks:load('decks')};
 assert.deepEqual(validatePublishingData(live),[]);
@@ -25,8 +25,8 @@ assert(html.includes('5勝1敗'));assert(html.includes('4勝1敗1分'));assert(h
 assert.equal(renderTournamentResults([],[]),'');assert.equal(renderTournamentResults([{...result,sample:true}],valid.decks),'');
 const privateDeck=structuredClone(result);privateDeck.standings[1].deckId=deck.id;
 assert.equal((renderTournamentResults([privateDeck],valid.decks).match(/data-deck=/g)||[]).length,1);
-assert(renderPublishedDeckResults(valid.decks).includes('&lt;script&gt;'));
-assert(renderPublishedDeckResults(valid.decks,valid.results).includes('data-deck="fixture-deck"'));
+assert(renderEventResult(collectEventResults(valid.decks)[0]).includes('&lt;script&gt;'));
+assert(renderEventResult(collectEventResults(valid.decks,valid.results)[0]).includes('data-deck="fixture-deck"'));
 console.log('Publishing: live data, valid results, invalid/unsafe data, top-cut links, escaping and empty state OK');
 
 assert.equal(confirmedDeckDate({recordedAt:'2026-09-19T00:00:00',updated:'2026-09-19T00:00:00'}),'');
@@ -38,6 +38,31 @@ for(const heldOn of ['2026-09-19','2024-02-29']){
 const invalidDate=structuredClone(valid);invalidDate.decks[0].heldOn='2026-02-30';assert(validatePublishingData(invalidDate).some(x=>x.includes('開催日')));
 console.log('Confirmed tournament dates: separate from recorded timestamps, valid dates only, blank/unconfirmed hidden OK');
 
-const recent=renderPublishedDeckResults(Array.from({length:8},(_,i)=>({...deck,id:'recent-'+i,order:7-i})));assert.equal((recent.match(/data-deck=/g)||[]).length,5);assert(recent.indexOf('recent-7')<recent.indexOf('recent-6'));assert(!recent.includes('recent-0'));assert(recent.includes('直近の入賞リスト'));
 
-const illustrated=renderPublishedDeckResults(valid.decks,[],()=>'<figure class="fixture-art"></figure>');assert(illustrated.includes('recent-deck-art'));assert(illustrated.includes('fixture-art'));assert(illustrated.includes('&lt;script&gt;'));
+const groups=collectEventResults(live.decks,live.results);
+assert.equal(groups.reduce((sum,g)=>sum+g.rows.length,0),live.decks.length);
+assert(groups.length>7); // Same-name recurring tournaments stay separate by confirmed date.
+assert.equal(groups.find(g=>g.title==='第三回 旧枠モダンGP群馬').rows.length,8);
+assert.equal(groups.find(g=>g.title==='第三回 旧枠モダンGP群馬').date,'2026-09-22');
+assert(groups.filter(g=>g.title==='定例大会').length>1);
+const overview=renderPublishedDeckResults(live.decks);
+assert(!overview.includes('直近の入賞リスト'));assert(overview.includes('#events/'));assert(!overview.includes('data-deck='));
+assert.equal(renderPublishedDeckResults([],[]),'');
+const fixture=collectEventResults(valid.decks,valid.results)[0];
+assert.equal(fixture.players,8);assert.equal(fixture.rows.length,1);assert.equal(fixture.rows[0].label,'1');
+assert(renderEventResult(fixture).includes('8名'));assert(renderEventResult(fixture).includes('&lt;script&gt;'));
+assert(!renderEventResult(fixture).includes('<script>'));assert(!renderEventResult(fixture).includes('通算成績'));
+const historical=collectEventResults(valid.decks)[0];assert.equal(historical.date,deck.heldOn);assert.equal(historical.players,null);
+assert(renderEventResult(historical).includes('未確認'));assert(!renderEventResult(historical).includes('8名'));
+assert.deepEqual(['優勝','準優勝','TOP4','TOP8','3位','5勝1敗'].map(publishedDeckRank),[1,2,4,8,3,Infinity]);
+const rankDecks=['TOP8','準優勝','優勝','TOP4'].map((result,i)=>({...deck,id:'rank-'+i,result,heldOn:'2026-09-22'}));
+assert.deepEqual(collectEventResults(rankDecks)[0].rows.map(r=>r.label),['優勝','準優勝','TOP4','TOP8']);
+assert.equal(collectEventResults([...rankDecks,{...deck,id:'sample',sample:true}])[0].rows.length,4);
+assert.equal(collectEventResults([{...deck,id:'a',heldOn:''},{...deck,id:'b',heldOn:''}]).length,2);
+const extra={...deck,id:'extra',heldOn:result.date};
+assert.equal(collectEventResults([...valid.decks,extra],valid.results).length,1);
+assert.equal(collectEventResults([...valid.decks,extra],valid.results)[0].rows.length,2);
+const empty=collectEventResults([],valid.results)[0];assert(renderEventResult(empty).includes('掲載デッキはまだありません'));
+assert.equal(decodeURIComponent(eventResultHref('test/&<>').slice('#events/'.length)),'test/&<>');
+assert.deepEqual(collectEventResults([...live.decks].reverse()).map(g=>g.id),groups.map(g=>g.id));
+console.log('Event pages: all live decks, recurring events, rank labels, metadata, top-cut links, sample exclusion, escaping and empty states OK');

@@ -2,7 +2,7 @@ import {loadCatalogFile,registerPwa} from './pwa.mjs';
 import {openDeckStore} from './deck-store.mjs?v=20261031a';
 import {zones,destinations,setDeckQuantity,moveDeckCard,officialDeckText} from './workbench.mjs?v=20261031a';
 import {attachAutocomplete} from './autocomplete.mjs?v=20261026a';
-import {confirmedDeckDate,validatePublishingData,renderTournamentResults,renderPublishedDeckResults} from './publishing.mjs?v=20261104a';
+import {confirmedDeckDate,validatePublishingData,collectEventResults,renderEventResult,renderPublishedDeckResults} from './publishing.mjs?v=20261105events';
 import {uuid,archetypeEnglish,groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261105a';
 
 const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
@@ -91,14 +91,16 @@ function saveSearch(){if(!searchReady)return;try{const values={};$$('input[id],s
 function restoreSearch(){try{const saved=JSON.parse(sessionStorage.getItem(SESSION)||'null');if(!saved)return;for(const[id,value]of Object.entries(saved.values||{})){const input=$('#'+id);if(input&&id!=='printing-mode'&&(!['deck-sort','card-sort'].includes(id)||saved.sortDefaultsVersion===2)){if(input.type==='checkbox')input.checked=!!value;else if(['card-min','card-max'].includes(id))input.value=value===''?(id==='card-min'?'0':input.max):String(value);else input.value=['card-color-mode','deck-color-mode'].includes(id)&&value==='exact'?'and':String(value);}}if(saved.values?.['card-type']){const legacy=$$('#card-types input').find(x=>x.value===saved.values['card-type']);if(legacy)legacy.checked=true;}syncManaSliders();for(const prefix of ['card','deck'])$$(`#${prefix}-colors input`).forEach(x=>x.checked=(saved.colors?.[prefix]||[]).includes(x.value));selectedCards=(saved.selectedCards||[]).filter(id=>cardMap.has(id));cardPage=Math.max(1,Number(saved.cardPage)||1);currentView=['home','decks','cards','events','my','guide','about'].includes(saved.currentView)?saved.currentView:'home';$('#card-display').value=saved.display==='list'?'list':'grid';}catch{}}
 function navigate(view){
  const route={pool:'cards',mydecks:'my',cards:'cards',my:'my'};
- const next=route[view]||view;
+ const resultPage=view.startsWith('events/');
+ const next=resultPage?'events':route[view]||view;
  if(!['home','decks','cards','events','my','guide','about'].includes(next))return;
  currentView=next;
- $$('.view').forEach(v=>v.hidden=v.id!=='view-'+next);
- const hash={cards:'pool',my:'mydecks'}[next]||next;
- $$('nav a[href^="#"]').forEach(a=>{const active=a.getAttribute('href')==='#'+hash;if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+ $$('.view').forEach(v=>v.hidden=v.id!==(resultPage?'view-event-results':'view-'+next));
+ const navHash={cards:'pool',my:'mydecks'}[next]||next;
+ const hash=resultPage?view:navHash;
+ $$('nav a[href^="#"]').forEach(a=>{const active=a.getAttribute('href')==='#'+navHash;if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  if(location.hash!=='#'+hash)history.replaceState({},'', '#'+hash);
- saveSearch();syncWorkbenchLayout();if(next==='my')renderMy();if(next==='events'){renderEvents();renderResults();}
+ saveSearch();syncWorkbenchLayout();if(next==='my')renderMy();if(next==='events'){renderEvents();renderResults();if(resultPage)window.scrollTo({top:0,behavior:'instant'});}
 }
 function chip(text,action){return `<button class="chip" type="button" ${action}>${esc(text)} ×</button>`;}
 function addActiveFilters(container,filters,kind){let out=[];const labels=kind==='card'?{name:'カード名',oracle:'能力',keyword:'キーワード',min:'マナ下限',max:'マナ上限'}:{query:'検索語',archetype:'分類'};for(const[k,label]of Object.entries(labels))if(filters[k]!==''&&filters[k]!=null)out.push(chip(label+'：'+(types[filters[k]]||filters[k]),`data-remove-field="${kind==='card'?'card':'deck'}-${k==='query'?'query':k}"`));for(const type of filters.types||[])out.push(chip('タイプ：'+(types[type]||type),`data-remove-type="${type}"`));for(const color of filters.colors)out.push(chip(colorNames[color],`data-remove-color="${kind}:${color}"`));$(container).innerHTML=out.join('');}
@@ -535,19 +537,27 @@ function renderEvents(){
 }
 function openEvent(id){const event=events.find(e=>e.id===id);if(!event)return;showDetail(`${event.sample?'<span class="badge">架空のサンプル・実際の受付なし</span>':''}<h1>${esc(event.title)}</h1>${eventFields(event)}<h2>会場・住所</h2><p>${esc(event.address)}</p><h2>大会について</h2><p>${esc(event.description)}</p><h2>ルール・注意事項</h2><p class="event-rules">${esc(event.rules)}</p><h2>参加申込の案内</h2><p>参加申込は外部の案内先で行う想定です。ATLANTIS内での申込・キャンセル・定員管理はMVP対象外です。</p><div class="actions">${entryLink(event)}</div><p class="hint">${esc(event.entryNote)}</p>`,'event',id);}
 function renderResults(){
- const status=$('#tournament-status'),target=$('#tournament-results');
- if(resultLoadState==='loading'){status.textContent='大会結果を読み込んでいます…';target.innerHTML='';return;}
- if(resultLoadState==='error'){status.textContent='大会結果を読み込めませんでした。';target.innerHTML='<button id="results-retry">大会結果を再読込</button>';return;}
- if(!cards.length)return;
+ const status=$('#tournament-status'),target=$('#tournament-results'),page=$('#event-result-content');
+ const showState=(text,retry=false)=>{
+  status.textContent=text;target.innerHTML=retry?'<button id="results-retry">大会結果を再読込</button>':'';
+  page.innerHTML=`<h1 id="event-result-title">Event Results</h1><p role="status">${esc(text)}</p>${retry?'<button id="event-result-retry">大会結果を再読込</button>':''}`;
+ };
+ if(resultLoadState==='loading'||eventLoadState==='loading'){showState('大会結果を読み込んでいます…');return;}
+ if(resultLoadState==='error'){showState('大会結果を読み込めませんでした。',true);return;}
+ if(deckLoadFailed){showState('掲載デッキを読み込めませんでした。',true);return;}
+ if(!cards.length){showState('カードデータを読み込めませんでした。',true);return;}
  const errors=validatePublishingData({cards,events,results:tournamentResults,decks});
- if(errors.length){status.textContent='大会結果の内容を確認できませんでした。';target.innerHTML='<button id="results-retry">大会結果を再読込</button>';return;}
+ if(errors.length){showState('大会結果の内容を確認できませんでした。',true);return;}
  status.textContent='';
- target.innerHTML=renderPublishedDeckResults(decks,tournamentResults,d=>imageMarkup(cardMap.get(d.hero),true),d=>deckTile(d,{eventSummary:true}));
- if(!target.innerHTML)target.innerHTML='<p>大会結果はまだありません。</p>';
+ target.innerHTML=renderPublishedDeckResults(decks,tournamentResults)||'<p>大会結果はまだありません。</p>';
+ if(!location.hash.startsWith('#events/'))return;
+ let id;try{id=decodeURIComponent(location.hash.slice('#events/'.length));}catch{}
+ const group=collectEventResults(decks,tournamentResults).find(g=>g.id===id);
+ page.innerHTML=group?renderEventResult(group):'<h1 id="event-result-title">Event Results</h1><p>指定された大会結果は見つかりませんでした。</p>';
 }
 async function loadEvents(){eventLoadState='loading';renderEvents();try{const r=await fetch('data/events.json',{cache:'no-store'});if(!r.ok)throw new Error('Event fetch error');const data=await r.json();if(validatePublishingData({events:data}).length)throw new Error('Invalid events');events=data;$('#event-sample-notice').hidden=true;eventLoadState='ready';}catch{eventLoadState='error';}renderEvents();renderResults();}
 async function loadResults(){resultLoadState='loading';renderResults();try{const r=await fetch('data/results.json',{cache:'no-store'});if(!r.ok)throw new Error('Results fetch error');const data=await r.json();if(!Array.isArray(data))throw new Error('Invalid results');tournamentResults=data;resultLoadState='ready';}catch{resultLoadState='error';}renderResults();}
-document.addEventListener('click',e=>{if(e.target.closest('#event-retry'))loadEvents();if(e.target.closest('#results-retry')){loadEvents();loadResults();}});
+document.addEventListener('click',async e=>{if(e.target.closest('#event-retry'))loadEvents();if(e.target.closest('#results-retry, #event-result-retry')){if(deckLoadFailed||!cards.length)await load();loadEvents();loadResults();}});
 async function boot(){
  navigate(location.hash.slice(1)||'home');
  try{deckStore=await openDeckStore(localStorage,STORAGE);await readLocal();for(const r of await deckStore.drafts()){try{validateDraftRecovery(r);draftShelf.set(r.key,r);}catch{message('読み取れない下書きがあります。元の退避データは保持しています。');}}renderMy();}
