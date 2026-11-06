@@ -1,35 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2532" height="512" viewBox="0 0 1266 256" role="img" aria-labelledby="title desc">
 <title id="title">ATLANTIS — machined brass ambigram</title>
-<desc id="desc">Adopted ATLANTIS ambigram, with balanced stroke weights and extended L/T terminals. Existing machined brass palette, brushed surface and inset structural edges retained. Transparent background.</desc>
+<desc id="desc">Approved ATLANTIS ambigram, with aligned T and L contours and exact 180-degree rotation symmetry. Machined brass palette, brushed surface and inset structural edges. Transparent background.</desc>
 <defs>
   <g id="letter-silhouette" fill-rule="evenodd">
     <g id="outer-A" transform="translate(20.519231,-12)">
       <path id="glyph-part-0" d="M104 40L56 152L141 163C155.66665 185.66664 158.66666 202.00001 150 212C142.66667 220.66666 127.66664 218.99999 105 207L65 187C58.33334 184.33334 53.999998 186.33334 52 193L40 240H47C56.333324 215.33336 69.000016 206.66667 85 214L172 240L184 234L159 136H125C102 136 90 130 90 120C90 110 88 99 103 96C110 94 114 98 121 104L142 119L149 117L110 40Z" transform="translate(4)"/>
     </g>
-    <g id="outer-S" transform="translate(18.012821,-9.2948718)">
-      <path id="glyph-part-7" d="M104 40L56 152L141 163C155.66665 185.66664 158.66666 202.00001 150 212C142.66667 220.66666 127.66664 218.99999 105 207L65 187C58.33334 184.33334 53.999998 186.33334 52 193L40 240H47C56.333324 215.33336 69.000016 206.66667 85 214L172 240L184 234L159 136H125C102 136 90 130 90 120C90 110 88 99 103 96C110 94 114 98 121 104L142 119L149 117L110 40Z" transform="translate(-4) rotate(180 609 140)"/>
+    <g id="outer-S" transform="translate(1241.480769 268) rotate(180)">
+      <path id="glyph-part-7" d="M104 40L56 152L141 163C155.66665 185.66664 158.66666 202.00001 150 212C142.66667 220.66666 127.66664 218.99999 105 207L65 187C58.33334 184.33334 53.999998 186.33334 52 193L40 240H47C56.333324 215.33336 69.000016 206.66667 85 214L172 240L184 234L159 136H125C102 136 90 130 90 120C90 110 88 99 103 96C110 94 114 98 121 104L142 119L149 117L110 40Z"/>
     </g>
     <g id="approved-central-six" transform="translate(158 0)">
       <g id="central-six-glyphs" fill-rule="evenodd">
         <g id="pair-T-I">
           <g id="glyph-T" transform="translate(28 28)">
-            <path id="glyph-T-head-and-stem" d="M0 0H168V28H134A36 36 0 0 0 98 64V152L70 124V64A36 36 0 0 0 34 28H0Z"/>
+            <path id="glyph-T-head-and-stem" d="M0 6L12 0H168V22L156 28H134A36 36 0 0 0 98 64V152L70 124V64A36 36 0 0 0 34 28H0Z"/>
             <path id="glyph-T-foot" d="M70 142L98 170V200H70Z"/>
           </g>
           <g id="glyph-I" transform="translate(922 228) rotate(180)">
-            <path id="glyph-I-head-and-stem" d="M0 0H168V28H134A36 36 0 0 0 98 64V152L70 124V64A36 36 0 0 0 34 28H0Z"/>
+            <path id="glyph-I-head-and-stem" d="M0 6L12 0H168V22L156 28H134A36 36 0 0 0 98 64V152L70 124V64A36 36 0 0 0 34 28H0Z"/>
             <path id="glyph-I-foot" d="M70 142L98 170V200H70Z"/>
           </g>
         </g>
         <g id="pair-L-T">
           <g id="glyph-L" transform="translate(140 28)">
-            <path id="glyph-L-detached-foot" d="M0 181.333333L42 167.333333V200H0Z"/>
-            <path id="glyph-L-stem-and-foot" d="M70 0H98V144A28 28 0 0 0 126 172H163.46267L191.46267 200H56V162.666667L70 158Z"/>
+            <path id="glyph-L-detached-foot" d="M0 181.333333L42 167.333333V190L30 200H0Z"/>
+            <path id="glyph-L-stem-and-foot" d="M70 6L82 0H98V144A28 28 0 0 0 126 172H163.46267L189 200H69L56 187V162.666667L70 158Z"/>
           </g>
           <g id="glyph-T-from-L" transform="translate(810 228) rotate(180)">
-            <path id="glyph-T-from-L-detached-foot" d="M0 181.333333L42 167.333333V200H0Z"/>
-            <path id="glyph-T-from-L-stem-and-foot" d="M70 0H98V144A28 28 0 0 0 126 172H163.46267L191.46267 200H56V162.666667L70 158Z"/>
+            <path id="glyph-T-from-L-detached-foot" d="M0 181.333333L42 167.333333V190L30 200H0Z"/>
+            <path id="glyph-T-from-L-stem-and-foot" d="M70 6L82 0H98V144A28 28 0 0 0 126 172H163.46267L189 200H69L56 187V162.666667L70 158Z"/>
           </g>
         </g>
         <g id="pair-A-N">
@@ -43,7 +43,7 @@
         </g>
       </g>
     </g>
-    </g>
+  </g>
 <clipPath id="inside-letters"><use xlink:href="#letter-silhouette"/></clipPath>
   <linearGradient id="brass-face" x1="0" y1="28" x2="0" y2="228" gradientUnits="userSpaceOnUse">
     <stop offset="0" stop-color="#a58b39"/><stop offset=".12" stop-color="#e1c871"/>
