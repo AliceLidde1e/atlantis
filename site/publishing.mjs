@@ -75,6 +75,14 @@ export function renderTournamentResults(results,decks){
 // Historical decks use confirmed dates, never workbook/import timestamps.
 const escapeResult=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function eventResultHref(id){return '#events/'+encodeURIComponent(id);}
+export function eventRoute(view){
+ if(view==='events')return {page:'view-events',kind:'overview'};
+ if(view==='events/results')return {page:'view-event-directory',kind:'results'};
+ if(view==='events/announcements')return {page:'view-event-announcements',kind:'announcements'};
+ if(!view.startsWith('events/'))return null;
+ let id='';try{id=decodeURIComponent(view.slice('events/'.length));}catch{}
+ return {page:'view-event-results',kind:'detail',id};
+}
 export function publishedDeckRank(value){
  const label=String(value??'').trim();
  if(label==='優勝')return 1;
@@ -88,7 +96,8 @@ export function collectEventResults(decks,results=[]){
   const rows=r.standings.filter(s=>s.rank<=r.topCut&&byId.has(s.deckId)).map(s=>{
    linked.add(s.deckId);return {deck:byId.get(s.deckId),rank:s.rank,label:String(s.rank)};
   });
-  return {id:'result-'+r.id,title:r.title,date:r.date,players:r.players,venue:r.venue,rows};
+  const champions=r.standings.filter(s=>s.rank===1).map(s=>({player:s.player,deck:byId.get(s.deckId)||null}));
+  return {id:'result-'+r.id,title:r.title,date:r.date,players:r.players,venue:r.venue,rows,champions};
  });
  const historical=new Map();
  for(const deck of published){
@@ -111,9 +120,22 @@ function eventResultFacts(group){
  const esc=escapeResult;
  return `<dl class="event-result-facts"><div><dt>開催日</dt><dd>${group.date?`<time datetime="${esc(group.date)}">${esc(group.date)}</time>`:'未確認'}</dd></div><div><dt>参加人数</dt><dd>${Number.isSafeInteger(group.players)&&group.players>0?`${group.players}名`:'未確認'}</dd></div></dl>`;
 }
-export function renderPublishedDeckResults(decks,results=[]){
- const esc=escapeResult,groups=collectEventResults(decks,results);
- return groups.map(group=>`<article class="event-card event-result-summary"><h3><a href="${esc(eventResultHref(group.id))}">${esc(group.title)}</a></h3>${eventResultFacts(group)}<a class="file-button" href="${esc(eventResultHref(group.id))}">View Decks →</a></article>`).join('');
+export function eventChampions(group){
+ // TOP4/TOP8 and the first listed deck do not establish a winner.
+ return group.champions??group.rows.filter(row=>/^(?:優勝|1位)$/.test(String(row.label).trim())).map(row=>({player:row.deck.author,deck:row.deck}));
+}
+export function eventPlaceholder(label='EVENT RESULTS'){
+ return `<div class="printing-image event-placeholder"><img src="atlantis-logo.svg?v=20261107logo" alt="" loading="lazy" decoding="async"><span>${escapeResult(label)}</span></div>`;
+}
+export function renderEventSummary(group,renderImage=()=> ''){
+ const esc=escapeResult,champions=eventChampions(group),heroDeck=champions.find(winner=>winner.deck?.hero)?.deck;
+ const image=heroDeck?renderImage(heroDeck):'';
+ const winner=champions.length?champions.map(w=>esc(w.player)).join(' / '):'優勝者未確認';
+ const deckNames=champions.map(w=>esc(w.deck?.name||'デッキ未掲載')).join(' / ');
+ return `<article class="deck-card featured-card event-tile event-result-summary"><a class="featured-open" href="${esc(eventResultHref(group.id))}" aria-label="${esc(group.title)}${group.date?' · '+esc(group.date):''}の大会結果">${image||eventPlaceholder()}<div class="content"><span class="eyebrow">EVENT RESULTS</span><h3>${esc(group.title)}</h3><p class="published-deck-date">開催日：${group.date?`<time datetime="${esc(group.date)}">${esc(group.date)}</time>`:'未確認'}</p><dl class="event-card-facts"><div><dt>会場</dt><dd>${esc(group.venue||'未確認')}</dd></div><div><dt>参加人数</dt><dd>${Number.isSafeInteger(group.players)&&group.players>0?`${group.players}名`:'未確認'}</dd></div></dl><div class="event-champion"><span class="eyebrow">WINNER</span><p>${winner}</p>${deckNames?`<p class="event-winner-deck">${deckNames}</p>`:''}</div><span class="event-card-action">View Decks →</span></div></a></article>`;
+}
+export function renderPublishedDeckResults(decks,results=[],{limit=Infinity,renderImage}={}){
+ return collectEventResults(decks,results).slice(0,limit).map(group=>renderEventSummary(group,renderImage)).join('');
 }
 export function renderEventResult(group){
  const esc=escapeResult;

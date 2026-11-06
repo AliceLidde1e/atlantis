@@ -20,7 +20,6 @@
 .result-table{width:100%;border-collapse:collapse;min-width:420px}
 .result-table th,.result-table td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
 .tournament-result{min-width:0;overflow-wrap:anywhere}
-#tournament-results{display:grid;gap:20px}
 @media(forced-colors:active){*{scrollbar-color:auto}::-webkit-scrollbar-thumb{background:ButtonText;border-color:Canvas}::-webkit-scrollbar-track{background:Canvas;box-shadow:none}}
 
 /* File pickers use the same display face as adjacent action buttons. */
@@ -313,9 +312,7 @@
 @media(forced-colors:active){.deck-card-grid .published-quantity{background:Canvas;color:CanvasText;border:1px solid CanvasText}}
 
 /* Event results: a compact event directory and a three-column deck list. */
-#tournament-results.event-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
 .event-result-summary{min-width:0;overflow-wrap:anywhere}
-.event-result-summary h3{margin-top:0}
 .event-result-facts{display:flex;flex-wrap:wrap;gap:12px 36px;margin:16px 0 24px}
 .event-result-facts>div{display:grid;gap:4px}
 .event-result-facts dt{font-size:12px;color:var(--muted)}
@@ -337,17 +334,37 @@
  .event-deck-table .link-button{padding-left:0;padding-right:0}
 }
 
-/* Keep six events visible; only the remaining cards live inside the disclosure. */
-.event-list-disclosure{margin-bottom:24px}
-.event-list-disclosure>summary{width:fit-content;min-height:44px;padding:10px 14px;cursor:pointer;color:var(--link);font-family:var(--font-display);border:1px solid var(--line)}
-.event-list-disclosure>summary:hover{background:var(--surface)}
-.event-list-disclosure>summary:focus-visible{outline:2px solid var(--link);outline-offset:3px}
-.event-list-disclosure .event-less-label,.event-list-disclosure[open] .event-more-label{display:none}
-.event-list-disclosure[open] .event-less-label{display:inline}
-.event-list-disclosure[open]>summary{margin-bottom:16px}
-
-.event-grid>.event-list-disclosure{grid-column:1 / -1;min-width:0;margin-bottom:0}
-.event-list-disclosure>.event-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+/* Event overview and dedicated directories share the Decks card treatment. */
+.museum-frame .event-tile-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.museum-frame .event-tile{min-width:0;padding:0;overflow:hidden}
+.museum-frame .event-tile .featured-open{text-decoration:none;color:var(--text);font-family:var(--font-ui);font-size:14px}
+.museum-frame .event-tile .featured-open:focus-visible{outline:3px solid var(--light);outline-offset:-3px}
+.museum-frame .event-tile .content{min-width:0;overflow-wrap:anywhere}
+.museum-frame .event-tile .eyebrow{min-height:0}
+.museum-frame .event-tile h3{display:block;height:auto;min-height:0;overflow:visible}
+.event-card-facts{display:grid;gap:6px;margin:10px 0 12px;font-size:12px}
+.event-card-facts>div{display:grid;grid-template-columns:5em minmax(0,1fr);gap:8px}
+.event-card-facts dt{color:var(--muted);font-weight:400}
+.event-card-facts dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.event-timezone{display:block;color:var(--muted);font-size:10px}
+.event-champion{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+.event-champion p{margin:3px 0;font-size:13px}
+.event-champion .event-winner-deck{font-size:12px;color:var(--muted)}
+.event-card-action{display:block;margin-top:auto;padding-top:12px;color:var(--link);font-family:var(--font-display);font-size:13px}
+.museum-frame .event-tile .event-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;background:radial-gradient(ellipse at center,#28403a,#061c20);border-bottom:1px solid var(--line)}
+.museum-frame .event-tile .event-placeholder img{width:76%;height:auto;max-height:48px;object-fit:contain;opacity:.65}
+.event-placeholder span{font-family:var(--font-display);font-size:10px;letter-spacing:.16em;color:var(--muted)}
+.event-more{display:flex;justify-content:flex-end;margin:16px 0 28px}
+.event-more:has(a[hidden]){display:none}
+.event-back{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.event-more .file-button,.event-back .file-button{display:inline-flex;align-items:center;min-height:44px;font-family:var(--font-display)}
+@media(max-width:1023px){.museum-frame .event-tile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:639px){
+ .museum-frame .event-tile-grid{grid-template-columns:1fr;gap:12px}
+ .museum-frame .event-tile .event-placeholder{padding:10px;min-height:132px}
+ .event-placeholder span{font-size:9px;letter-spacing:.04em;text-align:center}
+ .event-card-facts>div{grid-template-columns:4em minmax(0,1fr);gap:6px}
+}
 
 /* Home starts with the hero above navigation and news on phones. */
 @media(max-width:639px){
