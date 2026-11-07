@@ -227,7 +227,6 @@
 /* Search actions remain a vertical pair: Search, then Reset. */
 .card-search-actions{display:grid;gap:6px;align-self:stretch}
 .museum-frame .card-search-actions>button{width:100%}
-.color-default-note{margin:6px 0 0}
 /* Use the desktop dialog's width for player and event information. */
 .published-deck-heading{display:grid;gap:12px}
 .published-deck-heading h1{margin:0}
