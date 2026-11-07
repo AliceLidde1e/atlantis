@@ -98,32 +98,6 @@ export function addSearchCard(text,card,quantity,start=text.length,end=start){
   const caret=Math.max(start,end);
   return insertDeckText(text,quantity+' '+(card.ja||card.name),caret,caret,true);
 }
-export function stageSearchCard(pool,card,zone){
-  if(!card?.id||typeof card.name!=='string'||!['main','side','maybe'].includes(zone))throw new Error('追加先を確認してください。');
-  const previous=pool.find(item=>item.id===card.id&&item.zone===zone);
-  if(previous&&previous.qty>=1000)throw new Error('同じカードの一時プールは区分ごとに1,000枚以内にしてください。');
-  return previous?pool.map(item=>item.id===card.id&&item.zone===zone?{...item,qty:item.qty+1}:item):[...pool,{id:card.id,zone,qty:1}];
-}
-export function applyCardPool(text,pool,cards){
-  if(typeof text!=='string')throw new Error('本文を確認してください。');
-  const lines={main:[],side:[]};
-  for(const item of pool){
-    const card=cards.get(item.id);
-    if(!card||!['main','side'].includes(item.zone)||!Number.isInteger(item.qty)||item.qty<1||item.qty>1000)throw new Error('一時プールのカード情報を確認できません。');
-    lines[item.zone].push(`${item.qty} ${card.ja||card.name}`);
-  }
-  let result=text;
-  if(lines.main.length){
-    const headings=[...result.matchAll(/^.*$/gm)].filter(m=>deckHeading(m[0])==='side');if(headings.length>1)throw new Error('サイド見出しが複数あります。本文で区分を確認してください。');const heading=headings[0];
-    const pos=heading?heading.index:result.length;
-    result=insertDeckText(result,lines.main.join('\n'),pos,pos,true).text;
-  }
-  if(lines.side.length){
-    const headings=[...result.matchAll(/^.*$/gm)].filter(m=>deckHeading(m[0])==='side');if(headings.length>1)throw new Error('サイド見出しが複数あります。本文で区分を確認してください。');const heading=headings[0];
-    result=insertDeckText(result,(heading?'':'Sideboard\n')+lines.side.join('\n'),result.length,result.length,true).text;
-  }
-  return result;
-}
 export function setPoolQuantity(pool,id,zone,qty){
   if(!['main','side','maybe'].includes(zone)||!Number.isInteger(qty)||qty<0||qty>1000)throw new Error('枚数は0〜1,000の整数で入力してください。');
   if(!qty)return pool.filter(x=>!(x.id===id&&x.zone===zone));
@@ -137,12 +111,6 @@ export function movePoolCard(pool,id,from,to=from==='main'?'side':'main'){
   const qty=pool.find(x=>x.id===id&&x.zone===to)?.qty||0;
   if(qty>=1000)throw new Error('移動先は1,000枚以内にしてください。');
   return setPoolQuantity(setPoolQuantity(pool,id,from,item.qty-1),id,to,qty+1);
-}
-export function validatePoolRecovery(value,cards){
-  if(value?.version!==1||!Array.isArray(value.pool)||value.pool.length>cards.size*2||typeof value.target!=='string'||typeof value.name!=='string'||value.name.length>200||typeof value.note!=='string'||value.note.length>100000)throw new Error('未保存データの形式を確認してください。');
-  const seen=new Set();
-  for(const item of value.pool){const key=item.id+':'+item.zone;if(!cards.has(item.id)||!['main','side'].includes(item.zone)||!Number.isInteger(item.qty)||item.qty<1||item.qty>1000||seen.has(key))throw new Error('未保存データのカード・枚数を確認してください。');seen.add(key);}
-  return {version:1,pool:value.pool.map(x=>({id:x.id,zone:x.zone,qty:x.qty})),target:value.target,name:value.name,note:value.note};
 }
 export function validOptionalDate(value){return value==null||value===''||(typeof value==='string'&&Number.isFinite(Date.parse(value)));}
 export function eventDate(value){return value==null||value===''?'未定':!validOptionalDate(value)?'日時を確認中':new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'long',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(value));}

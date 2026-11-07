@@ -13,7 +13,7 @@
 
 - カード集合は旧枠モダンのカード集合1,015種類を収録しています。
 - 掲載デッキ48件は、提供された `deckIndex_review.xlsx` の戦績欄が入力されているリストです。戦績空欄の59件と既存のサンプル8件は掲載していません。カード明細40件と同梱テキスト8件をカード集合・枚数・英語書出しと照合済みです。大会の正式案内は未掲載です。データに残る大会サンプル2件は画面に表示しません。
-- マイデッキと下書きはIndexedDBです。旧localStorageは初回に引き継ぎ、MO専用画面との互換コピーとして維持します。MO画面の別IndexedDBは保持します。端末やブラウザ間で自動同期されません。サイトのドメインが変わっても保存内容は自動移行されません。
+- マイデッキと下書きはIndexedDBです。旧MO画面・旧My Storageの復元・localStorageとの互換同期は廃止しました。現在のIndexedDBの保存先は維持します。端末やブラウザ間で自動同期されません。サイトのドメインが変わっても保存内容は自動移行されません。
 - 対応ブラウザではATLANTISをWebアプリとしてインストールできます。オンラインで通常のカード一覧を読み込んだ後は、キャッシュが利用できる間、オフラインでカード検索とMy Decksの編集・保存ができます。オフラインはテキスト表示です。オンラインで表示したカード画像は端末内で再利用します。
 - PagesのURLは公開アクセス可能です。`noindex`は検索エンジンへの依頼であり、閲覧制限ではありません。機密情報を掲載しないでください。
 
@@ -23,8 +23,8 @@
 python check_site.py
 node --check site/app.mjs
 node --check site/core.mjs
-node --check site/site-bridge.mjs
-node --check site/site-bridge-ui.mjs
+node --check site/deck-store.mjs
+node --check site/workbench.mjs
 ```
 
 ローカル表示は `site/` を静的HTTPサーバーで配信して確認します。ファイルを直接開くとブラウザの制限でJSONを読めません。
@@ -35,13 +35,15 @@ node --check site/site-bridge-ui.mjs
 - テスト用Webアプリ：<https://alicelidde1e.github.io/atlantis/>
 - **Settings → Pages → Build and deployment → Source** は **GitHub Actions** に設定済みです。
 
-`main` に修正を反映すると **Check ATLANTIS site** が自動で検査します。手動で配信する場合はGitHubの **Actions → Deploy ATLANTIS closed test → Run workflow** を選びます。現在は対象ファイルのmainへの変更で、検証成功後に自動配信します。手動起動も利用できます。配信完了後、Actionsの`deploy`結果に表示されるURLでトップ・カード検索・MO画面を確認してください。
+`main` に修正を反映すると **Check ATLANTIS site** が自動で検査します。手動で配信する場合はGitHubの **Actions → Deploy ATLANTIS closed test → Run workflow** を選びます。現在は対象ファイルのmainへの変更で、検証成功後に自動配信します。手動起動も利用できます。配信完了後、Actionsの`deploy`結果に表示されるURLでトップ・カード検索・デッキエディターを確認してください。
 
 テスターにはWebアプリのURLを共有します。URLを知る人以外を技術的に遮断する構成ではありません。アクセス制限が必要になった場合は認証付きの配信先へ移します。
 
-## 元サイトからの保存データ
+## 保存データとバックアップ
 
-元サイトの「マイデッキ」は「バックアップを書き出す」からJSONを書き出し、新しいURLの「マイデッキ」で読み込めます。MO画面の保存は別領域です。MO用の保存済みデッキは元サイトで1件ずつ `Export MO` し、新しいURLで `Import MO` できます。未保存の `My Storage` は先に元サイトでMO用デッキとして保存してください。カード画像や印刷版の表示設定は新しいURLで再取得されます。
+現在のMy Decksと編集中のデッキは、このブラウザのIndexedDBに保存します。端末・ブラウザ間の移行はMy DecksのExport JSON／Import JSONで行います。共通エディターのテキスト入力とExport MOも利用できます。
+
+旧 `mo-storage.html`、専用保存領域へのアクセス、旧My Storageの復元、旧localStorageからの自動移行・同期は2026-11-07に廃止しました。ブラウザに残る旧データを読み込んだり削除したりする処理はありません。
 
 ## 開発元
 
