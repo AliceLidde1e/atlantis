@@ -10,9 +10,9 @@ EXPECTED = {
     "manifest.webmanifest", "pwa.mjs", "sw.js", "sw-release.js",
     "icons/atlantis-180.png", "icons/atlantis-192.png", "icons/atlantis-512.png",
     "icons/atlantis-maskable-512.png",
-    ".nojekyll", "index.html", "mo-storage.html", "style.css", "museum.css", "atlantis-logo.svg",
-    "mo-theme.css", "favicon.svg", "app.mjs", "core.mjs", "workbench.mjs", "deck-store.mjs", "japanese-names.mjs", "publishing.mjs", "autocomplete.mjs", "presentation.css", "version.json", "data/results.json",
-    "site-bridge.mjs", "site-bridge-ui.mjs", "data/cards.json",
+    ".nojekyll", "index.html", "style.css", "museum.css", "atlantis-logo.svg",
+    "favicon.svg", "app.mjs", "core.mjs", "workbench.mjs", "deck-store.mjs", "japanese-names.mjs", "publishing.mjs", "autocomplete.mjs", "presentation.css", "version.json", "data/results.json",
+    "data/cards.json",
     "data/printings.json", "data/decks.json", "data/events.json",
     "typography.css", "fonts/iceberg/iceberg-400.woff2", "fonts/iceberg/OFL.txt",
     "fonts/shipporimincho/shipporimincho-400.woff2",
@@ -27,7 +27,11 @@ def main():
     assert actual == EXPECTED, f"Unexpected public files: {actual ^ EXPECTED}"
     assert not any(p.is_symlink() for p in SITE.rglob("*"))
     home = (SITE / "index.html").read_text(encoding="utf-8")
-    mo = (SITE / "mo-storage.html").read_text(encoding="utf-8")
+    retired = ("mo-storage.html", "mo-theme.css", "site-bridge.mjs", "site-bridge-ui.mjs")
+    for name in retired:
+        assert not (SITE / name).exists(), f"Retired asset is still published: {name}"
+        assert name not in home, f"Retired asset is still linked: {name}"
+        assert name not in (SITE / "sw.js").read_text(encoding="utf-8")
     assert 'rel="manifest" href="manifest.webmanifest"' in home
     assert 'rel="apple-touch-icon" href="icons/atlantis-180.png?v=20261105logo"' in home
     manifest = json.loads((SITE / "manifest.webmanifest").read_text(encoding="utf-8"))
@@ -40,17 +44,18 @@ def main():
         png = (SITE / urlsplit(path).path).read_bytes()
         assert png[:8] == b"\x89PNG\r\n\x1a\n"
         assert struct.unpack(">II", png[16:24]) == tuple(map(int, size.split("x")))
-    for name in ("museum.css", "atlantis-logo.svg", "favicon.svg", "mo-storage.html"):
+    for name in ("museum.css", "atlantis-logo.svg", "favicon.svg"):
         assert name in home
-    for label in ("Featured Decks", "Information", "Getting Started", "My Storage", "Decks", "Cards", "Events", "My Decks"):
+    for label in ("Featured Decks", "Information", "Getting Started", "Decks", "Cards", "Events", "My Decks"):
         assert label in home
-    for name in ("mo-theme.css", "favicon.svg", "index.html#pool"):
-        assert name in mo
     assert home.count('name="robots" content="noindex,nofollow"') == 1
-    assert mo.count('name="robots" content="noindex,nofollow"') == 1
+    assert "ATLANTISは、非公式フォーマット・旧枠モダンのファンサイトです。" in home
+    assert "保存内容は自動では引き継がれません。" in home
+    assert "取得済みデータによるカード検索はオフラインでも利用できます。" in home
+    assert 'href="https://company.wizards.com/ja/legal/fancontentpolicy"' in home
     assert "大会結果のあるデッキリストを掲載しています。大会の正式案内は未掲載です。" in home
     typography = (SITE / "typography.css").read_text(encoding="utf-8")
-    assert all('href="typography.css"' in page for page in (home, mo))
+    assert 'href="typography.css"' in home
     for font_ref in (name for name in EXPECTED if name.endswith(".woff2")):
         assert font_ref in typography
         assert (SITE / font_ref).read_bytes()[:4] == b"wOF2"

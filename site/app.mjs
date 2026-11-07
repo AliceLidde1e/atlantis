@@ -1,13 +1,13 @@
 import {loadCatalogFile,registerPwa} from './pwa.mjs';
-import {openDeckStore} from './deck-store.mjs?v=20261031a';
+import {openDeckStore} from './deck-store.mjs?v=20261107retire';
 import {zones,destinations,setDeckQuantity,moveDeckCard,officialDeckText} from './workbench.mjs?v=20261031a';
 import {attachAutocomplete} from './autocomplete.mjs?v=20261026a';
 import {confirmedDeckDate,validatePublishingData,collectEventResults,renderEventResult,renderEventSummary,eventPlaceholder,eventRoute} from './publishing.mjs?v=20261106events';
-import {uuid,archetypeEnglish,groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,stageSearchCard,applyCardPool,setPoolQuantity,movePoolCard,validatePoolRecovery,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261105a';
+import {uuid,archetypeEnglish,groupDeckLines,normalize,colorNames,types,subtypeNames,oracleWords,subtypes,prepare,cardMatches,deckMatches,createBackup,validateLocalState,appendBackup,eventDate,eventSortKey,validOptionalDate,externalEntryUrl,insertDeckText,parseDeck,printingOptions,printingCaption,printingFallbackReason,validateDraftRecovery,canDismissBackdrop} from './core.mjs?v=20261107retire';
 
 const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const STORAGE='atlantis.functional.mydecks.v1', SESSION='atlantis.functional.search.v1';
+const SESSION='atlantis.functional.search.v1';
 let cards=[], decks=[], deckLoadFailed=false, events=[], eventLoadState="loading", tournamentResults=[], resultLoadState="loading", cardMap=new Map(), meta={}, loadFailed=false, hideImages=false, selectedCards=[], cardPage=1, toastTimer, pendingDelete=null, local={version:2,decks:[],trash:[]}, storageOk=true, currentView='home', composing=false;
 const pageSize=24;
 const imagesDisabled=()=>hideImages||!navigator.onLine;
@@ -16,16 +16,15 @@ const DEFAULT_PRINTING_MODE='en';
 let printingMode=DEFAULT_PRINTING_MODE,printings=null,pendingDraft=null,draftRevision=null,draftStorageBaseline=null;
 try{const saved=localStorage.getItem(PRINT_MODE);if(['en','ja'].includes(saved))printingMode=saved;}catch{}
 let draftActive=false,draftBase=null,draftEpoch=0,searchReady=false;
-const POOL_SESSION='atlantis.functional.pool.v1';
-let cardPool=[],poolTarget='',poolUndo=[],poolOpener=null,pendingPool=null,savingPool=false,storageBaseline=null;
+let cardPool=[],poolUndo=[],poolOpener=null,storageBaseline=null;
+let deckUpdates;try{if(typeof BroadcastChannel==='function')deckUpdates=new BroadcastChannel('atlantis.my-decks.updated');}catch{}
+deckUpdates?.addEventListener('message',()=>message('別のタブでマイデッキが更新されました。Reload Decksで内容を確認してください。'));
 function message(text,action){clearTimeout(toastTimer);$('#toast').hidden=false;$('#toast').innerHTML=esc(text)+(action?'<button id="toast-action">Undo</button>':'');if(action)$('#toast-action').onclick=action;toastTimer=setTimeout(()=>$('#toast').hidden=true,8000);}
-async function readLocal(){try{const state=await deckStore.read();local=state.data;storageBaseline=state.raw;storageOk=true;}catch(e){storageOk=false;$('#my-status').textContent='保存データを読み取れません。元データは保持しています。'+e.message;$('#my-status').className='error';throw e;}}
+async function readLocal(){try{const state=await deckStore.read();local=state.data;storageBaseline=String(state.revision);storageOk=true;}catch(e){storageOk=false;$('#my-status').textContent='保存データを読み取れません。元データは保持しています。'+e.message;$('#my-status').className='error';throw e;}}
 async function persist(next){
  if(!storageOk||!deckStore)throw new Error('このブラウザの保存領域を利用できません。');
- if(localStorage.getItem(STORAGE)!==storageBaseline)throw new Error('別のタブでマイデッキが更新されました。Reload Decksで内容を確認してください。');
- const before=storageBaseline,result=await deckStore.commit(next);local=result.data;
- if(localStorage.getItem(STORAGE)===before){try{localStorage.setItem(STORAGE,result.raw);}catch{}}
- storageBaseline=localStorage.getItem(STORAGE);
+ const result=await deckStore.commit(next);local=result.data;storageBaseline=String(result.revision);
+ try{deckUpdates?.postMessage({revision:result.revision});}catch{}
 }
 function field(id){return $('#'+id).value;}
 function selectedColors(prefix){return $$(`#${prefix}-colors input:checked`).map(x=>x.value);}
@@ -59,7 +58,6 @@ function clearManaBound(id){const input=$('#'+id);input.value=id==='card-min'?'0
 function deckFilters(){return {query:field('deck-query'),cards:[...selectedCards],side:$('#deck-side').checked,colors:selectedColors('deck'),colorMode:field('deck-color-mode'),archetype:field('deck-archetype')};}
 function date(v){return new Date(v).toLocaleString('ja-JP',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});}
 function cardName(c){return c?.ja||c?.name||'不明なカード';}
-function poolCountCaption(id){return `プール：メイン ${cardPool.find(x=>x.id===id&&x.zone==='main')?.qty||0} ／ サイド ${cardPool.find(x=>x.id===id&&x.zone==='side')?.qty||0}`;}
 function cardCaption(c){return c.ja?`${c.ja} / ${c.name}`:c.name+'（日本語名未収録）';}
 function tags(colors){return (colors.length?colors:['C']).map(c=>`<span class="tag">${colorNames[c]}</span>`).join('');}
 function imageMarkup(c,art=false,quantity=null){
@@ -209,7 +207,6 @@ function renderDetailState(state){
 $('#detail').addEventListener('scroll',()=>{if($('#detail').open)detailPositions.set(activeDetailKey,$('#detail').scrollTop);},{passive:true});
 $('#detail-back').onclick=()=>{captureDetailPosition();history.back();};
 function detailAddLabel(zone,qty){const name=zone==='main'?'Main':'Sideboard';return `<span class="detail-action-full">Add to ${name} (${qty})</span><span class="detail-action-short">${zone==='main'?'Main':'Side'} + (${qty})</span>`;}
-function detailStorageLabel(){const total=cardPool.reduce((sum,x)=>sum+x.qty,0);return `<span class="detail-action-full">My Storage (${total})</span><span class="detail-action-short">Storage (${total})</span>`;}
 function cardRulesMarkup(card){
  return `<section class="card-rules" aria-label="能力テキスト">
  <div class="card-rules-switch" role="group" aria-label="能力テキストの言語">
@@ -393,17 +390,11 @@ function undoWorkbench(){if(!poolUndo.length)return;$('#edit-text').value=poolUn
 async function addToPool(id,zone){
  try{
   if(!draftActive)throw new Error('Start a Deckから編集を開始してください。');
-  if(pendingPool)throw new Error('旧My Storageの復元または破棄を先に選んでください。');
   if(!zones[zone])throw new Error('追加先を確認してください。');
   await startDraft();const qty=parseDeck(field('edit-text'),cardMap).rows.find(x=>x.id===id&&x.zone===zone)?.qty||0;
   commitWorkbenchText(setDeckQuantity(field('edit-text'),cardMap,id,zone,qty+1),`${cardName(cardMap.get(id))}を${zones[zone]}へ追加しました。`);
   refreshDetail();
  }catch(error){message(error.message);}
-}
-function checkPoolRecovery(){
- if(pendingPool!==null)return;
- try{const raw=sessionStorage.getItem(POOL_SESSION);if(!raw)return;pendingPool=validatePoolRecovery(JSON.parse(raw),cardMap);$('#pool-recovery').hidden=!pendingPool.pool.length;}
- catch{$('#pool-recovery').hidden=false;$('#pool-recover').disabled=true;$('#pool-recovery-text').textContent='旧My Storageを読み取れません。元の退避データは保持しています。';}
 }
 function checkDraftRecovery(){
  if(draftActive)return;
@@ -413,7 +404,7 @@ function checkDraftRecovery(){
   $('#draft-recovery').hidden=!pendingDraft;renderDraftList();
  }catch{$('#draft-recovery').hidden=false;$('#draft-recover').disabled=true;$('#draft-recovery-text').textContent='未保存テキストを読み取れません。保存済みデータは保持しています。';}
 }
-function assertDraftRevision(){if(draftActive&&(localStorage.getItem(STORAGE)!==storageBaseline||(field('edit-id')&&(local.decks.find(d=>d.id===field('edit-id'))?.updated||null)!==draftRevision)))throw new Error('編集開始後に保存内容が変わりました。Reload Decksで確認するかSave as Newをご利用ください。');}
+function assertDraftRevision(){if(draftActive&&((field('edit-id')&&(local.decks.find(d=>d.id===field('edit-id'))?.updated||null)!==draftRevision)))throw new Error('編集開始後に保存内容が変わりました。Reload Decksで確認するかSave as Newをご利用ください。');}
 async function saveWorkbench(asNew=false){
  if(!draftActive||savingDeck)return;
  savingDeck=true;renderBuilder();
@@ -452,7 +443,7 @@ function searchFor(kind){if(composing)return;if(kind==='cards'){cardPage=1;rende
 async function load(){loadFailed=false;$('#load-status').className='';$('#load-status').textContent='データを読み込んでいます…';try{const [c,d]=await Promise.all([
  loadCatalogFile('data/cards.json',data=>data?.meta?.paginationComplete===true&&Array.isArray(data.cards)&&data.cards.length>0&&data.cards.length===data.meta.count),
  loadCatalogFile('data/decks.json',Array.isArray).catch(()=>null),
-]);deckLoadFailed=d===null;meta=c.meta;cards=c.cards.map(prepare);const manaLimit=Math.max(1,...cards.map(card=>Math.ceil(card.mv)));for(const id of ['card-min','card-max'])$('#'+id).max=String(manaLimit);$('#card-min').value='0';$('#card-max').value=String(manaLimit);syncManaSliders();renderManaTicks(manaLimit);cardMap=new Map(cards.map(c=>[c.id,c]));decks=d??decks;renderGuideDeckLinks();renderResults();$('#deck-sample-notice').hidden=!decks.some(d=>d.sample);$('#card-suggestions').innerHTML=cards.map(c=>`<option value="${esc(c.ja||c.name)}" label="${esc(c.name)}"></option>${c.ja?`<option value="${esc(c.name)}" label="${esc(c.ja)}"></option>`:''}`).join('');$('#deck-suggestions').innerHTML=decks.map(d=>`<option value="${esc(d.name)}"></option>`).join('');$('#deck-archetype').innerHTML='<option value="">All</option>'+[...new Set(decks.map(d=>d.archetype))].map(t=>`<option>${esc(t)}</option>`).join('');restoreSearch();searchReady=true;$('#load-status').textContent='';allResults();checkPoolRecovery();checkDraftRecovery();navigate(location.hash.slice(1)||'home');renderFeatured();}catch(e){loadFailed=true;$('#load-status').className='status-error';$('#load-status').innerHTML=(navigator.onLine?'カードデータの読込に失敗しました。検索条件は保持しています。':'保存済みのカードデータがありません。オンラインでカード一覧を開いてください。My Decksはテキスト入力で編集できます。')+'<button id="load-retry">再試行</button>';allResults();}}
+]);deckLoadFailed=d===null;meta=c.meta;cards=c.cards.map(prepare);const manaLimit=Math.max(1,...cards.map(card=>Math.ceil(card.mv)));for(const id of ['card-min','card-max'])$('#'+id).max=String(manaLimit);$('#card-min').value='0';$('#card-max').value=String(manaLimit);syncManaSliders();renderManaTicks(manaLimit);cardMap=new Map(cards.map(c=>[c.id,c]));decks=d??decks;renderGuideDeckLinks();renderResults();$('#deck-sample-notice').hidden=!decks.some(d=>d.sample);$('#card-suggestions').innerHTML=cards.map(c=>`<option value="${esc(c.ja||c.name)}" label="${esc(c.name)}"></option>${c.ja?`<option value="${esc(c.name)}" label="${esc(c.ja)}"></option>`:''}`).join('');$('#deck-suggestions').innerHTML=decks.map(d=>`<option value="${esc(d.name)}"></option>`).join('');$('#deck-archetype').innerHTML='<option value="">All</option>'+[...new Set(decks.map(d=>d.archetype))].map(t=>`<option>${esc(t)}</option>`).join('');restoreSearch();searchReady=true;$('#load-status').textContent='';allResults();checkDraftRecovery();navigate(location.hash.slice(1)||'home');renderFeatured();}catch(e){loadFailed=true;$('#load-status').className='status-error';$('#load-status').innerHTML=(navigator.onLine?'カードデータの読込に失敗しました。検索条件は保持しています。':'保存済みのカードデータがありません。オンラインでカード一覧を開いてください。My Decksはテキスト入力で編集できます。')+'<button id="load-retry">再試行</button>';allResults();}}
 
 colorControls('card');colorControls('deck');$('#card-types .type-checks').innerHTML=Object.keys(types).filter(en=>en!=='Planeswalker').map(en=>`<label><input id="card-type-${en}" type="checkbox" value="${en}"><span>${en}</span></label>`).join('');$('#language-help').innerHTML='<strong>能力語</strong><p>'+esc(Object.keys(oracleWords).join(' / '))+'</p><strong>サブタイプ</strong><p>'+esc(Object.values(subtypeNames).join(' / '))+'</p>';
 for(const aside of $$('.filters')){const prefix=aside.querySelector('#card-colors')?'card':'deck';const colors=$('#'+prefix+'-colors');const mode=$('#'+prefix+'-color-mode').closest('label');const basic=document.createElement('div');basic.className='basic-filters';basic.append(colors,mode);const content=document.createElement('div');content.className='filter-body';while(aside.firstChild)content.append(aside.firstChild);aside.append(basic,content);aside.classList.add('collapseable');const b=document.createElement('button');b.type='button';b.className='filter-toggle';b.textContent='Filters';b.setAttribute('aria-expanded','false');b.onclick=()=>{const open=aside.classList.toggle('open');b.setAttribute('aria-expanded',String(open));};aside.insertBefore(b,content);}
@@ -581,7 +572,7 @@ async function loadResults(){resultLoadState='loading';renderResults();try{const
 document.addEventListener('click',async e=>{if(e.target.closest('[data-event-retry]'))loadEvents();if(e.target.closest('[data-results-retry]')){if(deckLoadFailed||!cards.length)await load();loadEvents();loadResults();}});
 async function boot(){
  navigate(location.hash.slice(1)||'home');
- try{deckStore=await openDeckStore(localStorage,STORAGE);await readLocal();for(const r of await deckStore.drafts()){try{validateDraftRecovery(r);draftShelf.set(r.key,r);}catch{message('読み取れない下書きがあります。元の退避データは保持しています。');}}renderMy();}
+ try{deckStore=await openDeckStore();await readLocal();for(const r of await deckStore.drafts()){try{validateDraftRecovery(r);draftShelf.set(r.key,r);}catch{message('読み取れない下書きがあります。元の退避データは保持しています。');}}renderMy();}
  catch(error){storageOk=false;message('保存領域を読み込めません。元データを保持しています。'+error.message);}
  await load();loadEvents();loadResults();
 }
@@ -604,8 +595,6 @@ $('#workbench-export').onclick=()=>{try{download(officialDeckText(field('edit-te
 $('#workbench-reload').onclick=async()=>{try{await readLocal();renderMy();message('保存先を再読込しました。編集中の内容は保持しています。上書きが必要な場合はSave as Newをご利用ください。');}catch(error){message(error.message);}};
 $('#workbench-discard').onclick=async()=>{if(draftDirty()&&!window.confirm('未保存の編集を破棄しますか？'))return;const key=draftKey();draftActive=false;renderBuilder();await draftWrite;draftShelf.delete(key);await deckStore?.deleteDraft(key);clearDraftRecovery();closePool();renderBuilder();};
 $('#resume-draft').onclick=()=>editor();
-$('#pool-recover').onclick=async()=>{if(!pendingPool)return;try{const r=pendingPool;await startDraft(uuid());$('#edit-name').value=r.name||'My Storageから引き継いだ下書き';$('#edit-note').value=r.note;$('#edit-text').value=applyCardPool('',r.pool,cardMap);saveDraftRecovery();await draftWrite;await deckStore.putDraft(draftKey(),draftShelf.get(draftKey()));sessionStorage.removeItem(POOL_SESSION);pendingPool=null;$('#pool-recovery').hidden=true;await editor();message('旧My Storageを独立した下書きへ引き継ぎました。');}catch(error){message(error.message);}};
-$('#pool-forget').onclick=()=>{pendingPool=null;$('#pool-recovery').hidden=true;try{sessionStorage.removeItem(POOL_SESSION);}catch{}};
 $('#draft-recover').onclick=()=>{if(pendingDraft)restoreWorkbenchDraft(pendingDraft);};
 $('#draft-forget').onclick=async()=>{if(pendingDraft?.key){draftShelf.delete(pendingDraft.key);await deckStore?.deleteDraft(pendingDraft.key);}pendingDraft=null;clearDraftRecovery();$('#draft-recovery').hidden=true;renderDraftList();};
 $('#draft-as-new').onclick=()=>saveWorkbench(true);
@@ -614,7 +603,6 @@ $('#search-build').onclick=()=>{$('#editor').close();navigate('cards');renderBui
 for(const k of ['name','text','note'])$('#edit-'+k).addEventListener('input',()=>{saveDraftRecovery();renderBuilder();});
 $('#editor').addEventListener('close',()=>{renderBuilder();if(currentView==='cards'&&draftActive)openPool();});
 window.addEventListener('resize',syncWorkbenchLayout);
-window.addEventListener('storage',e=>{if(e.key===STORAGE)message('別のタブで保存内容が変わりました。Reload Decksで確認してください。');});
 let workbenchAction=Promise.resolve();
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
  if(b.dataset.workbenchZone){builderZone=b.dataset.workbenchZone;if(selectedWorkbenchCard?.zone!==builderZone)selectedWorkbenchCard=null;renderBuilder();$('#builder-pool').querySelector(`[data-board="${builderZone}"]`)?.scrollIntoView({block:'start'});}
