@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
 <title id="title">ATLANTIS A</title>
-<desc id="desc">The adopted ATLANTIS A, with the existing brass palette and deep-green background.</desc>
+<desc id="desc">The final ATLANTIS A, enlarged for small icons, in brass on deep green.</desc>
 <rect width="256" height="256" fill="#091e22"/><defs>
   <g id="letter-silhouette" transform="translate(3 4)">
     <path id="glyph-part-0" d="M104 40L56 152L141 163C155.66665 185.66664 158.66666 202.00001 150 212C142.66667 220.66666 127.66664 218.99999 105 207L65 187C58.33334 184.33334 53.999998 186.33334 52 193L40 240H47C56.333324 215.33336 69.000016 206.66667 85 214L172 240L184 234L159 136H125C102 136 90 130 90 120C90 110 88 99 103 96C110 94 114 98 121 104L142 119L149 117L110 40Z" transform="translate(4 0)"/>
@@ -24,11 +24,11 @@
     <path d="M0 1H8" stroke="#fff5c9" stroke-width=".18" opacity=".2"/>
   </pattern>
 </defs>
-<g id="brass-letter-faces" transform="translate(9 -16)">
+<g id="brass-letter-faces" transform="translate(128 128) scale(1.08) translate(-128 -128) translate(9 -16)">
   <use xlink:href="#letter-silhouette" fill="url(#brass-face)"/>
   <use xlink:href="#letter-silhouette" fill="url(#brushed-lines)"/>
 </g>
-<g id="inset-structural-edges" clip-path="url(#inside-letters)" fill="none" stroke-linejoin="round" transform="translate(9 -16)">
+<g id="inset-structural-edges" clip-path="url(#inside-letters)" fill="none" stroke-linejoin="round" transform="translate(128 128) scale(1.08) translate(-128 -128) translate(9 -16)">
   <use xlink:href="#letter-silhouette" stroke="#625020" stroke-width="7"/>
   <use xlink:href="#letter-silhouette" stroke="url(#brass-edge)" stroke-width="4.8"/>
   <use xlink:href="#letter-silhouette" stroke="#705a25" stroke-width="1"/>

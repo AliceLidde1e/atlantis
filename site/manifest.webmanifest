@@ -10,8 +10,8 @@
   "background_color": "#091e22",
   "theme_color": "#091e22",
   "icons": [
-    {"src": "icons/atlantis-192.png?v=20261105logo", "sizes": "192x192", "type": "image/png", "purpose": "any"},
-    {"src": "icons/atlantis-512.png?v=20261105logo", "sizes": "512x512", "type": "image/png", "purpose": "any"},
-    {"src": "icons/atlantis-maskable-512.png?v=20261105logo", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+    {"src": "icons/atlantis-192.png?v=20261110icon", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icons/atlantis-512.png?v=20261110icon", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icons/atlantis-maskable-512.png?v=20261110icon", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
   ]
 }

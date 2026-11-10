@@ -33,7 +33,7 @@ def main():
         assert name not in home, f"Retired asset is still linked: {name}"
         assert name not in (SITE / "sw.js").read_text(encoding="utf-8")
     assert 'rel="manifest" href="manifest.webmanifest"' in home
-    assert 'rel="apple-touch-icon" href="icons/atlantis-180.png?v=20261105logo"' in home
+    assert 'rel="apple-touch-icon" href="icons/atlantis-180.png?v=20261110icon"' in home
     manifest = json.loads((SITE / "manifest.webmanifest").read_text(encoding="utf-8"))
     assert (manifest["id"], manifest["scope"], manifest["start_url"]) == ("./", "./", "./#home")
     assert manifest["display"] == "standalone"
