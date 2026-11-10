@@ -372,3 +372,23 @@
  #view-home .museum-sidebar{order:1}
  #view-home .collection-section{order:2;min-width:0}
 }
+
+/* The phone workbench uses the viewport, while the search remains underneath. */
+@media(max-width:639px){
+ #view-cards #workbench-target,#builder .workbench-heading .eyebrow,#builder #pool-close,#builder #workbench-maybe-note{display:none}
+ #builder.deck-workbench:modal{
+  inset:0;margin:0;width:100%;height:100dvh;max-height:none;border:0;box-shadow:none;gap:8px;
+  padding:max(8px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));
+ }
+ #builder .workbench-heading{flex-direction:row-reverse;align-items:center;gap:8px}
+ #builder .workbench-heading h2{font-size:18px}
+ #builder #workbench-options{max-height:42%;overflow:auto;overscroll-behavior:contain}
+ #builder #workbench-options summary{display:list-item;min-height:44px;padding:10px 0;font-family:var(--font-display);color:var(--light);cursor:pointer}
+ #builder #workbench-options[open]>*+*{margin-bottom:8px}
+ #builder #workbench-tabs button{min-width:0;padding-inline:4px}
+ #card-added{width:min(320px,calc(100% - 32px));padding:14px}
+ #card-added-result{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:0 0 12px;overflow-wrap:anywhere}
+ #card-added-name{min-width:0}
+ #card-added-count{white-space:nowrap;color:var(--light);font-variant-numeric:tabular-nums}
+ #card-added button{width:100%;min-height:44px}
+}

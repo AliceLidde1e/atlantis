@@ -312,6 +312,26 @@ async function leaveDetailForEdit(){
  await new Promise(resolve=>{window.addEventListener('popstate',resolve,{once:true});closeDetail();});
 }
 let workbenchStowed=false;
+const mobileWorkbench=matchMedia('(max-width:639px)');
+const workbenchOptions=$('#workbench-options');
+const workbenchNameLabel=$('#workbench-name-label'),workbenchStatus=$('#workbench-status');
+const workbenchUnknown=$('#workbench-unknown'),workbenchTools=$('#builder .workbench-tools'),workbenchFooter=$('#builder .workbench-footer');
+function syncWorkbenchControls(){
+ const mobile=mobileWorkbench.matches;
+ workbenchOptions.hidden=!mobile;
+ if(mobile)workbenchOptions.append(workbenchNameLabel,workbenchStatus,workbenchUnknown,workbenchTools,workbenchFooter);
+ else{
+  $('#builder .workbench-heading').after(workbenchNameLabel,workbenchStatus);
+  $('#workbench-selection').after(workbenchUnknown,workbenchTools,workbenchFooter);
+ }
+ $('#workbench-add-cards').textContent=mobile?'Back to Search':'Add Cards';
+ renderWorkbenchToggle();
+}
+function renderWorkbenchToggle(){
+ $('#pool-toggle').textContent=draftActive?(mobileWorkbench.matches?'Deck Editor':'Deck Editor · '+(field('edit-name')||'無題のデッキ')):'Start a Deck';
+}
+syncWorkbenchControls();
+mobileWorkbench.addEventListener('change',syncWorkbenchControls);
 function syncWorkbenchLayout(){
  const pane=$('#builder'),wide=matchMedia('(min-width:1100px)').matches;
  if(currentView!=='cards'||!draftActive||workbenchStowed){if(pane.open)pane.close();$('#pool-toggle').setAttribute('aria-expanded','false');return;}
@@ -323,7 +343,10 @@ function openPool(){
  if(!draftActive){editor();return;}
  workbenchStowed=false;
  poolOpener=document.activeElement;syncWorkbenchLayout();
- if(!matchMedia('(min-width:1100px)').matches&&!$('#builder').open)$('#builder').showModal();
+ if(!matchMedia('(min-width:1100px)').matches&&!$('#builder').open){
+  workbenchOptions.open=false;
+  $('#builder').showModal();
+ }
  $('#pool-toggle').setAttribute('aria-expanded','true');
 }
 function closePool(){
@@ -337,7 +360,7 @@ function renderBuilder(){
  $$('[data-deck-add-actions]').forEach(actions=>actions.hidden=!draftActive);
  const parsed=parseDeck(field('edit-text'),cardMap);cardPool=draftActive?parsed.rows:[];
  $('#workbench-name').value=draftActive?field('edit-name'):'';
- $('#pool-toggle').textContent=draftActive?'Deck Editor · '+(field('edit-name')||'無題のデッキ'):'Start a Deck';
+ renderWorkbenchToggle();
  $('#workbench-target').textContent=draftActive?'追加先：'+(field('edit-name')||'無題のデッキ'):'Start a Deckから編集を開始すると、カードを追加できます';
  $('#workbench-status').textContent=!draftActive?'未保存':draftDirty()?'変更あり':local.decks.some(d=>d.id===field('edit-id'))?'保存済み':'未保存';
  $('#workbench-maybe-note').hidden=builderZone!=='maybe';
@@ -384,15 +407,22 @@ function renderBuilder(){
 function commitWorkbenchText(text,label){
  if(text===field('edit-text'))return;
  poolUndo.push(field('edit-text'));if(poolUndo.length>30)poolUndo.shift();
- $('#edit-text').value=text;saveDraftRecovery();renderBuilder();message(label,undoWorkbench);
+ $('#edit-text').value=text;saveDraftRecovery();renderBuilder();if(label)message(label,undoWorkbench);
 }
 function undoWorkbench(){if(!poolUndo.length)return;$('#edit-text').value=poolUndo.pop();saveDraftRecovery();renderBuilder();message('直前の操作を戻しました。');}
-async function addToPool(id,zone){
+async function addToPool(id,zone,fromSearch){
  try{
   if(!draftActive)throw new Error('Start a Deckから編集を開始してください。');
   if(!zones[zone])throw new Error('追加先を確認してください。');
   await startDraft();const qty=parseDeck(field('edit-text'),cardMap).rows.find(x=>x.id===id&&x.zone===zone)?.qty||0;
-  commitWorkbenchText(setDeckQuantity(field('edit-text'),cardMap,id,zone,qty+1),`${cardName(cardMap.get(id))}を${zones[zone]}へ追加しました。`);
+  const name=cardName(cardMap.get(id));
+  const showCount=mobileWorkbench.matches&&fromSearch&&currentView==='cards'&&!$('#builder').open&&!$('#detail').open;
+  commitWorkbenchText(setDeckQuantity(field('edit-text'),cardMap,id,zone,qty+1),showCount?'':`${name}を${zones[zone]}へ追加しました。`);
+  if(showCount){
+   $('#card-added-name').textContent=name;
+   $('#card-added-count').textContent=`( ${qty+1} )`;
+   $('#card-added').showModal();
+  }
   refreshDetail();
  }catch(error){message(error.message);}
 }
@@ -514,7 +544,7 @@ for(const sel of ['#card-colors input','#card-types input','#card-color-mode','#
 for(const input of [$('#card-min'),$('#card-max')])input.addEventListener('input',()=>{syncManaSliders(input.id);searchFor('cards');});
 $('#card-display').onchange=()=>{renderCards();saveSearch();};
 $('#my-query').oninput=()=>{if(!composing)renderMy();};$('#my-query').addEventListener('compositionend',renderMy);$('#my-sort').onchange=renderMy;
-document.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.buildCard){workbenchAction=workbenchAction.catch(()=>{}).then(()=>addToPool(b.dataset.buildCard,b.dataset.buildZone));await workbenchAction;}if(b.id==='detail-open-storage'){await leaveDetailForEdit();await editor();}if(b.dataset.view)navigate(b.dataset.view);if(b.dataset.deck)openDeck(b.dataset.deck);if(b.dataset.card)openCard(b.dataset.card);if(b.dataset.event)openEvent(b.dataset.event);if(b.dataset.reset)reset(b.dataset.reset);if(b.dataset.removeCard){selectedCards=selectedCards.filter(id=>id!==b.dataset.removeCard);renderDecks();saveSearch();}if(b.dataset.removeColor){const[prefix,color]=b.dataset.removeColor.split(':');$(`#${prefix}-colors input[value="${color}"]`).checked=false;searchFor(prefix==='card'?'cards':'decks');}if(b.dataset.removeType){const x=$$('#card-types input').find(x=>x.value===b.dataset.removeType);if(x)x.checked=false;searchFor('cards');}if(b.dataset.removeField){const x=$('#'+b.dataset.removeField);if(x){if(['card-min','card-max'].includes(x.id))clearManaBound(x.id);else x.value='';searchFor(b.dataset.removeField.startsWith('card')?'cards':'decks');}}if(b.dataset.page){cardPage=Number(b.dataset.page);renderCards();saveSearch();$('#card-result-count').scrollIntoView({block:'start'});}if(b.dataset.close){if(b.dataset.close==='detail')closeDetail();else $('#'+b.dataset.close).close();}if(['new-deck','empty-new'].includes(b.id))editor();if(b.dataset.localView)openMyDeck(b.dataset.localView);if(b.dataset.localText)openMyDeck(b.dataset.localText,'text');if(b.dataset.edit){await leaveDetailForEdit();await editor(b.dataset.edit);}if(b.dataset.delete){pendingDelete=b.dataset.delete;const d=local.decks.find(x=>x.id===pendingDelete);$('#confirm-text').textContent=`「${d.name}」をこのブラウザの一覧から削除します。`;$('#confirm-dialog').showModal();}if(b.dataset.localCopy)await copyLocalDeck(b.dataset.localCopy,b);if(b.dataset.localExport)exportLocalDeck(b.dataset.localExport);if(b.dataset.download){const d=decks.find(d=>d.id===b.dataset.download);download(deckText(d),d.id+'.txt');}if(b.dataset.copy)await copyPublishedDeck(b);if(b.id==='load-retry')load();});
+document.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.buildCard){workbenchAction=workbenchAction.catch(()=>{}).then(()=>addToPool(b.dataset.buildCard,b.dataset.buildZone,!!b.closest('#view-cards')));await workbenchAction;}if(b.id==='detail-open-storage'){await leaveDetailForEdit();await editor();}if(b.dataset.view)navigate(b.dataset.view);if(b.dataset.deck)openDeck(b.dataset.deck);if(b.dataset.card)openCard(b.dataset.card);if(b.dataset.event)openEvent(b.dataset.event);if(b.dataset.reset)reset(b.dataset.reset);if(b.dataset.removeCard){selectedCards=selectedCards.filter(id=>id!==b.dataset.removeCard);renderDecks();saveSearch();}if(b.dataset.removeColor){const[prefix,color]=b.dataset.removeColor.split(':');$(`#${prefix}-colors input[value="${color}"]`).checked=false;searchFor(prefix==='card'?'cards':'decks');}if(b.dataset.removeType){const x=$$('#card-types input').find(x=>x.value===b.dataset.removeType);if(x)x.checked=false;searchFor('cards');}if(b.dataset.removeField){const x=$('#'+b.dataset.removeField);if(x){if(['card-min','card-max'].includes(x.id))clearManaBound(x.id);else x.value='';searchFor(b.dataset.removeField.startsWith('card')?'cards':'decks');}}if(b.dataset.page){cardPage=Number(b.dataset.page);renderCards();saveSearch();$('#card-result-count').scrollIntoView({block:'start'});}if(b.dataset.close){if(b.dataset.close==='detail')closeDetail();else $('#'+b.dataset.close).close();}if(['new-deck','empty-new'].includes(b.id))editor();if(b.dataset.localView)openMyDeck(b.dataset.localView);if(b.dataset.localText)openMyDeck(b.dataset.localText,'text');if(b.dataset.edit){await leaveDetailForEdit();await editor(b.dataset.edit);}if(b.dataset.delete){pendingDelete=b.dataset.delete;const d=local.decks.find(x=>x.id===pendingDelete);$('#confirm-text').textContent=`「${d.name}」をこのブラウザの一覧から削除します。`;$('#confirm-dialog').showModal();}if(b.dataset.localCopy)await copyLocalDeck(b.dataset.localCopy,b);if(b.dataset.localExport)exportLocalDeck(b.dataset.localExport);if(b.dataset.download){const d=decks.find(d=>d.id===b.dataset.download);download(deckText(d),d.id+'.txt');}if(b.dataset.copy)await copyPublishedDeck(b);if(b.id==='load-retry')load();});
 $('#editor-form').onsubmit=e=>{e.preventDefault();saveWorkbench();};
 $('#confirm-delete').onclick=async()=>{try{const d=local.decks.find(x=>x.id===pendingDelete);if(!d)return;await persist({...local,decks:local.decks.filter(x=>x.id!==d.id),trash:[...local.trash,d]});$('#confirm-dialog').close();renderMy();message('マイデッキを削除しました。',async()=>{try{await persist({...local,decks:[d,...local.decks],trash:local.trash.filter(x=>x.id!==d.id)});renderMy();message('元に戻しました。');}catch{message('復元できませんでした。保存設定を確認してください。');}});}catch{message('削除を保存できませんでした。データは変更していません。');}};
 $('#backup').onclick=()=>exportBackup();$('#restore-file').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>10*1024*1024)throw new Error('10MB以内のバックアップを選んでください。');const data=JSON.parse(await file.text());const next=appendBackup(local,data);const added=next.decks.length-local.decks.length;await persist(next);renderMy();message(`${added}件を追加して復元しました。既存データは保持しています。`);}catch(err){message('読み込めませんでした：'+err.message);}finally{e.target.value='';}};
@@ -583,6 +613,7 @@ $('#pool-toggle').onclick=()=>{
 $('#pool-close').onclick=closePool;
 $('#workbench-add-cards').onclick=()=>{
  closePool();
+ if(mobileWorkbench.matches)return;
  navigate('cards');
  $('#card-name').focus();
 };
@@ -609,9 +640,9 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
  if(b.dataset.workbenchSelect){selectedWorkbenchCard={id:b.dataset.workbenchSelect,zone:b.dataset.zone};builderZone=b.dataset.zone;renderBuilder();$('#workbench-selection button')?.focus({preventScroll:true});}
  if(b.hasAttribute('data-workbench-deselect')){const previous=selectedWorkbenchCard;selectedWorkbenchCard=null;renderBuilder();$$('[data-workbench-select]').find(x=>x.dataset.workbenchSelect===previous?.id&&x.dataset.zone===previous?.zone)?.focus({preventScroll:true});}
  if(b.dataset.resumeKey){const r=draftShelf.get(b.dataset.resumeKey);if(r)restoreWorkbenchDraft(r);}
- try{const id=b.dataset.workbenchMove||b.dataset.workbenchAdjust||b.dataset.workbenchRemove;if(!id)return;const zone=b.dataset.zone;let text=field('edit-text');if(b.dataset.workbenchMove)text=moveDeckCard(text,cardMap,id,zone,b.dataset.to);else{const qty=parseDeck(text,cardMap).rows.find(x=>x.id===id&&x.zone===zone)?.qty||0;text=setDeckQuantity(text,cardMap,id,zone,b.dataset.workbenchRemove?0:qty+Number(b.dataset.delta));}commitWorkbenchText(text,'デッキを変更しました。');}catch(error){message(error.message);}
+ try{const id=b.dataset.workbenchMove||b.dataset.workbenchAdjust||b.dataset.workbenchRemove;if(!id)return;const zone=b.dataset.zone;let text=field('edit-text');if(b.dataset.workbenchMove)text=moveDeckCard(text,cardMap,id,zone,b.dataset.to);else{const qty=parseDeck(text,cardMap).rows.find(x=>x.id===id&&x.zone===zone)?.qty||0;text=setDeckQuantity(text,cardMap,id,zone,b.dataset.workbenchRemove?0:qty+Number(b.dataset.delta));}commitWorkbenchText(text,mobileWorkbench.matches&&b.dataset.workbenchAdjust?'':'デッキを変更しました。');}catch(error){message(error.message);}
 });
-document.addEventListener('change',e=>{const id=e.target.dataset.workbenchQty;if(!id)return;try{commitWorkbenchText(setDeckQuantity(field('edit-text'),cardMap,id,e.target.dataset.zone,Number(e.target.value)),'枚数を変更しました。');}catch(error){message(error.message);renderBuilder();}});
+document.addEventListener('change',e=>{const id=e.target.dataset.workbenchQty;if(!id)return;try{commitWorkbenchText(setDeckQuantity(field('edit-text'),cardMap,id,e.target.dataset.zone,Number(e.target.value)),mobileWorkbench.matches?'':'枚数を変更しました。');}catch(error){message(error.message);renderBuilder();}});
 $('#paste-deck').onclick=async()=>{
   const button=$('#paste-deck'),input=$('#edit-text'),before=input.value,start=input.selectionStart,end=input.selectionEnd,epoch=draftEpoch;
   button.disabled=true;$('#paste-status').textContent='';
