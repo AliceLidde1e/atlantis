@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2532" height="512" viewBox="0 0 1266 256" role="img" aria-labelledby="title desc">
 <title id="title">ATLANTIS — machined brass ambigram</title>
-<desc id="desc">Approved ATLANTIS ambigram, with aligned T and L contours and exact 180-degree rotation symmetry. Machined brass palette, brushed surface and inset structural edges. Transparent background.</desc>
+<desc id="desc">ATLANTIS ambigram with matching vertical slots on T and I. Machined brass palette, brushed surface and inset structural edges. Transparent background.</desc>
 <defs>
   <g id="letter-silhouette" fill-rule="evenodd">
     <g id="outer-A" transform="translate(20.519231,-12)">
@@ -13,15 +13,19 @@
     <g id="approved-central-six" transform="translate(158 0)">
       <g id="central-six-glyphs" fill-rule="evenodd">
         <g id="pair-T-I">
-          <g id="glyph-T" transform="translate(28 28)">
-            <path id="glyph-T-head-and-stem" d="M0 6L12 0H168V22L156 28H134A36 36 0 0 0 98 64V152L70 124V64A36 36 0 0 0 34 28H0Z"/>
-            <path id="glyph-T-foot" d="M70 142L98 170V200H70Z"/>
-          </g>
-          <g id="glyph-I" transform="translate(922 228) rotate(180)">
-            <path id="glyph-I-head-and-stem" d="M0 6L12 0H168V22L156 28H134A36 36 0 0 0 98 64V152L70 124V64A36 36 0 0 0 34 28H0Z"/>
-            <path id="glyph-I-foot" d="M70 142L98 170V200H70Z"/>
-          </g>
-        </g>
+    <g id="glyph-T" transform="translate(28 28)">
+      <path id="glyph-T-segment-1" d="M104 0V44.100251258A36 36 0 0 1 134 28H156L168 22V0Z"/>
+      <path id="glyph-T-segment-2" d="M70 0H98V152L70 124Z"/>
+      <path id="glyph-T-segment-3" d="M12 0L0 6V28H34A36 36 0 0 1 64 44.100251258V0Z"/>
+      <path id="glyph-T-foot" d="M70 142L98 170V200H70Z"/>
+    </g>
+    <g id="glyph-I" transform="translate(922 228) rotate(180)">
+      <path id="glyph-I-segment-1" d="M104 0V44.100251258A36 36 0 0 1 134 28H156L168 22V0Z"/>
+      <path id="glyph-I-segment-2" d="M70 0H98V152L70 124Z"/>
+      <path id="glyph-I-segment-3" d="M12 0L0 6V28H34A36 36 0 0 1 64 44.100251258V0Z"/>
+      <path id="glyph-I-foot" d="M70 142L98 170V200H70Z"/>
+    </g>
+  </g>
         <g id="pair-L-T">
           <g id="glyph-L" transform="translate(140 28)">
             <path id="glyph-L-detached-foot" d="M0 181.333333L42 167.333333V190L30 200H0Z"/>

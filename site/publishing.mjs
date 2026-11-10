@@ -125,7 +125,7 @@ export function eventChampions(group){
  return group.champions??group.rows.filter(row=>/^(?:優勝|1位)$/.test(String(row.label).trim())).map(row=>({player:row.deck.author,deck:row.deck}));
 }
 export function eventPlaceholder(label='EVENT RESULTS'){
- return `<div class="printing-image event-placeholder"><img src="atlantis-logo.svg?v=20261107logo" alt="" loading="lazy" decoding="async"><span>${escapeResult(label)}</span></div>`;
+ return `<div class="printing-image event-placeholder"><img src="atlantis-logo.svg?v=20261110split" alt="" loading="lazy" decoding="async"><span>${escapeResult(label)}</span></div>`;
 }
 export function renderEventSummary(group,renderImage=()=> ''){
  const esc=escapeResult,champions=eventChampions(group),heroDeck=champions.find(winner=>winner.deck?.hero)?.deck;
