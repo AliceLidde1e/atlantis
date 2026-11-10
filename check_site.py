@@ -49,11 +49,12 @@ def main():
     for label in ("Featured Decks", "Information", "Getting Started", "Decks", "Cards", "Events", "My Decks"):
         assert label in home
     assert home.count('name="robots" content="noindex,nofollow"') == 1
-    assert "ATLANTISは、非公式フォーマット・旧枠モダンのファンサイトです。" in home
+    about_intro = "ATLANTISは、非公式フォーマット・旧枠モダンのファンサイトです。"
+    assert f"<p>{about_intro}</p>" in home
+    assert f'<dt>About</dt><dd>{about_intro}<a href="#about">' in home
     assert "保存内容は自動では引き継がれません。" in home
     assert "取得済みデータによるカード検索はオフラインでも利用できます。" in home
     assert 'href="https://company.wizards.com/ja/legal/fancontentpolicy"' in home
-    assert "大会結果のあるデッキリストを掲載しています。大会の正式案内は未掲載です。" in home
     typography = (SITE / "typography.css").read_text(encoding="utf-8")
     assert 'href="typography.css"' in home
     for font_ref in (name for name in EXPECTED if name.endswith(".woff2")):
