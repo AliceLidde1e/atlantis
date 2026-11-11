@@ -392,3 +392,23 @@
  #card-added-count{white-space:nowrap;color:var(--light);font-variant-numeric:tabular-nums}
  #card-added button{width:100%;min-height:44px}
 }
+
+/* Keep the rail visible while letting touch scrolls pass through it. */
+@media (pointer: coarse) {
+  .museum-frame .search-sidebar :is(#card-min, #card-max) { pointer-events: none; }
+  .museum-frame .search-sidebar :is(#card-min, #card-max)::-webkit-slider-thumb { pointer-events: auto; }
+  .museum-frame .search-sidebar :is(#card-min, #card-max)::-moz-range-thumb { pointer-events: auto; }
+}
+
+#toast:has(#toast-actions:not([hidden])) {
+  width: max-content;
+  min-width: min(18rem, 92vw);
+}
+#toast-actions:not([hidden]) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+#toast-actions button { min-height: 44px; }

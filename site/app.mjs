@@ -19,7 +19,23 @@ let draftActive=false,draftBase=null,draftEpoch=0,searchReady=false;
 let cardPool=[],poolUndo=[],poolOpener=null,storageBaseline=null;
 let deckUpdates;try{if(typeof BroadcastChannel==='function')deckUpdates=new BroadcastChannel('atlantis.my-decks.updated');}catch{}
 deckUpdates?.addEventListener('message',()=>message('別のタブでマイデッキが更新されました。Reload Decksで内容を確認してください。'));
-function message(text,action){clearTimeout(toastTimer);$('#toast').hidden=false;$('#toast').innerHTML=esc(text)+(action?'<button id="toast-action">Undo</button>':'');if(action)$('#toast-action').onclick=action;toastTimer=setTimeout(()=>$('#toast').hidden=true,8000);}
+function closeToast(){
+ clearTimeout(toastTimer);
+ $('#toast').hidden=true;
+ $('#toast-action').onclick=null;
+}
+function message(text,action){
+ clearTimeout(toastTimer);
+ $('#toast').hidden=false;
+ $('#toast-message').textContent=text;
+ $('#toast-actions').hidden=!action;
+ $('#toast-action').onclick=action?()=>{
+  closeToast();
+  return action();
+ }:null;
+ toastTimer=setTimeout(closeToast,8000);
+}
+$('#toast-close').onclick=closeToast;
 async function readLocal(){try{const state=await deckStore.read();local=state.data;storageBaseline=String(state.revision);storageOk=true;}catch(e){storageOk=false;$('#my-status').textContent='保存データを読み取れません。元データは保持しています。'+e.message;$('#my-status').className='error';throw e;}}
 async function persist(next){
  if(!storageOk||!deckStore)throw new Error('このブラウザの保存領域を利用できません。');
