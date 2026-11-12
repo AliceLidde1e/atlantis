@@ -412,3 +412,30 @@
   margin-top: 8px;
 }
 #toast-actions button { min-height: 44px; }
+
+.deck-detail-controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin:0 0 18px}
+.deck-detail-action-group{display:flex;flex-wrap:wrap;gap:6px}
+.deck-detail-action-group button{min-height:44px;line-height:1.2}
+.deck-detail-action-group [aria-pressed="true"]{border-color:var(--light)}
+#detail .deck-detail-action-group button.is-copied{background:#385749;border-color:var(--light)}
+#deck-image{width:min(540px,100% - 24px);height:min(860px,92dvh);max-width:none;max-height:none;padding:0;overflow:hidden}
+#deck-image[open]{display:grid;grid-template-rows:auto minmax(0,1fr)}
+.deck-image-toolbar{display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:8px;padding:12px;border-bottom:1px solid var(--line)}
+.deck-image-toolbar button,.deck-image-toolbar a,#deck-image-retry{min-height:44px;white-space:nowrap;line-height:1.2}
+.deck-image-toolbar a{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border:1px solid var(--light);border-radius:4px;background:var(--light);color:#102426;text-decoration:none}
+.deck-image-toolbar a[aria-disabled="true"]{opacity:.5}
+.deck-image-scroll{overflow:auto;overscroll-behavior:contain;padding:12px;text-align:center}
+#deck-image-status{margin:0 0 8px;overflow-wrap:anywhere}
+#deck-image-status:empty{display:none}
+#deck-image-retry{margin-bottom:8px}
+#deck-image-preview{display:block;width:min(100%,420px);height:auto;margin:auto}
+#deck-image [hidden]{display:none}
+@media(max-width:650px){
+ .deck-detail-controls{align-items:flex-start;flex-direction:column}
+ .deck-detail-action-group button{padding:8px;font-size:13px}
+ #deck-image{width:100%;height:100dvh;margin:0;border-radius:0}
+ .deck-image-toolbar{grid-template-columns:1fr auto;gap:6px 8px;padding:calc(8px + env(safe-area-inset-top)) 12px 8px}
+ #deck-image-download{grid-column:1}
+ #deck-image-share{grid-column:2}
+ .deck-image-scroll{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+}

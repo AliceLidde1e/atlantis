@@ -11,7 +11,7 @@ EXPECTED = {
     "icons/atlantis-180.png", "icons/atlantis-192.png", "icons/atlantis-512.png",
     "icons/atlantis-maskable-512.png",
     ".nojekyll", "index.html", "style.css", "museum.css", "atlantis-logo.svg",
-    "favicon.svg", "app.mjs", "core.mjs", "workbench.mjs", "deck-store.mjs", "japanese-names.mjs", "publishing.mjs", "autocomplete.mjs", "presentation.css", "version.json", "data/results.json",
+    "favicon.svg", "app.mjs", "deck-image.mjs", "core.mjs", "workbench.mjs", "deck-store.mjs", "japanese-names.mjs", "publishing.mjs", "autocomplete.mjs", "presentation.css", "version.json", "data/results.json",
     "data/cards.json",
     "data/printings.json", "data/decks.json", "data/events.json",
     "typography.css", "fonts/iceberg/iceberg-400.woff2", "fonts/iceberg/OFL.txt",

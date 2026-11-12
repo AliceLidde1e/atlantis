@@ -8,7 +8,7 @@ const imageCache = namespace + ':images:v1';
 const imageLimit = 160;
 const shellFiles = [
   'index.html', 'app.mjs', 'pwa.mjs', 'core.mjs', 'deck-store.mjs', 'workbench.mjs',
-  'autocomplete.mjs', 'publishing.mjs', 'japanese-names.mjs',
+  'autocomplete.mjs', 'publishing.mjs', 'japanese-names.mjs', 'deck-image.mjs',
   'style.css', 'museum.css', 'typography.css', 'presentation.css',
   'favicon.svg', 'atlantis-logo.svg', 'version.json', 'manifest.webmanifest',
   'icons/atlantis-180.png', 'icons/atlantis-192.png', 'icons/atlantis-512.png',
