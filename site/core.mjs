@@ -57,6 +57,10 @@ export const DECK_TEXT_LIMIT=201000;
 export function unifiedDeckText(record){
   return record.side ? record.main+(record.main?'\n\n':'')+'Sideboard\n'+record.side : record.main;
 }
+function readThumbnail(id=''){
+ if(typeof id!=='string'||id.length>200)throw new Error('代表画像のカードIDが不正です。');
+ return id;
+}
 function readDeck(record,version,{local=false}={}){
   const d=record;
   if(!d||typeof d.name!=='string'||!d.name.trim()||d.name.length>200||typeof d.note!=='string'||d.note.length>100000)throw new Error('デッキ名または保存データが不正です。');
@@ -65,13 +69,13 @@ function readDeck(record,version,{local=false}={}){
   if(typeof text!=='string'||text.length>DECK_TEXT_LIMIT)throw new Error('本文は201,000文字以内にしてください。');
   if((local||d.updated!==undefined)&&(typeof d.updated!=='string'||!Number.isFinite(Date.parse(d.updated))))throw new Error('更新日時が不正です。');
   if(local&&(typeof d.id!=='string'||!d.id))throw new Error('保存IDが不正です。');
-  return {id:local?d.id:uuid(),name:d.name.trim(),text,note:d.note,updated:d.updated?new Date(d.updated).toISOString():new Date().toISOString()};
+  return {id:local?d.id:uuid(),name:d.name.trim(),text,note:d.note,...(readThumbnail(d.thumbnailId)?{thumbnailId:d.thumbnailId}:{}),updated:d.updated?new Date(d.updated).toISOString():new Date().toISOString()};
 }
 export function validateBackup(data){
   if(!data||data.format!=='atlantis-local-decks'||![1,2].includes(data.version)||!Array.isArray(data.decks)||data.decks.length>1000)throw new Error('ATLANTISのバックアップ形式を確認してください。');
   return data.decks.map(d=>readDeck(d,data.version));
 }
-export function createBackup(decks){return {format:'atlantis-local-decks',version:2,exportedAt:new Date().toISOString(),decks:decks.map(d=>{const {name,text,note,updated}=readDeck(d,typeof d.text==='string'?2:1,{local:true});return {name,text,note,updated};})};}
+export function createBackup(decks){return {format:'atlantis-local-decks',version:2,exportedAt:new Date().toISOString(),decks:decks.map(d=>{const {id,...record}=readDeck(d,typeof d.text==='string'?2:1,{local:true});return record;})};}
 export function validateLocalState(value){
   if(!value||![1,2].includes(value.version)||!Array.isArray(value.decks)||!Array.isArray(value.trash)||value.decks.length>1000)throw new Error('保存データの形式が不正です。');
   const seen=new Set();
@@ -117,12 +121,23 @@ export function eventDate(value){return value==null||value===''?'未定':!validO
 export function eventSortKey(event){return event.start?Date.parse(event.start):Infinity;}
 
 export function deckHeading(line){const s=normalize(line).replace(/\s*\(\d+\)\s*$/,'').replace(/:$/,'').trim();return ['sideboard','サイドボード'].includes(s)?'side':['main','mainboard','メイン','メインボード'].includes(s)?'main':['maybe','maybeboard','検討中'].includes(s)?'maybe':null;}
-export function parseDeck(text,cards){
+export function deckCardLookup(cards){
  const names=new Map();for(const c of cards.values())for(const name of [c.name,c.ja].filter(Boolean)){const key=normalize(name);if(!names.has(key))names.set(key,new Set());names.get(key).add(c.id);}
- const exact=s=>{const ids=names.get(normalize(s));return ids?.size===1?[...ids][0]:null;};
+ return s=>{const ids=names.get(normalize(s));return ids?.size===1?[...ids][0]:null;};
+}
+export function resolveDeckCard(name,exact){
+ const id=exact(name);
+ if(id)return id;
+ const pair=name.split(/(?<!\/)\/(?!\/)/);
+ if(pair.length!==2)return null;
+ const [first,second]=pair.map(exact);
+ return first&&first===second?first:null;
+}
+export function parseDeck(text,cards){
+ const exact=deckCardLookup(cards);
  let zone='main',sideHeadings=0;const rows=[],unknown=[];
  text.split(/\r?\n/).forEach((raw,i)=>{if(!raw.trim())return;const heading=deckHeading(raw);if(heading){zone=heading;if(zone==='side')sideHeadings++;return;}const m=normalize(raw).match(/^([1-9]\d*)\s+(.+)$/);let id=null,qty=m?Number(m[1]):0;
- if(m&&Number.isSafeInteger(qty)){id=exact(m[2]);if(!id){const pair=m[2].split(/(?<!\/)\/(?!\/)/);if(pair.length===2){const a=exact(pair[0]),b=exact(pair[1]);if(a&&a===b)id=a;}}}
+ if(m&&Number.isSafeInteger(qty))id=resolveDeckCard(m[2],exact);
  if(!id){unknown.push({line:i+1,text:raw});return;}const row=rows.find(x=>x.id===id&&x.zone===zone);if(row)row.qty+=qty;else rows.push({id,zone,qty});});
  return {rows,unknown,sideHeadings};
 }
@@ -145,7 +160,7 @@ export function printingOptions(record,mode){
 }
 export function validateDraftRecovery(value){
  if(value?.version!==1||!(value.baseline===null||typeof value.baseline==='string')||!(value.revision===null||typeof value.revision==='string'))throw new Error('退避データが不正です。');
- const read=d=>{if(!d||['id','name','text','note'].some(k=>typeof d[k]!=='string')||d.id.length>200||d.name.length>200||d.text.length>DECK_TEXT_LIMIT||d.note.length>100000)throw new Error('退避した入力を読み取れません。');return Object.fromEntries(['id','name','text','note'].map(k=>[k,d[k]]));};
+ const read=d=>{if(!d||['id','name','text','note'].some(k=>typeof d[k]!=='string')||d.id.length>200||d.name.length>200||d.text.length>DECK_TEXT_LIMIT||d.note.length>100000)throw new Error('退避した入力を読み取れません。');return {...Object.fromEntries(['id','name','text','note'].map(k=>[k,d[k]])),thumbnailId:readThumbnail(d.thumbnailId)};};
  return {version:1,draft:read(value.draft),base:read(value.base),baseline:value.baseline,revision:value.revision};
 }
 export function canDismissBackdrop(start,end){return start===true&&end===true;}
