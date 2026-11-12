@@ -439,3 +439,67 @@
  #deck-image-share{grid-column:2}
  .deck-image-scroll{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
 }
+
+#detail:is([data-kind="deck"],[data-kind="local"])>.dialog-toolbar{
+ background:var(--surface)!important;
+ border-bottom:1px solid var(--line)!important;
+ padding-block:4px!important;
+}
+#detail:is([data-kind="deck"],[data-kind="local"]) #detail-actions{
+ margin-left:0;
+ margin-right:auto;
+}
+.display-style{
+ display:flex;
+ align-items:center;
+ gap:5px;
+ min-width:0;
+ font:13px var(--font-display);
+}
+.display-style>span{white-space:nowrap}
+.display-style>button{min-height:44px;line-height:1;padding-inline:8px}
+#detail .display-style [aria-pressed="true"],
+#builder .selection-card-options [aria-pressed="true"]{
+ background:#385749;
+ border-color:var(--light);
+ box-shadow:inset 0 0 0 1px var(--light);
+}
+.deck-mini-list{list-style:none;margin:0;padding:0}
+.deck-mini-list li+li{border-top:1px solid var(--line)}
+#detail .deck-mini-list button{
+ display:grid;
+ grid-template-columns:32px minmax(0,1fr) auto;
+ align-items:center;
+ gap:10px;
+ width:100%;
+ min-height:54px;
+ padding:4px 8px;
+ border:0;
+ background:transparent;
+ box-shadow:none;
+ text-align:left;
+ font-family:var(--font-ui);
+}
+#detail .deck-mini-list button:hover{background:#243e35}
+.deck-mini-image{display:block;width:32px;aspect-ratio:488/680;overflow:hidden}
+.deck-mini-image :is(.card-image,.printing-image){display:block;width:100%;margin:0}
+.deck-mini-image .image-failed{font-size:0;padding:0}
+.deck-mini-list strong{font-variant-numeric:tabular-nums}
+.bilingual-card-name{min-width:0;overflow-wrap:anywhere;line-height:1.35}
+.bilingual-card-name [lang="en"]{color:var(--muted)}
+#builder .selection-heading>strong{min-width:0;margin-right:auto}
+#builder .selection-zone{white-space:nowrap;color:var(--muted)}
+#builder .selection-card-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;grid-column:1/-1}
+#import-txt{width:min(580px,100% - 24px)}
+#import-txt-help{margin-block:12px}
+#import-txt-form .unknown-lines{max-height:12rem;overflow:auto;overflow-wrap:anywhere}
+@media(max-width:639px){
+ .bilingual-card-name{display:block}
+ .bilingual-card-name [lang]{display:block}
+ .bilingual-card-name [lang="ja"]~[lang="en"]{padding-inline-start:.65em;font-size:.92em}
+ .bilingual-card-name .name-divider{display:none}
+ .display-style{font-size:12px}
+ .display-style>button{padding-inline:5px;font-size:12px}
+ #detail:has(.display-style) #detail-back{font-size:11px;padding-inline:4px}
+ #detail .deck-mini-list button{gap:7px;padding-inline:4px}
+}

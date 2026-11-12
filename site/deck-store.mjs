@@ -1,4 +1,4 @@
-import {validateLocalState} from './core.mjs?v=20261031a';
+import {validateLocalState} from './core.mjs?v=20261113deckview';
 
 // Current decks and drafts live only in this IndexedDB database.
 export async function openDeckStore(databaseName='atlantis.my-decks.v1') {
