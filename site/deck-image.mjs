@@ -1,7 +1,7 @@
 const WIDTH=780, MARGIN=28, GAP=12, COLUMNS=3;
 const CARD_WIDTH=(WIDTH-MARGIN*2-GAP*2)/COLUMNS;
 const CARD_HEIGHT=Math.round(CARD_WIDTH*88/63);
-const ROW_HEIGHT=CARD_HEIGHT+62;
+const ROW_HEIGHT=CARD_HEIGHT+GAP;
 const FONT='system-ui, sans-serif';
 
 function loadImage(url,signal){
@@ -27,12 +27,31 @@ function loadImage(url,signal){
 }
 
 async function cardImage(card,signal){
- for(const url of card.urls){
+ for(const {url,set} of card.printings){
   if(signal.aborted)return null;
   const image=await loadImage(url,signal);
-  if(image)return image;
+  if(image)return {image,set};
  }
  return null;
+}
+
+function drawCardImage(ctx,{image,set},x,top){
+ const ratio=Math.min(CARD_WIDTH/image.naturalWidth,CARD_HEIGHT/image.naturalHeight);
+ const width=image.naturalWidth*ratio,height=image.naturalHeight*ratio;
+ const left=x+(CARD_WIDTH-width)/2,y=top+(CARD_HEIGHT-height)/2;
+ // Match the elliptical corner trims in presentation.css, including Alpha.
+ const rx=width*(set==='lea'?.09:.0475),ry=height*(set==='lea'?.0646:.034);
+ ctx.save();
+ ctx.beginPath();
+ ctx.moveTo(left+rx,y);
+ ctx.ellipse(left+width-rx,y+ry,rx,ry,0,-Math.PI/2,0);
+ ctx.ellipse(left+width-rx,y+height-ry,rx,ry,0,0,Math.PI/2);
+ ctx.ellipse(left+rx,y+height-ry,rx,ry,0,Math.PI/2,Math.PI);
+ ctx.ellipse(left+rx,y+ry,rx,ry,0,Math.PI,Math.PI*1.5);
+ ctx.closePath();
+ ctx.clip();
+ ctx.drawImage(image,left,y,width,height);
+ ctx.restore();
 }
 
 function wrappedText(ctx,text,width,maxLines){
@@ -99,14 +118,12 @@ async function renderDeckImage(deck,signal){
     const position=start+index;
     const x=MARGIN+(position%COLUMNS)*(CARD_WIDTH+GAP);
     const top=y+Math.floor(position/COLUMNS)*ROW_HEIGHT;
-    const image=images[index];
-    ctx.fillStyle='#20393a';
-    ctx.fillRect(x,top,CARD_WIDTH,CARD_HEIGHT);
-    if(image){
-     const ratio=Math.min(CARD_WIDTH/image.naturalWidth,CARD_HEIGHT/image.naturalHeight);
-     const width=image.naturalWidth*ratio,height=image.naturalHeight*ratio;
-     ctx.drawImage(image,x+(CARD_WIDTH-width)/2,top+(CARD_HEIGHT-height)/2,width,height);
+    const printing=images[index];
+    if(printing){
+     drawCardImage(ctx,printing,x,top);
     }else{
+     ctx.fillStyle='#20393a';
+     ctx.fillRect(x,top,CARD_WIDTH,CARD_HEIGHT);
      missing++;
      ctx.fillStyle='#dccbad';
      ctx.font='22px '+FONT;
@@ -118,13 +135,10 @@ async function renderDeckImage(deck,signal){
     ctx.font='bold 24px '+FONT;
     const badgeWidth=Math.min(CARD_WIDTH-16,ctx.measureText(quantity).width+16);
     ctx.fillStyle='#0b191a';
-    ctx.fillRect(x+8,top+8,badgeWidth,34);
+    const badgeTop=top+CARD_HEIGHT-42;
+    ctx.fillRect(x+8,badgeTop,badgeWidth,34);
     ctx.fillStyle='#fff4d9';
-    ctx.fillText(quantity,x+16,top+12,badgeWidth-16);
-    ctx.font='22px '+FONT;
-    wrappedText(ctx,card.name,CARD_WIDTH-4,2).forEach((line,lineIndex)=>{
-     ctx.fillText(line,x+2,top+CARD_HEIGHT+5+lineIndex*24);
-    });
+    ctx.fillText(quantity,x+16,badgeTop+4,badgeWidth-16);
    });
   }
   y+=Math.ceil(section.cards.length/COLUMNS)*ROW_HEIGHT+12;

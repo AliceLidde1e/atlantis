@@ -1,4 +1,4 @@
-import {createDeckImagePreview} from './deck-image.mjs';
+import {createDeckImagePreview} from './deck-image.mjs?v=20261113trim';
 import {loadCatalogFile,registerPwa} from './pwa.mjs';
 import {openDeckStore} from './deck-store.mjs?v=20261107retire';
 import {zones,destinations,setDeckQuantity,moveDeckCard,officialDeckText} from './workbench.mjs?v=20261031a';
@@ -281,12 +281,11 @@ function openDeckImage({restore=false}={}){
  const parsed=published?null:parsedLocalDeck(deck);
  const main=published?deck.main:parsed.rows.filter(row=>row.zone==='main');
  const side=published?deck.side:parsed.rows.filter(row=>row.zone==='side');
- const cardEntry=({id,qty})=>{
-  const card=cardMap.get(id);
-  const choices=printingOptions(printings?.cards[id],printingMode).choices;
-  return {id,qty,name:printingMode==='ja'?cardName(card):card?.name||cardName(card),
-   urls:imagesDisabled()?[]:choices.map(choice=>choice.image)};
- };
+ const cardEntry=({id,qty})=>({
+  qty,
+  printings:imagesDisabled()?[]:printingOptions(printings?.cards[id],printingMode).choices
+   .map(choice=>({url:choice.image,set:choice.set})),
+ });
  const sideRows=new Map(groupDeckLines(side,cardMap).flatMap(group=>group.lines).map(row=>[row.id,row]));
  if(!restore){
   captureDetailPosition();
@@ -300,7 +299,7 @@ function openDeckImage({restore=false}={}){
    {label:'Sideboard',cards:[...new Set(side.map(row=>row.id))].map(id=>cardEntry(sideRows.get(id)))}
   ].filter(section=>section.cards.length),
   unknown:parsed?.unknown.length||0,
-  imageSuppression:hideImages?'画像非表示の設定で作成しました。':!navigator.onLine?'オフラインのためカード名と枚数を表示しています。':'',
+  imageSuppression:hideImages?'画像非表示の設定で作成しました。':!navigator.onLine?'オフラインのため枚数のみを表示しています。':'',
  });
 }
 $('#detail-body').addEventListener('click',event=>{
