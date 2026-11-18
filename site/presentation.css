@@ -503,3 +503,20 @@
  #detail:has(.display-style) #detail-back{font-size:11px;padding-inline:4px}
  #detail .deck-mini-list button{gap:7px;padding-inline:4px}
 }
+
+/* Flat brass navigation silhouettes, exported from tools/navigation-icons. */
+.nav-icon{display:block;flex:0 0 auto;width:24px;height:24px;object-fit:contain}
+.desktop-nav a{display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.desktop-nav .nav-icon{width:22px;height:22px}
+.museum-directory li a .nav-icon{width:28px;height:28px}
+.museum-directory li a>span{min-width:0}
+.header-tools #settings-open{display:inline-flex;align-items:center;justify-content:center;padding:8px}
+.header-tools #settings-open .nav-icon{width:26px;height:26px}
+.menu-links a{display:flex;align-items:center;gap:10px}
+@media(max-width:1023px){
+ .mobile-nav a{gap:3px}
+ .mobile-nav .nav-icon{width:25px;height:25px}
+}
+@media(max-width:639px){
+ .museum-directory li a .nav-icon{width:25px;height:25px}
+}

@@ -13,6 +13,12 @@ const shellFiles = [
   'favicon.svg', 'atlantis-logo.svg', 'version.json', 'manifest.webmanifest',
   'icons/atlantis-180.png', 'icons/atlantis-192.png', 'icons/atlantis-512.png',
   'icons/atlantis-maskable-512.png',
+  'icons/nav-guide.png',
+  'icons/nav-decks.png',
+  'icons/nav-cards.png',
+  'icons/nav-events.png',
+  'icons/nav-mydecks.png',
+  'icons/nav-settings.png',
 ];
 const shellPaths = new Set(shellFiles.map(file => new URL(file, scope).pathname));
 const homePath = new URL('index.html', scope).pathname;
