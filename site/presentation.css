@@ -520,3 +520,53 @@
 @media(max-width:639px){
  .museum-directory li a .nav-icon{width:25px;height:25px}
 }
+
+/* My Decks: search controls and deck/backup actions are separate groups. */
+#view-my>.toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:12px}
+#view-my .my-deck-actions{display:flex;align-items:stretch;flex-wrap:wrap;gap:8px}
+.museum-frame #view-my .my-deck-actions :is(button,.file-button){
+ display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+ margin:0;padding:8px 12px;font-size:14px;line-height:1.5;white-space:nowrap;
+}
+/* The draft slot reserves space below the header; its button follows scrolling. */
+#draft-dock{height:56px;position:relative}
+.museum-frame #draft-resume{
+ position:fixed;top:max(var(--draft-top,12px),env(safe-area-inset-top));
+ right:max(var(--draft-right,12px),env(safe-area-inset-right));z-index:60;
+ min-height:44px;max-width:min(360px,calc(100vw - 32px));
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+ padding:8px 14px;background:#203c34;border:2px outset #b69a63;
+ color:var(--light);box-shadow:0 3px 10px #0006;
+}
+.museum-frame #draft-resume:hover{background:#304b3f}
+.museum-frame #scroll-top{
+ position:fixed;right:max(16px,env(safe-area-inset-right));
+ bottom:var(--top-bottom,20px);z-index:60;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+ width:48px;height:48px;min-height:48px;padding:7px 5px;
+ background:rgba(20,44,39,.78);color:var(--light);
+ border:1px solid #b69a63;box-shadow:0 2px 8px #0005;font-size:12px;line-height:1;
+}
+.museum-frame #scroll-top:hover{background:#29463b}
+.top-chevron{width:10px;height:10px;border-top:2px solid currentColor;border-left:2px solid currentColor;transform:translateY(3px) rotate(45deg)}
+:is(#scroll-top,#draft-resume):focus-visible{outline:2px solid var(--light);outline-offset:3px}
+:is(#draft-dock,#draft-resume,#scroll-top,#pool-toggle)[hidden]{display:none!important}
+body:has(dialog:modal) :is(#draft-resume,#scroll-top){display:none!important}
+@media(max-width:639px){
+ #view-my>.toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(100px,.6fr);align-items:end}
+ #view-my>.toolbar>label{min-width:0;margin:0}
+ #view-my .my-deck-actions{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .museum-frame #view-my .my-deck-actions :is(button,.file-button){padding:8px 4px;font-size:14px;white-space:normal;text-align:center}
+ #builder #workbench-options summary{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-height:44px;margin-bottom:2px;padding:10px 12px;
+  background:#1f3934;border:2px outset #819181;color:var(--light);
+  list-style:none;box-shadow:1px 1px 0 #0008;
+ }
+ #builder #workbench-options summary::-webkit-details-marker{display:none}
+ #builder #workbench-options summary::after{content:'+';font:20px/1 var(--font-ui)}
+ #builder #workbench-options[open] summary{background:#304b3f;border-style:inset}
+ #builder #workbench-options[open] summary::after{content:'−'}
+ #builder #workbench-options summary:hover{background:#2e4941}
+ #builder #workbench-options summary:focus-visible{outline:2px solid var(--light);outline-offset:-4px}
+}

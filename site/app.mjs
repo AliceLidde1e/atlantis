@@ -19,6 +19,7 @@ let printingMode=DEFAULT_PRINTING_MODE,printings=null,pendingDraft=null,draftRev
 try{const saved=localStorage.getItem(PRINT_MODE);if(['en','ja'].includes(saved))printingMode=saved;}catch{}
 let draftActive=false,draftBase=null,draftEpoch=0,searchReady=false;
 let cardPool=[],poolUndo=[],poolOpener=null,storageBaseline=null;
+let pageToolsFrame=null;
 let deckUpdates;try{if(typeof BroadcastChannel==='function')deckUpdates=new BroadcastChannel('atlantis.my-decks.updated');}catch{}
 deckUpdates?.addEventListener('message',()=>message('別のタブでマイデッキが更新されました。Reload Decksで内容を確認してください。'));
 function closeToast(){
@@ -422,15 +423,56 @@ function syncWorkbenchControls(){
 }
 function renderWorkbenchToggle(){
  $('#pool-toggle').textContent=draftActive?(mobileWorkbench.matches?'Deck Editor':'Deck Editor · '+(field('edit-name')||'無題のデッキ')):'Start a Deck';
+ syncPageTools();
 }
+/* Shared page tools: active drafts and document scrolling, never modal scrolling. */
+function setPageToolHidden(element,hidden){if(element.hidden!==hidden)element.hidden=hidden;}
+function syncPageTools(){
+ const dock=$('#draft-dock'),resume=$('#draft-resume'),top=$('#scroll-top');
+ const modal=!!$('dialog:modal');
+ setPageToolHidden(dock,!draftActive);
+ setPageToolHidden($('#pool-toggle'),draftActive);
+ setPageToolHidden(resume,!draftActive||modal);
+ setPageToolHidden(top,modal||window.scrollY<300);
+ resume.setAttribute('aria-expanded',String($('#builder').open));
+ if(draftActive){
+  const name=field('edit-name')||'無題のデッキ';
+  resume.textContent=mobileWorkbench.matches?'Deck Editor':'Deck Editor · '+name;
+  resume.title='編集中：'+name;
+  const bounds=dock.getBoundingClientRect();
+  resume.style.setProperty('--draft-top',Math.max(12,bounds.top)+'px');
+  resume.style.setProperty('--draft-right',Math.max(12,window.innerWidth-bounds.right)+'px');
+ }
+ const toast=$('#toast'),nav=$('.mobile-nav');
+ const navVisible=nav&&getComputedStyle(nav).display!=='none';
+ let bottom=navVisible?Math.max(20,window.innerHeight-nav.getBoundingClientRect().top+12):20;
+ if(!toast.hidden)bottom=Math.max(bottom,window.innerHeight-toast.getBoundingClientRect().top+12);
+ top.style.setProperty('--top-bottom',bottom+'px');
+}
+function schedulePageTools(){
+ if(pageToolsFrame!==null)return;
+ pageToolsFrame=requestAnimationFrame(()=>{pageToolsFrame=null;syncPageTools();});
+}
+function resumeWorkbench(){
+ if(!draftActive)return;
+ if(currentView==='cards'&&$('#builder').open){closePool();return;}
+ navigate('cards');
+ openPool();
+}
+function scrollPageToTop(){
+ if($('dialog:modal'))return;
+ window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+}
+/* End shared page tools. */
 syncWorkbenchControls();
 mobileWorkbench.addEventListener('change',syncWorkbenchControls);
 function syncWorkbenchLayout(){
  const pane=$('#builder'),wide=matchMedia('(min-width:1100px)').matches;
- if(currentView!=='cards'||!draftActive||workbenchStowed){if(pane.open)pane.close();$('#pool-toggle').setAttribute('aria-expanded','false');return;}
+ if(currentView!=='cards'||!draftActive||workbenchStowed){if(pane.open)pane.close();$('#pool-toggle').setAttribute('aria-expanded','false');syncPageTools();return;}
  if(wide){if(pane.matches(':modal'))pane.close();if(!pane.open)pane.show();}
  else if(pane.open&&!pane.matches(':modal'))pane.close();
  $('#pool-toggle').setAttribute('aria-expanded',String(pane.open));
+ syncPageTools();
 }
 function openPool(){
  if(!draftActive){editor();return;}
@@ -441,6 +483,7 @@ function openPool(){
   $('#builder').showModal();
  }
  $('#pool-toggle').setAttribute('aria-expanded','true');
+ syncPageTools();
 }
 function closePool(){
  workbenchStowed=true;
@@ -742,7 +785,7 @@ $('#workbench-add-cards').onclick=()=>{
  $('#card-name').focus();
 };
 $('#builder').addEventListener('cancel',e=>{e.preventDefault();closePool();});
-$('#workbench-name').oninput=e=>{$('#edit-name').value=e.target.value;saveDraftRecovery();$('#workbench-target').textContent='追加先：'+(e.target.value||'無題のデッキ');$('#workbench-status').textContent='変更あり';};
+$('#workbench-name').oninput=e=>{$('#edit-name').value=e.target.value;saveDraftRecovery();$('#workbench-target').textContent='追加先：'+(e.target.value||'無題のデッキ');$('#workbench-status').textContent='変更あり';renderWorkbenchToggle();};
 $('#workbench-save').onclick=()=>saveWorkbench();$('#workbench-as-new').onclick=()=>saveWorkbench(true);
 $('#workbench-undo').onclick=undoWorkbench;
 $('#workbench-text').onclick=()=>{if(!draftActive)return;if($('#builder').matches(':modal'))closePool();$('#editor').showModal();};
@@ -880,5 +923,15 @@ for(const id of ['settings-dialog','menu-dialog'])$('#'+id).addEventListener('cl
 
 fetch('version.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(v=>{$('#site-version').textContent=`rev.${v.count} · ${v.revision}`;$('#site-version').title=`更新：${v.date} / Git履歴に基づく版番号`;}).catch(()=>{$('#site-version').textContent='development';});
 
+$('#draft-resume').onclick=resumeWorkbench;
+$('#scroll-top').onclick=scrollPageToTop;
+window.addEventListener('scroll',schedulePageTools,{passive:true});
+window.addEventListener('resize',schedulePageTools);
+const pageToolsObserver=new MutationObserver(schedulePageTools);
+for(const dialog of $$('dialog'))pageToolsObserver.observe(dialog,{attributes:true,attributeFilter:['open']});
+pageToolsObserver.observe($('#toast'),{attributes:true,attributeFilter:['hidden'],childList:true,subtree:true,characterData:true});
+// Font loading and content updates can move the reserved draft slot.
+new ResizeObserver(schedulePageTools).observe($('#main'));
+schedulePageTools();
 registerPwa();
 boot();
