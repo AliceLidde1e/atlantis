@@ -32,6 +32,7 @@ jobs:
       - run: node workbench.test.mjs
       - run: node pwa.test.mjs
       - run: node page-tools.test.mjs
+      - run: node detail-header.test.mjs
       - run: node --check site/sw.js
       - run: node scripts/check-editor.mjs
       - run: node scripts/rehearse-publishing.mjs

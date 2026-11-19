@@ -200,9 +200,9 @@ function renderCards(){
  setCardPages(result.length?`<button data-page="1" ${cardPage===1?'disabled':''}>First</button><button data-page="${cardPage-1}" ${cardPage===1?'disabled':''}>Previous</button><span>${cardPage} / ${pages}</span><button data-page="${cardPage+1}" ${cardPage===pages?'disabled':''}>Next</button><button data-page="${pages}" ${cardPage===pages?'disabled':''}>LAST</button>`:'');
 }
 let detailOpener=null,restoringDetail=false,activeDetailKey=null;
-const detailPositions=new Map();
+const detailPositions=new Map(),detailInformation=new Map();
 function captureDetailPosition(){
- if($('#detail').open&&history.state?.detail){detailPositions.set(activeDetailKey,$('#detail').scrollTop);history.replaceState({...history.state,detailScroll:$('#detail').scrollTop},'',location.href);}
+ if($('#detail').open&&history.state?.detail){const information=$('#detail-information');if(information)detailInformation.set(activeDetailKey,information.open);detailPositions.set(activeDetailKey,$('#detail').scrollTop);history.replaceState({...history.state,detailScroll:$('#detail').scrollTop},'',location.href);}
 }
 function closeDetail(){
  if(!$('#detail').open)return;
@@ -210,6 +210,23 @@ function closeDetail(){
  $('#detail').close();if(depth)history.go(-depth);
  if(detailOpener?.isConnected)detailOpener.focus({preventScroll:true});
 }
+/* Deck detail headers share the existing toolbar and its event handlers. */
+function layoutDetailHeader(type){
+ const dialog=$('#detail'),header=$('#detail-deck-header');
+ const toolbar=dialog.querySelector('.dialog-toolbar');
+ // Return the shared toolbar before clearing the previous deck's header.
+ dialog.prepend(toolbar);
+ header.replaceChildren();
+ const overview=$('#detail-body .deck-detail-overview');
+ const fixed=(type==='deck'||type==='local')&&!!overview;
+ header.hidden=!fixed;
+ if(fixed){
+  header.append(toolbar,overview);
+  const information=header.querySelector('#detail-information');
+  if(information)information.open=detailInformation.get(activeDetailKey)??false;
+ }
+}
+/* End deck detail header layout. */
 function showDetail(html,type,id,mode='visual'){
  const dialog=$('#detail'),previous=history.state,wasOpen=dialog.open;
  if(!restoringDetail){
@@ -230,6 +247,7 @@ function showDetail(html,type,id,mode='visual'){
  }else if(type==='deck'||type==='local'){
   actions.innerHTML=`<div class="display-style" role="group" aria-label="Display Style"><span>Display Style</span>${['visual','list'].map(style=>`<button type="button" data-display-style="${style}" aria-pressed="${style===mode}">${style.toUpperCase()}</button>`).join('')}</div>`;
  }else actions.innerHTML='';
+ layoutDetailHeader(type);
  if(!wasOpen){if(!restoringDetail)detailOpener=document.activeElement;dialog.showModal();}
  dialog.scrollTop=position;
  requestAnimationFrame(()=>{if(dialog.open)dialog.scrollTop=position;});
@@ -240,6 +258,9 @@ function renderDetailState(state){
  finally{restoringDetail=false;}
 }
 $('#detail').addEventListener('scroll',()=>{if($('#detail').open)detailPositions.set(activeDetailKey,$('#detail').scrollTop);},{passive:true});
+$('#detail').addEventListener('toggle',event=>{
+ if(event.target.id==='detail-information'&&event.target.isConnected)detailInformation.set(activeDetailKey,event.target.open);
+},true);
 $('#detail-back').onclick=()=>{captureDetailPosition();history.back();};
 function detailAddLabel(zone,qty){const name=zone==='main'?'Main':'Sideboard';return `<span class="detail-action-full">Add to ${name} (${qty})</span><span class="detail-action-short">${zone==='main'?'Main':'Side'} + (${qty})</span>`;}
 function cardRulesMarkup(card){
@@ -328,20 +349,23 @@ function openDeckImage({restore=false}={}){
   imageSuppression:hideImages?'画像非表示の設定で作成しました。':!navigator.onLine?'オフラインのため枚数のみを表示しています。':'',
  });
 }
-$('#detail-body').addEventListener('click',event=>{
+$('#detail').addEventListener('click',event=>{
  if(event.target.closest('[data-deck-image]'))openDeckImage();
 });
 $('#deck-image').addEventListener('close',()=>{
  if(!$('#deck-image').open&&history.state?.deckImage)history.back();
 });
-function openDeck(id,mode='visual'){const d=decks.find(d=>d.id===id);if(!d)return;showDetail(`<div class="published-deck-heading"><div class="published-deck-title"><h1>${esc(d.name)}</h1>${deckDateMarkup(confirmedDeckDate(d))}</div><div class="published-deck-player"><span class="eyebrow">PLAYER</span><p>${esc(d.author)}</p><div class="tags">${tags(d.colors)}<span class="tag">${esc(d.archetype)}</span></div></div><div class="published-deck-event"><span class="eyebrow">EVENT / RESULT</span><p><strong>${esc(d.event)} · ${esc(d.result)}</strong><br>${esc(d.venue)}</p></div></div><div class="deck-detail-controls"><div class="deck-detail-action-group" role="group" aria-label="デッキの出力">${deckImageButton()}<button type="button" data-copy="${esc(id)}">Copy Text</button><button type="button" data-download="${esc(id)}">Download TXT</button></div></div>${deckBoard(d.main,'main',false,mode)}${deckBoard(d.side,'side',false,mode)}`,'deck',id,mode);}
+function openDeck(id,mode='visual'){
+ const d=decks.find(d=>d.id===id);if(!d)return;
+ showDetail(`<div class="deck-detail-overview"><h1 class="deck-detail-name" title="${esc(d.name)}">${esc(d.name)}</h1><div class="deck-detail-controls"><div class="deck-detail-action-group" role="group" aria-label="デッキの出力">${deckImageButton()}<button type="button" data-copy="${esc(id)}">Copy Text</button><button type="button" data-download="${esc(id)}">Download TXT</button></div></div><details id="detail-information" class="deck-information"><summary>Information</summary><div class="deck-information-content"><div class="published-deck-heading"><div class="published-deck-date">${deckDateMarkup(confirmedDeckDate(d))}</div><div class="published-deck-player"><span class="eyebrow">PLAYER</span><p>${esc(d.author)}</p><div class="tags">${tags(d.colors)}<span class="tag">${esc(d.archetype)}</span></div></div><div class="published-deck-event"><span class="eyebrow">EVENT / RESULT</span><p><strong>${esc(d.event)} · ${esc(d.result)}</strong><br>${esc(d.venue)}</p></div></div></div></details></div>${deckBoard(d.main,'main',false,mode)}${deckBoard(d.side,'side',false,mode)}`,'deck',id,mode);
+}
 const parsedDeckCache=new WeakMap();
 function parsedLocalDeck(d){const hit=parsedDeckCache.get(d);if(hit?.map===cardMap&&hit.text===d.text)return hit.value;const value=parseDeck(d.text,cardMap);parsedDeckCache.set(d,{map:cardMap,text:d.text,value});return value;}
 function renderMy(){renderBuilder(); $('#my-count').textContent=local.decks.length;const q=normalize(field('my-query'));const rows=local.decks.filter(d=>normalize(d.name).includes(q)).sort((a,b)=>field('my-sort')==='name'?a.name.localeCompare(b.name,'ja'):b.updated.localeCompare(a.updated));if(storageOk){$('#my-status').textContent=`${rows.length} / ${local.decks.length} 件 · このブラウザだけに保存`;}$('#my-results').innerHTML=rows.map(d=>deckTile(d,{localDeck:true})).join('')||(local.decks.length?empty('条件に合うマイデッキはありません','my'):'<div class="empty"><h2>マイデッキはまだありません</h2><p>保存したデータはこのブラウザだけに残ります。</p><button class="primary" id="empty-new">+ New Deck</button></div>');}
 function openMyDeck(id,mode='visual'){
  const d=local.decks.find(x=>x.id===id);if(!d)return;const parsed=parsedLocalDeck(d);
  const main=parsed.rows.filter(x=>x.zone==='main'),side=parsed.rows.filter(x=>x.zone==='side'),maybe=parsed.rows.filter(x=>x.zone==='maybe');
- showDetail(`<h1>${esc(d.name)}</h1><div class="deck-detail-controls"><div class="deck-detail-action-group" role="group" aria-label="デッキの編集と出力">${deckImageButton()}<button type="button" data-edit="${esc(id)}">Edit Deck</button><button type="button" data-local-copy="${esc(id)}" aria-label="${esc(d.name)}をMy Deckとして複製">Duplicate</button><button type="button" data-local-export="${esc(id)}">Export MO</button></div></div>${deckBoard(main,'main',false,mode)}${deckBoard(side,'side',false,mode)}<details class="maybe-candidates"><summary>MAYBE · 検討中</summary>${deckLines(maybe,false,null,mode)}</details>${parsed.unknown.length?`<h2>読み取れなかった行 ${parsed.unknown.length}件</h2><ol class="unknown-lines">${parsed.unknown.map(x=>`<li value="${x.line}"><code>${esc(x.text)}</code></li>`).join('')}</ol>`:''}`,'local',id,mode);
+ showDetail(`<div class="deck-detail-overview"><h1 class="deck-detail-name" title="${esc(d.name)}">${esc(d.name)}</h1><div class="deck-detail-controls"><div class="deck-detail-action-group" role="group" aria-label="デッキの編集と出力">${deckImageButton()}<button type="button" data-edit="${esc(id)}">Edit Deck</button><button type="button" data-local-copy="${esc(id)}" aria-label="${esc(d.name)}をMy Deckとして複製">Duplicate</button><button type="button" data-local-export="${esc(id)}" aria-label="MO形式で書き出す" title="Export MO">Export</button></div></div></div>${deckBoard(main,'main',false,mode)}${deckBoard(side,'side',false,mode)}<details class="maybe-candidates"><summary>MAYBE · 検討中</summary>${deckLines(maybe,false,null,mode)}</details>${parsed.unknown.length?`<h2>読み取れなかった行 ${parsed.unknown.length}件</h2><ol class="unknown-lines">${parsed.unknown.map(x=>`<li value="${x.line}"><code>${esc(x.text)}</code></li>`).join('')}</ol>`:''}`,'local',id,mode);
 }
 function refreshDetail(){const state=history.state;if(!$('#detail').open||!state?.detail)return;captureDetailPosition();renderDetailState(history.state);}
 $('#detail-actions').addEventListener('click',event=>{

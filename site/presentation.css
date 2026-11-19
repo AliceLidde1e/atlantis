@@ -570,3 +570,69 @@ body:has(dialog:modal) :is(#draft-resume,#scroll-top){display:none!important}
  #builder #workbench-options summary:hover{background:#2e4941}
  #builder #workbench-options summary:focus-visible{outline:2px solid var(--light);outline-offset:-4px}
 }
+
+/* Deck details: one opaque sticky header, three rows (local) or four (published). */
+#detail:is([data-kind="deck"],[data-kind="local"]){padding:0}
+#detail-deck-header{
+ position:sticky;top:0;z-index:8;padding:10px 14px;
+ background:var(--surface,#142e2c);border-bottom:1px solid var(--line);
+ box-shadow:0 3px 8px #0003;
+}
+#detail-deck-header[hidden]{display:none!important}
+#detail-deck-header>.dialog-toolbar{
+ position:static;float:none;display:flex;flex-direction:row;flex-wrap:nowrap;
+ align-items:center;width:100%;height:auto;max-width:none;
+ margin:0 0 10px;padding:0!important;gap:8px;
+ background:transparent!important;border:0!important;box-shadow:none;
+}
+#detail-deck-header #detail-actions{flex:1;min-width:0;margin:0}
+#detail-deck-header .display-style{gap:6px;font-size:14px;white-space:nowrap}
+#detail-deck-header .display-style>button,#detail-deck-header>.dialog-toolbar>button{
+ min-width:0;min-height:44px;height:44px;margin:0;padding:8px 12px;line-height:1;white-space:nowrap;
+}
+#detail-deck-header #detail-back{margin-right:0!important}
+#detail-deck-header #detail-back[hidden]{display:none!important}
+#detail-deck-header .deck-detail-overview{display:grid;gap:10px;min-width:0}
+#detail-deck-header .deck-detail-name{
+ margin:0;padding:0;min-height:0;font-size:clamp(20px,3.5vw,28px);line-height:1.3;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+#detail-deck-header .deck-detail-controls{display:block;margin:0}
+#detail-deck-header .deck-detail-action-group{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:6px}
+#detail-deck-header .deck-detail-action-group button{
+ min-width:0;min-height:44px;margin:0;padding:8px 6px;
+ font-size:14px;line-height:1.2;white-space:nowrap;
+}
+#detail:is([data-kind="deck"],[data-kind="local"]) #detail-body{padding:14px}
+#detail:is([data-kind="deck"],[data-kind="local"]) #detail-feedback{margin:10px 14px 0}
+#detail-deck-header .deck-information{margin:0;min-width:0}
+#detail-deck-header .deck-information>summary{
+ display:flex;align-items:center;justify-content:space-between;gap:12px;
+ min-height:44px;padding:8px 12px;cursor:pointer;list-style:none;
+ font:14px/1.3 var(--font-display);color:var(--light);
+ background:#1f3934;border:2px outset #819181;box-shadow:1px 1px 0 #0008;
+}
+#detail-deck-header .deck-information>summary::-webkit-details-marker{display:none}
+#detail-deck-header .deck-information>summary::after{content:'+';font:20px/1 var(--font-ui)}
+#detail-deck-header .deck-information[open]>summary{background:#304b3f;border-style:inset}
+#detail-deck-header .deck-information[open]>summary::after{content:'−'}
+#detail-deck-header .deck-information>summary:hover{background:#2e4941}
+#detail-deck-header .deck-information>summary:focus-visible{outline:2px solid var(--light);outline-offset:-4px}
+#detail-deck-header .deck-information-content{max-height:25dvh;overflow:auto;overscroll-behavior:contain;padding:10px 2px 2px}
+#detail-deck-header .published-deck-heading{padding:0;border:0;font-size:14px}
+#detail-deck-header .published-deck-date{grid-column:1/-1}
+#detail-deck-header .published-deck-date:empty{display:none}
+@media(max-width:639px){
+ #detail:is([data-kind="deck"],[data-kind="local"]){width:calc(100% - 16px);max-height:calc(100dvh - 24px)}
+ #detail-deck-header{padding:8px 10px}
+ #detail-deck-header>.dialog-toolbar{gap:5px;margin-bottom:8px}
+ #detail-deck-header #detail-actions{margin:0}
+ #detail-deck-header .display-style{gap:4px;font-size:12px}
+ #detail-deck-header .display-style>button,#detail-deck-header>.dialog-toolbar>button{padding:8px 6px;font-size:12px}
+ #detail-deck-header .deck-detail-overview{gap:8px}
+ #detail-deck-header .deck-detail-action-group{gap:4px}
+ #detail-deck-header .deck-detail-action-group button{padding:8px 3px;font-size:12px}
+ #detail:is([data-kind="deck"],[data-kind="local"]) #detail-body{padding:12px 10px}
+ #detail.has-back #detail-deck-header .display-style{gap:3px;font-size:11px}
+ #detail.has-back #detail-deck-header .display-style>button,#detail.has-back #detail-deck-header>.dialog-toolbar>button{padding-inline:4px;font-size:11px}
+}
