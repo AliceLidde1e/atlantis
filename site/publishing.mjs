@@ -127,12 +127,16 @@ export function eventChampions(group){
 export function eventPlaceholder(label='EVENT RESULTS'){
  return `<div class="printing-image event-placeholder"><img src="atlantis-logo.svg?v=20261110split" alt="" loading="lazy" decoding="async"><span>${escapeResult(label)}</span></div>`;
 }
+// Optional [horizontal, vertical] percentages keep one focal point on every screen.
+export function thumbnailStyle(position){
+ return Array.isArray(position)&&position.length===2&&position.every(n=>typeof n==='number'&&Number.isFinite(n)&&n>=0&&n<=100)?` style="--thumbnail-position:${position[0]}% ${position[1]}%"`:'';
+}
 export function renderEventSummary(group,renderImage=()=> ''){
  const esc=escapeResult,champions=eventChampions(group),heroDeck=champions.find(winner=>winner.deck?.hero)?.deck;
  const image=heroDeck?renderImage(heroDeck):'';
  const winner=champions.length?champions.map(w=>esc(w.player)).join(' / '):'優勝者未確認';
  const deckNames=champions.map(w=>esc(w.deck?.name||'デッキ未掲載')).join(' / ');
- return `<article class="deck-card featured-card event-tile event-result-summary"><a class="featured-open" href="${esc(eventResultHref(group.id))}" aria-label="${esc(group.title)}${group.date?' · '+esc(group.date):''}の大会結果">${image||eventPlaceholder()}<div class="content"><span class="eyebrow">EVENT RESULTS</span><h3>${esc(group.title)}</h3><p class="published-deck-date">開催日：${group.date?`<time datetime="${esc(group.date)}">${esc(group.date)}</time>`:'未確認'}</p><dl class="event-card-facts"><div><dt>会場</dt><dd>${esc(group.venue||'未確認')}</dd></div><div><dt>参加人数</dt><dd>${Number.isSafeInteger(group.players)&&group.players>0?`${group.players}名`:'未確認'}</dd></div></dl><div class="event-champion"><span class="eyebrow">WINNER</span><p>${winner}</p>${deckNames?`<p class="event-winner-deck">${deckNames}</p>`:''}</div><span class="event-card-action">View Decks →</span></div></a></article>`;
+ return `<article class="deck-card featured-card catalog-link event-tile event-result-summary"><a class="featured-open"${thumbnailStyle(heroDeck?.thumbnailPosition)} href="${esc(eventResultHref(group.id))}" aria-label="${esc(group.title)}${group.date?' · '+esc(group.date):''}の大会結果">${image||eventPlaceholder()}<div class="content"><span class="eyebrow">EVENT RESULTS</span><h3 title="${esc(group.title)}">${esc(group.title)}</h3><p class="published-deck-date">開催日：${group.date?`<time datetime="${esc(group.date)}">${esc(group.date)}</time>`:'未確認'}</p><dl class="event-card-facts"><div><dt>会場</dt><dd>${esc(group.venue||'未確認')}</dd></div></dl><div class="event-champion"><span class="eyebrow">WINNER</span><p>${winner}</p>${deckNames?`<p class="event-winner-deck">${deckNames}</p>`:''}</div><span class="event-card-action">View Decks →</span></div></a></article>`;
 }
 export function renderPublishedDeckResults(decks,results=[],{limit=Infinity,renderImage}={}){
  return collectEventResults(decks,results).slice(0,limit).map(group=>renderEventSummary(group,renderImage)).join('');

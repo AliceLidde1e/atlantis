@@ -78,7 +78,7 @@ for(const resultLabel of ['優勝','1位']){
  const group=collectEventResults([{...deck,result:resultLabel}])[0];
  const summary=renderEventSummary(group,winner=>`<img data-winner="${winner.id}">`);
  assert(summary.includes('data-winner="fixture-deck"'));assert(summary.includes('&lt;script&gt;'));
- assert(!summary.includes('<script>'));assert(summary.includes(deck.venue));assert(summary.includes('未確認'));
+ assert(!summary.includes('<script>'));assert(summary.includes(deck.venue));assert(!summary.includes('参加人数'));
 }
 const official=collectEventResults(valid.decks,valid.results)[0];
 assert.equal(eventChampions(official)[0].deck.id,deck.id);
@@ -109,3 +109,12 @@ for(const id of ['result-fixture-result','decks-fixture-deck','test/&<>']){
 assert.equal(eventRoute('events/%E0%A4%A').id,'');
 assert.equal(eventRoute('decks'),null);
 console.log('Event cards/directories: confirmed winners, missing winner/deck, six/full lists, route separation and escaping OK');
+
+assert(!renderEventSummary(fixture).includes('参加人数'));
+assert(!renderEventSummary(fixture).includes('8名'));
+assert(renderEventResult(fixture).includes('参加人数'));
+assert(renderEventResult(fixture).includes('8名'));
+const {thumbnailStyle}=await import('./site/publishing.mjs');
+assert.equal(thumbnailStyle([25,75]),' style="--thumbnail-position:25% 75%"');
+for(const position of [undefined,[0],[0,101],['0',50],[NaN,50],[0,'50%;color:red']])assert.equal(thumbnailStyle(position),'');
+console.log('Catalogue links: participant counts only in details; safe optional thumbnail focal points OK');
